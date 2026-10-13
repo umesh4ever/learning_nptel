@@ -1,0 +1,1 @@
+import{t as e}from"./react-vendor-BPWasKn7.js";import{r as t}from"./router-vendor-CwFy4Jqo.js";import{i as n}from"./index-CAcdUzug.js";var r=e();function i(){let{state:e}=n();return e.finished?(0,r.jsx)(t,{to:`/results`,replace:!0}):e.quiz?(0,r.jsx)(t,{to:`/quiz/${e.currentQuestionIndex+1}`,replace:!0}):(0,r.jsx)(t,{to:`/setup/weeks`,replace:!0})}export{i as default};
