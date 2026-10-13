@@ -8,13 +8,13 @@ export default function ResultsScreen({ quiz, selectedAnswers, correctCount, onC
   const exactScorePercentage = (correctCount / quiz.questions.length) * 100
   const scorePercentage = Math.round(exactScorePercentage)
   const resultHeadline = exactScorePercentage === 100
-    ? 'Head shot'
+    ? 'Deadly Head shot man'
     : exactScorePercentage > 80
-      ? 'Good'
-      : exactScorePercentage >= 50
-        ? 'NOT BAD'
-        : 'BAD'
-  const resultTheme = exactScorePercentage < 50
+      ? 'Excellent you are shining'
+      : exactScorePercentage > 50
+        ? 'Great But you have miles to go'
+        : 'Go home prepare then return and Conquer'
+  const resultTheme = exactScorePercentage <= 50
     ? {
         section: 'bg-[#a33e46]',
         icon: 'bg-[#f8dfe1] text-[#8c3038]',

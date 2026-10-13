@@ -14,7 +14,7 @@ export default function Navbar({ quiz, questionIndex, finished, onGoHome }) {
             <Icon name="book" className="size-[18px]" />
           </span>
           <span className="min-w-0">
-            <span className="block truncate text-sm font-bold tracking-tight text-white">NPTEL Quizzz</span>
+            <span className="block truncate text-xl font-bold tracking-tight text-white">NPTEL Quizzz</span>
             <span className="hidden text-[9px] font-semibold uppercase tracking-[0.16em] text-white/60 sm:block">practice</span>
           </span>
         </Link>
@@ -25,7 +25,7 @@ export default function Navbar({ quiz, questionIndex, finished, onGoHome }) {
             onClick={onGoHome}
             className="inline-flex min-h-11 items-center rounded-lg px-3 py-2 text-xs font-bold text-white/85 transition-all hover:bg-white/15 hover:text-white active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b9ddf5] sm:min-h-10"
           >
-            <span className="sm:hidden">Home</span>
+            <span className="sm:hidden text-xl">Home</span>
             <span className="hidden sm:inline">Weekly tests</span>
           </Link>
           {quiz && !finished && (
