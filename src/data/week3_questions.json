@@ -1,0 +1,433 @@
+{
+  "course": "Industry 4.0 and Industrial Internet of Things",
+  "week": 3,
+  "week_title": "Cyber-Physical Systems (CPS), 5C Architecture & Big Data Analytics",
+  "topic_overview": "Focuses on Cyber-Physical Systems (CPS) traits, physical-cyber coupling, Jay Lee's 5C architecture, enterprise vs IIoT data characteristics, Big Data 4Vs, NoSQL/Time-Series storage, and multi-domain CPS applications.",
+  "topics": [
+    {
+      "topic_id": "W3_T1",
+      "topic_name": "Cyber-Physical Systems (CPS) Concepts & Characteristics",
+      "topic_description": "Covers core definitions of CPS, physical-cyber coupling, feedback loops, real-time reactive computation, concurrency, and differences from traditional standalone embedded systems.",
+      "questions": [
+        {
+          "id": "W3_T1_Q1",
+          "difficulty": "Easy",
+          "question": "What is the defining characteristic of a Cyber-Physical System (CPS)?",
+          "options": {
+            "A": "It operates strictly offline without any digital sensors",
+            "B": "Deep integration and feedback loops between computational algorithms and physical processes",
+            "C": "It consists solely of software code running on a desktop computer",
+            "D": "It uses only manual mechanical hand levers"
+          },
+          "correct_answer": "B",
+          "justification": "CPS tightly integrates physical operations with computational feedback loops where computation controls physical processes and vice versa."
+        },
+        {
+          "id": "W3_T1_Q2",
+          "difficulty": "Easy",
+          "question": "Unlike traditional resource-constrained embedded devices, modern Cyber-Physical Systems are typically characterized as being what?",
+          "options": {
+            "A": "Isolated and non-networked",
+            "B": "Networked, scalable, and capable of complex concurrent processing",
+            "C": "Completely devoid of sensors",
+            "D": "Operating purely on steam power"
+          },
+          "correct_answer": "B",
+          "justification": "CPS platforms leverage networked architectures, high processing power, and real-time distributed communication."
+        },
+        {
+          "id": "W3_T1_Q3",
+          "difficulty": "Easy",
+          "question": "In a closed-loop CPS, what component measures the output state of the physical world?",
+          "options": {
+            "A": "Actuator",
+            "B": "Sensor",
+            "C": "Compiler",
+            "D": "Power Inverter"
+          },
+          "correct_answer": "B",
+          "justification": "Sensors monitor the physical parameters and feed data back into the computational domain."
+        },
+        {
+          "id": "W3_T1_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "What does 'reactive computation' mean in the context of a Cyber-Physical System?",
+          "options": {
+            "A": "The system computes data once every 24 hours in batch mode",
+            "B": "The computational unit must respond continuously to changes in its physical environment at a speed dictated by physical dynamics",
+            "C": "The server shuts down when an error occurs",
+            "D": "The processor only responds to keyboard inputs from human operators"
+          },
+          "correct_answer": "B",
+          "justification": "Reactive systems run concurrently with their environment, executing computations in real time in response to external physical events."
+        },
+        {
+          "id": "W3_T1_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "A chemical reactor uses continuous temperature sensors to modulate coolant valve actuators within milliseconds to prevent runaway reactions. Why is this classified as a CPS rather than simple software?",
+          "options": {
+            "A": "Because it uses a keyboard",
+            "B": "Because computational software directly affects physical thermal dynamics in a tight, time-critical feedback loop",
+            "C": "Because the valves are painted yellow",
+            "D": "Because the reactor runs on coal"
+          },
+          "correct_answer": "B",
+          "justification": "The bi-directional, real-time coupling between thermal dynamics and control algorithms forms the core definition of CPS."
+        },
+        {
+          "id": "W3_T1_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "In a CPS feedback loop, what parameter determines the maximum allowable control loop delay before instability occurs in a high-speed CNC cutting spindle?",
+          "options": {
+            "A": "Physical system time constant and mechanical resonance frequency",
+            "B": "Server hard drive RPM",
+            "C": "Cable color code",
+            "D": "Monitor refresh rate"
+          },
+          "correct_answer": "A",
+          "justification": "Physical dynamics and mechanical time constants dictate the real-time deadline for CPS control loop stability."
+        }
+      ]
+    },
+    {
+      "topic_id": "W3_T2",
+      "topic_name": "The 5C Architecture for Cyber-Physical Systems",
+      "topic_description": "Details Jay Lee's 5C CPS architecture: Connection (Level 1), Conversion (Level 2), Cyber (Level 3), Cognition (Level 4), and Configuration (Level 5).",
+      "questions": [
+        {
+          "id": "W3_T2_Q1",
+          "difficulty": "Easy",
+          "question": "In Jay Lee's 5C CPS architecture, what is the primary role of Level 1 (Connection Level)?",
+          "options": {
+            "A": "Building 3D CAD models",
+            "B": "Acquiring reliable real-time data from physical machines using sensors and communication protocols",
+            "C": "Calculating corporate tax rates",
+            "D": "Generating executive PowerPoint presentations"
+          },
+          "correct_answer": "B",
+          "justification": "Level 1 (Smart Connection) focuses on collecting plug-and-play sensor data and seamless machine communications."
+        },
+        {
+          "id": "W3_T2_Q2",
+          "difficulty": "Easy",
+          "question": "Which 5C level is responsible for converting raw sensor time-series data into actionable health features (e.g., calculating health index or remaining useful life)?",
+          "options": {
+            "A": "Level 1: Connection",
+            "B": "Level 2: Data-to-Information Conversion",
+            "C": "Level 5: Configuration",
+            "D": "Level 0: Hardware Fabrication"
+          },
+          "correct_answer": "B",
+          "justification": "Level 2 (Data-to-Information Conversion) extracts meaningful features, signal frequencies, and degradation metrics from raw data."
+        },
+        {
+          "id": "W3_T2_Q3",
+          "difficulty": "Easy",
+          "question": "What occurs at Level 3 (Cyber Level) of the 5C architecture?",
+          "options": {
+            "A": "Sensors are physically wired to terminal blocks",
+            "B": "Digital twin creation, fleet-level comparisons, and centralized machine modeling",
+            "C": "Manual grease application by shop technicians",
+            "D": "Customer invoice generation"
+          },
+          "correct_answer": "B",
+          "justification": "The Cyber level gathers data from across the fleet to create digital twins, benchmark performance, and conduct cluster analytics."
+        },
+        {
+          "id": "W3_T2_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "At Level 4 (Cognition Level), what insight is delivered to plant supervisors?",
+          "options": {
+            "A": "Raw voltage sensor waveforms",
+            "B": "Comparative diagnostic decisions, asset risk rankings, and optimization recommendations",
+            "C": "Physical IP address listings",
+            "D": "Ethernet cable continuity test results"
+          },
+          "correct_answer": "B",
+          "justification": "Level 4 (Cognition) presents actionable decisions, health degradation prioritization, and visual risk maps to human decision-makers."
+        },
+        {
+          "id": "W3_T2_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "Level 5 (Configuration Level) provides closed-loop control to the physical machine. What is a key capability at this level?",
+          "options": {
+            "A": "Printing paper maintenance logs",
+            "B": "Self-reconfiguring machine control parameters to prevent predicted failures autonomously",
+            "C": "Increasing motor speed beyond safety thresholds",
+            "D": "Disconnecting the factory from the power grid"
+          },
+          "correct_answer": "B",
+          "justification": "Level 5 feedback applies self-aware corrective actions back to the physical system to achieve resilience and self-healing."
+        },
+        {
+          "id": "W3_T2_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "Which 5C level integrates machine-learning algorithms to benchmark a single machine's current health against its historical peers across the factory floor?",
+          "options": {
+            "A": "Level 3: Cyber Level",
+            "B": "Level 1: Connection",
+            "C": "Level 0: Wiring",
+            "D": "Level 5: Manual override"
+          },
+          "correct_answer": "A",
+          "justification": "Level 3 (Cyber) aggregates fleet data for benchmarking, cluster analytics, and digital twin health comparison."
+        }
+      ]
+    },
+    {
+      "topic_id": "W3_T3",
+      "topic_name": "Enterprise Data vs. Industrial IoT (IIoT) Data",
+      "topic_description": "Compares traditional enterprise data (transactional, relational, structured) with IIoT data (high velocity, time-series, unstructured, streaming, sensor noise).",
+      "questions": [
+        {
+          "id": "W3_T3_Q1",
+          "difficulty": "Easy",
+          "question": "What is a distinguishing characteristic of IIoT sensor data compared to traditional enterprise ERP data?",
+          "options": {
+            "A": "IIoT data is strictly generated by human keyboard typists",
+            "B": "IIoT data is high-velocity, continuous time-series streaming data",
+            "C": "IIoT data never contains timestamps",
+            "D": "IIoT data is always stored in PDF documents"
+          },
+          "correct_answer": "B",
+          "justification": "IIoT data consists of continuous, high-frequency, time-stamped streams emitted directly by machine sensors."
+        },
+        {
+          "id": "W3_T3_Q2",
+          "difficulty": "Easy",
+          "question": "Traditional Enterprise data (such as ERP and CRM records) is predominantly structured into what format?",
+          "options": {
+            "A": "Unstructured video files",
+            "B": "Relational database tables with strict SQL schemas",
+            "C": "Raw binary sensor telemetry",
+            "D": "Analog audio tape recordings"
+          },
+          "correct_answer": "B",
+          "justification": "Enterprise systems rely heavily on structured relational SQL tables containing transactional records (orders, payments, payroll)."
+        },
+        {
+          "id": "W3_T3_Q3",
+          "difficulty": "Easy",
+          "question": "Why does raw IIoT sensor data require significant pre-processing before analytics?",
+          "options": {
+            "A": "Because sensor data is always 100% accurate without exception",
+            "B": "Because raw sensor streams often contain noise, missing values, outliers, and corrupt packets",
+            "C": "Because time-series data cannot be read by computers",
+            "D": "Because sensors only output text sentences in English"
+          },
+          "correct_answer": "B",
+          "justification": "High-frequency physical sensing inherently captures environmental noise, missing packets, and transient spikes that require filtering."
+        },
+        {
+          "id": "W3_T3_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "Which scenario illustrates the fundamental challenge of managing IIoT data volume and velocity?",
+          "options": {
+            "A": "Saving a word processing document once a day",
+            "B": "Handling 50,000 vibration sensor samples per second across 200 CNC spindles simultaneously",
+            "C": "Printing monthly employee attendance sheets",
+            "D": "Sending an email to a supplier"
+          },
+          "correct_answer": "B",
+          "justification": "High sampling frequencies multiplied by hundreds of industrial assets generate massive data velocity and volume demands."
+        },
+        {
+          "id": "W3_T3_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "How do the storage retention requirements differ between transactional enterprise data and high-frequency raw IIoT telemetry?",
+          "options": {
+            "A": "Enterprise data is deleted after 1 hour, while raw telemetry is saved forever on floppy disks",
+            "B": "Enterprise transactional data requires long-term audit retention, whereas high-frequency raw telemetry is often aggregated into summary features for long-term storage",
+            "C": "Raw telemetry cannot be stored digitally",
+            "D": "Both are stored identically in standard Excel spreadsheets"
+          },
+          "correct_answer": "B",
+          "justification": "Raw sub-millisecond telemetry is typically filtered or aggregated into statistical metrics for long-term storage to manage storage cost and scale."
+        },
+        {
+          "id": "W3_T3_Q6",
+          "difficulty": "Easy",
+          "question": "In IIoT time-series telemetry data, what metadata attribute is mandatory for every single sensor reading?",
+          "options": {
+            "A": "ISO 8601 UTC Timestamp",
+            "B": "Customer credit card number",
+            "C": "Employee home address",
+            "D": "PDF document page number"
+          },
+          "correct_answer": "A",
+          "justification": "Timestamps are mandatory for time-series telemetry to index temporal trends and correlate multi-sensor events."
+        }
+      ]
+    },
+    {
+      "topic_id": "W3_T4",
+      "topic_name": "Big Data Analytics & NoSQL Database Storage in CPS",
+      "topic_description": "Examines Big Data characteristics (4Vs: Volume, Velocity, Variety, Veracity), time-series databases, and NoSQL solutions (Document, Key-Value, Columnar, Graph) for CPS.",
+      "questions": [
+        {
+          "id": "W3_T4_Q1",
+          "difficulty": "Easy",
+          "question": "In Big Data terminology, what does the term 'Velocity' refer to?",
+          "options": {
+            "A": "The physical weight of the storage hard drive",
+            "B": "The rate or speed at which new data is generated and streamed into the system",
+            "C": "The geographical location of the server farm",
+            "D": "The price per gigabyte of RAM"
+          },
+          "correct_answer": "B",
+          "justification": "Velocity measures the real-time speed of incoming data streams from connected assets."
+        },
+        {
+          "id": "W3_T4_Q2",
+          "difficulty": "Easy",
+          "question": "Why are traditional relational SQL databases often inadequate for raw IIoT time-series ingestion at scale?",
+          "options": {
+            "A": "SQL databases cannot store numbers",
+            "B": "Fixed relational schemas struggle to handle high-write velocity and heterogeneous semi-structured formats",
+            "C": "SQL databases only run on 8-bit computers",
+            "D": "NoSQL databases require manual paper indexing"
+          },
+          "correct_answer": "B",
+          "justification": "Relational ACID transaction locks create bottlenecks when processing millions of high-velocity time-series sensor writes per second."
+        },
+        {
+          "id": "W3_T4_Q3",
+          "difficulty": "Easy",
+          "question": "Which NoSQL database type stores data as key-value pairs or JSON documents, offering flexible schema modification?",
+          "options": {
+            "A": "Relational SQLite",
+            "B": "Document-oriented NoSQL database (e.g., MongoDB / CouchDB)",
+            "C": "Punch-card batch file",
+            "D": "Flat ASCII text file"
+          },
+          "correct_answer": "B",
+          "justification": "Document-oriented NoSQL databases store semi-structured JSON objects, allowing dynamic schema adjustments as new sensors are added."
+        },
+        {
+          "id": "W3_T4_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "An industrial monitoring platform requires storing sensor telemetry containing diverse attributes (vibration, acoustic, temperature) where sensor schemas vary by manufacturer. Which database architecture is best suited?",
+          "options": {
+            "A": "Strict relational SQL table with fixed columns",
+            "B": "Schema-less NoSQL or Time-Series Database (TSDB)",
+            "C": "CSV file on an encrypted flash drive",
+            "D": "Mainframe tape cartridge"
+          },
+          "correct_answer": "B",
+          "justification": "Time-Series Databases and NoSQL platforms provide flexible schemas optimized for fast time-stamped inserts and temporal queries."
+        },
+        {
+          "id": "W3_T4_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "What does the 'Veracity' dimension of Big Data signify when evaluating IIoT vibration data?",
+          "options": {
+            "A": "The total financial cost of the server rack",
+            "B": "The trustworthiness, quality, and accuracy of the collected sensor readings",
+            "C": "The network cable color",
+            "D": "The processor clock speed in GHz"
+          },
+          "correct_answer": "B",
+          "justification": "Veracity addresses data hygiene\u2014ensuring calibration drifts, sensor faults, or network corruption do not skew downstream predictive models."
+        },
+        {
+          "id": "W3_T4_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "Which NoSQL database data model stores data as nodes, edges, and properties, ideal for modeling complex industrial supply chain relationships?",
+          "options": {
+            "A": "Graph Database (e.g., Neo4j)",
+            "B": "Key-Value store",
+            "C": "Flat text file",
+            "D": "Relational CSV"
+          },
+          "correct_answer": "A",
+          "justification": "Graph databases excel at querying complex multi-hop relationships, dependencies, and supply chain graphs."
+        }
+      ]
+    },
+    {
+      "topic_id": "W3_T5",
+      "topic_name": "Cross-Domain CPS Applications (Healthcare, Smart Grid, Agriculture)",
+      "topic_description": "Explores practical CPS implementations in smart power grids, biomedical monitoring, precision agriculture, and connected transport systems.",
+      "questions": [
+        {
+          "id": "W3_T5_Q1",
+          "difficulty": "Easy",
+          "question": "In a Smart Grid CPS, what device measures electrical parameters with microsecond-level GPS-synchronized precision?",
+          "options": {
+            "A": "Phasor Measurement Unit (PMU)",
+            "B": "Mechanical mercury switch",
+            "C": "Analog dial ammeter",
+            "D": "Thermal fuse wire"
+          },
+          "correct_answer": "A",
+          "justification": "Phasor Measurement Units (PMUs) capture synchronized high-speed voltage/current waveforms across electrical power grids."
+        },
+        {
+          "id": "W3_T5_Q2",
+          "difficulty": "Easy",
+          "question": "In biomedical CPS setups, wearable sensors transmit physiological parameters (e.g., ECG, SpO2) to enable what service?",
+          "options": {
+            "A": "Automated assembly of automobiles",
+            "B": "Remote patient monitoring and early health deterioration detection",
+            "C": "Manual drug mixing in pharmacies",
+            "D": "Predictive maintenance on hospital elevators"
+          },
+          "correct_answer": "B",
+          "justification": "Biomedical CPS tracks continuous patient vitals to provide real-time alerts and remote healthcare intervention."
+        },
+        {
+          "id": "W3_T5_Q3",
+          "difficulty": "Easy",
+          "question": "Precision agriculture CPS utilizes soil moisture sensors and automated drip lines to optimize what resource?",
+          "options": {
+            "A": "Diesel fuel usage in chainsaws",
+            "B": "Water and fertilizer consumption",
+            "C": "Solar panel orientation only",
+            "D": "Tractor paint durability"
+          },
+          "correct_answer": "B",
+          "justification": "Precision farming closed-loop systems deliver targeted irrigation and nutrients based on real-time soil condition feedback."
+        },
+        {
+          "id": "W3_T5_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "How does a Smart Grid CPS automatically prevent widespread blackouts during a localized transformer short-circuit?",
+          "options": {
+            "A": "By instructing operators to mail a physical report",
+            "B": "By executing microsecond automated trip commands and rerouting power paths through active microgrid islanding",
+            "C": "By turning off all power to the country permanently",
+            "D": "By raising electricity prices instantly"
+          },
+          "correct_answer": "B",
+          "justification": "Closed-loop microsecond control algorithms isolate faults and reconfigure grid power paths dynamically to prevent cascading blackouts."
+        },
+        {
+          "id": "W3_T5_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "What is a critical design requirement shared across Healthcare CPS and Autonomous Vehicle CPS?",
+          "options": {
+            "A": "Zero requirement for low latency",
+            "B": "Ultra-reliable low-latency communication (URLLC) and deterministic safety guarantees",
+            "C": "Dependence on manual paper approvals",
+            "D": "Unlimited tolerance for packet drop rates"
+          },
+          "correct_answer": "B",
+          "justification": "Both healthcare and autonomous vehicle CPS involve life-critical feedback loops requiring deterministic, ultra-reliable low-latency execution."
+        },
+        {
+          "id": "W3_T5_Q6",
+          "difficulty": "Easy",
+          "question": "What component in a Smart City transportation CPS dynamically adjusts traffic light signals based on real-time vehicle queue sensors?",
+          "options": {
+            "A": "Adaptive Traffic Control Engine",
+            "B": "Manual traffic whistle",
+            "C": "Analog stop sign",
+            "D": "Paper map calendar"
+          },
+          "correct_answer": "A",
+          "justification": "Adaptive traffic control engines process sensor inputs in closed loops to optimize urban signal timing."
+        }
+      ]
+    }
+  ]
+}

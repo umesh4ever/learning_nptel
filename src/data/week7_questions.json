@@ -1,0 +1,433 @@
+{
+  "course": "Industry 4.0 and Industrial Internet of Things",
+  "week": 7,
+  "week_title": "LPWAN (LoRa / SIGFOX), Embedded Systems, CEP & Smart Farming",
+  "topic_overview": "Focuses on LPWAN modulation (LoRa CSS vs SIGFOX UNB), ESP8266 + DHT11 + LoRa hardware prototyping, Complex Event Processing (CEP) engine sliding windows, Microsoft FarmBeats (TVWS & spatial AI), and Smart Manufacturing maturity phases.",
+  "topics": [
+    {
+      "topic_id": "W7_T1",
+      "topic_name": "Low-Power Wide Area Networks (LPWAN): LoRa vs. SIGFOX",
+      "topic_description": "Compares LPWAN protocols: LoRa (Chirp Spread Spectrum, open LoRaWAN specification) vs SIGFOX (Ultra Narrow Band, proprietary global network).",
+      "questions": [
+        {
+          "id": "W7_T1_Q1",
+          "difficulty": "Easy",
+          "question": "What primary modulation technology is used by Semtech's LoRa physical layer to achieve long range and high noise immunity?",
+          "options": {
+            "A": "Chirp Spread Spectrum (CSS)",
+            "B": "Ultra Narrow Band (UNB)",
+            "C": "Frequency Modulation (FM)",
+            "D": "Orthogonal Code Division Multiplexing"
+          },
+          "correct_answer": "A",
+          "justification": "LoRa uses Chirp Spread Spectrum (CSS) modulation where signals linearly sweep frequencies over time."
+        },
+        {
+          "id": "W7_T1_Q2",
+          "difficulty": "Easy",
+          "question": "Which LPWAN technology utilizes Ultra Narrow Band (UNB) modulation and operates a proprietary global subscription network?",
+          "options": {
+            "A": "LoRaWAN",
+            "B": "SIGFOX",
+            "C": "Zigbee",
+            "D": "Wi-Fi 6"
+          },
+          "correct_answer": "B",
+          "justification": "SIGFOX relies on UNB modulation and operates as a managed proprietary network service."
+        },
+        {
+          "id": "W7_T1_Q3",
+          "difficulty": "Easy",
+          "question": "What is a major operational advantage of LPWAN technologies over traditional Wi-Fi in agricultural or factory monitoring?",
+          "options": {
+            "A": "Multi-gigabit per second data rates",
+            "B": "Long transmission range (kilometers) combined with low power consumption for multi-year battery life",
+            "C": "Zero radio propagation loss",
+            "D": "Unlimited transmission payload size"
+          },
+          "correct_answer": "B",
+          "justification": "LPWANs sacrifice data rate to achieve multi-kilometer coverage and decade-long battery lifetimes."
+        },
+        {
+          "id": "W7_T1_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "How does adjusting the 'Spreading Factor' (SF7 to SF12) in LoRa impact range, data rate, and air-time?",
+          "options": {
+            "A": "Higher SF increases range and noise immunity but decreases data rate and increases packet air-time",
+            "B": "Higher SF decreases range and doubles data rate",
+            "C": "Lower SF increases battery life by 1000x and increases range",
+            "D": "Spreading factor has zero effect on performance"
+          },
+          "correct_answer": "A",
+          "justification": "Increasing the Spreading Factor increases signal processing gain (longer range) at the expense of slower transmission bitrates."
+        },
+        {
+          "id": "W7_T1_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "A smart agriculture deployment spans 15 square kilometers without cellular coverage. Why is LoRaWAN preferred over SIGFOX if the farm owner wants to operate a private network gateway without paying monthly cloud subscription fees per node?",
+          "options": {
+            "A": "Because SIGFOX requires proprietary base stations and paid network operator subscriptions, whereas LoRaWAN allows private gateway deployments",
+            "B": "Because LoRaWAN requires satellite dishes",
+            "C": "Because SIGFOX only works indoors",
+            "D": "Because LoRaWAN operates on 5 GHz band"
+          },
+          "correct_answer": "A",
+          "justification": "LoRaWAN supports private network deployments where users own the gateways, whereas SIGFOX operates as a subscription-based public operator model."
+        },
+        {
+          "id": "W7_T1_Q6",
+          "difficulty": "Easy",
+          "question": "What regional ISM unlicensed radio frequency band is designated for LoRa deployment in India?",
+          "options": {
+            "A": "865 - 867 MHz",
+            "B": "915 MHz",
+            "C": "2.4 GHz",
+            "D": "433 kHz"
+          },
+          "correct_answer": "A",
+          "justification": "In India, the unlicensed ISM spectrum allocated for LPWAN / LoRa operates between 865 and 867 MHz."
+        }
+      ]
+    },
+    {
+      "topic_id": "W7_T2",
+      "topic_name": "Embedded Prototyping: NodeMCU ESP8266 + DHT11 + LoRa Integration",
+      "topic_description": "Covers practical hardware integration: ESP8266 Wi-Fi/MCU, DHT11 temperature/humidity sensor interfacing, SPI bus connections to RFM95 LoRa transceivers, and C++ Arduino code execution.",
+      "questions": [
+        {
+          "id": "W7_T2_Q1",
+          "difficulty": "Easy",
+          "question": "Which microcontroller board features built-in Wi-Fi connectivity and digital GPIO pins, widely used for IoT rapid prototyping?",
+          "options": {
+            "A": "NodeMCU ESP8266",
+            "B": "Raspberry Pi GPU",
+            "C": "Standard 555 Timer IC",
+            "D": "Intel x86 Server Motherboard"
+          },
+          "correct_answer": "A",
+          "justification": "NodeMCU ESP8266 integrates a Tensilica 32-bit CPU with onboard 802.11 b/g/n Wi-Fi."
+        },
+        {
+          "id": "W7_T2_Q2",
+          "difficulty": "Easy",
+          "question": "What physical property does the DHT11 sensor measure to determine relative environmental humidity?",
+          "options": {
+            "A": "Electrical resistance across a capacitive/resistive polymer substrate",
+            "B": "Mercury column expansion",
+            "C": "Laser light reflection",
+            "D": "Acoustic echo delay"
+          },
+          "correct_answer": "A",
+          "justification": "DHT11 measures humidity via a moisture-holding substrate whose electrical resistance changes with relative humidity."
+        },
+        {
+          "id": "W7_T2_Q3",
+          "difficulty": "Easy",
+          "question": "Which serial peripheral interface (bus) is typically used to connect the NodeMCU micro-controller to an RFM95 LoRa transceiver radio module?",
+          "options": {
+            "A": "SPI (Serial Peripheral Interface: MOSI, MISO, SCK, CS)",
+            "B": "I2C only",
+            "C": "Parallel LPT port",
+            "D": "VGA connector"
+          },
+          "correct_answer": "A",
+          "justification": "RFM95 LoRa modules communicate with host microcontrollers via high-speed SPI buses."
+        },
+        {
+          "id": "W7_T2_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "In Arduino C++ code for an ESP8266 + DHT11 project, what does calling `dht.readHumidity()` return if the sensor data pin is disconnected?",
+          "options": {
+            "A": "0.0% instantly",
+            "B": "NaN (Not a Number) due to timing timeout on the single-wire digital protocol",
+            "C": "100.0%",
+            "D": "50.0%"
+          },
+          "correct_answer": "B",
+          "justification": "The DHT library returns `NaN` when digital handshake timing fails or signal line timeouts occur."
+        },
+        {
+          "id": "W7_T2_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "An engineer programs an ESP8266 node to read DHT11 temperature every 10 seconds and put the processor into 'Deep Sleep' mode in between reads. Why is Deep Sleep essential for remote solar/battery sensor nodes?",
+          "options": {
+            "A": "Because Deep Sleep reduces microcontroller current draw from tens of milliamps to microamps, extending battery operational life",
+            "B": "Because Deep Sleep turns off the solar panel",
+            "C": "Because Deep Sleep increases Wi-Fi transmit power",
+            "D": "Because microcontrollers overheat if left on for more than 1 minute"
+          },
+          "correct_answer": "A",
+          "justification": "Deep Sleep shuts down CPU clocks and RF power amplifiers, dropping current consumption to microamperes during idle periods."
+        },
+        {
+          "id": "W7_T2_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "In NodeMCU ESP8266 C++ programming, what GPIO pin assignment corresponds to standard I2C SDA and SCL pins default mapping?",
+          "options": {
+            "A": "GPIO4 (D2) as SDA and GPIO5 (D1) as SCL",
+            "B": "GPIO0 as SDA and GPIO16 as SCL",
+            "C": "TX as SDA and RX as SCL",
+            "D": "A0 as SDA and Vin as SCL"
+          },
+          "correct_answer": "A",
+          "justification": "NodeMCU maps default software I2C to GPIO4 (D2 pin) for SDA and GPIO5 (D1 pin) for SCL."
+        }
+      ]
+    },
+    {
+      "topic_id": "W7_T3",
+      "topic_name": "Complex Event Processing (CEP) in Industrial Systems",
+      "topic_description": "Examines Complex Event Processing (CEP) concepts: temporal pattern detection, event correlation, sliding time windows, and real-time rule engines.",
+      "questions": [
+        {
+          "id": "W7_T3_Q1",
+          "difficulty": "Easy",
+          "question": "What is the primary role of a Complex Event Processing (CEP) engine in an IIoT architecture?",
+          "options": {
+            "A": "To print weekly PDF invoices",
+            "B": "To analyze high-velocity streams of simple events in real-time to detect complex patterns, temporal correlations, and actionable situations",
+            "C": "To convert digital audio into analog radio",
+            "D": "To format hard drives automatically"
+          },
+          "correct_answer": "B",
+          "justification": "CEP engines evaluate continuous event streams against sliding time windows and rule patterns to identify complex conditions."
+        },
+        {
+          "id": "W7_T3_Q2",
+          "difficulty": "Easy",
+          "question": "Which concept in CEP defines a sliding time interval (e.g., 'past 5 minutes') over which events are aggregated?",
+          "options": {
+            "A": "Time Window",
+            "B": "Static File Folder",
+            "C": "Database Table",
+            "D": "Ethernet Frame"
+          },
+          "correct_answer": "A",
+          "justification": "Time windows bound real-time stream calculations (e.g., average temperature over the last 10 minutes)."
+        },
+        {
+          "id": "W7_T3_Q3",
+          "difficulty": "Easy",
+          "question": "In CEP terminology, what is a 'Simple Event' versus a 'Complex Event'?",
+          "options": {
+            "A": "A simple event is a single raw reading (e.g., Temp=85\u00b0C), while a complex event is an inferred higher-level situation (e.g., Overheating Warning based on Temp>80\u00b0C AND Pressure>50bar for 3 mins)",
+            "B": "A simple event requires a supercomputer; a complex event runs on paper",
+            "C": "Simple events are written in C++; complex events are written in HTML",
+            "D": "They are completely identical terms"
+          },
+          "correct_answer": "A",
+          "justification": "Simple events represent individual atomic telemetry points, while complex events represent synthesized situation patterns."
+        },
+        {
+          "id": "W7_T3_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "A gas turbine monitoring system uses CEP to trigger an emergency shutdown ONLY IF 'Vibration > 5mm/s' AND 'Bearing Temp > 90\u00b0C' occur within a 30-second sliding window. Why is CEP preferred over traditional SQL database queries for this task?",
+          "options": {
+            "A": "Because SQL databases process streams with high disk-write latency, whereas in-memory CEP engines evaluate stream rules with microsecond latencies",
+            "B": "Because CEP uses paper tape",
+            "C": "Because SQL cannot add numbers",
+            "D": "Because CEP eliminates sensors"
+          },
+          "correct_answer": "A",
+          "justification": "In-memory CEP stream processing avoids database disk I/O bottlenecks, delivering microsecond decision latency."
+        },
+        {
+          "id": "W7_T3_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "How does CEP reduce alert fatigue for operators in a smart factory central control room?",
+          "options": {
+            "A": "By suppressing all alarms permanently",
+            "B": "By filtering noise and correlating multiple low-level warnings into a single root-cause complex alert",
+            "C": "By playing loud horn music",
+            "D": "By sending an email for every single sensor bit flip"
+          },
+          "correct_answer": "B",
+          "justification": "CEP correlates cascading simple alerts into concise root-cause alarms, preventing operator alarm overload."
+        },
+        {
+          "id": "W7_T3_Q6",
+          "difficulty": "Easy",
+          "question": "Which windowing policy in CEP discards events older than a fixed duration (e.g., 60 seconds) while continuously advancing with incoming time?",
+          "options": {
+            "A": "Sliding Time Window",
+            "B": "Tumbling Batch Window",
+            "C": "Static File Folder",
+            "D": "Archival File Block"
+          },
+          "correct_answer": "A",
+          "justification": "Sliding time windows continuously shift forward in time, retaining only events falling within the active duration threshold."
+        }
+      ]
+    },
+    {
+      "topic_id": "W7_T4",
+      "topic_name": "Precision Agriculture & Microsoft FarmBeats Architecture",
+      "topic_description": "Covers Microsoft FarmBeats architecture: TV White Spaces (TVWS) for long-range farm connectivity, drone imagery integration, sensor placement optimization, and ground-truth AI models.",
+      "questions": [
+        {
+          "id": "W7_T4_Q1",
+          "difficulty": "Easy",
+          "question": "What long-range wireless technology does Microsoft FarmBeats utilize to connect sensors across farmlands where foliage blocks high-frequency signals?",
+          "options": {
+            "A": "TV White Spaces (TVWS)",
+            "B": "5G mmWave",
+            "C": "Standard Bluetooth 4.0",
+            "D": "Infrared line-of-sight"
+          },
+          "correct_answer": "A",
+          "justification": "TV White Spaces (unused TV broadcast spectrum in Sub-GHz bands) penetrate dense crop foliage and soil topographies over long distances."
+        },
+        {
+          "id": "W7_T4_Q2",
+          "difficulty": "Easy",
+          "question": "In FarmBeats, aerial imagery captured by drones is combined with ground soil sensor readings to construct what asset?",
+          "options": {
+            "A": "3D video game avatars",
+            "B": "Precision moisture and nutrient soil heatmaps",
+            "C": "Paper land deeds",
+            "D": "Weather forecast television shows"
+          },
+          "correct_answer": "B",
+          "justification": "FarmBeats fuses aerial imagery with ground-truth sensor interpolation to generate precise spatial farm heatmaps."
+        },
+        {
+          "id": "W7_T4_Q3",
+          "difficulty": "Easy",
+          "question": "Why is solar power combined with battery storage necessary for edge gateways deployed in Microsoft FarmBeats agricultural sites?",
+          "options": {
+            "A": "Because farming sites lack grid power infrastructure",
+            "B": "Because sensors operate faster under solar light",
+            "C": "Because solar panels reflect birds",
+            "D": "Because cloud servers run inside the solar panel"
+          },
+          "correct_answer": "A",
+          "justification": "Remote farmlands lack grid power connections; solar-battery setups ensure autonomous 24/7 gateway operation."
+        },
+        {
+          "id": "W7_T4_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "How does FarmBeats solve the problem of limited ground sensor density when mapping soil moisture across a 500-acre field?",
+          "options": {
+            "A": "By installing 100,000 sensors per acre",
+            "B": "By fusing sparse ground sensor data with high-resolution aerial drone multispectral images using machine learning spatial interpolation models",
+            "C": "By guessing moisture levels based on crop price",
+            "D": "By flooding the entire farm with river water"
+          },
+          "correct_answer": "B",
+          "justification": "Multispectral aerial photography provides dense spatial coverage, which AI models calibrate using ground-truth sensor points."
+        },
+        {
+          "id": "W7_T4_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "What bandwidth constraint does FarmBeats overcome by running localized edge processing on a farm PC before syncing with the cloud?",
+          "options": {
+            "A": "Farm internet connections have limited upload bandwidth, so heavy video/drone images are processed locally, sending only summarized analytical insights to the cloud",
+            "B": "Farm PCs cannot connect to routers",
+            "C": "Cloud platforms refuse to accept image files",
+            "D": "TVWS radio waves cannot transmit numbers"
+          },
+          "correct_answer": "A",
+          "justification": "Local edge compute nodes process raw drone imagery and sensor logs locally, uploading low-bandwidth summary vectors to cloud platforms."
+        },
+        {
+          "id": "W7_T4_Q6",
+          "difficulty": "Easy",
+          "question": "How does Microsoft FarmBeats utilize soil temperature and moisture data to optimize automated drip irrigation valve scheduling?",
+          "options": {
+            "A": "By executing evapotranspiration models to compute precise crop water deficit and triggering irrigation only when soil moisture drops below critical thresholds",
+            "B": "By watering crops continuously 24 hours a day",
+            "C": "By shutting off irrigation during summer",
+            "D": "By spraying crops with seawater"
+          },
+          "correct_answer": "A",
+          "justification": "Soil sensors feed evapotranspiration algorithms, applying precise irrigation volumes only when moisture drops below target thresholds."
+        }
+      ]
+    },
+    {
+      "topic_id": "W7_T5",
+      "topic_name": "Phases of Smart Manufacturing & Self-Organizing Systems",
+      "topic_description": "Examines sequential phases of smart manufacturing evolution (Data Collection -> Data Analytics -> Self-Awareness -> Self-Optimization) and Multi-Agent Systems (MAS).",
+      "questions": [
+        {
+          "id": "W7_T5_Q1",
+          "difficulty": "Easy",
+          "question": "What is the foundational first phase in transforming a traditional plant into a Smart Manufacturing facility?",
+          "options": {
+            "A": "Full autonomous AI robotics",
+            "B": "Data Collection & Sensor Digitization",
+            "C": "Executive corporate restructuring",
+            "D": "3D printing of factory walls"
+          },
+          "correct_answer": "B",
+          "justification": "Digitization and real-time data collection form the prerequisite foundation for all higher-level smart manufacturing analytics."
+        },
+        {
+          "id": "W7_T5_Q2",
+          "difficulty": "Easy",
+          "question": "In smart manufacturing maturity models, what capability characterizes a 'Self-Aware' machine asset?",
+          "options": {
+            "A": "It paints its own metal casing",
+            "B": "The machine understands its current operational health, performance degradation, and remaining useful life (RUL)",
+            "C": "It orders lunch for operators",
+            "D": "It re-wires its own power transformer"
+          },
+          "correct_answer": "B",
+          "justification": "Self-awareness means an asset continuously monitors its internal health state and predicts performance degradation."
+        },
+        {
+          "id": "W7_T5_Q3",
+          "difficulty": "Easy",
+          "question": "What defines a 'Multi-Agent System' (MAS) in flexible industrial automation?",
+          "options": {
+            "A": "A team of human real estate agents",
+            "B": "An architecture of autonomous software/hardware agents that interact and negotiate to solve complex shop-floor scheduling problems dynamically",
+            "C": "A centralized main-frame computer with zero sub-units",
+            "D": "A manual paper routing slip system"
+          },
+          "correct_answer": "B",
+          "justification": "Multi-agent systems distribute control among autonomous agents (machines, AGVs, workpieces) that negotiate work allocations dynamically."
+        },
+        {
+          "id": "W7_T5_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "In a self-organizing smart factory, machine A experiences a drill bit failure. How does a Multi-Agent system dynamically reroute workpieces without central management intervention?",
+          "options": {
+            "A": "Workpiece agents broadcast task requirements to adjacent available CNC machine agents, negotiate job execution based on current queue times, and reroute AGVs automatically",
+            "B": "Workpieces stop permanently until a human manager writes an email",
+            "C": "All machines shut down for 24 hours",
+            "D": "AGVs dump workpieces on the floor"
+          },
+          "correct_answer": "A",
+          "justification": "Decentralized multi-agent negotiation allows workpieces and operational machines to dynamically re-plan production paths around asset outages."
+        },
+        {
+          "id": "W7_T5_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "Which ultimate maturity phase follows Data Collection, Data Analytics, and Self-Awareness in smart manufacturing frameworks?",
+          "options": {
+            "A": "Self-Optimization & Autonomous Reconfiguration",
+            "B": "Manual Paper Logging",
+            "C": "Industry 1.0 Steam Integration",
+            "D": "Static Assembly Line Locking"
+          },
+          "correct_answer": "A",
+          "justification": "The highest maturity phase is Self-Optimization, where machines autonomously adjust operating parameters to maintain quality and throughput."
+        },
+        {
+          "id": "W7_T5_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "In an Industry 4.0 'Self-Aware' motor asset, what health metric is calculated by integrating vibration FFT energy and bearing temperature history over operating hours?",
+          "options": {
+            "A": "Asset Health Index (AHI) / Remaining Useful Life (RUL)",
+            "B": "Motor paint durability index",
+            "C": "Voltage ratio",
+            "D": "Serial number length"
+          },
+          "correct_answer": "A",
+          "justification": "AHI and RUL combine multi-sensor degradation metrics into a composite quantitative asset health rating."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,433 @@
+{
+  "course": "Industry 4.0 and Industrial Internet of Things",
+  "week": 6,
+  "week_title": "Sensing in Manufacturing, Temperature Interfacing & Advanced Wireless Communications",
+  "topic_overview": "Focuses on shop-floor sensing workflows, LM35 (analog 10mV/\u00b0C) vs DS1621 (digital I2C) interfacing, torque/pressure/vacuum instruments, 5G URLLC / NB-IoT / Satellite connectivity, protocol gateways, and Store-and-Forward edge monitoring.",
+  "topics": [
+    {
+      "topic_id": "W6_T1",
+      "topic_name": "Shop-Floor Sensing & Manufacturing Process Workflows",
+      "topic_description": "Details sensor integration across shop-floor manufacturing stages: Remote Activation, Production Monitoring, Quality Testing, Automated Packaging, and Shipping.",
+      "questions": [
+        {
+          "id": "W6_T1_Q1",
+          "difficulty": "Easy",
+          "question": "In automated manufacturing workflows, what sensor type is commonly used on conveyor belts to count finished packages?",
+          "options": {
+            "A": "Optical Photoelectric / Infrared Break-Beam Sensor",
+            "B": "Thermocouple",
+            "C": "Geiger counter",
+            "D": "pH electrode"
+          },
+          "correct_answer": "A",
+          "justification": "Photoelectric break-beam or proximity sensors detect package presence and increment batch counters accurately."
+        },
+        {
+          "id": "W6_T1_Q2",
+          "difficulty": "Easy",
+          "question": "Which shop-floor stage relies heavily on machine vision inspection cameras to detect dimensional flaws or surface scratches?",
+          "options": {
+            "A": "Remote machine activation",
+            "B": "Quality Assurance & Inspection",
+            "C": "Raw material sourcing",
+            "D": "Financial accounting"
+          },
+          "correct_answer": "B",
+          "justification": "Quality control stages utilize machine vision systems to inspect products for defects automatically."
+        },
+        {
+          "id": "W6_T1_Q3",
+          "difficulty": "Easy",
+          "question": "What is a primary benefit of integrating wireless sensors across shop-floor production lines?",
+          "options": {
+            "A": "Elimination of all electricity",
+            "B": "Real-time visibility into machine status, throughput, and automated bottleneck detection",
+            "C": "Increasing manual paperwork for operators",
+            "D": "Slowdown of assembly line speed"
+          },
+          "correct_answer": "B",
+          "justification": "Real-time sensing provides immediate visibility into operational line performance and equipment health."
+        },
+        {
+          "id": "W6_T1_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "An automated packaging system uses a load cell combined with a photoelectric sensor. What two parameters are verified simultaneously during package sealing?",
+          "options": {
+            "A": "Color and temperature",
+            "B": "Package weight (ensuring correct contents) and physical presence/alignment",
+            "C": "Electrical conductivity and sound frequency",
+            "D": "Serial number paint gloss"
+          },
+          "correct_answer": "B",
+          "justification": "Load cells measure box weight while optical sensors verify box positioning before sealing."
+        },
+        {
+          "id": "W6_T1_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "A manufacturing line experiences random micro-stoppages. How does continuous shop-floor sensor telemetry help process engineers pinpoint the root cause?",
+          "options": {
+            "A": "By shutting down the entire factory permanently",
+            "B": "By correlating time-synchronized logs across sensors (vibration spikes, feeder motor currents, optical jams) to isolate the failing component",
+            "C": "By asking operators to guess",
+            "D": "By deleting all historical error logs"
+          },
+          "correct_answer": "B",
+          "justification": "Time-correlated sensor streams allow precise root-cause diagnostics across complex multi-stage machinery."
+        },
+        {
+          "id": "W6_T1_Q6",
+          "difficulty": "Easy",
+          "question": "What sensor type is used on high-speed bottling lines to confirm liquid fill levels through glass bottles without contact?",
+          "options": {
+            "A": "Capacitive / Optical Liquid Level Sensor",
+            "B": "Thermocouple",
+            "C": "Piezoelectric buzzer",
+            "D": "Digital humidity probe"
+          },
+          "correct_answer": "A",
+          "justification": "Capacitive or optical non-contact level sensors verify liquid fill height through transparent containers."
+        }
+      ]
+    },
+    {
+      "topic_id": "W6_T2",
+      "topic_name": "Temperature Interfacing Circuits (LM35 Analog vs. DS1621 Digital)",
+      "topic_description": "Compares analog temperature sensing (LM35 with linear 10mV/\u00b0C output) versus digital temperature sensing (DS1621 with I2C protocol and 9-bit resolution).",
+      "questions": [
+        {
+          "id": "W6_T2_Q1",
+          "difficulty": "Easy",
+          "question": "What is the scale factor / output sensitivity of the LM35 precision analog temperature sensor?",
+          "options": {
+            "A": "1 V per \u00b0C",
+            "B": "10 mV per \u00b0C",
+            "C": "100 mV per \u00b0F",
+            "D": "1 mV per \u00b0C"
+          },
+          "correct_answer": "B",
+          "justification": "The LM35 outputs an analog voltage directly proportional to Celsius temperature at $10 \\text{ mV/}^\\circ\\text{C}$ ($1000 \\text{ mV}$ at $100^\\circ\\text{C}$)."
+        },
+        {
+          "id": "W6_T2_Q2",
+          "difficulty": "Easy",
+          "question": "Which communication interface protocol does the DS1621 digital temperature sensor use to transmit data to microcontrollers?",
+          "options": {
+            "A": "SPI",
+            "B": "I2C (Inter-Integrated Circuit / 2-wire)",
+            "C": "USB 3.0",
+            "D": "Parallel Centronics printer cable"
+          },
+          "correct_answer": "B",
+          "justification": "The DS1621 uses an I2C 2-wire serial communication bus (SDA and SCL)."
+        },
+        {
+          "id": "W6_T2_Q3",
+          "difficulty": "Easy",
+          "question": "Unlike the analog LM35, why does the DS1621 digital temperature sensor not require an external analog-to-digital converter (ADC) module?",
+          "options": {
+            "A": "Because it does not measure temperature",
+            "B": "Because it includes an internal ADC that outputs digital temperature readings directly over I2C",
+            "C": "Because it connects directly to AC power walls",
+            "D": "Because it uses mercury expansion"
+          },
+          "correct_answer": "B",
+          "justification": "The DS1621 houses an onboard ADC and digital registers, outputting pre-converted digital temperature words."
+        },
+        {
+          "id": "W6_T2_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "If an LM35 sensor measures a temperature of 45\u00b0C, what analog voltage output should be read on a multimeter connected to its Vout pin?",
+          "options": {
+            "A": "0.045 V",
+            "B": "0.45 V (450 mV)",
+            "C": "4.5 V",
+            "D": "45 V"
+          },
+          "correct_answer": "B",
+          "justification": "At $10 \\text{ mV/}^\\circ\\text{C}$, $45^\\circ\\text{C} \\times 10 \\text{ mV/}^\\circ\\text{C} = 450 \\text{ mV} = 0.45 \\text{ V}$."
+        },
+        {
+          "id": "W6_T2_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "An engineer needs to deploy 8 temperature sensors along a 50-meter boiler header. Why is the digital DS1621 (I2C) preferred over analog LM35 sensors for long multi-drop wiring?",
+          "options": {
+            "A": "Because analog signals suffer voltage drops and noise pickup over long distances, whereas I2C digital multi-drop addressing allows multiple sensors on the same 2-wire bus",
+            "B": "Because LM35 requires 500 volts",
+            "C": "Because digital sensors do not require power wires",
+            "D": "Because analog sensors burst when exposed to steam"
+          },
+          "correct_answer": "A",
+          "justification": "Digital serial buses avoid analog signal degradation over wires and allow multiple digital sensor addresses on a single shared bus."
+        },
+        {
+          "id": "W6_T2_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "An engineer reads an analog voltage of 0.25V from an LM35 sensor connected to an 10-bit ADC with a 5V reference. What is the temperature in \u00b0C and the corresponding raw digital ADC reading?",
+          "options": {
+            "A": "25\u00b0C and raw ADC code 51",
+            "B": "250\u00b0C and raw ADC code 512",
+            "C": "2.5\u00b0C and raw ADC code 1023",
+            "D": "0\u00b0C and raw ADC code 0"
+          },
+          "correct_answer": "A",
+          "justification": "Temp = $0.25\\text{V} / 0.01\\text{V/}^\\circ\text{C} = 25^\\circ\text{C}$. ADC Code = $\\frac{0.25}{5} \\times 1023 \\approx 51$."
+        }
+      ]
+    },
+    {
+      "topic_id": "W6_T3",
+      "topic_name": "Industrial Instruments: Torque, Pressure & Vacuum Gauges",
+      "topic_description": "Examines specialized industrial instrumentation: Strain gauge torque transducers, Piezoelectric/Piezoresistive pressure transmitters, and Bourdon tube / Pirani vacuum gauges.",
+      "questions": [
+        {
+          "id": "W6_T3_Q1",
+          "difficulty": "Easy",
+          "question": "Which sensor element is attached to a rotating drive shaft to measure mechanical torque via structural deformation?",
+          "options": {
+            "A": "Thermistor",
+            "B": "Strain Gauge Bridge",
+            "C": "LDR",
+            "D": "PIR sensor"
+          },
+          "correct_answer": "B",
+          "justification": "Strain gauges arranged in a Wheatstone bridge measure minute torsional shear strain on rotating shafts."
+        },
+        {
+          "id": "W6_T3_Q2",
+          "difficulty": "Easy",
+          "question": "What physical phenomenon is utilized in Piezoelectric pressure sensors to generate a voltage proportional to applied pressure?",
+          "options": {
+            "A": "Thermoelectric effect",
+            "B": "Piezoelectric effect (generation of electric charge upon mechanical stress)",
+            "C": "Photoelectric effect",
+            "D": "Magnetic resonance"
+          },
+          "correct_answer": "B",
+          "justification": "Piezoelectric crystals generate an electrical charge when subjected to mechanical pressure or dynamic impact."
+        },
+        {
+          "id": "W6_T3_Q3",
+          "difficulty": "Easy",
+          "question": "In high-vacuum industrial processing (e.g., semiconductor sputtering chambers), which thermal gauge measures ultra-low sub-atmospheric pressures?",
+          "options": {
+            "A": "Mercury glass manometer",
+            "B": "Pirani Vacuum Gauge",
+            "C": "Bourdon tube dial",
+            "D": "Bimetallic strip"
+          },
+          "correct_answer": "B",
+          "justification": "Pirani gauges measure vacuum by tracking thermal conductivity changes in a heated wire filament as gas pressure drops."
+        },
+        {
+          "id": "W6_T3_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "A hydraulic press monitoring system requires measuring fluid pressures up to 500 bar with rapid dynamic transient spikes. Which sensor technology is best suited?",
+          "options": {
+            "A": "Analog LM35 temperature sensor",
+            "B": "Piezoresistive / Stainless Steel Diaphragm Pressure Transmitter",
+            "C": "Optical photo-resistor",
+            "D": "Humidity sensor"
+          },
+          "correct_answer": "B",
+          "justification": "Piezoresistive metal diaphragm pressure transmitters handle high pressures and dynamic hydraulic transients reliably."
+        },
+        {
+          "id": "W6_T3_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "How does a wireless slip-ring or telemetry link enable continuous torque data transmission from a high-speed rotating motor shaft without wire tangling?",
+          "options": {
+            "A": "By using flexible rubber bands",
+            "B": "By mounting the wireless sensor module directly on the rotating shaft and transmitting data wirelessly across a short-range RF link to a stationary receiver",
+            "C": "By stopping the motor every 5 seconds to read a dial",
+            "D": "By using liquid mercury dripping on the shaft"
+          },
+          "correct_answer": "B",
+          "justification": "Wireless shaft telemetry mounts the sensor and RF transmitter on the rotating shaft, eliminating mechanical slip-ring wear."
+        },
+        {
+          "id": "W6_T3_Q6",
+          "difficulty": "Easy",
+          "question": "Which pressure sensor component deforms mechanically under pressure, transferring force to an internal electrical sensing element?",
+          "options": {
+            "A": "Diaphragm",
+            "B": "Resistor coil",
+            "C": "LED diode",
+            "D": "Battery terminal"
+          },
+          "correct_answer": "A",
+          "justification": "A flexible metal or ceramic diaphragm deflects under fluid pressure, stressing piezoresistive strain gauges."
+        }
+      ]
+    },
+    {
+      "topic_id": "W6_T4",
+      "topic_name": "Cellular, 5G URLLC & Satellite Connectivity for Remote IIoT",
+      "topic_description": "Examines wide-area connectivity options: Cellular IoT (NB-IoT, LTE-M), 5G Ultra-Reliable Low-Latency Communication (URLLC), and Satellite IoT for remote assets.",
+      "questions": [
+        {
+          "id": "W6_T4_Q1",
+          "difficulty": "Easy",
+          "question": "What does the 5G service category 'URLLC' stand for in industrial connectivity?",
+          "options": {
+            "A": "Ultra-Rapid Large Local Cloud",
+            "B": "Ultra-Reliable Low-Latency Communication",
+            "C": "Universal Radio Long-Range Control",
+            "D": "Unlicensed Radio Low-Latency Network"
+          },
+          "correct_answer": "B",
+          "justification": "URLLC stands for Ultra-Reliable Low-Latency Communication, delivering millisecond latencies for mission-critical automation."
+        },
+        {
+          "id": "W6_T4_Q2",
+          "difficulty": "Easy",
+          "question": "Which narrow-band cellular IoT standard is specifically optimized for low-power, deep indoor penetration, and low-throughput field sensors?",
+          "options": {
+            "A": "5G mmWave",
+            "B": "NB-IoT (Narrowband IoT)",
+            "C": "Wi-Fi 6E",
+            "D": "Analog AM Radio"
+          },
+          "correct_answer": "B",
+          "justification": "NB-IoT provides deep coverage, low device power consumption, and long battery life for low-throughput sensors."
+        },
+        {
+          "id": "W6_T4_Q3",
+          "difficulty": "Easy",
+          "question": "For remote offshore oil rigs or mining sites outside cellular tower range, which wireless technology provides global telemetry link connectivity?",
+          "options": {
+            "A": "Standard Bluetooth",
+            "B": "Satellite IoT (LEO/GEO satellite links)",
+            "C": "Sub-1GHz Zigbee",
+            "D": "Wired Ethernet patch cord"
+          },
+          "correct_answer": "B",
+          "justification": "Satellite IoT provides global coverage for remote assets operating beyond terrestrial cellular coverage."
+        },
+        {
+          "id": "W6_T4_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "An autonomous mobile robot (AMR) in a smart warehouse requires sub-5 millisecond network latency and high reliability to prevent collisions while navigating. Which 5G feature supports this requirement?",
+          "options": {
+            "A": "eMBB (Enhanced Mobile Broadband)",
+            "B": "URLLC (Ultra-Reliable Low-Latency Communication)",
+            "C": "mMTC (Massive Machine Type Communication)",
+            "D": "FM Radio Broadcast"
+          },
+          "correct_answer": "B",
+          "justification": "URLLC guarantees sub-millisecond radio interface latencies and 99.999% reliability for mission-critical mobile robotics."
+        },
+        {
+          "id": "W6_T4_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "What is 'Network Slicing' in 5G industrial private networks?",
+          "options": {
+            "A": "Physically cutting fiber optic cables into smaller pieces",
+            "B": "Virtually partitioning a single physical 5G network into isolated logical networks tailored for distinct QoS requirements (e.g., URLLC vs. mMTC)",
+            "C": "Slicing copper wire insulation",
+            "D": "Dividing radio frequency bands by country borders"
+          },
+          "correct_answer": "B",
+          "justification": "5G Network Slicing creates virtual end-to-end subnetworks over shared physical infrastructure to guarantee dedicated bandwidth and latency."
+        },
+        {
+          "id": "W6_T4_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "In 5G private industrial networks, what feature guarantees that a high-bandwidth video feed does not starve time-critical URLLC robotics control traffic?",
+          "options": {
+            "A": "Quality of Service (QoS) Class Identifier (QCI) priority queues and radio resource slicing",
+            "B": "Turning off video cameras",
+            "C": "Increasing video frame rate to 240fps",
+            "D": "Disabling radio encryption"
+          },
+          "correct_answer": "A",
+          "justification": "5G QCI priority queueing and network slicing isolate low-latency control slots from heavy best-effort data streams."
+        }
+      ]
+    },
+    {
+      "topic_id": "W6_T5",
+      "topic_name": "Industrial Communication Architectures & Remote Asset Monitoring",
+      "topic_description": "Covers remote monitoring topologies, edge gateways, protocol conversion, SCADA/IIoT bridge, and telemetry transmission over cellular/satellite links.",
+      "questions": [
+        {
+          "id": "W6_T5_Q1",
+          "difficulty": "Easy",
+          "question": "What is the primary role of an Industrial Protocol Gateway in a hybrid factory setup?",
+          "options": {
+            "A": "To convert AC power to DC battery power",
+            "B": "To translate legacy fieldbus protocols (e.g., Modbus/Profibus) into modern IP-based IIoT protocols (e.g., MQTT/OPC UA)",
+            "C": "To cool down server processors",
+            "D": "To stamp serial numbers on metal chassis"
+          },
+          "correct_answer": "B",
+          "justification": "Protocol gateways bridge disparate legacy industrial protocols to modern enterprise/cloud communications."
+        },
+        {
+          "id": "W6_T5_Q2",
+          "difficulty": "Easy",
+          "question": "Which protocol is widely recognized as the open, vendor-neutral industrial standard for secure interoperable data exchange across manufacturing systems?",
+          "options": {
+            "A": "OPC UA (Open Platform Communications Unified Architecture)",
+            "B": "HTTP 1.0",
+            "C": "Telnet",
+            "D": "SMTP email protocol"
+          },
+          "correct_answer": "A",
+          "justification": "OPC UA provides a secure, platform-independent information model for industrial communications from sensor to cloud."
+        },
+        {
+          "id": "W6_T5_Q3",
+          "difficulty": "Easy",
+          "question": "In remote pipeline asset monitoring, what edge device collects field telemetry from local sensors and transmits it over cellular to cloud platforms?",
+          "options": {
+            "A": "Edge IoT Gateway",
+            "B": "Analog dial telephone",
+            "C": "Graphics processing card",
+            "D": "Passive mechanical valve"
+          },
+          "correct_answer": "A",
+          "justification": "Edge IoT Gateways ingest local field signals, execute local buffering, and transmit data over WAN links."
+        },
+        {
+          "id": "W6_T5_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "Why is Store-and-Forward capability essential in remote field IoT gateways deployed along remote oil pipelines?",
+          "options": {
+            "A": "Because field internet connections can experience transient outages, and Store-and-Forward buffers data locally until connectivity is restored",
+            "B": "Because it permanently deletes all data during outages",
+            "C": "Because it converts digital telemetry to analogue light beams",
+            "D": "Because it eliminates the need for sensor power"
+          },
+          "correct_answer": "A",
+          "justification": "Store-and-Forward ensures zero data loss during transient WAN network link drops by saving time-series telemetry locally in flash memory."
+        },
+        {
+          "id": "W6_T5_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "How does bridging legacy SCADA systems with cloud-based IIoT gateways unlock advanced analytics without replacing existing operational PLCs?",
+          "options": {
+            "A": "By running parallel read-only tap connections or protocol converters to stream SCADA tag values into cloud telemetry pipelines without disturbing PLC control loops",
+            "B": "By deleting all SCADA software",
+            "C": "By replacing all copper wires with steam pipes",
+            "D": "By forcing PLCs to run at 100\u00b0C"
+          },
+          "correct_answer": "A",
+          "justification": "Non-intrusive protocol bridges extract SCADA tag data to feed cloud analytics while preserving deterministic, real-time control safety."
+        },
+        {
+          "id": "W6_T5_Q6",
+          "difficulty": "Easy",
+          "question": "What fieldbus protocol converter converts legacy RS-485 serial Modbus RTU telemetry to Ethernet-based Modbus TCP?",
+          "options": {
+            "A": "Serial-to-Ethernet Modbus Gateway",
+            "B": "Analog transformer",
+            "C": "Audio speaker",
+            "D": "Step-down coil"
+          },
+          "correct_answer": "A",
+          "justification": "Modbus gateways encapsulate RS-485 Modbus RTU serial frames into TCP/IP ethernet packets for cloud integration."
+        }
+      ]
+    }
+  ]
+}

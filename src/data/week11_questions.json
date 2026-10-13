@@ -1,0 +1,433 @@
+{
+  "course": "Industry 4.0 and Industrial Internet of Things",
+  "week": 11,
+  "week_title": "Cloud Computing Models, Service Level Agreements & Healthcare/Power IIoT Applications",
+  "topic_overview": "Focuses on NIST Cloud service models (IaaS, PaaS, SaaS, Hybrid), SLAs (99.999% uptime, MTBF/MTTR metrics), Healthcare IoMT & Biometric Watermarking, Digital Power Plants & Smart Grids, and Smart Water Infrastructure.",
+  "topics": [
+    {
+      "topic_id": "W11_T1",
+      "topic_name": "NIST Cloud Computing Service Models (IaaS, PaaS, SaaS, Hybrid)",
+      "topic_description": "Examines NIST cloud service models: Infrastructure as a Service (IaaS), Platform as a Service (PaaS), Software as a Service (SaaS), and Deployment models (Public, Private, Hybrid).",
+      "questions": [
+        {
+          "id": "W11_T1_Q1",
+          "difficulty": "Easy",
+          "question": "In the NIST cloud computing framework, which service model provides raw virtualized compute instances, storage, and networking interfaces where users manage OS and applications?",
+          "options": {
+            "A": "Infrastructure as a Service (IaaS)",
+            "B": "Software as a Service (SaaS)",
+            "C": "Platform as a Service (PaaS)",
+            "D": "Database as a Service"
+          },
+          "correct_answer": "A",
+          "justification": "IaaS provides bare virtualized hardware infrastructure (VMs, storage, network) allowing full OS/stack configuration."
+        },
+        {
+          "id": "W11_T1_Q2",
+          "difficulty": "Easy",
+          "question": "Which cloud service model offers a pre-configured execution environment (runtime, databases, development tools) where users deploy custom code without managing underlying OS servers?",
+          "options": {
+            "A": "Platform as a Service (PaaS)",
+            "B": "IaaS",
+            "C": "Hardware as a Service",
+            "D": "Manual Server Assembly"
+          },
+          "correct_answer": "A",
+          "justification": "PaaS supplies application development execution stacks, database engines, and runtime frameworks."
+        },
+        {
+          "id": "W11_T1_Q3",
+          "difficulty": "Easy",
+          "question": "An enterprise uses an off-the-shelf web web portal (like Salesforce or Microsoft 365) running entirely in the cloud accessed via a browser. What service model is this?",
+          "options": {
+            "A": "Software as a Service (SaaS)",
+            "B": "IaaS",
+            "C": "PaaS",
+            "D": "Bare-Metal Silicon"
+          },
+          "correct_answer": "A",
+          "justification": "SaaS delivers end-user software applications directly over web interfaces without client infrastructure management."
+        },
+        {
+          "id": "W11_T1_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "A manufacturing enterprise operates an on-premise Private Cloud for sensitive shop-floor telemetry while bursting compute-heavy batch analytics jobs to AWS/Azure Public Cloud during peak production. What deployment model is this?",
+          "options": {
+            "A": "Hybrid Cloud",
+            "B": "Isolated Standalone PC",
+            "C": "Public Cloud only",
+            "D": "Community Ethernet"
+          },
+          "correct_answer": "A",
+          "justification": "Hybrid Cloud combines private on-premise infrastructure with public cloud platforms, allowing secure data orchestration."
+        },
+        {
+          "id": "W11_T1_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "How does cloud elasticity benefit an IIoT platform during unpredictable seasonal production spikes?",
+          "options": {
+            "A": "Cloud elasticity automatically provisions additional virtual compute nodes during high telemetry loads and scales down when load drops, optimizing infrastructure cost",
+            "B": "Cloud elasticity permanent doubles server billing",
+            "C": "Cloud elasticity replaces wireless sensors",
+            "D": "Cloud elasticity converts code to PDF"
+          },
+          "correct_answer": "A",
+          "justification": "Elasticity enables dynamic auto-scaling of compute resources matching real-time operational demand spikes."
+        },
+        {
+          "id": "W11_T1_Q6",
+          "difficulty": "Easy",
+          "question": "What cloud deployment model is dedicated exclusively for use by a single organization, providing maximum data control and security?",
+          "options": {
+            "A": "Private Cloud",
+            "B": "Public Cloud",
+            "C": "Community Cloud",
+            "D": "Unlicensed Mesh"
+          },
+          "correct_answer": "A",
+          "justification": "Private Clouds operate on dedicated infrastructure owned or leased by a single enterprise."
+        }
+      ]
+    },
+    {
+      "topic_id": "W11_T2",
+      "topic_name": "Service Level Agreements (SLAs) & Cloud SLA Governance",
+      "topic_description": "Covers Service Level Agreements (SLAs) in IIoT cloud provisioning: Uptime metrics (99.999% 'Five Nines'), Latency SLAs, Penalty clauses, MTBF, and MTTR.",
+      "questions": [
+        {
+          "id": "W11_T2_Q1",
+          "difficulty": "Easy",
+          "question": "What formal legal document defines the guaranteed service availability, performance metrics, and penalty remedies between a Cloud Provider and an IIoT Client?",
+          "options": {
+            "A": "Service Level Agreement (SLA)",
+            "B": "Non-Disclosure Agreement (NDA)",
+            "C": "Software License End User Agreement",
+            "D": "Bill of Lading"
+          },
+          "correct_answer": "A",
+          "justification": "An SLA legally specifies measurable performance guarantees (uptime, latency) and financial penalties for service breaches."
+        },
+        {
+          "id": "W11_T2_Q2",
+          "difficulty": "Easy",
+          "question": "What maximum total annual downtime corresponds to a 'Five Nines' (99.999%) cloud availability SLA guarantee?",
+          "options": {
+            "A": "Approximately 5.26 minutes per year",
+            "B": "30 days per year",
+            "C": "5 hours per day",
+            "D": "0.00 seconds per millisecond"
+          },
+          "correct_answer": "A",
+          "justification": "99.999% availability permits a maximum of only ~5.26 minutes of unplanned outage across an entire year."
+        },
+        {
+          "id": "W11_T2_Q3",
+          "difficulty": "Easy",
+          "question": "In reliability metrics, what does 'MTTR' stand for?",
+          "options": {
+            "A": "Mean Time To Repair (or Restore)",
+            "B": "Maximum Temperature To React",
+            "C": "Minimum Telemetry Transport Rate",
+            "D": "Master Task Timing Routine"
+          },
+          "correct_answer": "A",
+          "justification": "MTTR measures the average time required to repair and restore an operational system after a failure."
+        },
+        {
+          "id": "W11_T2_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "Why are standard commercial cloud SLAs (typically guaranteeing 99.9% uptime with financial service credits) often insufficient for life-critical OT safety systems?",
+          "options": {
+            "A": "Financial refund credits after a plant crash do not compensate for physical explosion damage, loss of human life, or catastrophic environmental damage",
+            "B": "Standard SLAs are written in foreign languages",
+            "C": "Commercial clouds do not accept money",
+            "D": "OT systems do not use internet"
+          },
+          "correct_answer": "A",
+          "justification": "Financial service credits in standard SLAs cannot remediate physical kinetic damage caused by cloud service drops."
+        },
+        {
+          "id": "W11_T2_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "An IIoT SLA mandates 'Mean Time Between Failures (MTBF) > 10,000 hours' and 'MTTR < 15 minutes'. If a sensor gateway fails after 12,000 hours and takes 10 minutes to restore, is the SLA breached?",
+          "options": {
+            "A": "No, because operating hours exceeded MTBF requirements and restoration time was within MTTR thresholds",
+            "B": "Yes, any failure is an instant breach",
+            "C": "Yes, because MTTR was under 15 minutes",
+            "D": "Cannot be determined without a compiler"
+          },
+          "correct_answer": "A",
+          "justification": "The system met both reliability targets (operating duration exceeded 10,000h MTBF and recovery was faster than 15m MTTR)."
+        },
+        {
+          "id": "W11_T2_Q6",
+          "difficulty": "Easy",
+          "question": "In SLA terminology, what metric quantifies the average operating duration an industrial asset functions correctly before experiencing an unexpected failure?",
+          "options": {
+            "A": "Mean Time Between Failures (MTBF)",
+            "B": "MTTR",
+            "C": "Packet Drop Rate",
+            "D": "Bandwidth Delay Product"
+          },
+          "correct_answer": "A",
+          "justification": "MTBF measures equipment operational reliability over time."
+        }
+      ]
+    },
+    {
+      "topic_id": "W11_T3",
+      "topic_name": "Healthcare IIoT Systems & Biometric Watermarking",
+      "topic_description": "Examines Healthcare IIoT (IoMT): continuous vital sign wearables, remote patient telemetry, medical cloud SLAs, and Biometric Watermarking for patient record security.",
+      "questions": [
+        {
+          "id": "W11_T3_Q1",
+          "difficulty": "Easy",
+          "question": "What specialized subset of IoT applies connected sensors, wearables, and medical telemetry to healthcare monitoring?",
+          "options": {
+            "A": "Internet of Medical Things (IoMT) / Healthcare IIoT",
+            "B": "Automotive IoT",
+            "C": "Mining IoT",
+            "D": "Retail RFID"
+          },
+          "correct_answer": "A",
+          "justification": "IoMT focuses on connected medical devices, patient monitoring, bio-telemetry, and clinical healthcare systems."
+        },
+        {
+          "id": "W11_T3_Q2",
+          "difficulty": "Easy",
+          "question": "What digital technique embeds patient identity metadata directly inside ECG or medical image signal files without degrading clinical diagnostic quality?",
+          "options": {
+            "A": "Biometric Watermarking / Signal Steganography",
+            "B": "File deletion",
+            "C": "Analog print scanning",
+            "D": "MP3 audio compression"
+          },
+          "correct_answer": "A",
+          "justification": "Biometric watermarking embeds secret patient credentials or tamper-evident hashes directly within physiological signals."
+        },
+        {
+          "id": "W11_T3_Q3",
+          "difficulty": "Easy",
+          "question": "Which regulatory law in the United States enforces strict privacy and security standards for Electronic Health Records (EHR) in IoMT cloud systems?",
+          "options": {
+            "A": "HIPAA (Health Insurance Portability and Accountability Act)",
+            "B": "OSHA",
+            "C": "FCC Part 15",
+            "D": "FERPA"
+          },
+          "correct_answer": "A",
+          "justification": "HIPAA establishes privacy and security rules safeguarding patient Protected Health Information (PHI)."
+        },
+        {
+          "id": "W11_T3_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "How does reversible biometric watermarking protect both patient privacy AND diagnostic precision in IoMT cloud databases?",
+          "options": {
+            "A": "It embeds encrypted patient ID into medical signals for secure transmission, while allowing exact mathematical reconstruction of the original pristine raw medical signal during clinical review",
+            "B": "It blurs medical images so doctors cannot read them",
+            "C": "It permanently corrupts ECG waveforms",
+            "D": "It converts medical images into text files"
+          },
+          "correct_answer": "A",
+          "justification": "Reversible watermarking guarantees exact restoration of original raw clinical signals after metadata extraction."
+        },
+        {
+          "id": "W11_T3_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "Why is ultra-low latency critical in Wireless Body Area Networks (WBAN) monitoring cardiac patients?",
+          "options": {
+            "A": "Transient arrhythmias require immediate notification within seconds to deploy automatic defibrillation or emergency medical response",
+            "B": "Slow transmission saves phone battery",
+            "C": "Arrhythmias only occur once a year",
+            "D": "ECG data is non-time-sensitive"
+          },
+          "correct_answer": "A",
+          "justification": "Critical cardiac anomalies require immediate real-time telemetry alerting to prevent fatal clinical events."
+        },
+        {
+          "id": "W11_T3_Q6",
+          "difficulty": "Easy",
+          "question": "What small wireless personal area network standard (IEEE 802.15.6) is designed specifically for short-range body-surface sensor nodes in medical monitoring?",
+          "options": {
+            "A": "Wireless Body Area Network (WBAN)",
+            "B": "5G Satellite",
+            "C": "Long Range LoRaWAN",
+            "D": "AM Broadcast"
+          },
+          "correct_answer": "A",
+          "justification": "IEEE 802.15.6 defines WBAN standards for ultra-low power body surface and implantable sensors."
+        }
+      ]
+    },
+    {
+      "topic_id": "W11_T4",
+      "topic_name": "Digital Power Plants & Smart Grid Automation",
+      "topic_description": "Covers Digital Power Plants: gas turbine digital twins, predictive combustion tuning, boiler leak detection, renewable microgrid integration, and demand-response.",
+      "questions": [
+        {
+          "id": "W11_T4_Q1",
+          "difficulty": "Easy",
+          "question": "What is a primary operational objective of establishing a 'Digital Twin' for a power plant thermal turbine?",
+          "options": {
+            "A": "To display decorative 3D animations in visitors lobbies",
+            "B": "To simulate real-time thermodynamic performance, optimize fuel combustion efficiency, and predict thermal stress fatigue",
+            "C": "To replace electrical wires with solar panels",
+            "D": "To manage employee payroll"
+          },
+          "correct_answer": "B",
+          "justification": "Power plant digital twins model thermodynamic efficiency, strain fatigue, and emissions to optimize generation."
+        },
+        {
+          "id": "W11_T4_Q2",
+          "difficulty": "Easy",
+          "question": "In Smart Grids, what capability allows microgrids to disconnect from the main utility grid during blackouts and operate autonomously?",
+          "options": {
+            "A": "Islanding Mode",
+            "B": "Short-Circuiting",
+            "C": "Ground Faulting",
+            "D": "Thermal Overloading"
+          },
+          "correct_answer": "A",
+          "justification": "Islanding mode isolates local renewable generation assets to supply microgrid loads reliably during main grid outages."
+        },
+        {
+          "id": "W11_T4_Q3",
+          "difficulty": "Easy",
+          "question": "What sensor instrumentation detects high-frequency tube leak sounds inside high-pressure power plant boilers before physical blowouts occur?",
+          "options": {
+            "A": "Acoustic Leak Detection Sensors",
+            "B": "Mercury glass thermometer",
+            "C": "Photoelectric break-beam",
+            "D": "LDR light sensor"
+          },
+          "correct_answer": "A",
+          "justification": "Acoustic sensors pick up ultrasonic steam hiss escaping from microscopic boiler tube cracks long before visual detection."
+        },
+        {
+          "id": "W11_T4_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "How does automated Demand-Response management assist power utilities during peak summer air-conditioning load spikes?",
+          "options": {
+            "A": "By sending automated signals to smart industrial meters and commercial HVACs to temporarily reduce non-essential power draw, balancing grid load without firing expensive peak generators",
+            "B": "By turning off all power to the city permanently",
+            "C": "By increasing electricity generation from coal by 500%",
+            "D": "By dropping grid voltage to 0 Volts"
+          },
+          "correct_answer": "A",
+          "justification": "Automated Demand-Response balances grid supply and demand dynamically by shedding or shifting flexible loads."
+        },
+        {
+          "id": "W11_T4_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "Why is predictive maintenance particularly valuable for remote wind turbine farms operating off-shore?",
+          "options": {
+            "A": "Offshore maintenance vessel deployment is extremely expensive and weather-dependent; predicting bearing failures allows scheduling repairs during mild sea windows",
+            "B": "Offshore wind turbines do not contain bearings",
+            "C": "Wind turbines run on steam power",
+            "D": "Predictive maintenance eliminates wind resistance"
+          },
+          "correct_answer": "A",
+          "justification": "Predictive maintenance avoids catastrophic offshore gearbox breakdowns and optimizes costly marine maintenance vessel dispatch."
+        },
+        {
+          "id": "W11_T4_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "In a Digital Power Plant, how does predictive boiler combustion tuning minimize toxic Nitrogen Oxide ($NO_x$) emissions?",
+          "options": {
+            "A": "AI models analyze flame temperature, flue gas oxygen levels, and fuel flow rates in real-time, dynamically adjusting burner air-fuel ratios to optimize combustion",
+            "B": "By turning off boiler fuel completely",
+            "C": "By spraying water into power generators",
+            "D": "By painting smoke stacks green"
+          },
+          "correct_answer": "A",
+          "justification": "Real-time combustion tuning optimizes air-fuel ratios to maximize thermal efficiency while minimizing $NO_x$ emissions."
+        }
+      ]
+    },
+    {
+      "topic_id": "W11_T5",
+      "topic_name": "Smart Water Management & Environmental Infrastructure",
+      "topic_description": "Examines IIoT in water infrastructure: smart water meters, automated pipeline leak detection (pressure transient analysis), water quality monitoring, and flood sensing.",
+      "questions": [
+        {
+          "id": "W11_T5_Q1",
+          "difficulty": "Easy",
+          "question": "What type of smart water meter transmits continuous volumetric flow data over wireless LPWANs to detect household leaks automatically?",
+          "options": {
+            "A": "AMI (Advanced Metering Infrastructure) Smart Water Meter",
+            "B": "Analog mechanical dial meter",
+            "C": "Mercury glass tube",
+            "D": "Manual dipstick"
+          },
+          "correct_answer": "A",
+          "justification": "AMI smart meters provide automated hourly flow telemetry to spot continuous customer-side leak signatures."
+        },
+        {
+          "id": "W11_T5_Q2",
+          "difficulty": "Easy",
+          "question": "Which analytical method identifies municipal water pipeline bursts by analyzing sharp pressure drop waves propagated across pressure sensor arrays?",
+          "options": {
+            "A": "Transient Pressure Wave Analysis",
+            "B": "Manual pipe digging",
+            "C": "Color inspection of river water",
+            "D": "Soil pH testing"
+          },
+          "correct_answer": "A",
+          "justification": "Burst pipes emit acoustic/hydraulic transient pressure drop waves that sensor networks pinpoint using time-of-arrival triangulation."
+        },
+        {
+          "id": "W11_T5_Q3",
+          "difficulty": "Easy",
+          "question": "To ensure drinking water safety, which chemical parameters are continuously monitored by online IIoT water quality sensor stations?",
+          "options": {
+            "A": "pH, Residual Chlorine, Turbidity, and Electrical Conductivity",
+            "B": "Paint color and sound frequency",
+            "C": "Nitrogen gas pressure only",
+            "D": "Water temperature in Fahrenheit only"
+          },
+          "correct_answer": "A",
+          "justification": "Water quality monitoring tracks pH, disinfectant chlorine residuals, turbidity (clarity), and dissolved solids."
+        },
+        {
+          "id": "W11_T5_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "How does combining urban river level sensors with automated stormwater sluice gates prevent localized flash flooding during heavy rainstorms?",
+          "options": {
+            "A": "Sensors detect rapid river rise and CEP rules trigger automated gate actuators to divert floodwaters into retention basins",
+            "B": "By closing all municipal water taps in houses",
+            "C": "By boiling river water with electric heaters",
+            "D": "By asking citizens to dump sandbags manually"
+          },
+          "correct_answer": "A",
+          "justification": "Closed-loop flood management systems dynamically actuate retention gates based on real-time hydrological sensor networks."
+        },
+        {
+          "id": "W11_T5_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "A water utility reduces Non-Revenue Water (NRW) losses from 35% to 12% using IIoT. What does 'Non-Revenue Water' mean?",
+          "options": {
+            "A": "Water produced and treated that is lost before reaching the customer due to pipe leaks, theft, or metering errors",
+            "B": "Water used to clean solar panels",
+            "C": "Bottled mineral water sold in supermarkets",
+            "D": "Rainwater that falls into oceans"
+          },
+          "correct_answer": "A",
+          "justification": "Non-Revenue Water represents lost treated water that leaks out of underground distribution mains without generating revenue."
+        },
+        {
+          "id": "W11_T5_Q6",
+          "difficulty": "Easy",
+          "question": "In Smart Water distribution networks, what automated control valve adjusts municipal pipeline pressure dynamically based on real-time consumption demand to reduce leak stress?",
+          "options": {
+            "A": "Pressure Reducing Valve (PRV)",
+            "B": "Manual hand gate",
+            "C": "Check valve",
+            "D": "Butterfly valve"
+          },
+          "correct_answer": "A",
+          "justification": "Automated PRVs modulate pressure levels dynamically, reducing background leakage stress during low-demand night hours."
+        }
+      ]
+    }
+  ]
+}

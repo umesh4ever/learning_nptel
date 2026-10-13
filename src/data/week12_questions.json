@@ -1,0 +1,433 @@
+{
+  "course": "Industry 4.0 and Industrial Internet of Things",
+  "week": 12,
+  "week_title": "Industrial Applications, Real-World Case Studies & Industry 4.0 Transformation Roadmaps",
+  "topic_overview": "Focuses on Caterpillar Marine fuel optimization ($400k/yr savings), Apache Corp rod pump analytics, FANUC ZDT robot cloud & Volkswagen AR maintenance, Pharmaceutical FDA 21 CFR Part 11 / PAT continuous manufacturing, and Industry 4.0 roadmaps.",
+  "topics": [
+    {
+      "topic_id": "W12_T1",
+      "topic_name": "Marine & Transportation Case Studies (Caterpillar Marine Optimization)",
+      "topic_description": "Examines Caterpillar Marine's IIoT implementation: vessel fuel optimization, hull fouling detection, generator power matching, and over $400k/year fuel savings per vessel.",
+      "questions": [
+        {
+          "id": "W12_T1_Q1",
+          "difficulty": "Easy",
+          "question": "In Caterpillar's marine vessel IIoT deployment, what primary operating expense was reduced using asset analytics?",
+          "options": {
+            "A": "Vessel paint expenditure",
+            "B": "Ship fuel consumption and generator maintenance costs",
+            "C": "Crew catering expenses",
+            "D": "Docking license fees"
+          },
+          "correct_answer": "B",
+          "justification": "Caterpillar Marine utilized IIoT telemetry to optimize generator loading and diesel fuel burn rates."
+        },
+        {
+          "id": "W12_T1_Q2",
+          "difficulty": "Easy",
+          "question": "How did telemetry detect 'Hull Fouling' (marine growth like barnacles attached to the ship hull) on Caterpillar vessels?",
+          "options": {
+            "A": "By correlating ship speed over ground against engine shaft horsepower output (increased drag requires higher horsepower for same speed)",
+            "B": "By sending divers every 2 hours",
+            "C": "By measuring deck temperature",
+            "D": "By checking satellite radar photos"
+          },
+          "correct_answer": "A",
+          "justification": "Hull fouling increases hydrodynamic drag, requiring higher engine power to maintain target speed."
+        },
+        {
+          "id": "W12_T1_Q3",
+          "difficulty": "Easy",
+          "question": "What annual fuel cost savings were achieved per vessel by deploying Caterpillar Marine Asset Intelligence analytics?",
+          "options": {
+            "A": "Over $400,000 per vessel annually",
+            "B": "Exactly $100",
+            "C": "Zero savings",
+            "D": "$10 million per hour"
+          },
+          "correct_answer": "A",
+          "justification": "Optimizing generator dispatch and speed-power curves yielded over $400,000 in fuel savings per vessel annually."
+        },
+        {
+          "id": "W12_T1_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "Why did Caterpillar Marine transition from operating 4 diesel generators at partial load (50% capacity each) to running 2 generators at optimal load (85% capacity)?",
+          "options": {
+            "A": "Diesel engines operate at peak fuel efficiency and lowest soot fouling when loaded above 80%, whereas running multiple lightly loaded generators wastes fuel",
+            "B": "Because 2 generators generate double voltage",
+            "C": "Because light loading speeds up the ship",
+            "D": "Because the ship lost 2 generators in a storm"
+          },
+          "correct_answer": "A",
+          "justification": "Specific fuel consumption (SFOC) drops significantly when diesel generators run near their sweet spot (80-85% load)."
+        },
+        {
+          "id": "W12_T1_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "How does real-time fuel efficiency telemetry on cargo ships directly advance the 'Planet' (Environmental) dimension of Triple Bottom Line?",
+          "options": {
+            "A": "By reducing metric tons of heavy fuel oil (HFO) burned, directly cutting sulfur oxides (SOx) and CO2 emissions",
+            "B": "By increasing ocean water temperature",
+            "C": "By painting ship hulls green",
+            "D": "By replacing steel hulls with plastic"
+          },
+          "correct_answer": "A",
+          "justification": "Cutting marine diesel consumption lowers greenhouse gas emissions and environmental impact."
+        },
+        {
+          "id": "W12_T1_Q6",
+          "difficulty": "Easy",
+          "question": "In Caterpillar Marine analytics, what engine parameter is continuously monitored alongside fuel flow rate to assess diesel combustion health?",
+          "options": {
+            "A": "Exhaust Gas Temperature (EGT) and Turbocharger Boost Pressure",
+            "B": "Anchor chain weight",
+            "C": "Ship cabin lighting voltage",
+            "D": "Deck paint thickness"
+          },
+          "correct_answer": "A",
+          "justification": "Exhaust gas temperatures and boost pressures indicate individual cylinder combustion efficiency and fuel injector health."
+        }
+      ]
+    },
+    {
+      "topic_id": "W12_T2",
+      "topic_name": "Oil & Gas Case Studies (Apache Corporation Pipeline Analytics)",
+      "topic_description": "Covers Apache Corporation's IIoT deployment: pump monitoring, predictive maintenance on rod pumps, pipeline leak prevention, and downtime reduction.",
+      "questions": [
+        {
+          "id": "W12_T2_Q1",
+          "difficulty": "Easy",
+          "question": "In Apache Corporation's oil & gas operations, what mechanical artificial lift asset was instrumented with IIoT load cells and angle sensors?",
+          "options": {
+            "A": "Sucker Rod Pumps (Jack Pumps)",
+            "B": "Solar calculators",
+            "C": "Manual hand water pumps",
+            "D": "Windmill sails"
+          },
+          "correct_answer": "A",
+          "justification": "Rod pumps were instrumented with dynamometer load cells and position sensors to monitor downhole pump health."
+        },
+        {
+          "id": "W12_T2_Q2",
+          "difficulty": "Easy",
+          "question": "What visual diagnostic chart generated by downhole sensors is analyzed to detect gas locking or fluid pounding in oil rod pumps?",
+          "options": {
+            "A": "Dynamometer Card (Load vs Position loop)",
+            "B": "Bar chart of operator salaries",
+            "C": "Pie chart of weather",
+            "D": "Circuit schematic diagram"
+          },
+          "correct_answer": "A",
+          "justification": "Dynamometer cards plot pump polished rod load against stroke position, revealing downhole pump fillage and mechanical faults."
+        },
+        {
+          "id": "W12_T2_Q3",
+          "difficulty": "Easy",
+          "question": "What was a primary benefit realized by Apache Corporation after deploying automated pump health analytics?",
+          "options": {
+            "A": "Preventing catastrophic pump rod snaps and reducing deferred oil production downtime",
+            "B": "Replacing oil with water",
+            "C": "Eliminating all electrical power lines",
+            "D": "Increasing manual truck driving visits"
+          },
+          "correct_answer": "A",
+          "justification": "Early detection of abnormal pump cards prevents mechanical rod snaps, avoiding costly well workover interventions."
+        },
+        {
+          "id": "W12_T2_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "Before IIoT deployment, Apache field technicians conducted manual 'route-based' well inspections. Why is automated continuous telemetry superior to manual monthly visits?",
+          "options": {
+            "A": "Manual visits miss transient downhole anomalies that develop between monthly visits, whereas continuous telemetry triggers instant alerts before structural breakage",
+            "B": "Manual visits consume too much drinking water",
+            "C": "Field technicians refuse to use trucks",
+            "D": "Telemetry makes oil flow faster"
+          },
+          "correct_answer": "A",
+          "justification": "Continuous telemetry captures sudden downhole fluid pounding or gas locking immediately, preventing mechanical destruction."
+        },
+        {
+          "id": "W12_T2_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "How does predictive pipeline monitoring prevent catastrophic environmental oil spills in remote gathering fields?",
+          "options": {
+            "A": "By continuously tracking pressure differentials and acoustic vibration along pipeline segments to isolate microscopic leaks before catastrophic rupture",
+            "B": "By building 100-meter concrete walls around all pipes",
+            "C": "By turning off all oil wells permanently",
+            "D": "By flooding pipelines with air"
+          },
+          "correct_answer": "A",
+          "justification": "Acoustic and pressure monitoring pinpoints pinhole leaks instantly, allowing automated shutdown valves to isolate pipe sections."
+        },
+        {
+          "id": "W12_T2_Q6",
+          "difficulty": "Easy",
+          "question": "In Apache Corporation's remote oil fields, how did IIoT edge controllers reduce electrical power grid draw during peak summer tariff hours?",
+          "options": {
+            "A": "By executing automated load-shedding schedules on non-essential pumping units based on real-time electricity spot prices",
+            "B": "By turning off well safety valves",
+            "C": "By running pumps backwards",
+            "D": "By replacing electric motors with steam engines"
+          },
+          "correct_answer": "A",
+          "justification": "Automated demand-side load management pauses non-critical well pumping during high-cost peak electricity tariff hours."
+        }
+      ]
+    },
+    {
+      "topic_id": "W12_T3",
+      "topic_name": "Automotive Manufacturing Case Studies (FANUC ZDT & Volkswagen AR)",
+      "topic_description": "Examines automotive industry case studies: FANUC Zero Downtime (ZDT) robot cloud monitoring, and Volkswagen Augmented Reality (AR) maintenance assistance.",
+      "questions": [
+        {
+          "id": "W12_T3_Q1",
+          "difficulty": "Easy",
+          "question": "What does the acronym 'ZDT' represent in FANUC's industrial robotics cloud monitoring platform?",
+          "options": {
+            "A": "Zero Downtime",
+            "B": "Zone Data Transfer",
+            "C": "Zero Digital Touch",
+            "D": "Zigbee Data Transmitter"
+          },
+          "correct_answer": "A",
+          "justification": "FANUC ZDT stands for Zero Downtime, an analytics platform monitoring thousands of robotic arms in automotive assembly plants."
+        },
+        {
+          "id": "W12_T3_Q2",
+          "difficulty": "Easy",
+          "question": "How does FANUC ZDT predict reducer gear failure inside a robotic arm joint before it causes an assembly line stoppage?",
+          "options": {
+            "A": "By analyzing servo motor current waveforms and vibration energy during repeatable robot motion cycles",
+            "B": "By checking robot paint color",
+            "C": "By measuring room humidity",
+            "D": "By turning the robot off every hour"
+          },
+          "correct_answer": "A",
+          "justification": "ZDT tracks changes in motor current and joint vibration during fixed robot trajectories to detect gearbox mechanical wear."
+        },
+        {
+          "id": "W12_T3_Q3",
+          "difficulty": "Easy",
+          "question": "In Volkswagen manufacturing facilities, how do maintenance technicians utilize Augmented Reality (AR) smart glasses during complex equipment repairs?",
+          "options": {
+            "A": "By viewing overlayed digital 3D repair instructions, wire schematics, and sensor readings directly superimposed onto physical machinery",
+            "B": "By watching movies during shifts",
+            "C": "By blocking their vision entirely",
+            "D": "By replacing safety goggles with reading glasses"
+          },
+          "correct_answer": "A",
+          "justification": "AR smart glasses superimpose step-by-step CAD models, schematics, and real-time telemetry directly over physical components."
+        },
+        {
+          "id": "W12_T4_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "In an automotive welding shop operating 500 FANUC robots, what is the economic impact of an unplanned 15-minute robot stoppage, and how does ZDT prevent it?",
+          "options": {
+            "A": "Unplanned downtime costs $20,000+ per minute; ZDT predicts joint wear weeks in advance, allowing maintenance during planned non-production night shifts",
+            "B": "Downtime costs zero dollars",
+            "C": "ZDT replaces robots with human welders",
+            "D": "ZDT increases welding temperature by 10,000\u00b0C"
+          },
+          "correct_answer": "A",
+          "justification": "Automotive assembly lines incur massive losses during unplanned halts; ZDT schedules component replacements during planned maintenance windows."
+        },
+        {
+          "id": "W12_T3_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "How does centralizing robot health data across 10,000 global FANUC robots improve overall predictive model accuracy?",
+          "options": {
+            "A": "Fleet-level big data analytics exposes rare failure patterns and component lifespan distributions that cannot be detected from observing a single isolated robot",
+            "B": "Global data forces all robots to move at the same speed",
+            "C": "Fleet analytics deletes log files",
+            "D": "Global data requires satellite dishes on every robot"
+          },
+          "correct_answer": "A",
+          "justification": "Aggregating telemetry across thousands of robotic assets delivers the statistical sample size required to train highly accurate predictive models."
+        },
+        {
+          "id": "W12_T3_Q6",
+          "difficulty": "Easy",
+          "question": "What cloud platform component in FANUC ZDT collects and analyzes global robot telemetry to generate automated maintenance ticket alerts for plant engineers?",
+          "options": {
+            "A": "ZDT Cloud Analytics Engine",
+            "B": "Paper manual archive",
+            "C": "Local floppy disk drive",
+            "D": "Analog switchboard"
+          },
+          "correct_answer": "A",
+          "justification": "The ZDT Cloud Analytics Engine processes continuous robot telemetry and dispatches proactive maintenance alerts."
+        }
+      ]
+    },
+    {
+      "topic_id": "W12_T4",
+      "topic_name": "Pharmaceutical & Chemical IIoT Applications",
+      "topic_description": "Covers IIoT in pharmaceutical and chemical batch manufacturing: FDA 21 CFR Part 11 electronic batch records, continuous crystallization monitoring, and cleanroom environmental control.",
+      "questions": [
+        {
+          "id": "W12_T4_Q1",
+          "difficulty": "Easy",
+          "question": "Which FDA regulation mandates secure audit trails, digital signatures, and tamper-proof electronic records for pharmaceutical IIoT systems?",
+          "options": {
+            "A": "FDA 21 CFR Part 11",
+            "B": "OSHA Standard 1910",
+            "C": "ISO 9001",
+            "D": "EPA Clean Air Act"
+          },
+          "correct_answer": "A",
+          "justification": "FDA 21 CFR Part 11 defines criteria for trustworthy electronic records, audit trails, and digital signatures in drug manufacturing."
+        },
+        {
+          "id": "W12_T4_Q2",
+          "difficulty": "Easy",
+          "question": "In pharmaceutical chemical synthesis, why is continuous PAT (Process Analytical Technology) monitoring used during batch crystallization?",
+          "options": {
+            "A": "To continuously monitor particle size distribution, temperature, and chemical purity in real-time, eliminating off-line lab delays",
+            "B": "To change drug package color",
+            "C": "To speed up conveyor belts",
+            "D": "To turn off cleanroom air filters"
+          },
+          "correct_answer": "A",
+          "justification": "PAT provides real-time in-situ physical and chemical measurements during drug formulation batches."
+        },
+        {
+          "id": "W12_T4_Q3",
+          "difficulty": "Easy",
+          "question": "What environmental parameters must be tightly regulated and logged continuously by IIoT sensors in cleanroom manufacturing suites?",
+          "options": {
+            "A": "Differential room pressure, temperature, relative humidity, and airborne particulate count",
+            "B": "Outdoor wind direction only",
+            "C": "Noise volume in decibels only",
+            "D": "Floor tile gloss level"
+          },
+          "correct_answer": "A",
+          "justification": "Cleanrooms require strict continuous validation of positive pressure differential, temperature, humidity, and particle levels."
+        },
+        {
+          "id": "W12_T4_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "What occurs if an IIoT sensor detects a 0.5\u00b0C temperature excursion lasting 10 minutes during a $2 million biological vaccine batch production?",
+          "options": {
+            "A": "Automated CEP rules log the excursion in the FDA e-batch record, isolate the affected batch segment, and execute root-cause thermal analysis",
+            "B": "The batch is automatically shipped to stores without checking",
+            "C": "The plant manager is fired instantly",
+            "D": "The entire factory is demolished"
+          },
+          "correct_answer": "A",
+          "justification": "Automated batch tracking records precise thermal deviations, ensuring regulatory compliance and enabling targeted quality investigation."
+        },
+        {
+          "id": "W12_T4_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "How does transitioning from traditional 'Batch Manufacturing' to IIoT-enabled 'Continuous Manufacturing' impact pharmaceutical plant footprint and quality?",
+          "options": {
+            "A": "Continuous manufacturing reduces physical plant footprint by up to 70%, shortens production time from weeks to hours, and maintains real-time quality control",
+            "B": "Continuous manufacturing doubles product defect rates",
+            "C": "Continuous manufacturing requires 100x more paper logs",
+            "D": "Continuous manufacturing eliminates all chemistry"
+          },
+          "correct_answer": "A",
+          "justification": "Continuous manufacturing utilizes closed-loop sensor feedback to achieve higher throughput and consistent quality in a smaller footprint."
+        },
+        {
+          "id": "W12_T4_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "In pharmaceutical freeze-drying (lyophilization), why are wireless temperature and vacuum sensors deployed inside sterile glass vials during batch drying?",
+          "options": {
+            "A": "Sensors track sublimation front temperature and chamber vacuum in real-time to ensure complete moisture removal without damaging delicate biological proteins",
+            "B": "To change vial glass color",
+            "C": "To speed up conveyor belts",
+            "D": "To heat vials to 500\u00b0C"
+          },
+          "correct_answer": "A",
+          "justification": "Sublimation monitoring guarantees precise moisture removal while protecting heat-sensitive active pharmaceutical ingredients."
+        }
+      ]
+    },
+    {
+      "topic_id": "W12_T5",
+      "topic_name": "Industry 4.0 Transformation Roadmap & Strategic Implementation",
+      "topic_description": "Examines strategic roadmaps for Industry 4.0 adoption: Maturity Assessment, Proof of Concept (PoC) pilot projects, scaling architecture, change management, and ROI justification.",
+      "questions": [
+        {
+          "id": "W12_T5_Q1",
+          "difficulty": "Easy",
+          "question": "What initial strategic step should an enterprise take before purchasing expensive IIoT hardware and software software platforms?",
+          "options": {
+            "A": "Conduct an Industry 4.0 Digital Readiness / Maturity Assessment and define clear business use-cases",
+            "B": "Purchase 10,000 random sensors immediately",
+            "C": "Fire all operational engineers",
+            "D": "Replace all computers with mainframe tape drives"
+          },
+          "correct_answer": "A",
+          "justification": "A structured readiness assessment evaluates existing OT/IT infrastructure, skills, and business value drivers first."
+        },
+        {
+          "id": "W12_T5_Q2",
+          "difficulty": "Easy",
+          "question": "In industrial digital transformation, what is 'Pilot Purgatory'?",
+          "options": {
+            "A": "A state where enterprises execute dozens of isolated Proof-of-Concept (PoC) pilots without successfully scaling them to enterprise production",
+            "B": "A secure cloud backup folder",
+            "C": "A specialized robot testing room",
+            "D": "A software programming bug in C++"
+          },
+          "correct_answer": "A",
+          "justification": "Pilot Purgatory refers to getting stuck in endless small pilots without scaling digital solutions across the enterprise."
+        },
+        {
+          "id": "W12_T5_Q3",
+          "difficulty": "Easy",
+          "question": "Which organizational factor is widely cited as the biggest non-technical barrier to successful Industry 4.0 implementation?",
+          "options": {
+            "A": "Workforce culture, resistance to change, and lack of cross-functional IT/OT skill alignment",
+            "B": "Lack of electricity",
+            "C": "Availability of computer monitors",
+            "D": "High price of paper"
+          },
+          "correct_answer": "A",
+          "justification": "Change management, workforce reskilling, and bridging the IT/OT cultural divide are critical non-technical success factors."
+        },
+        {
+          "id": "W12_T5_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "How does establishing a scalable, modular, open-architecture IIoT platform prevent 'Vendor Lock-In' during long-term Industry 4.0 roadmaps?",
+          "options": {
+            "A": "Open standards (like OPC UA, MQTT, open APIs) allow integrating best-of-breed hardware/software from any vendor without being trapped in proprietary ecosystems",
+            "B": "By purchasing all software from a single vendor under a 50-year contract",
+            "C": "By writing custom code in assembly language",
+            "D": "By refusing to use network protocols"
+          },
+          "correct_answer": "A",
+          "justification": "Open standards and modular decoupled architectures guarantee long-term flexibility and vendor independence."
+        },
+        {
+          "id": "W12_T5_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "An enterprise calculates the Return on Investment (ROI) for a $1M predictive maintenance project. If the project prevents 2 major unplanned outages costing $800k each in the first year, what is the net financial outcome?",
+          "options": {
+            "A": "The project delivers a positive net return of $600k in Year 1 ($1.6M savings - $1M cost), achieving full payback in less than a year",
+            "B": "The project loses $1 million",
+            "C": "The project breaks even in 50 years",
+            "D": "ROI cannot be calculated"
+          },
+          "correct_answer": "A",
+          "justification": "Total savings ($1.6M) exceed initial investment ($1M) by $600k in Year 1, demonstrating high financial return."
+        },
+        {
+          "id": "W12_T5_Q6",
+          "difficulty": "Easy",
+          "question": "What financial metric calculates the time required for cumulative operational cost savings from an IIoT implementation to equal the initial capital investment?",
+          "options": {
+            "A": "Payback Period",
+            "B": "Net Present Depreciation",
+            "C": "Internal Rate of Tax",
+            "D": "Muda Ratio"
+          },
+          "correct_answer": "A",
+          "justification": "Payback Period measures the time required for an investment to generate cash flows sufficient to recover its initial outlay."
+        }
+      ]
+    }
+  ]
+}

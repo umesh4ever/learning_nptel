@@ -1,0 +1,433 @@
+{
+  "course": "Industry 4.0 and Industrial Internet of Things",
+  "week": 4,
+  "week_title": "IIoT Systems Architecture, Signal Processing Pipeline & Industrial Cybersecurity",
+  "topic_overview": "Covers physical-to-digital signal processing (Sensors, Conditioning, ADC, Processing, DAC, Actuation), CIA triad in OT, STRIDE threat model, IT/OT security convergence, Purdue model, IDMZ, and hardware root of trust (TPM/Secure Boot).",
+  "topics": [
+    {
+      "topic_id": "W4_T1",
+      "topic_name": "IIoT Systems Architecture & Physical-to-Digital Signal Pipeline",
+      "topic_description": "Examines the end-to-end signal pipeline: Physical Variable -> Transducer -> Signal Conditioning -> ADC -> Digital Processor -> DAC -> Actuator.",
+      "questions": [
+        {
+          "id": "W4_T1_Q1",
+          "difficulty": "Easy",
+          "question": "In an industrial measurement chain, what is the role of Signal Conditioning?",
+          "options": {
+            "A": "To convert digital code directly into physical motion",
+            "B": "To amplify, filter, linearize, and isolate raw transducer signals into clean voltage levels",
+            "C": "To print barcoded paper stickers",
+            "D": "To compress video files for cloud upload"
+          },
+          "correct_answer": "B",
+          "justification": "Signal conditioning circuitry scales, filters noise, and amplifies tiny analog voltages emitted by raw transducers."
+        },
+        {
+          "id": "W4_T1_Q2",
+          "difficulty": "Easy",
+          "question": "Which component converts a continuous analog voltage signal into discrete digital binary numbers for microcontroller processing?",
+          "options": {
+            "A": "Digital-to-Analog Converter (DAC)",
+            "B": "Analog-to-Digital Converter (ADC)",
+            "C": "Mechanical relay switch",
+            "D": "Step-down transformer"
+          },
+          "correct_answer": "B",
+          "justification": "ADCs sample analog input waveforms and quantify them into discrete digital binary words."
+        },
+        {
+          "id": "W4_T1_Q3",
+          "difficulty": "Easy",
+          "question": "When a digital processor decides to open a proportioning fluid valve using a smooth variable voltage, which block converts the digital control word to an analog voltage?",
+          "options": {
+            "A": "ADC",
+            "B": "DAC (Digital-to-Analog Converter)",
+            "C": "PIR Sensor",
+            "D": "Optical Isolator"
+          },
+          "correct_answer": "B",
+          "justification": "DACs convert digital processor output words back into continuous analog voltage or current signals to drive proportional actuators."
+        },
+        {
+          "id": "W4_T1_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "According to the Nyquist-Shannon sampling theorem, what is the minimum sampling frequency required for an ADC monitoring a machine vibration harmonic at 5 kHz?",
+          "options": {
+            "A": "2.5 kHz",
+            "B": "5 kHz",
+            "C": "10 kHz",
+            "D": "500 kHz"
+          },
+          "correct_answer": "C",
+          "justification": "The sampling frequency must be at least twice the maximum signal frequency component ($f_s \\ge 2 f_{max} = 10 \\text{ kHz}$) to prevent aliasing."
+        },
+        {
+          "id": "W4_T1_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "A strain gauge bridge outputs a noisy 2 millivolt signal in an electrically noisy factory environment. What two signal conditioning stages are vital before ADC conversion?",
+          "options": {
+            "A": "Attenuator and Step-up transformer",
+            "B": "Differential Instrumentation Amplifier (to boost mV signal) and Low-Pass Anti-Aliasing Filter (to remove high-frequency noise)",
+            "C": "Rectifier and Inverter",
+            "D": "Laser diode and Photo-multiplier"
+          },
+          "correct_answer": "B",
+          "justification": "Instrumentation amplifiers boost low-amplitude differential voltages while low-pass filters eliminate high-frequency electromagnetic interference."
+        },
+        {
+          "id": "W4_T1_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "A 12-bit ADC has a full-scale input voltage range of 0 to 10 Volts. What is the voltage resolution per LSB step?",
+          "options": {
+            "A": "2.44 millivolts",
+            "B": "10 volts",
+            "C": "1 millivolt",
+            "D": "0.5 volts"
+          },
+          "correct_answer": "A",
+          "justification": "Resolution = $\\frac{V_{FS}}{2^n - 1} = \\frac{10}{4095} \\approx 2.44 \\text{ mV}$ per step."
+        }
+      ]
+    },
+    {
+      "topic_id": "W4_T2",
+      "topic_name": "Cybersecurity Fundamentals in IIoT (CIA Triad & Safety)",
+      "topic_description": "Covers the Confidentiality, Integrity, and Availability (CIA) triad, highlighting how Availability and Integrity take precedence over Confidentiality in operational IT/OT environments.",
+      "questions": [
+        {
+          "id": "W4_T2_Q1",
+          "difficulty": "Easy",
+          "question": "What does the 'CIA' acronym stand for in information and IIoT security?",
+          "options": {
+            "A": "Control, Intelligence, Automation",
+            "B": "Confidentiality, Integrity, Availability",
+            "C": "Cloud, Interoperability, Analytics",
+            "D": "Cyber, Infrastructure, Actuation"
+          },
+          "correct_answer": "B",
+          "justification": "CIA represents the fundamental security triad: Confidentiality, Integrity, and Availability."
+        },
+        {
+          "id": "W4_T2_Q2",
+          "difficulty": "Easy",
+          "question": "In traditional IT enterprise security, Confidentiality is often prioritized. In Operational Technology (OT) and IIoT safety environments, which pillar is typically prioritized highest?",
+          "options": {
+            "A": "Confidentiality",
+            "B": "Availability (and Operational Safety)",
+            "C": "Social media exposure",
+            "D": "Disk defragmentation"
+          },
+          "correct_answer": "B",
+          "justification": "In OT environments, keeping critical physical infrastructure continuously running and safe (Availability/Safety) is paramount."
+        },
+        {
+          "id": "W4_T2_Q3",
+          "difficulty": "Easy",
+          "question": "What is compromised if a cyber-attacker alters the calibration offset parameter inside an industrial furnace controller?",
+          "options": {
+            "A": "Data Confidentiality only",
+            "B": "Data Integrity and Physical Safety",
+            "C": "Network IP addressing",
+            "D": "Hardware warranty expiration date"
+          },
+          "correct_answer": "B",
+          "justification": "Tampering with sensor data or control parameters violates Integrity, directly endangering physical safety."
+        },
+        {
+          "id": "W4_T2_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "Why can applying an unvetted security patch to a production line PLC during live operations cause severe OT disruption?",
+          "options": {
+            "A": "Because security patches delete PLC hardware",
+            "B": "Because unverified software updates may cause unexpected timing glitches or reboot cycles, violating microsecond Availability and tripping emergency safety stops",
+            "C": "Because patches double electrical consumption",
+            "D": "Because PLCs cannot read digital files"
+          },
+          "correct_answer": "B",
+          "justification": "In OT, uptime and deterministic timing are critical; unexpected reboots or latency changes can halt production lines or trip safety systems."
+        },
+        {
+          "id": "W4_T2_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "A Denial-of-Service (DoS) attack floods an industrial Ethernet switch, causing boiler pressure telemetry to drop off operator dashboards. Which CIA pillar is violated?",
+          "options": {
+            "A": "Confidentiality",
+            "B": "Availability",
+            "C": "Non-repudiation",
+            "D": "Licensing"
+          },
+          "correct_answer": "B",
+          "justification": "Blocking access to real-time telemetry degrades system Availability."
+        },
+        {
+          "id": "W4_T2_Q6",
+          "difficulty": "Easy",
+          "question": "Which property of security ensures that a sender cannot deny having transmitted a specific industrial command message?",
+          "options": {
+            "A": "Non-repudiation",
+            "B": "Confidentiality",
+            "C": "Availability",
+            "D": "Redundancy"
+          },
+          "correct_answer": "A",
+          "justification": "Non-repudiation provides cryptographically verifiable proof of origin and message transmission."
+        }
+      ]
+    },
+    {
+      "topic_id": "W4_T3",
+      "topic_name": "STRIDE Threat Model & IIoT Attack Surfaces",
+      "topic_description": "Details the STRIDE threat categories: Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, and Elevation of Privilege.",
+      "questions": [
+        {
+          "id": "W4_T3_Q1",
+          "difficulty": "Easy",
+          "question": "In Microsoft's STRIDE threat modeling framework, what does the 'S' stand for?",
+          "options": {
+            "A": "System safety",
+            "B": "Spoofing identity",
+            "C": "Software piracy",
+            "D": "Storage overhead"
+          },
+          "correct_answer": "B",
+          "justification": "S stands for Spoofing\u2014authenticating as an unauthorized person or fake machine sensor."
+        },
+        {
+          "id": "W4_T3_Q2",
+          "difficulty": "Easy",
+          "question": "In STRIDE, unauthorized modification of sensor telemetry while in transit over an unencrypted Modbus link is categorized as what?",
+          "options": {
+            "A": "Elevation of Privilege",
+            "B": "Tampering with data",
+            "C": "Information Disclosure",
+            "D": "Physical theft"
+          },
+          "correct_answer": "B",
+          "justification": "Tampering involves unauthorized modification of data packets or memory structures."
+        },
+        {
+          "id": "W4_T3_Q3",
+          "difficulty": "Easy",
+          "question": "An attacker sniffing unencrypted MQTT packets to discover proprietary chemical mixing ratios is committing which STRIDE violation?",
+          "options": {
+            "A": "Spoofing",
+            "B": "Information Disclosure",
+            "C": "Denial of Service",
+            "D": "Elevation of Privilege"
+          },
+          "correct_answer": "B",
+          "justification": "Exposing confidential operational data to unauthorized eavesdroppers is Information Disclosure."
+        },
+        {
+          "id": "W4_T3_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "A malicious insider logs into an edge gateway using default guest credentials and issues administrative commands to reprogram actuator limits. Which two STRIDE threats occurred?",
+          "options": {
+            "A": "Spoofing and Elevation of Privilege",
+            "B": "Denial of Service and Thermal Overload",
+            "C": "Tampering and Disk Fragmentation",
+            "D": "Information Disclosure and Physical Cable Cutting"
+          },
+          "correct_answer": "A",
+          "justification": "Masquerading as a legitimate user is Spoofing, and gaining administrative privileges beyond guest access is Elevation of Privilege."
+        },
+        {
+          "id": "W4_T3_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "How does implementing cryptographic Digital Signatures on PLC firmwares mitigate both Tampering and Repudiation threats?",
+          "options": {
+            "A": "By speeding up CPU clock speed",
+            "B": "By verifying that firmware code originated from the authorized vendor (Authenticity) and was not modified in transit (Integrity)",
+            "C": "By converting code into analog audio signals",
+            "D": "By reducing battery drain on sensor nodes"
+          },
+          "correct_answer": "B",
+          "justification": "Digital signatures provide mathematical proof of integrity (preventing Tampering) and non-repudiable origin authentication."
+        },
+        {
+          "id": "W4_T3_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "An attacker sends forged ARP responses to redirect SCADA traffic through a rogue laptop. Which STRIDE category and network attack vector does this represent?",
+          "options": {
+            "A": "Spoofing / ARP Poisoning",
+            "B": "Elevation of Privilege / SQL Injection",
+            "C": "Denial of Service / Cable Cut",
+            "D": "Tampering / Physical rust"
+          },
+          "correct_answer": "A",
+          "justification": "ARP poisoning is a classic identity Spoofing attack at Layer-2 to intercept network traffic."
+        }
+      ]
+    },
+    {
+      "topic_id": "W4_T4",
+      "topic_name": "IT vs. OT Security Convergence & Defense-in-Depth Architecture",
+      "topic_description": "Compares Information Technology (IT) vs Operational Technology (OT) domain requirements, network segmentation (Purdue Model), Industrial DMZs, and Defense-in-Depth.",
+      "questions": [
+        {
+          "id": "W4_T4_Q1",
+          "difficulty": "Easy",
+          "question": "What is a primary distinction between enterprise IT networks and shop-floor OT networks?",
+          "options": {
+            "A": "IT uses wireless while OT never uses wires",
+            "B": "IT focuses on data privacy/throughput, whereas OT demands real-time determinism, physical safety, and continuous availability",
+            "C": "IT systems run on steam while OT uses electricity",
+            "D": "OT systems have zero connection to software"
+          },
+          "correct_answer": "B",
+          "justification": "OT manages physical kinetic machinery with strict real-time determinism and human safety requirements."
+        },
+        {
+          "id": "W4_T4_Q2",
+          "difficulty": "Easy",
+          "question": "In the Purdue Model for Industrial Control Systems, what resides at Level 0 / Level 1?",
+          "options": {
+            "A": "Enterprise ERP databases",
+            "B": "Physical field sensors, actuators, and basic controller I/O",
+            "C": "Corporate web servers",
+            "D": "Customer support call center desks"
+          },
+          "correct_answer": "B",
+          "justification": "Level 0/1 consists of physical field assets, instrumentation, sensors, actuators, and direct PLCs."
+        },
+        {
+          "id": "W4_T4_Q3",
+          "difficulty": "Easy",
+          "question": "What network security component is placed between the corporate IT network and the plant-floor OT network to block direct traffic?",
+          "options": {
+            "A": "Industrial Demilitarized Zone (IDMZ) with firewalls",
+            "B": "USB extension hub",
+            "C": "Analog telephone line",
+            "D": "Unshielded patch bay"
+          },
+          "correct_answer": "A",
+          "justification": "An Industrial DMZ isolates OT subnetworks from enterprise IT networks using firewalls and proxy servers."
+        },
+        {
+          "id": "W4_T4_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "Why is relying solely on perimeter firewalls considered insufficient for modern IIoT plants, leading to the adoption of 'Defense-in-Depth'?",
+          "options": {
+            "A": "Because firewalls consume too much electricity",
+            "B": "Because insider threats, rogue USB drives, or compromised edge devices can bypass perimeter firewalls, necessitating multi-layered security (encryption, micro-segmentation, endpoint security)",
+            "C": "Because firewalls block all sensor signals permanently",
+            "D": "Because firewalls only work on Linux operating systems"
+          },
+          "correct_answer": "B",
+          "justification": "Defense-in-Depth establishes layered defense controls across physical, network, system, and data levels so no single compromise breaches the entire plant."
+        },
+        {
+          "id": "W4_T4_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "An engineer wants to securely monitor field PLCs from a remote home office. Which architecture is compliant with IEC 62443 security standards?",
+          "options": {
+            "A": "Direct port-forwarding from public internet to the PLC IP address",
+            "B": "Multi-factor authenticated VPN terminating at the Industrial DMZ, with jump-servers enforcing role-based access control",
+            "C": "Posting PLC passwords on a public website",
+            "D": "Disabling all passwords on the industrial switch"
+          },
+          "correct_answer": "B",
+          "justification": "Secure remote access requires VPN isolation, IDMZ termination, jump-hosts, and multi-factor authentication to prevent unauthorized OT intrusion."
+        },
+        {
+          "id": "W4_T4_Q6",
+          "difficulty": "Easy",
+          "question": "In the Purdue Model, where does the SCADA Human-Machine Interface (HMI) server typically reside?",
+          "options": {
+            "A": "Level 2 (Control & Operations)",
+            "B": "Level 0 (Physical Field)",
+            "C": "Level 5 (Public Internet)",
+            "D": "Level -1"
+          },
+          "correct_answer": "A",
+          "justification": "Level 2 houses supervisory control, HMI dashboards, and control room operations."
+        }
+      ]
+    },
+    {
+      "topic_id": "W4_T5",
+      "topic_name": "Hardware & Firmware Security Enablers in IIoT",
+      "topic_description": "Examines hardware security modules (HSM), Trusted Platform Modules (TPM), Secure Boot, OTA firmware verification, and hardware-level encryption.",
+      "questions": [
+        {
+          "id": "W4_T5_Q1",
+          "difficulty": "Easy",
+          "question": "What hardware microchip provides cryptographic key storage and tamper-resistant cryptographic functions on IIoT edge gateways?",
+          "options": {
+            "A": "GPU graphics card",
+            "B": "Trusted Platform Module (TPM) / Hardware Security Module (HSM)",
+            "C": "Mechanical relay coil",
+            "D": "Step-down transformer"
+          },
+          "correct_answer": "B",
+          "justification": "TPM chips provide tamper-proof hardware key storage and cryptographic operations."
+        },
+        {
+          "id": "W4_T5_Q2",
+          "difficulty": "Easy",
+          "question": "What is the role of 'Secure Boot' in an IIoT embedded controller?",
+          "options": {
+            "A": "To charge the system battery instantly",
+            "B": "To cryptographically verify the digital signature of the bootloader and OS kernel before executing code",
+            "C": "To delete log files upon startup",
+            "D": "To disable all ethernet network ports"
+          },
+          "correct_answer": "B",
+          "justification": "Secure Boot verifies that firmware has been cryptographically signed by an authorized vendor before executing, preventing rootkits."
+        },
+        {
+          "id": "W4_T5_Q3",
+          "difficulty": "Easy",
+          "question": "Over-The-Air (OTA) firmware updates for edge gateways must include which security check before installing?",
+          "options": {
+            "A": "Physical paint color inspection",
+            "B": "Cryptographic signature and hash validation",
+            "C": "Manual paper receipt signature",
+            "D": "Audio frequency tone play"
+          },
+          "correct_answer": "B",
+          "justification": "OTA updates validate digital signatures and hash digests to ensure firmware updates are authentic and untampered."
+        },
+        {
+          "id": "W4_T5_Q4",
+          "difficulty": "Medium/Hard",
+          "question": "An attacker attempts a side-channel power analysis attack on an IIoT microcontroller to extract secret AES keys. Which hardware defense counteracts this?",
+          "options": {
+            "A": "Using unshielded plastic wires",
+            "B": "Cryptographic coprocessors designed with power-masking and constant-time execution circuits",
+            "C": "Increasing the size of the cooling fan",
+            "D": "Running the microcontroller on solar power"
+          },
+          "correct_answer": "B",
+          "justification": "Hardware security modules use constant-time operations and power noise masking to thwart side-channel analysis."
+        },
+        {
+          "id": "W4_T5_Q5",
+          "difficulty": "Medium/Hard",
+          "question": "Why is storing symmetric private encryption keys in plaintext flash memory on an outdoor agricultural IoT node considered a critical vulnerability?",
+          "options": {
+            "A": "Because birds can peck the flash memory",
+            "B": "Because attackers can physically extract the flash chip and extract secret keys using bus logic analyzers",
+            "C": "Because flash memory cannot store keys",
+            "D": "Because plaintext keys increase battery draw"
+          },
+          "correct_answer": "B",
+          "justification": "Outdoor nodes lack physical security; plaintext storage enables attackers to extract keys via flash dump, compromising the entire network cryptographic trust."
+        },
+        {
+          "id": "W4_T5_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "Why is Hardware Root of Trust (e.g., immutable ROM keys) essential for securing edge gateways during supply chain distribution?",
+          "options": {
+            "A": "Immutable ROM keys prevent malicious firmware flashing during manufacturing transit, ensuring authenticity before system deployment",
+            "B": "ROM keys double processor clock speed",
+            "C": "ROM keys eliminate hardware costs",
+            "D": "ROM keys convert AC to DC"
+          },
+          "correct_answer": "A",
+          "justification": "Hardware root of trust provides an unalterable cryptographic anchor for verifying bootloaders and preventing supply-chain tampering."
+        }
+      ]
+    }
+  ]
+}
