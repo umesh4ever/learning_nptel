@@ -39,7 +39,7 @@ export default function QuizScreen({
           <button
             type="button"
             onClick={() => setConfirmQuit(true)}
-            className="min-h-10 rounded-full border border-[#e1c9c5] bg-[#f6eae8] px-3 text-xs font-bold text-[#994d46] transition-transform hover:bg-[#f2dfdc] active:scale-95"
+            className="min-h-11 rounded-full border border-[#e1c9c5] bg-[#f6eae8] px-3 text-xs font-bold text-[#994d46] transition-transform hover:bg-[#f2dfdc] active:scale-95 sm:min-h-9"
           >
             Quit test
           </button>
@@ -80,12 +80,12 @@ export default function QuizScreen({
                 aria-pressed={chosen}
                 className={`flex w-full items-start gap-3 rounded-xl border p-3.5 text-left transition-transform duration-200 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8] disabled:cursor-not-allowed sm:gap-4 sm:p-4 ${
                   chosen
-                    ? 'border-[#8eafd0] bg-[#deebf5] shadow-[0_0_0_2px_rgba(110,155,192,0.14)]'
-                    : 'border-[#d4e2ed] bg-[#e8f1f7] hover:border-[#a9c5dc] hover:bg-[#e2edf5]'
+                    ? 'border-[#163b59] bg-[#245984] shadow-[0_8px_18px_rgba(22,59,89,0.28)]'
+                    : 'border-[#c4d8e7] bg-[#dce9f2] hover:border-[#397ba6] hover:bg-[#b5d0e3]'
                 }`}
               >
-                <span className={`grid size-8 shrink-0 place-items-center rounded-lg text-xs font-bold ${chosen ? 'bg-[#cbdfee] text-[#245984]' : 'bg-[#dce9f2] text-[#70879a]'}`}>{key}</span>
-                <span className="pt-1 text-sm leading-6 text-[#35516a]">{value}</span>
+                <span className={`grid size-8 shrink-0 place-items-center rounded-lg text-xs font-bold ${chosen ? 'bg-white/20 text-white' : 'bg-[#c8dce9] text-[#426784]'}`}>{key}</span>
+                <span className={`pt-1 text-sm leading-6 ${chosen ? 'font-semibold text-white' : 'text-[#35516a]'}`}>{value}</span>
               </button>
             )
           })}
@@ -104,13 +104,13 @@ export default function QuizScreen({
                   onClick={() => onQuestionChange(index)}
                   aria-label={`Go to question ${index + 1}${answered ? ', answered' : ', not answered'}`}
                   aria-current={active ? 'step' : undefined}
-                  className={`grid size-11 place-items-center rounded-lg border text-xs font-bold transition-all duration-200 hover:-translate-y-0.5 active:scale-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8] ${
+                  className={`grid size-11 place-items-center rounded-lg border text-xs font-bold transition-colors duration-150 active:scale-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8] ${
                     active && answered
-                      ? 'border-[#174c3a] bg-[#28664f] text-white shadow-[0_0_0_2px_#a7d4c1,0_4px_12px_rgba(23,76,58,0.3)]'
+                      ? 'border-[#163b59] bg-[#245984] text-white shadow-[0_0_0_2px_#9fc5df,0_4px_12px_rgba(22,59,89,0.3)]'
                       : active
                         ? 'border-[#163b59] bg-[#163b59] text-white shadow-[0_4px_12px_rgba(22,59,89,0.3)]'
                         : answered
-                          ? 'border-[#28664f] bg-[#28664f] text-white shadow-[0_3px_10px_rgba(40,102,79,0.2)]'
+                          ? 'border-[#3978a4] bg-[#3978a4] text-white shadow-[0_3px_10px_rgba(57,120,164,0.2)]'
                           : 'border-[#c4d8e7] bg-[#dce9f2] text-[#57738a] hover:border-[#5a8eb5] hover:bg-[#b9d2e5]'
                   }`}
                 >

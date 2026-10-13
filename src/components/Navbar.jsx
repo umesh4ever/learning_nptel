@@ -8,7 +8,7 @@ export default function Navbar({ quiz, questionIndex, finished, onGoHome }) {
         <Link
           to="/setup/weeks"
           onClick={onGoHome}
-          className="flex min-h-10 min-w-0 items-center gap-3 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b9ddf5]"
+          className="flex min-h-11 min-w-0 items-center gap-3 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b9ddf5] sm:min-h-10"
         >
           <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-[#b9ddf5] text-[#163b59]">
             <Icon name="book" className="size-[18px]" />
@@ -23,7 +23,7 @@ export default function Navbar({ quiz, questionIndex, finished, onGoHome }) {
           <Link
             to="/setup/weeks"
             onClick={onGoHome}
-            className="rounded-lg px-3 py-2 text-xs font-bold text-white/85 transition-all hover:bg-white/15 hover:text-white active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b9ddf5]"
+            className="inline-flex min-h-11 items-center rounded-lg px-3 py-2 text-xs font-bold text-white/85 transition-all hover:bg-white/15 hover:text-white active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b9ddf5] sm:min-h-10"
           >
             <span className="sm:hidden">Home</span>
             <span className="hidden sm:inline">Weekly tests</span>
@@ -31,7 +31,7 @@ export default function Navbar({ quiz, questionIndex, finished, onGoHome }) {
           {quiz && !finished && (
             <Link
               to={`/quiz/${questionIndex + 1}`}
-              className="inline-flex min-h-10 items-center gap-1.5 rounded-lg bg-[#b9ddf5] px-3 py-2 text-xs font-bold text-[#163b59] transition-all hover:bg-white active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-lg bg-[#b9ddf5] px-3 py-2 text-xs font-bold text-[#163b59] transition-all hover:bg-white active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:min-h-10"
             >
               <span className="sm:hidden">Resume</span>
               <span className="hidden sm:inline">Resume test</span>

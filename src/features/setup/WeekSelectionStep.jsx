@@ -35,7 +35,7 @@ export default function WeekSelectionStep({
           <button
             type="button"
             onClick={onReset}
-            className="inline-flex h-10 shrink-0 items-center gap-2 rounded-xl border border-[#cbddeb] bg-[#eaf2f8] px-3 text-xs font-bold text-[#46647c] transition-transform hover:bg-[#e0edf6] active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8]"
+            className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-[#cbddeb] bg-[#eaf2f8] px-3 text-xs font-bold text-[#46647c] transition-transform hover:bg-[#e0edf6] active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8] sm:min-h-10 sm:min-w-0"
           >
             <Icon name="reset" className="size-4" />
             Reset
@@ -64,10 +64,10 @@ export default function WeekSelectionStep({
                 disabled={cannotDeselect}
                 aria-pressed={active}
                 aria-label={`${active ? 'Remove' : 'Add'} Week ${week.week}${cannotDeselect ? '; at least one week must remain selected' : ''}`}
-                className={`min-h-[98px] rounded-xl border p-3 text-left transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8] disabled:cursor-not-allowed ${
+                className={`min-h-[98px] rounded-xl border p-3 text-left transition-colors duration-150 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8] disabled:cursor-not-allowed ${
                   active
                     ? 'border-[#163b59] bg-[#245984] text-white shadow-[0_6px_16px_rgba(22,59,89,0.24)] hover:bg-[#163b59]'
-                    : 'border-[#c4d8e7] bg-[#e3edf5] text-[#35516a] hover:border-[#568eb7] hover:bg-[#bcd5e7]'
+                    : 'border-[#c4d8e7] bg-[#e3edf5] text-[#35516a] hover:border-[#397ba6] hover:bg-[#b5d0e3] hover:shadow-[0_6px_15px_rgba(36,89,132,0.16)]'
                 }`}
               >
                 <span className="flex items-center justify-between">
@@ -84,7 +84,7 @@ export default function WeekSelectionStep({
         <button
           type="button"
           onClick={onCompletePaper}
-          className="mt-4 flex w-full items-center justify-between gap-4 rounded-xl border border-[#bfd3e4] bg-[#e4eff7] p-4 text-left transition-all hover:-translate-y-0.5 hover:border-[#8eafd0] hover:bg-[#dceaf5] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8] sm:px-5"
+          className="mt-4 flex w-full items-center justify-between gap-4 rounded-xl border border-[#8eafd0] bg-[#c9deed] p-4 text-left transition-colors duration-150 hover:border-[#397ba6] hover:bg-[#b4d0e3] hover:shadow-[0_8px_20px_rgba(36,89,132,0.18)] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8] sm:px-5"
         >
           <span className="min-w-0">
             <span className="block text-sm font-bold text-[#244b70]">Complete paper</span>
@@ -93,11 +93,11 @@ export default function WeekSelectionStep({
           <span className="shrink-0 rounded-lg bg-[#d0e2f0] px-3 py-2 text-xs font-bold text-[#245984] shadow-sm">Start setup →</span>
         </button>
 
-        <div className="sticky bottom-0 z-10 -mx-4 mt-5 flex flex-col-reverse gap-2 border-t border-[#d6e4ef] bg-[#eaf2f8]/95 p-4 pb-[max(1rem,env(safe-area-inset-bottom))] backdrop-blur sm:static sm:mx-0 sm:flex-row sm:justify-between sm:border-[#dce8f1] sm:bg-transparent sm:p-0 sm:pt-5">
+        <div className="mt-5 flex flex-col-reverse gap-2 border-t border-[#d6e4ef] pt-4 sm:flex-row sm:justify-between sm:border-[#dce8f1] sm:pt-5">
           <button
             type="button"
             onClick={onReset}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-[#cbddeb] bg-[#e3edf5] px-4 text-sm font-bold text-[#46647c] transition-transform hover:bg-[#dce9f3] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8]"
+            className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-[#cbddeb] bg-[#e3edf5] px-4 text-sm font-bold text-[#46647c] transition-transform hover:bg-[#dce9f3] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8] sm:min-h-10 sm:w-auto"
           >
             <Icon name="reset" className="size-4" />
             Reset selection
@@ -106,7 +106,7 @@ export default function WeekSelectionStep({
             type="button"
             onClick={onContinue}
             disabled={selectedWeeks.length === 0}
-            className="flex h-14 items-center justify-center gap-2 rounded-xl bg-[#245984] px-5 text-base font-bold text-white shadow-[0_8px_20px_rgba(36,89,132,0.2)] transition-transform hover:bg-[#1d4b70] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8] disabled:cursor-not-allowed disabled:opacity-40 sm:h-12 sm:text-sm"
+            className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#245984] px-5 text-sm font-bold text-white shadow-[0_8px_20px_rgba(36,89,132,0.2)] transition-transform hover:bg-[#1d4b70] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8] disabled:cursor-not-allowed disabled:opacity-40 sm:min-h-10 sm:w-auto"
           >
             Continue to paper setup
             <Icon name="arrow" className="size-[18px]" />

@@ -14,19 +14,36 @@ export default function ResultsScreen({ quiz, selectedAnswers, correctCount, onC
       : exactScorePercentage >= 50
         ? 'NOT BAD'
         : 'BAD'
+  const resultTheme = exactScorePercentage < 50
+    ? {
+        section: 'bg-[#a33e46]',
+        icon: 'bg-[#f8dfe1] text-[#8c3038]',
+        highlight: 'text-[#ffd9dc]',
+      }
+    : exactScorePercentage > 80
+      ? {
+          section: 'bg-[#21634c]',
+          icon: 'bg-[#d9f0e4] text-[#21634c]',
+          highlight: 'text-[#d9f0e4]',
+        }
+      : {
+          section: 'bg-[#245984]',
+          icon: 'bg-[#d9eafa] text-[#245984]',
+          highlight: 'text-[#d9eafa]',
+        }
 
   return (
     <main className="mx-auto w-full max-w-[980px] px-5 pb-12 pt-8 sm:px-8 lg:px-12 lg:pt-12">
       <p className="text-xs font-bold uppercase tracking-[0.19em] text-[#647f95]">
         Weeks {quiz.weeks.map((week) => week.week).join(', ')} <span className="px-2 text-[#b9cde0]">/</span> Test results
       </p>
-      <section className="mt-8 rounded-3xl bg-[#245984] px-5 py-8 text-center text-white sm:px-10 sm:py-12">
-        <div className="mx-auto grid size-14 place-items-center rounded-2xl bg-[#d9eafa] text-[#245984]">
+      <section className={`mt-8 rounded-3xl px-5 py-8 text-center text-white shadow-[0_12px_30px_rgba(22,59,89,0.16)] ${resultTheme.section} sm:px-10 sm:py-12`}>
+        <div className={`mx-auto grid size-14 place-items-center rounded-2xl ${resultTheme.icon}`}>
           <Icon name="award" className="size-7" />
         </div>
         <p className="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-white/55">Test complete</p>
         <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">{resultHeadline}</h1>
-        <p className="mt-3 text-sm text-white/75">You got <strong className="text-[#d9eafa]">{correctCount} of {quiz.questions.length}</strong> questions correct.</p>
+        <p className="mt-3 text-sm text-white/80">You got <strong className={resultTheme.highlight}>{correctCount} of {quiz.questions.length}</strong> questions correct.</p>
         <div className="mx-auto mt-7 flex max-w-sm items-center justify-center gap-8 rounded-2xl bg-white/[0.07] px-6 py-4">
           <div><p className="text-2xl font-bold">{scorePercentage}%</p><p className="mt-1 text-[10px] uppercase tracking-widest text-white/45">Score</p></div>
           <div className="h-9 w-px bg-white/15" />

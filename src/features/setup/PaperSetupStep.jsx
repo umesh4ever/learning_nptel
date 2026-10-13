@@ -7,13 +7,13 @@ function NumberStepper({ id, label, value, min, max, step, suffix, onChange }) {
   const canIncrement = max === undefined || !Number.isFinite(numericValue) || numericValue < max
 
   return (
-    <div className="flex h-14 w-full items-center rounded-xl border border-[#cbddeb] bg-[#eaf2f8] p-1.5 focus-within:border-[#6e9bc0] focus-within:ring-4 focus-within:ring-[#d8eafa]/60">
+    <div className="flex h-12 w-full items-center rounded-lg border border-[#cbddeb] bg-[#eaf2f8] p-1 focus-within:border-[#6e9bc0] focus-within:ring-2 focus-within:ring-[#d8eafa]/60 sm:h-10">
       <button
         type="button"
         aria-label={`Decrease ${label.toLowerCase()}`}
         disabled={!canDecrement}
         onClick={() => onChange(Math.max(min, (Number.isFinite(numericValue) ? numericValue : min) - step))}
-        className="grid size-11 shrink-0 place-items-center rounded-lg bg-[#dceaf5] text-lg font-bold text-[#315b7c] transition-transform hover:bg-[#d2e3f0] active:scale-90 disabled:cursor-not-allowed disabled:opacity-35"
+        className="grid size-11 shrink-0 place-items-center rounded-md bg-[#dceaf5] text-base font-bold text-[#315b7c] transition-transform hover:bg-[#d2e3f0] active:scale-90 disabled:cursor-not-allowed disabled:opacity-35 sm:size-8"
       >
         −
       </button>
@@ -27,7 +27,7 @@ function NumberStepper({ id, label, value, min, max, step, suffix, onChange }) {
         value={value}
         onChange={(event) => onChange(event.target.value === '' ? '' : Number(event.target.value))}
         aria-label={label}
-        className="h-full min-w-0 flex-1 appearance-none border-0 bg-transparent px-1 text-center text-base font-bold tabular-nums text-[#29465f] outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+        className="h-full min-w-0 flex-1 appearance-none border-0 bg-transparent px-1 text-center text-sm font-semibold tabular-nums text-[#29465f] outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none sm:text-xs"
       />
       {suffix && <span className="hidden shrink-0 pr-2 text-xs text-[#7890a3] sm:block">{suffix}</span>}
       <button
@@ -35,7 +35,7 @@ function NumberStepper({ id, label, value, min, max, step, suffix, onChange }) {
         aria-label={`Increase ${label.toLowerCase()}`}
         disabled={!canIncrement}
         onClick={() => onChange((Number.isFinite(numericValue) ? numericValue : min) + step)}
-        className="grid size-11 shrink-0 place-items-center rounded-lg bg-[#245984] text-lg font-bold text-white transition-transform hover:bg-[#1d4b70] active:scale-90 disabled:cursor-not-allowed disabled:opacity-35"
+        className="grid size-11 shrink-0 place-items-center rounded-md bg-[#245984] text-base font-bold text-white transition-colors hover:bg-[#163b59] active:scale-90 disabled:cursor-not-allowed disabled:opacity-35 sm:size-8"
       >
         +
       </button>
@@ -90,7 +90,7 @@ export default function PaperSetupStep({
         <button
           type="button"
           onClick={onBack}
-          className="mb-6 inline-flex items-center gap-2 text-xs font-bold text-[#647f95] transition hover:text-[#245984]"
+          className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#163b59] px-4 text-sm font-bold text-white shadow-[0_4px_12px_rgba(22,59,89,0.2)] transition-colors hover:bg-[#245984] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8] active:scale-[0.98] sm:mb-6 sm:min-h-10"
         >
           <Icon name="back" className="size-4" />
           Back to week selection
@@ -117,10 +117,10 @@ export default function PaperSetupStep({
                   disabled={availableTotal === 0}
                   onClick={() => onDifficultyChange(option)}
                   aria-pressed={active}
-                  className={`rounded-xl border px-3 py-3 text-left transition-transform duration-200 hover:-translate-y-0.5 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40 ${
+                  className={`min-h-11 rounded-xl border px-3 py-3 text-left transition-colors duration-150 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40 sm:min-h-0 ${
                     active
                       ? 'border-[#163b59] bg-[#245984] text-white shadow-[0_6px_16px_rgba(22,59,89,0.22)] hover:bg-[#163b59]'
-                      : 'border-[#c4d8e7] bg-[#e3edf5] text-[#35516a] hover:border-[#568eb7] hover:bg-[#bcd5e7]'
+                      : 'border-[#c4d8e7] bg-[#e3edf5] text-[#35516a] hover:border-[#397ba6] hover:bg-[#b5d0e3] hover:shadow-[0_6px_15px_rgba(36,89,132,0.16)]'
                   }`}
                 >
                   <span className={`block text-xs font-bold ${active ? 'text-white' : 'text-[#35516a]'}`}>{option}</span>
@@ -134,7 +134,7 @@ export default function PaperSetupStep({
         </fieldset>
 
         <label htmlFor="question-count" className="mt-5 block text-xs font-bold text-[#46647c]">Total number of questions</label>
-        <div className="mt-2 flex items-center gap-3">
+        <div className="mt-2 flex max-w-sm items-center gap-2">
           <NumberStepper
             id="question-count"
             label="Total number of questions"
@@ -144,7 +144,7 @@ export default function PaperSetupStep({
             step={weekCount}
             onChange={onQuestionCountChange}
           />
-          <span className="shrink-0 text-xs text-[#7890a3]">max {maxTotalCount}</span>
+          <span className="shrink-0 text-[10px] text-[#7890a3] sm:text-xs">max {maxTotalCount}</span>
         </div>
         <p id="count-hint" className={`mt-2 text-[11px] leading-4 ${countIsValid ? 'text-[#7890a3]' : 'text-[#a45046]'}`}>
           {countIsValid
@@ -153,7 +153,7 @@ export default function PaperSetupStep({
         </p>
 
         <label htmlFor="test-duration" className="mt-5 block text-xs font-bold text-[#46647c]">Time limit</label>
-        <div className="mt-2 flex items-center gap-3">
+        <div className="mt-2 flex max-w-xs items-center gap-2">
           <NumberStepper
             id="test-duration"
             label="Time limit"
@@ -173,14 +173,14 @@ export default function PaperSetupStep({
             <Icon name="clock" className="size-4 text-[#528fba]" />
             Questions follow course order within each difficulty
           </div>
-          <p className="mt-1.5 pl-6 text-[11px] leading-4 text-[#7890a3]">Each week contributes the same number of questions. You will answer the full test before seeing your score.</p>
+          <p className="mt-1.5 pl-6 text-[11px] leading-4 text-[#7890a3]">Each week contributes the same number of questions. You can submit whenever you are ready.</p>
         </div>
 
-        <div className="sticky bottom-0 z-10 -mx-4 mt-5 flex flex-col-reverse gap-2 border-t border-[#d6e4ef] bg-[#eaf2f8]/95 p-4 pb-[max(1rem,env(safe-area-inset-bottom))] backdrop-blur sm:static sm:mx-0 sm:flex-row sm:border-0 sm:bg-transparent sm:p-0 sm:pt-1">
+        <div className="mt-5 flex flex-col-reverse gap-2 border-t border-[#d6e4ef] pt-4 sm:flex-row sm:border-0 sm:pt-1">
           <button
             type="button"
             onClick={onReset}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-[#cbddeb] bg-[#e3edf5] px-4 text-sm font-bold text-[#46647c] transition-transform hover:bg-[#dce9f3] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8] sm:order-1"
+            className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-[#cbddeb] bg-[#e3edf5] px-4 text-sm font-bold text-[#46647c] transition-transform hover:bg-[#dce9f3] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8] sm:order-1 sm:min-h-10 sm:w-auto"
           >
             <Icon name="reset" className="size-4" />
             Reset paper
@@ -189,7 +189,7 @@ export default function PaperSetupStep({
             type="button"
             onClick={onStart}
             disabled={!countIsValid || !Number.isInteger(Number(durationMinutes)) || Number(durationMinutes) < 5 || Number(durationMinutes) % 5 !== 0}
-            className="flex h-14 min-w-0 flex-1 items-center justify-center gap-2 rounded-xl bg-[#245984] px-4 text-base font-bold text-white shadow-[0_8px_20px_rgba(36,89,132,0.2)] transition-transform hover:bg-[#1d4b70] hover:shadow-[0_10px_24px_rgba(36,89,132,0.25)] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8] disabled:cursor-not-allowed disabled:opacity-40 sm:order-2"
+            className="flex min-h-12 min-w-0 w-full items-center justify-center gap-2 rounded-xl bg-[#245984] px-4 text-sm font-bold text-white shadow-[0_8px_20px_rgba(36,89,132,0.2)] transition-transform hover:bg-[#1d4b70] hover:shadow-[0_10px_24px_rgba(36,89,132,0.25)] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8] disabled:cursor-not-allowed disabled:opacity-40 sm:order-2 sm:min-h-10 sm:w-auto sm:flex-1"
           >
             Start test
             <Icon name="arrow" className="size-[18px]" />
