@@ -1,0 +1,435 @@
+{
+  "course": "Introduction to the Internet of Things",
+  "week": 6,
+  "topic_title": "Python Programming Fundamentals for IoT",
+  "analysis_of_assignment_style": {
+    "question_format": "Multiple Choice Questions (4 options: A, B, C, D)",
+    "evaluation_depth": "Combination of direct factual recall, component identification, protocol/standard matching, and scenario-based application reasoning.",
+    "difficulty_segmentation": [
+      "Easy (Direct recall of slide definitions & examples)",
+      "Medium/Hard (Multi-concept synthesis, scenario reasoning, boundary conditions)"
+    ],
+    "metadata_fields": [
+      "id",
+      "topic",
+      "difficulty",
+      "question",
+      "options",
+      "correct_answer",
+      "justification"
+    ]
+  },
+  "topics": [
+    {
+      "topic_id": "W6_T1",
+      "topic_name": "Python Data Types, Slicing & Operations",
+      "description": "Numbers, strings, lists, tuples, dictionaries, and slicing.",
+      "questions": [
+        {
+          "id": "W6_T1_Q1",
+          "difficulty": "Easy",
+          "question": "What is the output of the Python string slicing code x = 'This is Python'; print(x[2:4]) as evaluated in Week 6 Assignment Question 1?",
+          "options": {
+            "A": "is",
+            "B": "hi",
+            "C": "is (with space)",
+            "D": "Th"
+          },
+          "correct_answer": "A",
+          "justification": "String slicing x[2:4] extracts characters at index 2 ('i') and 3 ('s'), giving 'is'."
+        },
+        {
+          "id": "W6_T1_Q2",
+          "difficulty": "Easy",
+          "question": "What are the core primitive data types supported in Python?",
+          "options": {
+            "A": "Numbers, Strings, Lists, Tuples, and Dictionaries",
+            "B": "Pointers and Structures only",
+            "C": "Binaries and Hexadecimal files only",
+            "D": "Relays and Switches"
+          },
+          "correct_answer": "A",
+          "justification": "Python's standard data types include Numbers, Strings, Lists, Tuples, and Dictionaries."
+        },
+        {
+          "id": "W6_T1_Q3",
+          "difficulty": "Easy",
+          "question": "How are elements enclosed in a Python List vs a Python Tuple?",
+          "options": {
+            "A": "Lists use square brackets []; Tuples use parentheses ()",
+            "B": "Lists use curly braces {}; Tuples use angle brackets <>",
+            "C": "Lists are immutable; Tuples are mutable",
+            "D": "Both use double quotes"
+          },
+          "correct_answer": "A",
+          "justification": "Python Lists are mutable and enclosed in []; Tuples are immutable and enclosed in ()."
+        },
+        {
+          "id": "W6_T1_Q4",
+          "difficulty": "Easy",
+          "question": "Which key-value data structure is instantiated in Python using syntax d = {1: 'item', 'k': 2}?",
+          "options": {
+            "A": "Dictionary",
+            "B": "Tuple",
+            "C": "List",
+            "D": "Float"
+          },
+          "correct_answer": "A",
+          "justification": "Python Dictionaries store key-value pairs enclosed in curly braces {}."
+        },
+        {
+          "id": "W6_T1_Q5",
+          "difficulty": "Easy",
+          "question": "What is the index of the first character in a Python String?",
+          "options": {
+            "A": "0",
+            "B": "1",
+            "C": "-1",
+            "D": "2"
+          },
+          "correct_answer": "A",
+          "justification": "Python uses 0-based indexing for sequences (strings, lists, tuples)."
+        },
+        {
+          "id": "W6_T1_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "Given the Python code list x = [10, 10.2, 'python'], what is the result of executing print(x[-1])?",
+          "options": {
+            "A": "'python'",
+            "B": "10",
+            "C": "10.2",
+            "D": "IndexError"
+          },
+          "correct_answer": "A",
+          "justification": "Negative index -1 accesses the last element of a sequence in Python, returning 'python'."
+        },
+        {
+          "id": "W6_T1_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "Why are Python Tuples preferred over Lists for storing immutable sensor calibration constants?",
+          "options": {
+            "A": "Tuples are immutable, preventing accidental alteration of fixed values during program execution and offering slight memory efficiency",
+            "B": "Tuples allow deleting elements at runtime",
+            "C": "Tuples execute 100 times slower",
+            "D": "Tuples cannot store numbers"
+          },
+          "correct_answer": "A",
+          "justification": "Tuples are immutable read-only sequences, safeguarding static configuration and calibration parameters."
+        },
+        {
+          "id": "W6_T1_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "What is the result of evaluates x = 'Python'; print(x[1:5])?",
+          "options": {
+            "A": "ytho",
+            "B": "Pyth",
+            "C": "python",
+            "D": "yton"
+          },
+          "correct_answer": "A",
+          "justification": "x[1:5] slices index 1 ('y'), 2 ('t'), 3 ('h'), 4 ('o') -> 'ytho'."
+        },
+        {
+          "id": "W6_T1_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "What type of error is raised if a script attempts to modify an element of a tuple, e.g., t = (1, 2); t[0] = 5?",
+          "options": {
+            "A": "TypeError",
+            "B": "KeyError",
+            "C": "ZeroDivisionError",
+            "D": "IndentationError"
+          },
+          "correct_answer": "A",
+          "justification": "Tuples do not support item assignment; attempting to modify an item raises a TypeError."
+        },
+        {
+          "id": "W6_T1_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "Which dictionary method returns all available key names as a iterable view?",
+          "options": {
+            "A": "d.keys()",
+            "B": "d.values()",
+            "C": "d.items()",
+            "D": "d.pop()"
+          },
+          "correct_answer": "A",
+          "justification": "The dict.keys() method returns a view object displaying a list of all dictionary keys."
+        }
+      ]
+    },
+    {
+      "topic_id": "W6_T2",
+      "topic_name": "Control Flow & Indentation Policy",
+      "description": "If-elif-else, loops, break/continue, and indentation rules.",
+      "questions": [
+        {
+          "id": "W6_T2_Q1",
+          "difficulty": "Easy",
+          "question": "According to Week 6 Assignment Question 3, what specific requirement in Python defines code blocks inside loops and conditionals?",
+          "options": {
+            "A": "Enclosing code blocks in curly braces {}",
+            "B": "Using begin and end keywords",
+            "C": "Following a rigid indentation policy to mark code blocks",
+            "D": "Ending every line with a semicolon ;"
+          },
+          "correct_answer": "C",
+          "justification": "Python enforces a strict indentation policy to define statement blocks."
+        },
+        {
+          "id": "W6_T2_Q2",
+          "difficulty": "Easy",
+          "question": "Which keyword introduces an additional conditional branch in a Python if-statement?",
+          "options": {
+            "A": "elif",
+            "B": "else if",
+            "C": "then",
+            "D": "case"
+          },
+          "correct_answer": "A",
+          "justification": "Python uses the 'elif' keyword for chained conditional checks."
+        },
+        {
+          "id": "W6_T2_Q3",
+          "difficulty": "Easy",
+          "question": "Which statement immediately exits the innermost looping construct (for/while) in Python?",
+          "options": {
+            "A": "break",
+            "B": "continue",
+            "C": "pass",
+            "D": "exit()"
+          },
+          "correct_answer": "A",
+          "justification": "The 'break' statement terminates the loop execution immediately."
+        },
+        {
+          "id": "W6_T2_Q4",
+          "difficulty": "Easy",
+          "question": "Which statement skips the remainder of the current loop iteration and proceeds to the next cycle?",
+          "options": {
+            "A": "continue",
+            "B": "break",
+            "C": "stop",
+            "D": "return"
+          },
+          "correct_answer": "A",
+          "justification": "The 'continue' statement jumps directly to the next loop iteration."
+        },
+        {
+          "id": "W6_T2_Q5",
+          "difficulty": "Easy",
+          "question": "Which null statement acts as a placeholder when syntactically required but no code needs execution?",
+          "options": {
+            "A": "pass",
+            "B": "null",
+            "C": "void",
+            "D": "none"
+          },
+          "correct_answer": "A",
+          "justification": "The 'pass' keyword serves as a syntactical placeholder in Python."
+        },
+        {
+          "id": "W6_T2_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "What happens if a developer mixes tabs and spaces inconsistently for code block indentation in Python 3?",
+          "options": {
+            "A": "Python raises an IndentationError or TabError during parsing",
+            "B": "The code runs normally",
+            "C": "Python converts all tabs to comments",
+            "D": "The compiler reboots the computer"
+          },
+          "correct_answer": "A",
+          "justification": "Python 3 prohibits mixing tabs and spaces for indentation, throwing an IndentationError / TabError."
+        },
+        {
+          "id": "W6_T2_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "What is the output of the following Python loop?\nfor i in range(3):\n    if i == 1:\n        continue\n    print(i, end=' ')",
+          "options": {
+            "A": "0 2",
+            "B": "0 1 2",
+            "C": "1 2",
+            "D": "0"
+          },
+          "correct_answer": "A",
+          "justification": "When i == 1, continue skips the print. So 0 and 2 are printed."
+        },
+        {
+          "id": "W6_T2_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "What does the range(2, 10, 2) function call generate in a Python for-loop?",
+          "options": {
+            "A": "A sequence of even integers: 2, 4, 6, 8",
+            "B": "Integers from 2 to 10 inclusive",
+            "C": "Floating point numbers 2.0 to 10.0",
+            "D": "An infinite list"
+          },
+          "correct_answer": "A",
+          "justification": "range(start, stop, step) generates 2, 4, 6, 8 (stopping before 10)."
+        },
+        {
+          "id": "W6_T2_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "In Python while-loops, what condition creates an intentional infinite polling loop for sensor reading?",
+          "options": {
+            "A": "while True:",
+            "B": "while False:",
+            "C": "while 0:",
+            "D": "while None:"
+          },
+          "correct_answer": "A",
+          "justification": "'while True:' creates an endless loop frequently used in embedded polling scripts."
+        },
+        {
+          "id": "W6_T2_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "Consider code:\nx = 5\nif x > 10:\n    print('A')\nelif x > 2:\n    print('B')\nelse:\n    print('C')\nWhat is printed?",
+          "options": {
+            "A": "B",
+            "B": "A",
+            "C": "C",
+            "D": "A and B"
+          },
+          "correct_answer": "A",
+          "justification": "Since x = 5, x > 10 is False, but x > 2 is True. Thus 'B' is printed."
+        }
+      ]
+    },
+    {
+      "topic_id": "W6_T3",
+      "topic_name": "File I/O Handling & Exception Handling",
+      "description": "open(), with context manager, file modes, csv, and try-except-finally.",
+      "questions": [
+        {
+          "id": "W6_T3_Q1",
+          "difficulty": "Easy",
+          "question": "What is the primary purpose of the try...except block in Python as evaluated in Assignment Week 6 Question 2?",
+          "options": {
+            "A": "To define a function",
+            "B": "To create a loop",
+            "C": "To handle exceptions and errors during execution without crashing the program",
+            "D": "To import external libraries"
+          },
+          "correct_answer": "C",
+          "justification": "try...except blocks catch runtime exceptions and allow graceful error handling without program termination."
+        },
+        {
+          "id": "W6_T3_Q2",
+          "difficulty": "Easy",
+          "question": "Which Python file opening mode opens a file for both reading and writing operations as tested in Assignment Week 6 Question 6?",
+          "options": {
+            "A": "rw",
+            "B": "w",
+            "C": "r+",
+            "D": "a"
+          },
+          "correct_answer": "C",
+          "justification": "The 'r+' mode opens a text file for both reading and writing operations."
+        },
+        {
+          "id": "W6_T3_Q3",
+          "difficulty": "Easy",
+          "question": "What occurs if you open an existing file in 'w' (write) mode using open('data.txt', 'w') as tested in Assignment Question 5?",
+          "options": {
+            "A": "The existing contents of the file are overwritten / truncated",
+            "B": "The file is opened in read-only mode",
+            "C": "An error is raised if the file exists",
+            "D": "Contents are appended to the end"
+          },
+          "correct_answer": "A",
+          "justification": "Opening a file in 'w' mode truncates/overwrites any existing file contents or creates a new file."
+        },
+        {
+          "id": "W6_T3_Q4",
+          "difficulty": "Easy",
+          "question": "Why is using the 'with' statement recommended when performing file I/O in Python?",
+          "options": {
+            "A": "It automatically ensures the file is closed properly after operations finish, even if an exception occurs",
+            "B": "It accelerates CPU speed by 10x",
+            "C": "It encrypts file text with RSA",
+            "D": "It deletes bad files automatically"
+          },
+          "correct_answer": "A",
+          "justification": "'with open()' acts as a context manager, guaranteeing that file descriptors close cleanly upon exit."
+        },
+        {
+          "id": "W6_T3_Q5",
+          "difficulty": "Easy",
+          "question": "Which standard Python module is specifically provided for reading and writing Comma Separated Values files?",
+          "options": {
+            "A": "csv",
+            "B": "math",
+            "C": "sys",
+            "D": "os"
+          },
+          "correct_answer": "A",
+          "justification": "Python's built-in 'csv' module handles parsing and writing CSV format files."
+        },
+        {
+          "id": "W6_T3_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "When opening a file in 'a' (append) mode, where is newly written data placed?",
+          "options": {
+            "A": "At the end of the file, preserving existing content",
+            "B": "At the beginning, overwriting line 1",
+            "C": "In a temporary buffer that is deleted on exit",
+            "D": "Data is discarded"
+          },
+          "correct_answer": "A",
+          "justification": "Append mode ('a') positions the file pointer at the end, adding new data without overwriting existing text."
+        },
+        {
+          "id": "W6_T3_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "In Python exception handling, when does an optional 'else' block attached to a try...except structure execute?",
+          "options": {
+            "A": "Only if NO exceptions were raised inside the try block",
+            "B": "Only when an exception occurs",
+            "C": "Every single time regardless of errors",
+            "D": "Never"
+          },
+          "correct_answer": "A",
+          "justification": "The 'else' block executes if and only if the code in the 'try' block completes without raising any exceptions."
+        },
+        {
+          "id": "W6_T3_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "In Python exception handling, when does a 'finally' block execute?",
+          "options": {
+            "A": "Always, regardless of whether an exception occurred or was handled",
+            "B": "Only if ValueError occurs",
+            "C": "Only if no exception occurs",
+            "D": "Only inside functions"
+          },
+          "correct_answer": "A",
+          "justification": "The 'finally' block always executes before exiting the try/except construct, ideal for cleanup."
+        },
+        {
+          "id": "W6_T3_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "Which code snippet correctly reads all rows from a CSV file using the csv module?",
+          "options": {
+            "A": "with open('data.csv', 'r') as f:\n    reader = csv.reader(f)\n    for row in reader:\n        print(row)",
+            "B": "csv.open('data.csv').readall()",
+            "C": "file.read_csv()",
+            "D": "import csv; csv.print()"
+          },
+          "correct_answer": "A",
+          "justification": "csv.reader(file) creates an iterable object yielding rows from the CSV file."
+        },
+        {
+          "id": "W6_T3_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "What exception type is caught when invalid string input is passed to int(), e.g. int('abc')?",
+          "options": {
+            "A": "ValueError",
+            "B": "ZeroDivisionError",
+            "C": "KeyError",
+            "D": "FileNotFoundError"
+          },
+          "correct_answer": "A",
+          "justification": "Passing non-numeric strings to int() raises a ValueError."
+        }
+      ]
+    }
+  ]
+}

@@ -304,7 +304,7 @@
           "justification": "Cleanrooms require strict continuous validation of positive pressure differential, temperature, humidity, and particle levels."
         },
         {
-          "id": "W12_T4_Q4",
+          "id": "W12_T4_Q4_VACCINE",
           "difficulty": "Medium/Hard",
           "question": "What occurs if an IIoT sensor detects a 0.5\u00b0C temperature excursion lasting 10 minutes during a $2 million biological vaccine batch production?",
           "options": {

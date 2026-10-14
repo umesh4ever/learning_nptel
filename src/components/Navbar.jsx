@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
 import Icon from './Icon.jsx'
+import { getCoursePath } from '../data/courseData.js'
 
-export default function Navbar({ quiz, questionIndex, finished, onGoHome, theme, onToggleTheme }) {
+export default function Navbar({ courseId, quiz, questionIndex, finished, onGoHome, theme, onToggleTheme }) {
   return (
     <header className="sticky top-0 z-20 border-b border-[#243b4c] bg-[#142536] px-3 py-1.5 text-[#dce7ef] shadow-md sm:px-6 sm:py-2 lg:px-10">
       <nav aria-label="Main navigation" className="mx-auto flex max-w-295 items-center justify-between gap-3">
         <Link
-          to="/setup/weeks"
+          to="/"
           onClick={onGoHome}
           className="flex min-h-11 min-w-0 items-center gap-3 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b9ddf5] sm:min-h-10"
         >
@@ -21,16 +22,16 @@ export default function Navbar({ quiz, questionIndex, finished, onGoHome, theme,
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-4">
           <Link
-            to="/setup/weeks"
+            to="/"
             onClick={onGoHome}
             className="inline-flex min-h-11 items-center rounded-lg px-3 py-2 text-xs font-bold text-[#c1cfda] transition-all hover:bg-[#25394a] hover:text-white active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#78a9c9] sm:min-h-10"
           >
             <span className="sm:hidden text-xl">Home</span>
-            <span className="hidden sm:inline">Weekly tests</span>
+            <span className="hidden sm:inline">Courses</span>
           </Link>
           {quiz && !finished && (
             <Link
-              to={`/quiz/${questionIndex + 1}`}
+              to={getCoursePath(courseId, `quiz/${questionIndex + 1}`)}
               className="inline-flex min-h-11 items-center gap-1.5 rounded-lg bg-[#315a75] px-3 py-2 text-xs font-bold text-[#e3edf4] transition-all hover:bg-[#3a698a] active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9ac4df] sm:min-h-10"
             >
               <span className="sm:hidden">Resume</span>

@@ -304,7 +304,7 @@
           "justification": "HDFS defaults to a replication factor of 3, writing block copies across different racks to survive node hardware failures."
         },
         {
-          "id": "W9_T4_Q4",
+          "id": "W9_T4_Q4_HDFS",
           "difficulty": "Medium/Hard",
           "question": "What occurs in an HDFS cluster if a DataNode hardware server crashes completely due to a power supply failure?",
           "options": {

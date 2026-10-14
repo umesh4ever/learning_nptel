@@ -1,6 +1,8 @@
-import { createHashRouter } from 'react-router-dom'
+import { createHashRouter, Navigate } from 'react-router-dom'
 import AppLayout from './AppLayout.jsx'
+import CourseSelectionRedirect from './routes/CourseSelectionRedirect.jsx'
 import RouteError from './routes/RouteError.jsx'
+import CourseRoute from './routes/CourseRoute.jsx'
 
 function lazyRoute(loadComponent) {
   return async () => {
@@ -20,11 +22,22 @@ export const router = createHashRouter([
     ),
     errorElement: <RouteError />,
     children: [
-      { index: true, lazy: lazyRoute(() => import('./routes/RouteFallback.jsx')) },
-      { path: 'setup/weeks', lazy: lazyRoute(() => import('./routes/WeekSetupRoute.jsx')) },
-      { path: 'setup/paper', lazy: lazyRoute(() => import('./routes/PaperSetupRoute.jsx')) },
-      { path: 'quiz/:questionNumber', lazy: lazyRoute(() => import('../features/quiz/QuizPage.jsx')) },
-      { path: 'results', lazy: lazyRoute(() => import('../features/quiz/ResultsPage.jsx')) },
+      { index: true, lazy: lazyRoute(() => import('./routes/CourseSelectionPage.jsx')) },
+      { path: 'setup/weeks', element: <CourseSelectionRedirect /> },
+      { path: 'setup/paper', element: <CourseSelectionRedirect /> },
+      { path: 'quiz/:questionNumber', element: <CourseSelectionRedirect /> },
+      { path: 'results', element: <CourseSelectionRedirect /> },
+      {
+        path: 'courses/:courseId',
+        element: <CourseRoute />,
+        children: [
+          { index: true, element: <Navigate to="setup/weeks" replace /> },
+          { path: 'setup/weeks', lazy: lazyRoute(() => import('./routes/WeekSetupRoute.jsx')) },
+          { path: 'setup/paper', lazy: lazyRoute(() => import('./routes/PaperSetupRoute.jsx')) },
+          { path: 'quiz/:questionNumber', lazy: lazyRoute(() => import('../features/quiz/QuizPage.jsx')) },
+          { path: 'results', lazy: lazyRoute(() => import('../features/quiz/ResultsPage.jsx')) },
+        ],
+      },
       { path: '*', lazy: lazyRoute(() => import('./routes/RouteFallback.jsx')) },
     ],
   },

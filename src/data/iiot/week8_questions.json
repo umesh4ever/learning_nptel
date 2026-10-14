@@ -1,0 +1,435 @@
+{
+  "course": "Introduction to the Internet of Things",
+  "week": 8,
+  "topic_title": "Software-Defined Networking (SDN) for IoT & Mobile Environments",
+  "analysis_of_assignment_style": {
+    "question_format": "Multiple Choice Questions (4 options: A, B, C, D)",
+    "evaluation_depth": "Combination of direct factual recall, component identification, protocol/standard matching, and scenario-based application reasoning.",
+    "difficulty_segmentation": [
+      "Easy (Direct recall of slide definitions & examples)",
+      "Medium/Hard (Multi-concept synthesis, scenario reasoning, boundary conditions)"
+    ],
+    "metadata_fields": [
+      "id",
+      "topic",
+      "difficulty",
+      "question",
+      "options",
+      "correct_answer",
+      "justification"
+    ]
+  },
+  "topics": [
+    {
+      "topic_id": "W8_T1",
+      "topic_name": "SDN Fundamentals, Architecture & OpenFlow Protocol",
+      "description": "Control/data plane decoupling, OpenFlow protocol, flow tables, and soft/hard timeouts.",
+      "questions": [
+        {
+          "id": "W8_T1_Q1",
+          "difficulty": "Easy",
+          "question": "What is Software-Defined Networking (SDN)?",
+          "options": {
+            "A": "A networking paradigm that decouples the control plane from the data plane, centralizing network intelligence in a software controller",
+            "B": "A method of soldering physical copper wires",
+            "C": "A database query language",
+            "D": "An offline spreadsheet application"
+          },
+          "correct_answer": "A",
+          "justification": "SDN separates network control logic (control plane) from underlying packet forwarding hardware (data plane)."
+        },
+        {
+          "id": "W8_T1_Q2",
+          "difficulty": "Easy",
+          "question": "In SDN-IoT architecture, where are flow classification and enhanced security typically handled as evaluated in Week 8 Question 15?",
+          "options": {
+            "A": "At the Data Center Networks / SDN Controller",
+            "B": "At the physical sensor nodes",
+            "C": "At the local battery charger",
+            "D": "At the user's analog watch"
+          },
+          "correct_answer": "A",
+          "justification": "Flow classification and security policies are centrally managed at the Data Center / SDN Controller level."
+        },
+        {
+          "id": "W8_T1_Q3",
+          "difficulty": "Easy",
+          "question": "Which protocol is the standard interface used for communication between the SDN Controller (control plane) and network switches (data plane)?",
+          "options": {
+            "A": "OpenFlow",
+            "B": "HTTP 1.0",
+            "C": "FTP",
+            "D": "SMTP"
+          },
+          "correct_answer": "A",
+          "justification": "OpenFlow is the standardized southbound protocol connecting SDN controllers to switches."
+        },
+        {
+          "id": "W8_T1_Q4",
+          "difficulty": "Easy",
+          "question": "True or False: SDN and OpenFlow are identical terms.",
+          "options": {
+            "A": "False (SDN is the overall concept/architecture; OpenFlow is a specific southbound protocol)",
+            "B": "True",
+            "C": "Only in satellite links",
+            "D": "Only when using fiber"
+          },
+          "correct_answer": "A",
+          "justification": "SDN is the broader architectural concept; OpenFlow is a specific protocol communicating between control and data planes."
+        },
+        {
+          "id": "W8_T1_Q5",
+          "difficulty": "Easy",
+          "question": "Which open-source software switch is the most popular OpenFlow-enabled virtual switch used in SDN deployments?",
+          "options": {
+            "A": "Open vSwitch (OVS)",
+            "B": "Indigo",
+            "C": "LINC",
+            "D": "Pantou"
+          },
+          "correct_answer": "A",
+          "justification": "Open vSwitch is the most widely deployed open-source software switch for SDN."
+        },
+        {
+          "id": "W8_T1_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "How does SDN solve rigid scaling and high operational costs in traditional mobile networks?",
+          "options": {
+            "A": "By abstracting physical network hardware into programmable software flows managed by a centralized controller",
+            "B": "By replacing digital signals with analog audio",
+            "C": "By removing routers completely",
+            "D": "By increasing node weight"
+          },
+          "correct_answer": "A",
+          "justification": "SDN abstracts rigid hardware into dynamic, software-programmable flow tables."
+        },
+        {
+          "id": "W8_T1_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "In OpenFlow flow-table management, what is the difference between 'Hard Timeout' and 'Soft Timeout' (Week 7 slides)?",
+          "options": {
+            "A": "Hard timeout deletes the rule after a fixed time regardless of activity; Soft timeout deletes the rule only if no matching traffic is received for a specified idle duration",
+            "B": "Hard timeout reboots the switch; Soft timeout reboots the server",
+            "C": "Soft timeout increases voltage; Hard timeout cuts power",
+            "D": "They are identical"
+          },
+          "correct_answer": "A",
+          "justification": "Hard timeout forces rule deletion after a fixed duration; Soft timeout deletes idle rules after an inactivity period."
+        },
+        {
+          "id": "W8_T1_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "What components comprise a standard OpenFlow Flow Table entry inside an SDN switch?",
+          "options": {
+            "A": "Match Fields (headers), Counters, and Actions (e.g., Forward, Drop, Controller)",
+            "B": "HTML tags and CSS styles",
+            "C": "AC voltage levels",
+            "D": "GPS coordinates"
+          },
+          "correct_answer": "A",
+          "justification": "An OpenFlow table entry contains header match criteria, statistics counters, and matching actions."
+        },
+        {
+          "id": "W8_T1_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "Why is centralizing control logic in an SDN Controller advantageous for urban-scale IoT deployments?",
+          "options": {
+            "A": "It provides global network visibility, enabling dynamic routing optimizations, global security enforcement, and automated traffic offloading",
+            "B": "It eliminates the need for electricity",
+            "C": "It limits network scaling to 10 nodes",
+            "D": "It forces all data to be stored on paper"
+          },
+          "correct_answer": "A",
+          "justification": "Global view allows SDN controllers to optimize flow placement, load balancing, and interference mitigation across urban IoT networks."
+        },
+        {
+          "id": "W8_T1_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "Which OpenFlow switch software turns commercial wireless access points into OpenFlow-enabled switches running OpenWRT?",
+          "options": {
+            "A": "Pantou",
+            "B": "Indigo",
+            "C": "Of13softswitch",
+            "D": "LINC"
+          },
+          "correct_answer": "A",
+          "justification": "Pantou turns commercial wireless routers/APs into OpenFlow switches using OpenWRT."
+        }
+      ]
+    },
+    {
+      "topic_id": "W8_T2",
+      "topic_name": "Software-Defined Mobile Wireless Networks (SDWMN)",
+      "description": "Interference management, traffic offloading, SINR, and virtualized radio resource management.",
+      "questions": [
+        {
+          "id": "W8_T2_Q1",
+          "difficulty": "Easy",
+          "question": "In Software-Defined Wireless Mobile Networks (SDWMN), how is inter-cell interference managed between neighboring eNodeBs?",
+          "options": {
+            "A": "The centralized SDN controller dynamically coordinates virtualized radio resource management (eICIC) across eNodeBs",
+            "B": "By shutting down all cell towers",
+            "C": "By increasing interference to maximum",
+            "D": "By using copper shielding between towers"
+          },
+          "correct_answer": "A",
+          "justification": "Virtualized radio resource management under SDN control coordinates eNodeB transmit parameters to maximize SINR."
+        },
+        {
+          "id": "W8_T2_Q2",
+          "difficulty": "Easy",
+          "question": "What does ANDSF stand for in mobile traffic management under SDN architectures?",
+          "options": {
+            "A": "Access Network Discovery and Selection Function",
+            "B": "Analog Network Data Switching Format",
+            "C": "Automated Node Digital System Frame",
+            "D": "Array Network Device Storage Facility"
+          },
+          "correct_answer": "A",
+          "justification": "ANDSF stands for Access Network Discovery and Selection Function."
+        },
+        {
+          "id": "W8_T2_Q3",
+          "difficulty": "Easy",
+          "question": "How does an SDN-based mobile gateway handle cellular traffic offloading to Wi-Fi?",
+          "options": {
+            "A": "The SDN controller dynamically installs flow rules steering heavy data streams from eNodeB to nearby Wi-Fi APs",
+            "B": "By turning off cellular radios permanently",
+            "C": "By converting cellular data to text SMS",
+            "D": "By deleting mobile subscriber accounts"
+          },
+          "correct_answer": "A",
+          "justification": "SDN controllers install dynamic flow rules redirecting mobile data flows onto Wi-Fi networks when in range."
+        },
+        {
+          "id": "W8_T2_Q4",
+          "difficulty": "Easy",
+          "question": "What key formula defines Signal-to-Interference-plus-Noise Ratio (SINR) in mobile wireless networks?",
+          "options": {
+            "A": "SINR = Signal / (Interference + Noise)",
+            "B": "SINR = Noise / Signal",
+            "C": "SINR = Signal * Interference * Noise",
+            "D": "SINR = Interference / Power"
+          },
+          "correct_answer": "A",
+          "justification": "SINR = S / (I + N), where S is desired signal power, I is interference power, and N is noise power."
+        },
+        {
+          "id": "W8_T2_Q5",
+          "difficulty": "Easy",
+          "question": "True or False: General OpenFlow natively supports mobile wireless networks without modifications.",
+          "options": {
+            "A": "False (General OpenFlow was designed for wired networks; modified versions like Odin/Mobi-Flow are required for wireless mobility)",
+            "B": "True",
+            "C": "Only over satellite links",
+            "D": "Only for optical fiber"
+          },
+          "correct_answer": "A",
+          "justification": "Standard OpenFlow requires extension frameworks (like Odin, Ubi-Flow, Mobi-Flow) to handle wireless mobility and handoffs."
+        },
+        {
+          "id": "W8_T2_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "Why is rule placement at access devices challenging in mobile IoT environments?",
+          "options": {
+            "A": "Users are mobile, creating dynamic topology changes that require frequent flow-table updates across heterogeneous access points",
+            "B": "Flow tables can only hold 1 bit of data",
+            "C": "Access points do not have power supplies",
+            "D": "Wireless signals travel in straight lines only"
+          },
+          "correct_answer": "A",
+          "justification": "Mobile devices move rapidly between APs, requiring frequent proactive or reactive flow-table modifications."
+        },
+        {
+          "id": "W8_T2_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "How does Network Virtualization under SDN benefit heterogeneous mobile IoT users?",
+          "options": {
+            "A": "It abstracts physical hardware into virtual network slices tailored to specific service QoS requirements",
+            "B": "It increases physical hardware weight",
+            "C": "It forces all devices to use the same speed",
+            "D": "It eliminates IP addresses"
+          },
+          "correct_answer": "A",
+          "justification": "Network virtualization creates isolated software-defined slices with customized bandwidth and latency policies."
+        },
+        {
+          "id": "W8_T2_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "In Software-Defined Wireless Mesh Networks, what is the primary role of Path Management?",
+          "options": {
+            "A": "Routing data based on application service requirements without depending on static core routing policies",
+            "B": "Digging underground cable trenches",
+            "C": "Cleaning wireless antennas physically",
+            "D": "Rebooting the server daily"
+          },
+          "correct_answer": "A",
+          "justification": "SDN path management routes flows dynamically according to real-time delay, loss, or bandwidth constraints."
+        },
+        {
+          "id": "W8_T2_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "How does centralized SDN control improve handoff latency when a mobile node moves between access points?",
+          "options": {
+            "A": "The controller pre-calculates the trajectory and proactively installs flow rules at the target AP before handoff completes",
+            "B": "By dropping all data during handoff",
+            "C": "By requiring manual user login",
+            "D": "By rebooting the mobile device"
+          },
+          "correct_answer": "A",
+          "justification": "Proactive rule placement by the controller eliminates setup latency during inter-AP handoffs."
+        },
+        {
+          "id": "W8_T2_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "What parameter does Virtualized Radio Resource Management (vRRM) adjust in eNodeBs to maximize SINR?",
+          "options": {
+            "A": "Transmit power levels, subcarrier channel allocations, and beamforming parameters",
+            "B": "Tower physical height",
+            "C": "AC power frequency",
+            "D": "Color of the cell tower"
+          },
+          "correct_answer": "A",
+          "justification": "vRRM coordinates radio transmit power, channel spectrum, and timing slots to minimize inter-cell interference."
+        }
+      ]
+    },
+    {
+      "topic_id": "W8_T3",
+      "topic_name": "Mobility-Aware Rule Placement Frameworks (Odin, Ubi-Flow, Mobi-Flow)",
+      "description": "Odin LVAP agent architecture, Ubi-Flow multi-controller partitioning, and Mobi-Flow predictive placement.",
+      "questions": [
+        {
+          "id": "W8_T3_Q1",
+          "difficulty": "Easy",
+          "question": "Which architecture proposes placing an agent at access points to communicate with the controller as evaluated in Week 8 Question 1?",
+          "options": {
+            "A": "Odin",
+            "B": "uFlow",
+            "C": "MobileFlow",
+            "D": "OpenFlow"
+          },
+          "correct_answer": "A",
+          "justification": "Odin proposes an agent-based solution placing an agent (Odin Agent) at access points."
+        },
+        {
+          "id": "W8_T3_Q2",
+          "difficulty": "Easy",
+          "question": "In Odin architecture, what virtual abstraction represents the client connection at the access point?",
+          "options": {
+            "A": "LVAP (Light Virtual Access Point)",
+            "B": "IPv6 address",
+            "C": "MAC layer frame",
+            "D": "VLAN tag"
+          },
+          "correct_answer": "A",
+          "justification": "Odin abstracts client Wi-Fi connections using Light Virtual Access Points (LVAPs)."
+        },
+        {
+          "id": "W8_T3_Q3",
+          "difficulty": "Easy",
+          "question": "Which solution was proposed by the SWAN group for mobility-aware flow rule placement in mobile IoT systems as tested in Week 8 Question 2?",
+          "options": {
+            "A": "MobileFlow",
+            "B": "Odin",
+            "C": "uFlow",
+            "D": "Soft-WSN"
+          },
+          "correct_answer": "A",
+          "justification": "MobileFlow was proposed by the SWAN group for mobile-based IoT networks."
+        },
+        {
+          "id": "W8_T3_Q4",
+          "difficulty": "Easy",
+          "question": "Which framework manages mobility in urban-scale software-defined IoT using network partitioning and flow scheduling?",
+          "options": {
+            "A": "Ubi-Flow",
+            "B": "Odin",
+            "C": "DevStack",
+            "D": "Arduino"
+          },
+          "correct_answer": "A",
+          "justification": "Ubi-Flow handles mobility management and flow scheduling in urban-scale software-defined IoT."
+        },
+        {
+          "id": "W8_T3_Q5",
+          "difficulty": "Easy",
+          "question": "Which framework uses proactive rule placement based on predicting user location at time (t+1) while at time (t)?",
+          "options": {
+            "A": "Mobi-Flow",
+            "B": "Odin",
+            "C": "LINC",
+            "D": "Pantou"
+          },
+          "correct_answer": "A",
+          "justification": "Mobi-Flow predicts end-user location at time (t+1) to proactively place flow rules in target switches."
+        },
+        {
+          "id": "W8_T3_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "How does Odin's LVAP (Light Virtual Access Point) enable seamless zero-hysteresis Wi-Fi handoffs?",
+          "options": {
+            "A": "The Odin Master moves the client's LVAP state from the old AP agent to the new AP agent without forcing the client to re-associate",
+            "B": "The client reboots its Wi-Fi card",
+            "C": "The user enters a new password",
+            "D": "The AP cuts power"
+          },
+          "correct_answer": "A",
+          "justification": "Moving the LVAP state between AP agents allows handoffs without client-side re-association overhead."
+        },
+        {
+          "id": "W8_T3_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "What are the two core software components in the Odin architecture?",
+          "options": {
+            "A": "Odin Agent (placed on physical APs) and Odin Master (placed at the controller)",
+            "B": "Odin Client and Odin Server",
+            "C": "Odin Database and Odin Web",
+            "D": "Odin Radio and Odin Antenna"
+          },
+          "correct_answer": "A",
+          "justification": "Odin consists of Odin Agents on access points and an Odin Master on the SDN controller."
+        },
+        {
+          "id": "W8_T3_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "How does Ubi-Flow achieve fault tolerance and scalable control across urban-scale IoT access points?",
+          "options": {
+            "A": "By partitioning the urban network into distributed controller domains with multi-controller task-resource matching",
+            "B": "By placing a single controller in a different country",
+            "C": "By disabling flow tables",
+            "D": "By requiring manual user intervention"
+          },
+          "correct_answer": "A",
+          "justification": "Ubi-Flow uses multi-controller partitioning to distribute load and provide fault tolerance in urban networks."
+        },
+        {
+          "id": "W8_T3_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "In Mobi-Flow, what happens to the flow tables on Base Stations (BS) and Access Points (AP) when a user moves from location t to t+1?",
+          "options": {
+            "A": "Flow rules for the mobile device are proactively updated on the target AP/BS before arrival, setting action to 'Forward'",
+            "B": "Rules are permanently set to 'Drop'",
+            "C": "All flow tables are deleted",
+            "D": "The user device is blocked"
+          },
+          "correct_answer": "A",
+          "justification": "Mobi-Flow pre-populates flow rules at the predicted target access device, ensuring continuous packet forwarding."
+        },
+        {
+          "id": "W8_T3_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "Compare Odin, Ubi-Flow, and Mobi-Flow focus areas in Software-Defined IoT.",
+          "options": {
+            "A": "Odin focuses on WLAN LVAP agent abstraction; Ubi-Flow focuses on urban multi-controller scheduling; Mobi-Flow focuses on location-predictive flow rule placement",
+            "B": "All three are optical fiber cabling standards",
+            "C": "Odin is for cloud storage; Ubi-Flow is for Bluetooth; Mobi-Flow is for satellite",
+            "D": "They are identical software programs"
+          },
+          "correct_answer": "A",
+          "justification": "Odin abstracts WLAN APs; Ubi-Flow partitions urban multi-controller load; Mobi-Flow predicts mobility for proactive flow placement."
+        }
+      ]
+    }
+  ]
+}

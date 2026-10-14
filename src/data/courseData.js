@@ -1,9 +1,5 @@
-const questionFiles = import.meta.glob('./week*_questions.json', {
-  eager: true,
-  import: 'default',
-})
-
-export const weeks = Object.values(questionFiles)
+function normalizeWeeks(questionFiles) {
+  return Object.values(questionFiles)
   .sort((first, second) => first.week - second.week)
   .map((week) => ({
     ...week,
@@ -17,6 +13,42 @@ export const weeks = Object.values(questionFiles)
       })),
     ),
   }))
+}
+
+const industryQuestionFiles = import.meta.glob('./iiot-4.0/week*_questions.json', {
+  eager: true,
+  import: 'default',
+})
+const iiotQuestionFiles = import.meta.glob('./iiot/week*_questions.json', {
+  eager: true,
+  import: 'default',
+})
+
+export const courses = {
+  'iiot-4.0': {
+    id: 'iiot-4.0',
+    name: 'Industry 4.0 & Industrial IoT',
+    description: 'Practice connected industry, industrial IoT, and Industry 4.0 concepts.',
+    weeks: normalizeWeeks(industryQuestionFiles),
+  },
+  iiot: {
+    id: 'iiot',
+    name: 'Introduction to the Internet of Things',
+    description: 'Practice IoT architecture, networking, sensors, analytics, and applications.',
+    weeks: normalizeWeeks(iiotQuestionFiles),
+  },
+}
+
+export const courseList = Object.values(courses)
+export const weeks = courses['iiot-4.0'].weeks
+
+export function getCourse(courseId) {
+  return courses[courseId] ?? null
+}
+
+export function getCoursePath(courseId, route = 'setup/weeks') {
+  return `/courses/${courseId}/${route}`
+}
 
 export const difficultyOptions = ['Easy', 'Medium/Hard', 'Mixed']
 

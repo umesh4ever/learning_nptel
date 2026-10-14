@@ -1,0 +1,435 @@
+{
+  "course": "Introduction to the Internet of Things",
+  "week": 12,
+  "topic_title": "Data Analytics for IoT Systems",
+  "analysis_of_assignment_style": {
+    "question_format": "Multiple Choice Questions (4 options: A, B, C, D)",
+    "evaluation_depth": "Combination of direct factual recall, component identification, protocol/standard matching, and scenario-based application reasoning.",
+    "difficulty_segmentation": [
+      "Easy (Direct recall of slide definitions & examples)",
+      "Medium/Hard (Multi-concept synthesis, scenario reasoning, boundary conditions)"
+    ],
+    "metadata_fields": [
+      "id",
+      "topic",
+      "difficulty",
+      "question",
+      "options",
+      "correct_answer",
+      "justification"
+    ]
+  },
+  "topics": [
+    {
+      "topic_id": "W12_T1",
+      "topic_name": "Qualitative vs Quantitative Data Analysis Principles",
+      "description": "Qualitative vs quantitative analysis, observational principles, and feature encoding.",
+      "questions": [
+        {
+          "id": "W12_T1_Q1",
+          "difficulty": "Easy",
+          "question": "According to Week 12 Assignment Question 1, what are the two broad types of data analysis?",
+          "options": {
+            "A": "Qualitative and Quantitative",
+            "B": "Repetitive and Quantitative",
+            "C": "Repetitive and Qualitative",
+            "D": "All of these"
+          },
+          "correct_answer": "A",
+          "justification": "The two primary branches of data analysis are Qualitative and Quantitative analysis."
+        },
+        {
+          "id": "W12_T1_Q2",
+          "difficulty": "Easy",
+          "question": "Which type of data analysis involves numerical measurements, statistical modeling, and objective variance testing?",
+          "options": {
+            "A": "Quantitative Analysis",
+            "B": "Qualitative Analysis",
+            "C": "Categorical Analysis",
+            "D": "Descriptive Analysis"
+          },
+          "correct_answer": "A",
+          "justification": "Quantitative analysis relies on numerical measurements, mathematical modeling, and statistical testing."
+        },
+        {
+          "id": "W12_T1_Q3",
+          "difficulty": "Easy",
+          "question": "Which type of data analysis focuses on non-numerical observations, descriptive qualities, categories, and meanings?",
+          "options": {
+            "A": "Qualitative Analysis",
+            "B": "Quantitative Analysis",
+            "C": "Regression Analysis",
+            "D": "ANOVA testing"
+          },
+          "correct_answer": "A",
+          "justification": "Qualitative analysis examines non-numerical observations, categories, and descriptive characteristics."
+        },
+        {
+          "id": "W12_T1_Q4",
+          "difficulty": "Easy",
+          "question": "According to Assignment Week 12 Question 2, what are the basic principles of Qualitative Analysis?",
+          "options": {
+            "A": "All of these (Notice things, Think about things, Collect things)",
+            "B": "Notice things",
+            "C": "Think about things",
+            "D": "Collect things"
+          },
+          "correct_answer": "A",
+          "justification": "The foundational process cycle of qualitative analysis includes noticing things, collecting things, and thinking about things."
+        },
+        {
+          "id": "W12_T1_Q5",
+          "difficulty": "Easy",
+          "question": "Which of the following examples represents Quantitative Data?",
+          "options": {
+            "A": "Volume (liters), weight (kg), and temperature (Celsius)",
+            "B": "Color, smell, and taste",
+            "C": "Text sentiment description",
+            "D": "User satisfaction opinion"
+          },
+          "correct_answer": "A",
+          "justification": "Numerical variables like volume, weight, and temperature represent quantitative measurements."
+        },
+        {
+          "id": "W12_T1_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "Compare Qualitative and Quantitative data attributes as summarized in Week 12 slides.",
+          "options": {
+            "A": "Qualitative involves observed descriptions and quality emphasis; Quantitative involves measured numbers and quantity emphasis",
+            "B": "Qualitative uses numbers only; Quantitative uses text descriptions only",
+            "C": "Both are strictly non-numerical",
+            "D": "Neither is used in data science"
+          },
+          "correct_answer": "A",
+          "justification": "Qualitative focuses on observed attributes and qualities; Quantitative focuses on measured numerical values."
+        },
+        {
+          "id": "W12_T1_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "Why is statistical significance testing crucial when interpreting quantitative sensor datasets?",
+          "options": {
+            "A": "To verify that observed variations or patterns reflect true physical phenomena rather than random noise or chance",
+            "B": "To delete zero values",
+            "C": "To convert numbers into text",
+            "D": "To increase file size"
+          },
+          "correct_answer": "A",
+          "justification": "Statistical significance ensures that experimental findings are reliable and unlikely to result from random fluctuation."
+        },
+        {
+          "id": "W12_T1_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "In IoT telemetry analytics, what is the primary role of Data Preprocessing before running statistical models?",
+          "options": {
+            "A": "Cleaning missing values, removing outliers, scaling features, and filtering noise from raw sensor streams",
+            "B": "Overwriting data with random values",
+            "C": "Encrypting text into optical pulses",
+            "D": "Deleting the database"
+          },
+          "correct_answer": "A",
+          "justification": "Preprocessing cleans raw sensor streams, handling noise, gaps, and outliers before model training."
+        },
+        {
+          "id": "W12_T1_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "How does Categorical Data encoding prepare qualitative observations for quantitative machine learning models?",
+          "options": {
+            "A": "By mapping discrete text categories into numerical representations (e.g., One-Hot Encoding or Label Encoding)",
+            "B": "By deleting all category text",
+            "C": "By converting numbers into letters",
+            "D": "By running hardware diagnostics"
+          },
+          "correct_answer": "A",
+          "justification": "Encoding transforms categorical text labels into numerical vectors suitable for mathematical ML algorithms."
+        },
+        {
+          "id": "W12_T1_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "What metric characterizes the spread or dispersion of quantitative sensor readings around their sample mean?",
+          "options": {
+            "A": "Variance and Standard Deviation",
+            "B": "Mode category",
+            "C": "String length",
+            "D": "File creation time"
+          },
+          "correct_answer": "A",
+          "justification": "Variance and standard deviation measure data dispersion around the arithmetic mean."
+        }
+      ]
+    },
+    {
+      "topic_id": "W12_T2",
+      "topic_name": "Statistical Modeling, Correlation & Regression Analysis",
+      "description": "Pearson correlation, linear/multiple regression, prediction, and R-squared.",
+      "questions": [
+        {
+          "id": "W12_T2_Q1",
+          "difficulty": "Easy",
+          "question": "What technique investigates the strength and direction of a linear relationship between two quantitative continuous variables?",
+          "options": {
+            "A": "Correlation Analysis (e.g. Pearson's correlation coefficient r)",
+            "B": "Qualitative notice board",
+            "C": "File compression",
+            "D": "Bitwise OR operation"
+          },
+          "correct_answer": "A",
+          "justification": "Correlation analysis measures the linear association between continuous variables."
+        },
+        {
+          "id": "W12_T2_Q2",
+          "difficulty": "Easy",
+          "question": "In statistical modeling, what is the primary goal of Regression Analysis?",
+          "options": {
+            "A": "To estimate the relationship between a dependent variable and one or more independent variables for prediction/forecasting",
+            "B": "To sort text alphabetically",
+            "C": "To count total words",
+            "D": "To format hard drives"
+          },
+          "correct_answer": "A",
+          "justification": "Regression analysis estimates conditional mathematical expectations to model and forecast target variables."
+        },
+        {
+          "id": "W12_T2_Q3",
+          "difficulty": "Easy",
+          "question": "What range of values can Pearson's correlation coefficient (r) assume?",
+          "options": {
+            "A": "Between -1.0 and +1.0",
+            "B": "Between 0 and 100",
+            "C": "Between -infinity and +infinity",
+            "D": "Between 0.0 and 1.0 only"
+          },
+          "correct_answer": "A",
+          "justification": "Pearson's r ranges from -1.0 (perfect negative correlation) to +1.0 (perfect positive correlation)."
+        },
+        {
+          "id": "W12_T2_Q4",
+          "difficulty": "Easy",
+          "question": "In simple linear regression y = mx + c, what does 'y' represent?",
+          "options": {
+            "A": "The Dependent / Target variable",
+            "B": "The Independent / Feature variable",
+            "C": "The Slope / Coefficient",
+            "D": "The Intercept"
+          },
+          "correct_answer": "A",
+          "justification": "In regression, y represents the dependent outcome variable being predicted."
+        },
+        {
+          "id": "W12_T2_Q5",
+          "difficulty": "Easy",
+          "question": "True or False: A strong correlation between two sensor variables automatically proves direct cause-and-effect causality.",
+          "options": {
+            "A": "False (Correlation indicates association, but does not prove direct causality without experimental isolation)",
+            "B": "True",
+            "C": "Only if r = 0.5",
+            "D": "Only in temperature sensors"
+          },
+          "correct_answer": "A",
+          "justification": "Correlation measures linear association, but does not inherently establish causal mechanisms."
+        },
+        {
+          "id": "W12_T2_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "In IoT predictive maintenance, how is Linear Regression applied to vibration sensor streams?",
+          "options": {
+            "A": "By modeling vibration intensity over operating hours to predict the time remaining before bearing failure occurs",
+            "B": "By measuring ambient air color",
+            "C": "By turning off the machine",
+            "D": "By deleting historic logs"
+          },
+          "correct_answer": "A",
+          "justification": "Regression models trend lines over time to forecast when sensor thresholds will cross failure limits."
+        },
+        {
+          "id": "W12_T2_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "What does a Pearson correlation coefficient of r = 0.0 indicate between two sensor variables?",
+          "options": {
+            "A": "No linear correlation exists between the two variables",
+            "B": "A perfect positive linear relationship",
+            "C": "A perfect negative linear relationship",
+            "D": "Measurement error"
+          },
+          "correct_answer": "A",
+          "justification": "An r value of 0.0 indicates the absence of any linear relationship."
+        },
+        {
+          "id": "W12_T2_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "What is the function estimated in regression analysis that characterizes the conditional expectation of y given x called?",
+          "options": {
+            "A": "Regression Function",
+            "B": "Polynomial derivative",
+            "C": "Discrete step function",
+            "D": "Random seed"
+          },
+          "correct_answer": "A",
+          "justification": "The regression function models y's expected value as a function of independent x variables."
+        },
+        {
+          "id": "W12_T2_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "How does Multiple Linear Regression differ from Simple Linear Regression?",
+          "options": {
+            "A": "Simple regression uses 1 independent variable; Multiple regression uses 2 or more independent variables to predict y",
+            "B": "Simple uses text; Multiple uses images",
+            "C": "Simple runs on GPUs; Multiple runs on CPUs",
+            "D": "They are identical"
+          },
+          "correct_answer": "A",
+          "justification": "Multiple linear regression incorporates multiple explanatory feature variables into the prediction model."
+        },
+        {
+          "id": "W12_T2_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "What statistical metric (R-squared / Coefficient of Determination) measures the proportion of variance in the dependent variable explained by regression?",
+          "options": {
+            "A": "R-squared (R^2)",
+            "B": "p-value",
+            "C": "Chi-square",
+            "D": "Z-score"
+          },
+          "correct_answer": "A",
+          "justification": "R-squared measures the goodness-of-fit, indicating the fraction of variance explained by the model."
+        }
+      ]
+    },
+    {
+      "topic_id": "W12_T3",
+      "topic_name": "Advanced IoT Analytics & Smartphone Sensing",
+      "description": "Smartphone sensors (accelerometer, compass, gyro), deep learning on video/sensor streams, and edge/cloud tradeoffs.",
+      "questions": [
+        {
+          "id": "W12_T3_Q1",
+          "difficulty": "Easy",
+          "question": "According to Week 12 Assignment Question 13, which inbuilt sensors are present in high-end smartphones?",
+          "options": {
+            "A": "Accelerometer, Compass, and Gyroscope",
+            "B": "ECG and EEG",
+            "C": "Accelerometer, proximity, and EEG",
+            "D": "Pressure and NPK sensor"
+          },
+          "correct_answer": "A",
+          "justification": "High-end smartphones feature built-in accelerometers, digital compasses, and gyroscopes."
+        },
+        {
+          "id": "W12_T3_Q2",
+          "difficulty": "Easy",
+          "question": "According to Week 12 Assignment Question 12, True or False: Deep learning-based analysis CANNOT be performed on video data.",
+          "options": {
+            "A": "False (Deep learning can be applied to sensor streams, images, and video data)",
+            "B": "True",
+            "C": "Only for black and white text",
+            "D": "Only on supercomputers"
+          },
+          "correct_answer": "A",
+          "justification": "Deep learning algorithms (like CNNs/RNNs) analyze complex sensor streams, images, and video feeds."
+        },
+        {
+          "id": "W12_T3_Q3",
+          "difficulty": "Easy",
+          "question": "Which smartphone sensor measures angular velocity and orientation changes along 3 axes?",
+          "options": {
+            "A": "Gyroscope",
+            "B": "Barometer",
+            "C": "Thermometer",
+            "D": "Hygrometer"
+          },
+          "correct_answer": "A",
+          "justification": "Gyroscopes measure rotational velocity and orientation shifts."
+        },
+        {
+          "id": "W12_T3_Q4",
+          "difficulty": "Easy",
+          "question": "Which smartphone sensor measures linear acceleration and gravitational forces along 3 axes?",
+          "options": {
+            "A": "Accelerometer",
+            "B": "Compass",
+            "C": "GPS",
+            "D": "Microphone"
+          },
+          "correct_answer": "A",
+          "justification": "Accelerometers detect linear motion, tilt, and acceleration forces."
+        },
+        {
+          "id": "W12_T3_Q5",
+          "difficulty": "Easy",
+          "question": "According to Week 12 slides, what advantage does Network-based (Cloud/Edge) analytics offer for heavy processing tasks?",
+          "options": {
+            "A": "Larger processing-intensive methods can be applied, enabling group-based analytics across multiple node streams",
+            "B": "Zero network requirement",
+            "C": "Eliminates power supplies",
+            "D": "Requires no data"
+          },
+          "correct_answer": "A",
+          "justification": "Network/Cloud analytics accommodates high-capacity processing models and multi-sensor group analytics."
+        },
+        {
+          "id": "W12_T3_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "Compare Edge Analytics (on-device) and Cloud Analytics for smartphone sensor streams.",
+          "options": {
+            "A": "Edge analytics provides ultra-low latency decision-making and privacy; Cloud analytics supports heavy deep learning models and global aggregation",
+            "B": "Edge analytics requires supercomputers; Cloud runs on coin cells",
+            "C": "Edge analytics cannot process numbers",
+            "D": "Cloud analytics operates without internet"
+          },
+          "correct_answer": "A",
+          "justification": "Edge processing delivers real-time response and privacy; Cloud processing provides massive compute power for complex analytics."
+        },
+        {
+          "id": "W12_T3_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "How do Convolutional Neural Networks (CNNs) perform feature extraction on image and video streams from IoT cameras?",
+          "options": {
+            "A": "By passing trainable convolutional filters over spatial pixel matrices to automatically detect edges, textures, and object shapes",
+            "B": "By converting pixels to ASCII text",
+            "C": "By deleting video frames",
+            "D": "By measuring battery current"
+          },
+          "correct_answer": "A",
+          "justification": "CNNs apply hierarchical spatial filters to extract visual feature representations from image and video feeds."
+        },
+        {
+          "id": "W12_T3_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "In smartphone-based Human Activity Recognition (HAR), how are 3-axis Accelerometer and Gyroscope data processed?",
+          "options": {
+            "A": "Sliding time-windows segment motion signals, statistical/time-frequency features are extracted, and classifiers predict activities (walking, running)",
+            "B": "Raw values are printed to paper",
+            "C": "Data is converted to audio songs",
+            "D": "Sensors are turned off"
+          },
+          "correct_answer": "A",
+          "justification": "HAR pipelines window motion time-series, extract spectral features, and classify physical human activities."
+        },
+        {
+          "id": "W12_T3_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "Why are Recurrent Neural Networks (RNNs) and LSTMs effective for analyzing IoT time-series sensor streams?",
+          "options": {
+            "A": "They maintain internal memory states across sequential time steps, capturing temporal dependencies and trends in time-series data",
+            "B": "They operate on static single images only",
+            "C": "They eliminate time variables",
+            "D": "They require no training data"
+          },
+          "correct_answer": "A",
+          "justification": "RNNs/LSTMs process temporal sequences, making them ideal for time-series sensor data streams."
+        },
+        {
+          "id": "W12_T3_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "In Edge-Cloud hybrid analytics, what strategy optimizes network bandwidth when streaming video surveillance?",
+          "options": {
+            "A": "Edge nodes run local object detection models to filter static frames, sending video clips to the cloud only when motion or anomalies occur",
+            "B": "Streaming raw 4K uncompressed video 24/7",
+            "C": "Turning off all cameras",
+            "D": "Deleting all stored recordings"
+          },
+          "correct_answer": "A",
+          "justification": "Edge filtering streams video to the cloud selectively upon detecting relevant events, saving massive network bandwidth."
+        }
+      ]
+    }
+  ]
+}

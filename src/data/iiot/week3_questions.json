@@ -1,0 +1,435 @@
+{
+  "course": "Introduction to the Internet of Things",
+  "week": 3,
+  "topic_title": "Industrial IoT Protocols: WirelessHART & Short-Range Connectivity",
+  "analysis_of_assignment_style": {
+    "question_format": "Multiple Choice Questions (4 options: A, B, C, D)",
+    "evaluation_depth": "Combination of direct factual recall, component identification, protocol/standard matching, and scenario-based application reasoning.",
+    "difficulty_segmentation": [
+      "Easy (Direct recall of slide definitions & examples)",
+      "Medium/Hard (Multi-concept synthesis, scenario reasoning, boundary conditions)"
+    ],
+    "metadata_fields": [
+      "id",
+      "topic",
+      "difficulty",
+      "question",
+      "options",
+      "correct_answer",
+      "justification"
+    ]
+  },
+  "topics": [
+    {
+      "topic_id": "W3_T1",
+      "topic_name": "WirelessHART Protocol, TDMA & Channel Mechanics",
+      "description": "HART standards, TDMA timeslots, 2.4 GHz channels, and superframes.",
+      "questions": [
+        {
+          "id": "W3_T1_Q1",
+          "difficulty": "Easy",
+          "question": "According to Week 3 Assignment Question 1, is there a network layer in Wired HART?",
+          "options": {
+            "A": "True (There is no network layer in Wired HART)",
+            "B": "False",
+            "C": "Only in 802.11 Wi-Fi mode",
+            "D": "Only when using fiber"
+          },
+          "correct_answer": "A",
+          "justification": "Wired HART operates directly on physical and data link layers and has no network layer."
+        },
+        {
+          "id": "W3_T1_Q2",
+          "difficulty": "Easy",
+          "question": "In the US, at what frequency does Z-Wave operate as tested in Assignment Week 3 Question 2?",
+          "options": {
+            "A": "908.42 MHz",
+            "B": "2.4 GHz",
+            "C": "5.8 GHz",
+            "D": "433 MHz"
+          },
+          "correct_answer": "A",
+          "justification": "Z-Wave operates at 908.42 MHz in the US and 868.42 MHz in Europe."
+        },
+        {
+          "id": "W3_T1_Q3",
+          "difficulty": "Easy",
+          "question": "Which medium access technique is used at the MAC layer in WirelessHART to guarantee collision-free transmission?",
+          "options": {
+            "A": "CSMA/CD",
+            "B": "TDMA (Time Division Multiple Access) with 10ms timeslots",
+            "C": "ALOHA",
+            "D": "Token Ring"
+          },
+          "correct_answer": "B",
+          "justification": "WirelessHART uses TDMA with 10ms timeslots grouped into superframes."
+        },
+        {
+          "id": "W3_T1_Q4",
+          "difficulty": "Easy",
+          "question": "What is the standard channel bandwidth timeslot duration in WirelessHART superframes?",
+          "options": {
+            "A": "1ms",
+            "B": "10ms",
+            "C": "100ms",
+            "D": "1 second"
+          },
+          "correct_answer": "B",
+          "justification": "WirelessHART time slots are precisely synchronized to 10ms."
+        },
+        {
+          "id": "W3_T1_Q5",
+          "difficulty": "Easy",
+          "question": "Which ISM frequency band is utilized by WirelessHART?",
+          "options": {
+            "A": "2.4 GHz ISM band",
+            "B": "5.0 GHz UNII band",
+            "C": "900 MHz ISM band",
+            "D": "60 GHz millimeter wave"
+          },
+          "correct_answer": "A",
+          "justification": "WirelessHART operates in the 2.4 GHz ISM band (using IEEE 802.15.4 radios)."
+        },
+        {
+          "id": "W3_T1_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "Why is Channel 26 removed from usage in WirelessHART networks?",
+          "options": {
+            "A": "Because Channel 26 has restricted usage/regulatory limits in certain regions",
+            "B": "Channel 26 requires 100 times more energy",
+            "C": "Channel 26 only carries analog signals",
+            "D": "Channel 26 is reserved for Bluetooth headsets"
+          },
+          "correct_answer": "A",
+          "justification": "Channel 26 is blacklisted/removed due to regional regulatory transmit power restrictions."
+        },
+        {
+          "id": "W3_T1_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "How does WirelessHART achieve high transmission reliability in harsh industrial noise environments?",
+          "options": {
+            "A": "Using channel hopping after every packet transmission combined with channel blacklisting",
+            "B": "Increasing transmitter power to 10,000 Watts",
+            "C": "Replacing wireless radios with copper wires",
+            "D": "Disabling error checking"
+          },
+          "correct_answer": "A",
+          "justification": "Per-packet channel hopping and blacklisting bad channels prevents persistent multipath fading and interference."
+        },
+        {
+          "id": "W3_T1_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "What network topology is employed at the network layer in WirelessHART?",
+          "options": {
+            "A": "Star topology only",
+            "B": "Mesh network topology",
+            "C": "Ring topology",
+            "D": "Linear bus topology"
+          },
+          "correct_answer": "B",
+          "justification": "WirelessHART utilizes a mesh topology where every node can route packets for its neighbors."
+        },
+        {
+          "id": "W3_T1_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "How many channel frequencies in the 2.4 GHz band are available for WirelessHART transmissions after excluding channel 26?",
+          "options": {
+            "A": "15 channels",
+            "B": "16 channels",
+            "C": "11 channels",
+            "D": "40 channels"
+          },
+          "correct_answer": "A",
+          "justification": "IEEE 802.15.4 defines 16 channels in 2.4 GHz (channels 11-26). Removing channel 26 leaves 15 usable channels."
+        },
+        {
+          "id": "W3_T1_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "What is the maximum number of simultaneous packet transmissions supported in a WirelessHART network during a single 10ms timeslot across all available channels?",
+          "options": {
+            "A": "1 packet",
+            "B": "15 packets",
+            "C": "100 packets",
+            "D": "256 packets"
+          },
+          "correct_answer": "B",
+          "justification": "With 15 available channels, up to 15 different packets can propagate simultaneously in a 10ms timeslot without interference."
+        }
+      ]
+    },
+    {
+      "topic_id": "W3_T2",
+      "topic_name": "Channel Blacklisting, Hopping & Industrial Topologies",
+      "description": "Blacklisting, hopping, and comparisons with Zigbee/Sub-GHz.",
+      "questions": [
+        {
+          "id": "W3_T2_Q1",
+          "difficulty": "Easy",
+          "question": "According to Assignment Week 3 Question 4, what process removes interference-prone channels from active use?",
+          "options": {
+            "A": "Channel Trimming",
+            "B": "Channel Flushing",
+            "C": "Channel Blacklisting",
+            "D": "None of these"
+          },
+          "correct_answer": "C",
+          "justification": "Channel Blacklisting identifies channels consistently affected by interference and removes them from the hopping sequence."
+        },
+        {
+          "id": "W3_T2_Q2",
+          "difficulty": "Easy",
+          "question": "Is Bluetooth technology based on ad-hoc network topology according to Assignment Week 3 Question 10?",
+          "options": {
+            "A": "True",
+            "B": "False",
+            "C": "Only in Bluetooth 5.0",
+            "D": "Only when connected to PC"
+          },
+          "correct_answer": "A",
+          "justification": "Bluetooth is an ad-hoc short-range wireless networking technology (forming piconets/scatternets)."
+        },
+        {
+          "id": "W3_T2_Q3",
+          "difficulty": "Easy",
+          "question": "Which modulation and encoding are used by Z-Wave?",
+          "options": {
+            "A": "QPSK and Manchester",
+            "B": "GFSK modulation and Manchester / NRZ encoding",
+            "C": "OFDM and QAM-64",
+            "D": "BPSK and Barker code"
+          },
+          "correct_answer": "B",
+          "justification": "Z-Wave utilizes GFSK modulation with FSK/NRZ Manchester encoding."
+        },
+        {
+          "id": "W3_T2_Q4",
+          "difficulty": "Easy",
+          "question": "What is the standard data rate of Zigbee operating at 2.4 GHz according to Week 3 Assignment Question 6?",
+          "options": {
+            "A": "250 kbps",
+            "B": "1 Mbps",
+            "C": "11 Mbps",
+            "D": "54 Mbps"
+          },
+          "correct_answer": "A",
+          "justification": "Zigbee operating at 2.4 GHz delivers a raw data rate of 250 kbps."
+        },
+        {
+          "id": "W3_T2_Q5",
+          "difficulty": "Easy",
+          "question": "Which channel access mechanism is used by Zigbee at the MAC layer?",
+          "options": {
+            "A": "TDMA",
+            "B": "CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance)",
+            "C": "FDMA",
+            "D": "CDMA"
+          },
+          "correct_answer": "B",
+          "justification": "Zigbee uses CSMA/CA for channel access, unlike WirelessHART's TDMA."
+        },
+        {
+          "id": "W3_T2_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "Compare the MAC layer channel access of WirelessHART and ZigBee. Which statement is correct?",
+          "options": {
+            "A": "WirelessHART uses TDMA with per-packet channel hopping; ZigBee uses CSMA/CA and hops only when the entire network hops",
+            "B": "WirelessHART uses CSMA/CD; ZigBee uses TDMA",
+            "C": "Both use ALOHA exclusively",
+            "D": "ZigBee uses per-packet channel hopping; WirelessHART does not hop"
+          },
+          "correct_answer": "A",
+          "justification": "WirelessHART uses TDMA with per-packet hopping; ZigBee uses CSMA/CA without per-packet hopping."
+        },
+        {
+          "id": "W3_T2_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "What is the primary role of the Network Manager in a WirelessHART industrial network?",
+          "options": {
+            "A": "It establishes routing tables, assigns TDMA timeslots, and configures superframes centrally",
+            "B": "It measures boiler pressure physically",
+            "C": "It converts Python scripts to C++",
+            "D": "It supplies AC power to field instruments"
+          },
+          "correct_answer": "A",
+          "justification": "The central Network Manager in WirelessHART configures superframes, routes, and timeslot schedules."
+        },
+        {
+          "id": "W3_T2_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "How does ISA 100.11a compare with WirelessHART in industrial automation?",
+          "options": {
+            "A": "Both are 802.15.4-based industrial standards supporting TDMA and mesh routing, but ISA 100.11a supports multiple messaging sub-protocols including IPv6",
+            "B": "ISA 100.11a is an optical fiber standard",
+            "C": "WirelessHART operates only on 5 GHz",
+            "D": "ISA 100.11a does not support encryption"
+          },
+          "correct_answer": "A",
+          "justification": "ISA 100.11a and WirelessHART both target industrial mesh automation, but ISA 100.11a offers broader native IPv6 transport integration."
+        },
+        {
+          "id": "W3_T2_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "What operating range is typical for Near Field Communication (NFC) protocols?",
+          "options": {
+            "A": "10 kilometers",
+            "B": "Within 10 centimeters (typically < 4 cm)",
+            "C": "100 meters",
+            "D": "1 kilometer"
+          },
+          "correct_answer": "B",
+          "justification": "NFC operates over extremely short distances (typically under 4 cm) using 13.56 MHz inductive coupling."
+        },
+        {
+          "id": "W3_T2_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "How does an active RFID tag differ from a passive RFID tag?",
+          "options": {
+            "A": "Active tags contain an internal battery source to power radio transmissions; passive tags harvest energy from the reader's RF field",
+            "B": "Passive tags have batteries; active tags do not",
+            "C": "Active tags only reflect light",
+            "D": "Passive tags transmit at 500 Watts"
+          },
+          "correct_answer": "A",
+          "justification": "Active RFID tags carry onboard batteries for longer range; passive tags rely on electromagnetic energy harvested from reader signals."
+        }
+      ]
+    },
+    {
+      "topic_id": "W3_T3",
+      "topic_name": "Comparative Analysis of Short-Range Wireless Standards",
+      "description": "Z-Wave, Bluetooth/BLE, NFC, and RFID mechanics.",
+      "questions": [
+        {
+          "id": "W3_T3_Q1",
+          "difficulty": "Easy",
+          "question": "Which wireless short-range protocol is specifically optimized for low-power home automation operating in Sub-1 GHz bands?",
+          "options": {
+            "A": "Z-Wave",
+            "B": "Ethernet",
+            "C": "LTE-M",
+            "D": "Satellite"
+          },
+          "correct_answer": "A",
+          "justification": "Z-Wave is a proprietary Sub-GHz mesh protocol optimized for smart home automation."
+        },
+        {
+          "id": "W3_T3_Q2",
+          "difficulty": "Easy",
+          "question": "What protocol layers are defined in ZigBee architecture?",
+          "options": {
+            "A": "Physical, MAC, Network, and Application layers built on IEEE 802.15.4",
+            "B": "Transport layer only",
+            "C": "HTTP and HTML only",
+            "D": "Optical switching layer"
+          },
+          "correct_answer": "A",
+          "justification": "Zigbee defines Network and Application layers on top of IEEE 802.15.4 PHY/MAC layers."
+        },
+        {
+          "id": "W3_T3_Q3",
+          "difficulty": "Easy",
+          "question": "Which protocol standard operates at 13.56 MHz for secure contactless payments and pair-and-pay interactions?",
+          "options": {
+            "A": "NFC",
+            "B": "Zigbee",
+            "C": "WirelessHART",
+            "D": "6LoWPAN"
+          },
+          "correct_answer": "A",
+          "justification": "NFC operates at 13.56 MHz for ultra-short-range transactions."
+        },
+        {
+          "id": "W3_T3_Q4",
+          "difficulty": "Easy",
+          "question": "True or False: Bluetooth Low Energy (BLE) operates in the 2.4 GHz ISM band and uses frequency-hopping spread spectrum (FHSS).",
+          "options": {
+            "A": "True",
+            "B": "False",
+            "C": "Only in Sub-GHz mode",
+            "D": "Only with optical line of sight"
+          },
+          "correct_answer": "A",
+          "justification": "BLE operates in 2.4 GHz ISM band using FHSS across 40 channels."
+        },
+        {
+          "id": "W3_T3_Q5",
+          "difficulty": "Easy",
+          "question": "Which component in an RFID system emits radio waves to read data stored on an RFID tag?",
+          "options": {
+            "A": "RFID Reader / Interrogator",
+            "B": "Piezoelectric crystal",
+            "C": "Stepper motor",
+            "D": "Thermocouple"
+          },
+          "correct_answer": "A",
+          "justification": "An RFID Reader (interrogator) transmits RF power to interrogate RFID tags."
+        },
+        {
+          "id": "W3_T3_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "Why does operating Z-Wave in Sub-1 GHz frequency bands reduce interference in home environments compared to 2.4 GHz protocols?",
+          "options": {
+            "A": "Sub-1 GHz avoids heavy congestion from Wi-Fi, Bluetooth, and microwave ovens operating in 2.4 GHz",
+            "B": "Sub-1 GHz signals cannot pass through air",
+            "C": "2.4 GHz signals travel 100 miles further",
+            "D": "Sub-1 GHz uses zero transmission power"
+          },
+          "correct_answer": "A",
+          "justification": "Sub-GHz bands avoid 2.4 GHz crowding and penetrate walls with lower attenuation."
+        },
+        {
+          "id": "W3_T3_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "In a Bluetooth piconet, what is the maximum number of active slave devices that can communicate with a single master node simultaneously?",
+          "options": {
+            "A": "7 active slave devices",
+            "B": "255 active slave devices",
+            "C": "1 active slave device",
+            "D": "1024 active slave devices"
+          },
+          "correct_answer": "A",
+          "justification": "A classic Bluetooth piconet supports 1 master and up to 7 active slave nodes simultaneously."
+        },
+        {
+          "id": "W3_T3_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "What key advantage does Bluetooth Low Energy (BLE) offer over Classic Bluetooth for IoT sensors?",
+          "options": {
+            "A": "BLE achieves ultra-low duty cycles and rapid sleep/wake state transitions, reducing energy consumption by orders of magnitude",
+            "B": "BLE streams uncompressed 4K video",
+            "C": "BLE eliminates radios",
+            "D": "BLE transmits at 100 kW power"
+          },
+          "correct_answer": "A",
+          "justification": "BLE is designed for short packet bursts with aggressive sleep cycles, allowing multi-year coin-cell battery life."
+        },
+        {
+          "id": "W3_T3_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "Which industrial standard protocol integrates WirelessHART into unified Field Device Tool (FDT) framework software?",
+          "options": {
+            "A": "HART Communication Protocol",
+            "B": "HTTP 2.0",
+            "C": "SMTP",
+            "D": "DNS-SD"
+          },
+          "correct_answer": "A",
+          "justification": "WirelessHART integrates seamlessly with existing HART tools, EDDL, and FDT frameworks."
+        },
+        {
+          "id": "W3_T3_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "What is the primary trade-off between passive RFID tags and active RFID tags in asset tracking?",
+          "options": {
+            "A": "Passive tags are virtually maintenance-free and cheap but have short read range (< 10m); active tags have long range (> 100m) but higher cost and battery limits",
+            "B": "Passive tags require high-capacity lithium batteries",
+            "C": "Active tags cannot store digital memory",
+            "D": "Passive tags transmit at 5 GHz"
+          },
+          "correct_answer": "A",
+          "justification": "Passive tags harvest reader energy (cheap, infinite shelf life, short range); active tags carry batteries (longer range, higher cost)."
+        }
+      ]
+    }
+  ]
+}

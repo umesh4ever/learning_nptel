@@ -1,14 +1,17 @@
-import { useLayoutEffect, useMemo, useReducer, useState } from 'react'
+import { useCallback, useLayoutEffect, useMemo, useReducer, useState } from 'react'
 import {
   createTestQuestions,
+  courseList,
   getAvailableQuestions,
+  getCourse,
   normalizeTotalQuestionCount,
-  weeks,
 } from '../../data/courseData.js'
 import { StudyroomContext } from './StudyroomContext.js'
 
-const STORAGE_KEY = 'nptel-studyroom-state-v1'
-const questionsById = new Map(weeks.flatMap((week) => week.questions.map((question) => [question.id, question])))
+const STORAGE_KEY_PREFIX = 'nptel-studyroom-state-v2:'
+const LEGACY_STORAGE_KEY = 'nptel-studyroom-state-v1'
+const ACTIVE_COURSE_STORAGE_KEY = 'nptel-studyroom-active-course'
+const STORAGE_KEY = (courseId) => `${STORAGE_KEY_PREFIX}${courseId}`
 
 function isRestorableQuizQuestion(question, quizWeeks, difficulty) {
   const isInSelectedWeeks = quizWeeks.some((week) => week.week === question.week_number)
@@ -20,9 +23,11 @@ function isRestorableQuizQuestion(question, quizWeeks, difficulty) {
   return isInSelectedWeeks && matchesDifficulty
 }
 
-function createInitialState() {
-  const selectedWeeks = weeks.length > 0 ? [weeks[0]] : []
+function createInitialState(courseId = null) {
+  const course = getCourse(courseId)
+  const selectedWeeks = course?.weeks[0] ? [course.weeks[0]] : []
   return {
+    courseId,
     selectedWeeks,
     difficulty: 'Easy',
     questionCount: Math.min(10, selectedWeeks[0] ? getAvailableQuestions(selectedWeeks[0], 'Easy') : 0),
@@ -34,17 +39,22 @@ function createInitialState() {
   }
 }
 
-function restoreState() {
-  const initialState = createInitialState()
+function restoreState(courseId) {
+  const initialState = createInitialState(courseId)
+  const course = getCourse(courseId)
+  if (!course) return { state: createInitialState(), warning: '' }
+
   try {
-    const savedValue = window.localStorage.getItem(STORAGE_KEY)
+    const savedValue =
+      window.localStorage.getItem(STORAGE_KEY(courseId)) ??
+      (courseId === 'iiot-4.0' ? window.localStorage.getItem(LEGACY_STORAGE_KEY) : null)
     if (!savedValue) return { state: initialState, warning: '' }
 
     const savedState = JSON.parse(savedValue)
     const selectedWeekNumbers = Array.isArray(savedState.selectedWeekNumbers)
       ? savedState.selectedWeekNumbers
-      : [weeks[0]?.week]
-    const selectedWeeks = weeks.filter((week) => selectedWeekNumbers.includes(week.week))
+      : [course.weeks[0]?.week]
+    const selectedWeeks = course.weeks.filter((week) => selectedWeekNumbers.includes(week.week))
     const restoredWeeks = selectedWeeks.length > 0 ? selectedWeeks : initialState.selectedWeeks
     const difficulty = ['Medium/Hard', 'Mixed'].includes(savedState.difficulty)
       ? savedState.difficulty
@@ -63,7 +73,7 @@ function restoreState() {
     let quiz = null
     let quizRestoreWarning = ''
     if (savedState.quiz && Array.isArray(savedState.quiz.weekNumbers)) {
-      const quizWeeks = weeks.filter((week) => savedState.quiz.weekNumbers.includes(week.week))
+      const quizWeeks = course.weeks.filter((week) => savedState.quiz.weekNumbers.includes(week.week))
       const quizDifficulty = ['Medium/Hard', 'Mixed'].includes(savedState.quiz.difficulty)
         ? savedState.quiz.difficulty
         : 'Easy'
@@ -83,6 +93,9 @@ function restoreState() {
         : null
       const hasSavedQuestionIds = Array.isArray(savedState.quiz.questionIds)
       const isLegacyQuiz = savedState.quiz.questionIds === undefined
+      const questionsById = new Map(
+        course.weeks.flatMap((week) => week.questions.map((question) => [question.id, question])),
+      )
       const questions = hasSavedQuestionIds
         ? savedState.quiz.questionIds.map((questionId) => questionsById.get(questionId))
         : isLegacyQuiz && quizWeeks.length > 0
@@ -147,6 +160,7 @@ function restoreState() {
     return {
       state: {
         ...initialState,
+        courseId,
         selectedWeeks: restoredWeeks,
         difficulty,
         questionCount,
@@ -165,6 +179,21 @@ function restoreState() {
       warning: 'The saved study could not be read. A fresh setup is ready.',
     }
   }
+}
+
+function restoreActiveCourseState() {
+  try {
+    const courseId = window.localStorage.getItem(ACTIVE_COURSE_STORAGE_KEY)
+    if (courseId && getCourse(courseId)) return restoreState(courseId)
+  } catch (error) {
+    console.error('Could not read the active course preference.', error)
+    return {
+      state: createInitialState(),
+      warning: 'The last course could not be restored. Choose a course to continue.',
+    }
+  }
+
+  return { state: createInitialState(), warning: '' }
 }
 
 function serializeState(state) {
@@ -193,12 +222,15 @@ function serializeState(state) {
 
 function studyroomReducer(state, action) {
   switch (action.type) {
+    case 'select-course':
+      return action.state
     case 'toggle-week': {
+      const courseWeeks = getCourse(state.courseId)?.weeks ?? []
       const selected = state.selectedWeeks.some((week) => week.week === action.week.week)
       if (selected && state.selectedWeeks.length === 1) return state
       const selectedWeeks = selected
         ? state.selectedWeeks.filter((week) => week.week !== action.week.week)
-        : weeks.filter((week) =>
+        : courseWeeks.filter((week) =>
             state.selectedWeeks.some((selectedWeek) => selectedWeek.week === week.week) ||
             week.week === action.week.week,
           )
@@ -213,20 +245,23 @@ function studyroomReducer(state, action) {
       }
     }
     case 'reset-weeks': {
-      const selectedWeeks = weeks.length > 0 ? [weeks[0]] : []
+      const courseWeeks = getCourse(state.courseId)?.weeks ?? []
+      const selectedWeeks = courseWeeks.length > 0 ? [courseWeeks[0]] : []
       return {
         ...state,
         selectedWeeks,
         questionCount: normalizeTotalQuestionCount(state.questionCount, selectedWeeks, state.difficulty),
       }
     }
-    case 'complete-paper':
+    case 'complete-paper': {
+      const courseWeeks = getCourse(state.courseId)?.weeks ?? []
       return {
         ...state,
-        selectedWeeks: weeks,
+        selectedWeeks: courseWeeks,
         difficulty: 'Mixed',
-        questionCount: weeks.length,
+        questionCount: courseWeeks.length,
       }
+    }
     case 'set-difficulty':
       return {
         ...state,
@@ -242,9 +277,10 @@ function studyroomReducer(state, action) {
     case 'set-duration':
       return { ...state, durationMinutes: action.minutes }
     case 'reset-paper': {
+      const courseWeeks = getCourse(state.courseId)?.weeks ?? []
       const isCompletePaper =
-        state.selectedWeeks.length === weeks.length &&
-        weeks.every((week) => state.selectedWeeks.some((selected) => selected.week === week.week))
+        state.selectedWeeks.length === courseWeeks.length &&
+        courseWeeks.every((week) => state.selectedWeeks.some((selected) => selected.week === week.week))
       const difficulty = isCompletePaper ? 'Mixed' : 'Easy'
       const defaultQuestionsPerWeek = isCompletePaper ? 1 : 10
       return {
@@ -316,14 +352,15 @@ function studyroomReducer(state, action) {
 }
 
 export function StudyroomProvider({ children }) {
-  const [restored] = useState(restoreState)
-  const [state, dispatch] = useReducer(studyroomReducer, restored.state)
-  const [persistenceWarning, setPersistenceWarning] = useState(restored.warning)
+  const [initial] = useState(restoreActiveCourseState)
+  const [state, dispatch] = useReducer(studyroomReducer, initial.state)
+  const [persistenceWarning, setPersistenceWarning] = useState(initial.warning)
 
   useLayoutEffect(() => {
+    if (!state.courseId) return undefined
     let warningTimer
     try {
-      window.localStorage.setItem(STORAGE_KEY, serializeState(state))
+      window.localStorage.setItem(STORAGE_KEY(state.courseId), serializeState(state))
       if (persistenceWarning) {
         warningTimer = window.setTimeout(() => setPersistenceWarning(''), 5000)
       }
@@ -337,9 +374,29 @@ export function StudyroomProvider({ children }) {
     return () => window.clearTimeout(warningTimer)
   }, [persistenceWarning, state])
 
+  const selectCourse = useCallback((courseId) => {
+    if (!getCourse(courseId)) return null
+
+    let saveWarning = ''
+    try {
+      if (state.courseId) {
+        window.localStorage.setItem(STORAGE_KEY(state.courseId), serializeState(state))
+      }
+      window.localStorage.setItem(ACTIVE_COURSE_STORAGE_KEY, courseId)
+    } catch (error) {
+      console.error('Could not save the current course state locally.', error)
+      saveWarning = 'The current course progress could not be saved on this device.'
+    }
+
+    const restored = restoreState(courseId)
+    dispatch({ type: 'select-course', state: restored.state })
+    setPersistenceWarning(restored.warning || saveWarning)
+    return restored.state
+  }, [state])
+
   const contextValue = useMemo(
-    () => ({ state, dispatch, persistenceWarning }),
-    [state, persistenceWarning],
+    () => ({ state, dispatch, persistenceWarning, selectCourse, courses: courseList }),
+    [state, persistenceWarning, selectCourse],
   )
 
   return <StudyroomContext.Provider value={contextValue}>{children}</StudyroomContext.Provider>

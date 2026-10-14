@@ -1,6 +1,7 @@
 import Icon from '../../components/Icon.jsx'
 
 export default function WeekSelectionStep({
+  courseName,
   weeks,
   selectedWeeks,
   onToggleWeek,
@@ -21,7 +22,7 @@ export default function WeekSelectionStep({
         </div>
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <h1 className="text-4xl font-semibold tracking-[-0.055em] text-(--c-dce7ef) sm:text-[48px] sm:leading-[1.08]">Industry 4.0 & Industrial IoT</h1>
+            <h1 className="text-4xl font-semibold tracking-[-0.055em] text-(--c-dce7ef) sm:text-[48px] sm:leading-[1.08]">{courseName}</h1>
             <p className="mt-4 max-w-2xl text-sm leading-6 text-(--c-a2b2bf) sm:text-base">
               Select one or more weeks. Your test will include the same number of questions from every selected week.
             </p>

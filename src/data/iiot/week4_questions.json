@@ -1,0 +1,435 @@
+{
+  "course": "Introduction to the Internet of Things",
+  "week": 4,
+  "topic_title": "Wireless Sensor Networks, Target Tracking & Agricultural IoT",
+  "analysis_of_assignment_style": {
+    "question_format": "Multiple Choice Questions (4 options: A, B, C, D)",
+    "evaluation_depth": "Combination of direct factual recall, component identification, protocol/standard matching, and scenario-based application reasoning.",
+    "difficulty_segmentation": [
+      "Easy (Direct recall of slide definitions & examples)",
+      "Medium/Hard (Multi-concept synthesis, scenario reasoning, boundary conditions)"
+    ],
+    "metadata_fields": [
+      "id",
+      "topic",
+      "difficulty",
+      "question",
+      "options",
+      "correct_answer",
+      "justification"
+    ]
+  },
+  "topics": [
+    {
+      "topic_id": "W4_T1",
+      "topic_name": "WSN Architecture, Sensor Nodes & Coverage",
+      "description": "WSN components, node behavior, coverage optimization, and energy considerations.",
+      "questions": [
+        {
+          "id": "W4_T1_Q1",
+          "difficulty": "Easy",
+          "question": "What is a Wireless Sensor Network (WSN)?",
+          "options": {
+            "A": "A dense deployment of sensor nodes that measure environmental conditions and collaborate wirelessly",
+            "B": "A single wired mainframe computer",
+            "C": "A manual paper logging system",
+            "D": "A satellite radar station"
+          },
+          "correct_answer": "A",
+          "justification": "WSNs consist of deployed sensor nodes measuring environment variables and transmitting data wirelessly."
+        },
+        {
+          "id": "W4_T1_Q2",
+          "difficulty": "Easy",
+          "question": "What are the major hardware components inside a standard WSN Sensor Node?",
+          "options": {
+            "A": "Sensing unit, Processing unit, Communication (transceiver) unit, and Power unit",
+            "B": "AC motor and diesel generator",
+            "C": "Cathode ray tube and optical lens",
+            "D": "Hydraulic piston and pump"
+          },
+          "correct_answer": "A",
+          "justification": "A sensor node comprises sensing, processing, communication (transceiver), and power supply units."
+        },
+        {
+          "id": "W4_T1_Q3",
+          "difficulty": "Easy",
+          "question": "According to Week 4 Assignment Question 3, what type of node behavior occurs due to environmental temporal effects?",
+          "options": {
+            "A": "Dumb behavior of sensor nodes is Temporal in nature",
+            "B": "Permanent hardware destruction",
+            "C": "Infinite battery charge",
+            "D": "Zero signal attenuation"
+          },
+          "correct_answer": "A",
+          "justification": "Dumb behavior of sensor nodes in environmental monitoring is temporal in nature."
+        },
+        {
+          "id": "W4_T1_Q4",
+          "difficulty": "Easy",
+          "question": "Which sensor detects human or animal intruders entering an agricultural field boundary based on emitted thermal radiation?",
+          "options": {
+            "A": "Passive Infrared (PIR) sensor",
+            "B": "Ultrasonic sensor",
+            "C": "Barometer",
+            "D": "Gyroscope"
+          },
+          "correct_answer": "A",
+          "justification": "PIR sensors detect moving targets based on changes in emitted passive infrared thermal signatures."
+        },
+        {
+          "id": "W4_T1_Q5",
+          "difficulty": "Easy",
+          "question": "An ultrasonic sensor measures which physical property of an intruder as evaluated in Week 4 Assignment Question 2?",
+          "options": {
+            "A": "Distance at which the object is located",
+            "B": "Chemical pH level",
+            "C": "Acoustic color",
+            "D": "Electrical conductivity"
+          },
+          "correct_answer": "A",
+          "justification": "Ultrasonic sensors emit high-frequency sound waves to measure target distance based on echo time-of-flight."
+        },
+        {
+          "id": "W4_T1_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "True or False: According to Week 4 Assignment Question 1, a camera can be used as an alternative or complement to PIR sensors in agricultural intrusion detection.",
+          "options": {
+            "A": "True",
+            "B": "False",
+            "C": "Only during rain",
+            "D": "Only if connected via optical fiber"
+          },
+          "correct_answer": "A",
+          "justification": "Visual cameras can complement or replace PIR sensors for agricultural intrusion monitoring."
+        },
+        {
+          "id": "W4_T1_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "According to Assignment Week 4 Question 3, Wireless Multimedia Sensor Networks (WMSNs) can be deployed for which applications?",
+          "options": {
+            "A": "Security surveillance, wild-habitat monitoring, and environmental monitoring",
+            "B": "Only offline text printing",
+            "C": "High-voltage AC transmission exclusively",
+            "D": "Submarine sonar depth control"
+          },
+          "correct_answer": "A",
+          "justification": "WMSNs support video/image surveillance, habitat monitoring, and environmental tracking."
+        },
+        {
+          "id": "W4_T1_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "What is the primary objective of Coverage optimization in WSN design?",
+          "options": {
+            "A": "To ensure every point in the target region is monitored by at least one sensor while minimizing the number of deployed nodes",
+            "B": "To maximize energy consumption",
+            "C": "To create physical wire clutter",
+            "D": "To eliminate memory storage"
+          },
+          "correct_answer": "A",
+          "justification": "Coverage optimization aims to blanket the sensing region reliably using the minimum required node density."
+        },
+        {
+          "id": "W4_T1_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "How does Clustered WSN architecture improve energy efficiency compared to flat flooding?",
+          "options": {
+            "A": "Local nodes transmit short distances to a Cluster Head (CH), which aggregates data and performs long-haul transmission to the sink",
+            "B": "Nodes constantly broadcast at maximum power",
+            "C": "Cluster Heads eliminate battery requirements",
+            "D": "Data packets are deleted before transmission"
+          },
+          "correct_answer": "A",
+          "justification": "Clustering reduces long-range radio transmissions by delegating data aggregation to designated Cluster Heads."
+        },
+        {
+          "id": "W4_T1_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "What is the main energy dissipation source in a wireless sensor node?",
+          "options": {
+            "A": "Radio transceiver operations (transmitting and receiving data)",
+            "B": "Sensing resistor idling",
+            "C": "Flash memory read operations",
+            "D": "Microcontroller sleep states"
+          },
+          "correct_answer": "A",
+          "justification": "The wireless radio transceiver consumes significantly more energy during transmission/reception than CPU or sensing circuits."
+        }
+      ]
+    },
+    {
+      "topic_id": "W4_T2",
+      "topic_name": "Target Tracking Formulations & Algorithms",
+      "description": "Push-based, poll-based, guided formulations, and tracking lifecycles.",
+      "questions": [
+        {
+          "id": "W4_T2_Q1",
+          "difficulty": "Easy",
+          "question": "In Target Tracking, which formulation involves nodes periodically computing target position and pushing reports to the sink?",
+          "options": {
+            "A": "Push-based formulation",
+            "B": "Poll-based formulation",
+            "C": "Guided formulation",
+            "D": "Random walk"
+          },
+          "correct_answer": "A",
+          "justification": "In push-based tracking, active nodes periodically compute target coordinates and push updates to the sink."
+        },
+        {
+          "id": "W4_T2_Q2",
+          "difficulty": "Easy",
+          "question": "In Poll-based target tracking, when are data reports transmitted towards the sink node?",
+          "options": {
+            "A": "Only when a low-cost query is issued by the sink to answer a request",
+            "B": "Every millisecond continuously",
+            "C": "When the node battery reaches zero",
+            "D": "Never"
+          },
+          "correct_answer": "A",
+          "justification": "Poll-based tracking logs presence locally and transmits reports only upon receiving a explicit query."
+        },
+        {
+          "id": "W4_T2_Q3",
+          "difficulty": "Easy",
+          "question": "Which tracking formulation uses beacon nodes to define a trajectory trail that a tracker follows to intercept a target?",
+          "options": {
+            "A": "Guided formulation",
+            "B": "Push-based formulation",
+            "C": "Poll-based formulation",
+            "D": "Static logging"
+          },
+          "correct_answer": "A",
+          "justification": "Guided tracking formulations construct a beacon trail that leads an actor/tracker directly to the target."
+        },
+        {
+          "id": "W4_T2_Q4",
+          "difficulty": "Easy",
+          "question": "Which network overlay structure is commonly associated with Poll-based tracking formulations?",
+          "options": {
+            "A": "Tree structure",
+            "B": "Cluster structure",
+            "C": "Face structure",
+            "D": "Ring structure"
+          },
+          "correct_answer": "A",
+          "justification": "Poll-based formulations typically employ tree-based routing structures for efficient query propagation."
+        },
+        {
+          "id": "W4_T2_Q5",
+          "difficulty": "Easy",
+          "question": "Which network overlay structure is commonly associated with Push-based tracking formulations?",
+          "options": {
+            "A": "Cluster structure",
+            "B": "Tree structure",
+            "C": "Face structure",
+            "D": "Linear bus"
+          },
+          "correct_answer": "A",
+          "justification": "Push-based tracking formulations commonly use cluster structures to aggregate local target location reports."
+        },
+        {
+          "id": "W4_T2_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "Which network overlay structure is typically used in Guided target tracking formulations?",
+          "options": {
+            "A": "Face structure / planar graph",
+            "B": "Star topology",
+            "C": "Single hop bus",
+            "D": "Unstructured flooding"
+          },
+          "correct_answer": "A",
+          "justification": "Guided tracking formulations often rely on face structures (planar graphs) to navigate trackers along boundary faces."
+        },
+        {
+          "id": "W4_T2_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "What is the sequential operational lifecycle of target tracking in sensor networks?",
+          "options": {
+            "A": "Target Detection -> Node Cooperation -> Position Computation -> Prediction -> Energy Management -> Recovery",
+            "B": "Recovery -> Prediction -> Detection",
+            "C": "Energy Management -> Detection -> Destruction",
+            "D": "Modulation -> Demodulation -> Encryption"
+          },
+          "correct_answer": "A",
+          "justification": "Target tracking proceeds through detection, neighbor node collaboration, trilateration position calculation, trajectory prediction, duty-cycling, and loss recovery."
+        },
+        {
+          "id": "W4_T2_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "How is Trilateration used in position computation during target tracking?",
+          "options": {
+            "A": "By measuring distance from at least 3 non-collinear reference sensor nodes to calculate target (x, y) coordinates",
+            "B": "By measuring ambient temperature",
+            "C": "By counting total network packets",
+            "D": "By measuring battery voltage"
+          },
+          "correct_answer": "A",
+          "justification": "Trilateration uses distance measurements from 3 or more known sensor locations to calculate target spatial coordinates."
+        },
+        {
+          "id": "W4_T2_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "Why is target trajectory Prediction beneficial for node energy conservation?",
+          "options": {
+            "A": "It allows sleep-mode nodes along the predicted future path to wake up just in time, keeping unneeded nodes asleep",
+            "B": "It eliminates the need for sensors",
+            "C": "It increases radio transmit power",
+            "D": "It forces all nodes to stay awake 100% of the time"
+          },
+          "correct_answer": "A",
+          "justification": "Predictive tracking proactively wakes up only nodes along the target's estimated path, maximizing sleep time for all other nodes."
+        },
+        {
+          "id": "W4_T2_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "What occurs during the 'Recovery' phase of a target tracking algorithm?",
+          "options": {
+            "A": "When the target trajectory is lost due to sudden turns or missed detections, the network expands its active searching region to re-acquire the target",
+            "B": "Nodes delete their firmware",
+            "C": "The sink reboots",
+            "D": "Battery energy is recharged wirelessly"
+          },
+          "correct_answer": "A",
+          "justification": "The recovery phase re-activates adjacent sensor clusters to re-acquire a target when tracking lock is lost."
+        }
+      ]
+    },
+    {
+      "topic_id": "W4_T3",
+      "topic_name": "Agricultural Intrusion Detection (AID) Systems",
+      "description": "AID prototype architecture, PIR/ultrasonic sensing, and GSM alert networks.",
+      "questions": [
+        {
+          "id": "W4_T3_Q1",
+          "difficulty": "Easy",
+          "question": "In the AID (Agricultural Intrusion Detection) system prototype, where are sensor nodes deployed?",
+          "options": {
+            "A": "Along the perimeter/boundary of the agricultural field",
+            "B": "Submerged in deep ocean trenches",
+            "C": "Inside urban data centers",
+            "D": "On high-altitude weather balloons"
+          },
+          "correct_answer": "A",
+          "justification": "AID deploys sensor boards along the perimeter boundary of agricultural fields."
+        },
+        {
+          "id": "W4_T3_Q2",
+          "difficulty": "Easy",
+          "question": "Which two complementary sensors are integrated on each AID sensor board?",
+          "options": {
+            "A": "PIR (Passive Infrared) and Ultrasonic sensors",
+            "B": "Temperature and Gas sensors",
+            "C": "ECG and EEG sensors",
+            "D": "LDR and Barometer"
+          },
+          "correct_answer": "A",
+          "justification": "AID perimeter boards combine PIR sensors (intrusion detection) and Ultrasonic sensors (distance measurement)."
+        },
+        {
+          "id": "W4_T3_Q3",
+          "difficulty": "Easy",
+          "question": "In the AID system architecture, how does the sink node send alert SMS messages to the farmer's cell phone?",
+          "options": {
+            "A": "Via a GSM modem connection",
+            "B": "Via undersea optical cable",
+            "C": "Via FM radio broadcast",
+            "D": "Via manual postal mail"
+          },
+          "correct_answer": "A",
+          "justification": "The AID sink node interfaces with a GSM module to dispatch instant SMS alerts to farmers."
+        },
+        {
+          "id": "W4_T3_Q4",
+          "difficulty": "Easy",
+          "question": "How do perimeter sensor nodes communicate data back to the sink in the AID prototype?",
+          "options": {
+            "A": "Wireless sensor link to Gateway -> Wired/wireless link to Sink",
+            "B": "Direct satellite uplink from every node",
+            "C": "Manual SD card extraction",
+            "D": "High-power lasers"
+          },
+          "correct_answer": "A",
+          "justification": "Perimeter nodes route detections wirelessly to a gateway, which forwards data to the central sink."
+        },
+        {
+          "id": "W4_T3_Q5",
+          "difficulty": "Easy",
+          "question": "What is Layer 4 in the functional system stack of the AID intrusion prototype?",
+          "options": {
+            "A": "SMS and Alert Layer",
+            "B": "Microcontroller Processing Layer",
+            "C": "Sensing Layer",
+            "D": "Physical Wire Layer"
+          },
+          "correct_answer": "A",
+          "justification": "Layer 4 handles SMS alerts and user notifications in the AID architecture."
+        },
+        {
+          "id": "W4_T3_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "Why is combining PIR and Ultrasonic sensors superior to using PIR sensors alone in farm intrusion detection?",
+          "options": {
+            "A": "PIR detects motion/heat changes to confirm intruder presence, while Ultrasonic measures exact spatial distance to track movement",
+            "B": "PIR measures soil moisture; Ultrasonic measures sunlight",
+            "C": "PIR provides power to Ultrasonic",
+            "D": "Ultrasonic replaces the microcontroller"
+          },
+          "correct_answer": "A",
+          "justification": "PIR provides reliable low-power motion detection; Ultrasonic adds precise distance measurement to localize the intruder."
+        },
+        {
+          "id": "W4_T3_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "How does perimeter-only deployment optimize energy and equipment cost compared to full-field grid deployment in agricultural fields?",
+          "options": {
+            "A": "Perimeter deployment requires far fewer nodes to intercept intruders entering boundary lines, drastically lowering hardware cost and maintenance",
+            "B": "Perimeter deployment requires 10 times more nodes",
+            "C": "Perimeter deployment eliminates the gateway",
+            "D": "Grid deployment cannot detect motion"
+          },
+          "correct_answer": "A",
+          "justification": "Monitoring the field perimeter intercepts intruders upon entry while using a fraction of the nodes required for full grid coverage."
+        },
+        {
+          "id": "W4_T3_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "What layer in the AID architecture is responsible for onboard sensor signal sampling and threshold verification?",
+          "options": {
+            "A": "Layer 2: Microcontroller Processing Layer",
+            "B": "Layer 4: SMS Alert Layer",
+            "C": "Layer 3: Wireless Routing Layer",
+            "D": "Layer 0: Cloud Storage"
+          },
+          "correct_answer": "A",
+          "justification": "Layer 2 (Microcontroller) executes sensor reading, local thresholding, and decision logic on board."
+        },
+        {
+          "id": "W4_T3_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "In WSN agricultural applications like AgriSens, which backhaul communication medium connects field gateways to remote servers?",
+          "options": {
+            "A": "GPRS / Cellular network",
+            "B": "Short-range Bluetooth",
+            "C": "Wired USB cable",
+            "D": "Infrared line of sight"
+          },
+          "correct_answer": "A",
+          "justification": "Agricultural gateways deployed in remote rural fields use cellular backhaul (e.g. GPRS/GSM) to connect to central servers."
+        },
+        {
+          "id": "W4_T3_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "What is a major environmental challenge when deploying optical/camera sensors instead of PIR sensors in outdoor farm perimeters?",
+          "options": {
+            "A": "Variable lighting conditions, foliage movement in wind causing false alarms, and higher power/processing consumption",
+            "B": "Cameras consume zero battery power",
+            "C": "PIR sensors cannot operate outdoors",
+            "D": "Cameras only function underground"
+          },
+          "correct_answer": "A",
+          "justification": "Visual camera tracking requires significant processing and is susceptible to false alarms from changing ambient light and wind."
+        }
+      ]
+    }
+  ]
+}

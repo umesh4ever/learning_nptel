@@ -1,0 +1,435 @@
+{
+  "course": "Introduction to the Internet of Things",
+  "week": 2,
+  "topic_title": "6LoWPAN Architecture, Low-Power Routing & Protocol Stacks",
+  "analysis_of_assignment_style": {
+    "question_format": "Multiple Choice Questions (4 options: A, B, C, D)",
+    "evaluation_depth": "Combination of direct factual recall, component identification, protocol/standard matching, and scenario-based application reasoning.",
+    "difficulty_segmentation": [
+      "Easy (Direct recall of slide definitions & examples)",
+      "Medium/Hard (Multi-concept synthesis, scenario reasoning, boundary conditions)"
+    ],
+    "metadata_fields": [
+      "id",
+      "topic",
+      "difficulty",
+      "question",
+      "options",
+      "correct_answer",
+      "justification"
+    ]
+  },
+  "topics": [
+    {
+      "topic_id": "W2_T1",
+      "topic_name": "6LoWPAN Architecture & Header Compression",
+      "description": "6LoWPAN RFC standards, 802.15.4 integration, and header compression/fragmentation.",
+      "questions": [
+        {
+          "id": "W2_T1_Q1",
+          "difficulty": "Easy",
+          "question": "What does 6LoWPAN stand for?",
+          "options": {
+            "A": "IPv6 over Low-Power Wireless Personal Area Networks",
+            "B": "6-Level Optical Wide Protocol Area Network",
+            "C": "6-Layer Operational Wireless Power Access Network",
+            "D": "IPv6 over Long-range Wireless Private Area Nodes"
+          },
+          "correct_answer": "A",
+          "justification": "6LoWPAN stands for IPv6 over Low-Power Wireless Personal Area Networks."
+        },
+        {
+          "id": "W2_T1_Q2",
+          "difficulty": "Easy",
+          "question": "Which organization standardizes 6LoWPAN under RFC 4919 and RFC 6282?",
+          "options": {
+            "A": "IEEE",
+            "B": "IETF (Internet Engineering Task Force)",
+            "C": "ISO",
+            "D": "ITU-T"
+          },
+          "correct_answer": "B",
+          "justification": "6LoWPAN was created and defined by the IETF."
+        },
+        {
+          "id": "W2_T1_Q3",
+          "difficulty": "Easy",
+          "question": "Which physical and MAC layer standard is primarily used beneath 6LoWPAN?",
+          "options": {
+            "A": "IEEE 802.11a",
+            "B": "IEEE 802.15.4",
+            "C": "IEEE 802.3 Ethernet",
+            "D": "GSM 900"
+          },
+          "correct_answer": "B",
+          "justification": "6LoWPAN adapts IPv6 packets for transmission over IEEE 802.15.4 radios."
+        },
+        {
+          "id": "W2_T1_Q4",
+          "difficulty": "Easy",
+          "question": "What is the full form of MQTT as tested in Assignment Week 2 Question 1?",
+          "options": {
+            "A": "Message Query Telemetry Transport",
+            "B": "Message Queue Telemetry Transport",
+            "C": "Message Queue Telemedicine Transport",
+            "D": "None of these"
+          },
+          "correct_answer": "B",
+          "justification": "MQTT stands for Message Queue Telemetry Transport."
+        },
+        {
+          "id": "W2_T1_Q5",
+          "difficulty": "Easy",
+          "question": "Which architecture does the XMPP protocol use according to Week 2 Assignment Question 2?",
+          "options": {
+            "A": "Peer-to-Peer",
+            "B": "Client-Server architecture",
+            "C": "Ring architecture",
+            "D": "Bus architecture"
+          },
+          "correct_answer": "B",
+          "justification": "XMPP utilizes a Client-Server architecture."
+        },
+        {
+          "id": "W2_T1_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "Why is header compression essential in 6LoWPAN?",
+          "options": {
+            "A": "To compress the 40-byte IPv6 header so packets fit in the 127-byte 802.15.4 frame limit",
+            "B": "To expand IPv6 addresses to 512 bits",
+            "C": "To encrypt packets with 256-bit RSA",
+            "D": "To replace wireless signals with infrared"
+          },
+          "correct_answer": "A",
+          "justification": "Compressing IPv6 headers is necessary to avoid exceeding the 127-byte payload limit of 802.15.4 frames."
+        },
+        {
+          "id": "W2_T1_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "How does 6LoWPAN handle IPv6 packets larger than the 802.15.4 frame size?",
+          "options": {
+            "A": "Dropping packets silently",
+            "B": "Using fragmentation with First Fragment and Subsequent Fragment headers",
+            "C": "Switching to 5 GHz Wi-Fi",
+            "D": "Rebooting the node"
+          },
+          "correct_answer": "B",
+          "justification": "The 6LoWPAN adaptation layer fragments large IPv6 datagrams into multiple smaller frames."
+        },
+        {
+          "id": "W2_T1_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "Which field in a 6LoWPAN subsequent fragment header specifies the offset of the fragment?",
+          "options": {
+            "A": "Datagram Offset",
+            "B": "Datagram Tag",
+            "C": "Hop Limit",
+            "D": "Flow Label"
+          },
+          "correct_answer": "A",
+          "justification": "Datagram Offset specifies the offset (in 8-byte units) of the fragment within the original datagram."
+        },
+        {
+          "id": "W2_T1_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "Which addressing modes are supported by 802.15.4 devices in 6LoWPAN?",
+          "options": {
+            "A": "64-bit Extended (globally unique) and 16-bit Short (PAN-specific)",
+            "B": "32-bit IPv4 and 128-bit MAC",
+            "C": "8-bit ASCII and 16-bit Unicode",
+            "D": "128-bit EUI and 256-bit SHA"
+          },
+          "correct_answer": "A",
+          "justification": "802.15.4 devices support 64-bit extended unique identifiers and 16-bit short addresses assigned by the PAN coordinator."
+        },
+        {
+          "id": "W2_T1_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "How are IPv6 multicast packets transmitted over 802.15.4 networks?",
+          "options": {
+            "A": "Dropped by gateway",
+            "B": "Carried as link-layer broadcast frames across the 6LoWPAN domain",
+            "C": "Converted to light pulses",
+            "D": "Stored indefinitely"
+          },
+          "correct_answer": "B",
+          "justification": "Because 802.15.4 lacks native MAC multicast, 6LoWPAN carries IPv6 multicast packets as link-layer broadcasts."
+        }
+      ]
+    },
+    {
+      "topic_id": "W2_T2",
+      "topic_name": "6LoWPAN Addressing & Routing Considerations",
+      "description": "LOADng on-demand routing and RPL distance-vector routing.",
+      "questions": [
+        {
+          "id": "W2_T2_Q1",
+          "difficulty": "Easy",
+          "question": "Which two routing protocols are specified for 6LoWPAN networks?",
+          "options": {
+            "A": "BGP and OSPF",
+            "B": "LOADng and RPL",
+            "C": "RIP and EIGRP",
+            "D": "HTTP and FTP"
+          },
+          "correct_answer": "B",
+          "justification": "LOADng and RPL are the primary routing protocols for 6LoWPAN Low-power and Lossy Networks."
+        },
+        {
+          "id": "W2_T2_Q2",
+          "difficulty": "Easy",
+          "question": "LOADng routing protocol is derived from which ad-hoc routing protocol?",
+          "options": {
+            "A": "AODV",
+            "B": "DSR",
+            "C": "DSDV",
+            "D": "OLSR"
+          },
+          "correct_answer": "A",
+          "justification": "LOADng is derived from AODV (Ad-hoc On-Demand Distance Vector)."
+        },
+        {
+          "id": "W2_T2_Q3",
+          "difficulty": "Easy",
+          "question": "What does RPL stand for in IoT networking?",
+          "options": {
+            "A": "IPv6 Routing Protocol for Low-Power and Lossy Networks",
+            "B": "Radio Path Link protocol",
+            "C": "Remote Processing Layer",
+            "D": "Random Packet Location protocol"
+          },
+          "correct_answer": "A",
+          "justification": "RPL stands for IPv6 Routing Protocol for Low-Power and Lossy Networks."
+        },
+        {
+          "id": "W2_T2_Q4",
+          "difficulty": "Easy",
+          "question": "In LOADng, what message is broadcast by an originator to discover a route?",
+          "options": {
+            "A": "Route Reply (RREP)",
+            "B": "Route Request (RREQ)",
+            "C": "Route Error (RERR)",
+            "D": "Beacon"
+          },
+          "correct_answer": "B",
+          "justification": "Route Request (RREQ) messages are generated and flooded to discover routes in LOADng."
+        },
+        {
+          "id": "W2_T2_Q5",
+          "difficulty": "Easy",
+          "question": "True or False: RPL is a proactive distance-vector routing protocol that builds a DODAG topology.",
+          "options": {
+            "A": "True",
+            "B": "False",
+            "C": "Only in wired networks",
+            "D": "Only over satellite"
+          },
+          "correct_answer": "A",
+          "justification": "RPL proactively maintains a Destination-Oriented Directed Acyclic Graph (DODAG) routing topology."
+        },
+        {
+          "id": "W2_T2_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "In LOADng routing, who is allowed to respond to a Route Request (RREQ)?",
+          "options": {
+            "A": "Any intermediate router with a cached route",
+            "B": "Only the intended destination node; intermediate routers are strictly prohibited",
+            "C": "The PAN coordinator exclusively",
+            "D": "The nearest leaf node"
+          },
+          "correct_answer": "B",
+          "justification": "In LOADng, intermediate routers are strictly prohibited from responding to RREQs; only the destination responds."
+        },
+        {
+          "id": "W2_T2_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "How does RPL maintain topology without causing heavy battery drain?",
+          "options": {
+            "A": "Flooding RREQs constantly",
+            "B": "Using low-rate beaconing (Trickle algorithm) that accelerates only upon detecting network inconsistencies",
+            "C": "Transmitting over infrared",
+            "D": "Disabling radio sleep modes"
+          },
+          "correct_answer": "B",
+          "justification": "RPL uses low-rate beaconing that speeds up only when inconsistencies or link drops are detected."
+        },
+        {
+          "id": "W2_T2_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "What happens in LOADng when an intermediate node detects a route breakage during forwarding?",
+          "options": {
+            "A": "It returns a Route Error (RERR) message to the data packet originator",
+            "B": "It drops the network permanently",
+            "C": "It reboots the entire network",
+            "D": "It converts data to MQTT"
+          },
+          "correct_answer": "A",
+          "justification": "When a link breaks, LOADng sends an RERR message back to the packet originator."
+        },
+        {
+          "id": "W2_T2_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "Which parameters can be optimized using RPL Objective Functions (OF)?",
+          "options": {
+            "A": "Minimizing energy, minimizing latency, and satisfying constraints",
+            "B": "Maximizing payload to 10 MB",
+            "C": "Eliminating encryption",
+            "D": "Forcing single-node bottleneck"
+          },
+          "correct_answer": "A",
+          "justification": "RPL Objective Functions optimize routing trees based on metrics like energy, latency, ETX, and node power."
+        },
+        {
+          "id": "W2_T2_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "How does RPL achieve data-path validation and loop detection?",
+          "options": {
+            "A": "Embedding routing information directly within the datagram header",
+            "B": "Manual user packet tracing",
+            "C": "Hardwired optical switches",
+            "D": "Loop detection is unsupported"
+          },
+          "correct_answer": "A",
+          "justification": "RPL includes a Hop-by-Hop option header in data packets containing rank information to detect loops in real time."
+        }
+      ]
+    },
+    {
+      "topic_id": "W2_T3",
+      "topic_name": "IoT Protocol Organization & Application Layer Mechanics",
+      "description": "Protocol categories, CoAP, MQTT, AMQP, and transport choices.",
+      "questions": [
+        {
+          "id": "W2_T3_Q1",
+          "difficulty": "Easy",
+          "question": "Under protocol organization, which layer do 6LoWPAN and RPL belong to?",
+          "options": {
+            "A": "Connectivity",
+            "B": "Data Protocols",
+            "C": "Semantic",
+            "D": "Device Management"
+          },
+          "correct_answer": "A",
+          "justification": "6LoWPAN and RPL fall under the Connectivity category."
+        },
+        {
+          "id": "W2_T3_Q2",
+          "difficulty": "Easy",
+          "question": "Which protocol is categorized under 'Data Protocols / Application Layer' in IoT?",
+          "options": {
+            "A": "MQTT",
+            "B": "6LoWPAN",
+            "C": "EPC",
+            "D": "IEEE 802.15.4"
+          },
+          "correct_answer": "A",
+          "justification": "MQTT is categorized under Data Protocols."
+        },
+        {
+          "id": "W2_T3_Q3",
+          "difficulty": "Easy",
+          "question": "Which transport layer protocol does standard CoAP utilize?",
+          "options": {
+            "A": "UDP",
+            "B": "TCP",
+            "C": "SCTP",
+            "D": "ICMP"
+          },
+          "correct_answer": "A",
+          "justification": "CoAP runs over UDP to minimize transmission overhead on constrained networks."
+        },
+        {
+          "id": "W2_T3_Q4",
+          "difficulty": "Easy",
+          "question": "Which transport layer protocol does standard MQTT utilize?",
+          "options": {
+            "A": "TCP",
+            "B": "UDP",
+            "C": "Raw ICMP",
+            "D": "Bluetooth SCO"
+          },
+          "correct_answer": "A",
+          "justification": "MQTT uses TCP to guarantee reliable connection-oriented packet delivery."
+        },
+        {
+          "id": "W2_T3_Q5",
+          "difficulty": "Easy",
+          "question": "JSON-LD and Web Thing Model belong to which functional protocol layer?",
+          "options": {
+            "A": "Semantic Layer",
+            "B": "Physical Layer",
+            "C": "Identification Layer",
+            "D": "Device Management Layer"
+          },
+          "correct_answer": "A",
+          "justification": "JSON-LD and Web Thing Model belong to the Semantic layer of IoT."
+        },
+        {
+          "id": "W2_T3_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "Compare MQTT and CoAP messaging paradigms. Which statement is correct?",
+          "options": {
+            "A": "MQTT uses Publish/Subscribe over TCP; CoAP uses Request/Response (RESTful) over UDP",
+            "B": "MQTT uses RESTful GET/POST over UDP; CoAP uses Publish/Subscribe over TCP",
+            "C": "Both operate without IP",
+            "D": "MQTT is analog; CoAP is optical"
+          },
+          "correct_answer": "A",
+          "justification": "MQTT is pub/sub over TCP; CoAP is RESTful GET/POST over UDP."
+        },
+        {
+          "id": "W2_T3_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "In MQTT architecture, what is the role of the central Broker?",
+          "options": {
+            "A": "It receives published messages and forwards them to subscribers filtered by topic",
+            "B": "It measures thermocouple temperature",
+            "C": "It generates header compression tables",
+            "D": "It supplies AC power"
+          },
+          "correct_answer": "A",
+          "justification": "The MQTT broker manages client connections, topic filtering, and message distribution."
+        },
+        {
+          "id": "W2_T3_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "Why is CoAP advantageous over HTTP in low-power wireless sensor networks?",
+          "options": {
+            "A": "CoAP uses a 4-byte binary header over UDP and supports asynchronous non-confirmable messages without TCP handshake cost",
+            "B": "CoAP requires 100 MB RAM",
+            "C": "CoAP converts text to FM radio",
+            "D": "HTTP lacks GET/POST"
+          },
+          "correct_answer": "A",
+          "justification": "CoAP uses a compact 4-byte binary header over UDP, eliminating HTTP text header overhead and TCP handshakes."
+        },
+        {
+          "id": "W2_T3_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "Which IoT protocols fall under the 'Device Management' category?",
+          "options": {
+            "A": "TR-069 and OMA-DM",
+            "B": "6LoWPAN and RPL",
+            "C": "EPC and uCode",
+            "D": "mDNS and DNS-SD"
+          },
+          "correct_answer": "A",
+          "justification": "TR-069 and OMA-DM are standards for remote device management and provisioning."
+        },
+        {
+          "id": "W2_T3_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "Which discovery protocols enable zero-configuration service discovery on local IoT subnets?",
+          "options": {
+            "A": "mDNS and DNS-SD",
+            "B": "BGP and OSPF",
+            "C": "LOADng and RPL",
+            "D": "AMQP and MQTT"
+          },
+          "correct_answer": "A",
+          "justification": "mDNS and DNS-SD allow devices to discover services on local subnets without a central server."
+        }
+      ]
+    }
+  ]
+}

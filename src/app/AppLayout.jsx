@@ -4,7 +4,7 @@ import Footer from '../components/Footer.jsx'
 import Navbar from '../components/Navbar.jsx'
 import Sidebar from '../components/Sidebar.jsx'
 import { useStudyroom } from '../features/studyroom/StudyroomContext.js'
-import { weeks } from '../data/courseData.js'
+import { getCourse } from '../data/courseData.js'
 
 const THEME_STORAGE_KEY = 'nptel-studyroom-theme'
 
@@ -22,7 +22,8 @@ function getPreferredTheme() {
 export default function AppLayout() {
   const navigate = useNavigate()
   const location = useLocation()
-  const { state, dispatch, persistenceWarning } = useStudyroom()
+  const { state, persistenceWarning } = useStudyroom()
+  const course = getCourse(state.courseId)
   const [isOnline, setIsOnline] = useState(() => navigator.onLine)
   const [theme, setTheme] = useState(getPreferredTheme)
   const { quiz, currentQuestionIndex, selectedAnswers } = state
@@ -30,7 +31,9 @@ export default function AppLayout() {
     ? quiz.questions.filter((question) => selectedAnswers[question.id] !== undefined).length
     : 0
   const progress = quiz ? (answeredCount / quiz.questions.length) * 100 : 0
-  const inActiveQuiz = Boolean(quiz && !state.finished && location.pathname.startsWith('/quiz/'))
+  const inActiveQuiz = Boolean(quiz && !state.finished && location.pathname.includes('/quiz/'))
+  const isCourseHome = location.pathname === '/'
+  const hasSidebar = Boolean(!inActiveQuiz && course && !isCourseHome)
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0)
@@ -82,24 +85,22 @@ export default function AppLayout() {
   }
 
   function goToSetup() {
-    dispatch({ type: 'return-to-setup' })
-    navigate('/setup/weeks')
+    navigate('/')
   }
 
   return (
     <div className="min-h-screen bg-(--c-101923) font-sans text-(--c-d6e1e9)">
-      {!inActiveQuiz && (
+      {hasSidebar && (
         <Sidebar
-          weeks={weeks}
+          course={course}
           quiz={quiz}
           answeredCount={answeredCount}
           progress={progress}
           currentQuestionIndex={currentQuestionIndex}
           finished={state.finished}
-          onGoToSetup={goToSetup}
         />
       )}
-      <div className={`min-h-screen ${inActiveQuiz ? '' : 'md:ml-62.5'}`}>
+      <div className={`min-h-screen ${hasSidebar ? 'md:ml-62.5' : ''}`}>
         {persistenceWarning && (
           <p role="status" className="bg-(--c-3b3020) px-5 py-3 text-center text-xs font-semibold text-(--c-f0d39c)">
             {persistenceWarning}
@@ -112,6 +113,7 @@ export default function AppLayout() {
         )}
         {!inActiveQuiz && (
           <Navbar
+            courseId={state.courseId}
             quiz={quiz}
             questionIndex={currentQuestionIndex}
             finished={state.finished}

@@ -1,14 +1,18 @@
-import { Navigate, useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import ResultsScreen from './ResultsScreen.jsx'
 import { useStudyroom } from '../studyroom/StudyroomContext.js'
+import { getCoursePath } from '../../data/courseData.js'
 
 export default function ResultsPage() {
   const navigate = useNavigate()
+  const { courseId } = useParams()
   const { state, dispatch } = useStudyroom()
   const { quiz, selectedAnswers, finished } = state
 
-  if (!quiz) return <Navigate to="/setup/weeks" replace />
-  if (!finished) return <Navigate to={`/quiz/${state.currentQuestionIndex + 1}`} replace />
+  if (!quiz) return <Navigate to={getCoursePath(courseId)} replace />
+  if (!finished) {
+    return <Navigate to={getCoursePath(courseId, `quiz/${state.currentQuestionIndex + 1}`)} replace />
+  }
 
   const correctCount = quiz.questions.filter(
     (question) => selectedAnswers[question.id] === question.correct_answer,
@@ -20,7 +24,7 @@ export default function ResultsPage() {
 
   function createNewTest() {
     dispatch({ type: 'return-to-setup' })
-    navigate('/setup/weeks')
+    navigate(getCoursePath(courseId))
   }
 
   return (

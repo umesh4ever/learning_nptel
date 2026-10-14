@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react'
 import { Navigate, useNavigate, useOutletContext, useParams } from 'react-router-dom'
 import QuizScreen from './QuizScreen.jsx'
 import { useStudyroom } from '../studyroom/StudyroomContext.js'
+import { getCoursePath } from '../../data/courseData.js'
 
 function getSecondsRemaining(endsAt) {
   return Math.max(0, Math.ceil((endsAt - Date.now()) / 1000))
 }
 
 export default function QuizPage() {
-  const { questionNumber } = useParams()
+  const { courseId, questionNumber } = useParams()
   const navigate = useNavigate()
   const { theme, onToggleTheme } = useOutletContext()
   const { state, dispatch } = useStudyroom()
@@ -30,18 +31,18 @@ export default function QuizPage() {
   useEffect(() => {
     if (!quiz || finished || !Number.isInteger(routeIndex)) return
     if (routeIndex < 0 || routeIndex >= quiz.questions.length) {
-      navigate(`/quiz/${currentQuestionIndex + 1}`, { replace: true })
+      navigate(getCoursePath(courseId, `quiz/${currentQuestionIndex + 1}`), { replace: true })
       return
     }
     if (routeIndex !== currentQuestionIndex) {
       dispatch({ type: 'set-current-question', index: routeIndex })
     }
-  }, [currentQuestionIndex, dispatch, finished, navigate, quiz, routeIndex])
+  }, [courseId, currentQuestionIndex, dispatch, finished, navigate, quiz, routeIndex])
 
-  if (!quiz) return <Navigate to="/setup/weeks" replace />
-  if (finished) return <Navigate to="/results" replace />
+  if (!quiz) return <Navigate to={getCoursePath(courseId)} replace />
+  if (finished) return <Navigate to={getCoursePath(courseId, 'results')} replace />
   if (!Number.isInteger(routeIndex) || routeIndex < 0 || routeIndex >= quiz.questions.length) {
-    return <Navigate to={`/quiz/${currentQuestionIndex + 1}`} replace />
+    return <Navigate to={getCoursePath(courseId, `quiz/${currentQuestionIndex + 1}`)} replace />
   }
 
   const answeredCount = quiz.questions.filter(
@@ -53,14 +54,14 @@ export default function QuizPage() {
   function changeQuestion(index) {
     if (index < 0 || index >= quiz.questions.length) return
     dispatch({ type: 'set-current-question', index })
-    navigate(`/quiz/${index + 1}`)
+    navigate(getCoursePath(courseId, `quiz/${index + 1}`))
   }
 
   function answerQuestion(questionId, answer) {
     if (timeExpired) return
     dispatch({ type: 'save-answer', questionId, answer, questionIndex: routeIndex })
     if (routeIndex < quiz.questions.length - 1) {
-      navigate(`/quiz/${routeIndex + 2}`)
+      navigate(getCoursePath(courseId, `quiz/${routeIndex + 2}`))
     }
   }
 
@@ -80,7 +81,7 @@ export default function QuizPage() {
       onSubmit={() => dispatch({ type: 'submit-quiz' })}
       onQuit={() => {
         dispatch({ type: 'return-to-setup' })
-        navigate('/setup/weeks')
+        navigate(getCoursePath(courseId))
       }}
     />
   )

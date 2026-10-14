@@ -1,0 +1,435 @@
+{
+  "course": "Introduction to the Internet of Things",
+  "week": 11,
+  "topic_title": "Smart Grid Communication Cyber-Physical Systems",
+  "analysis_of_assignment_style": {
+    "question_format": "Multiple Choice Questions (4 options: A, B, C, D)",
+    "evaluation_depth": "Combination of direct factual recall, component identification, protocol/standard matching, and scenario-based application reasoning.",
+    "difficulty_segmentation": [
+      "Easy (Direct recall of slide definitions & examples)",
+      "Medium/Hard (Multi-concept synthesis, scenario reasoning, boundary conditions)"
+    ],
+    "metadata_fields": [
+      "id",
+      "topic",
+      "difficulty",
+      "question",
+      "options",
+      "correct_answer",
+      "justification"
+    ]
+  },
+  "topics": [
+    {
+      "topic_id": "W11_T1",
+      "topic_name": "Smart Grid Architecture & Bidirectional Energy Flow",
+      "description": "Smart grid evolution, two-way communication, bidirectional energy, and self-healing.",
+      "questions": [
+        {
+          "id": "W11_T1_Q1",
+          "difficulty": "Easy",
+          "question": "What is a Smart Grid?",
+          "options": {
+            "A": "An advanced cyber-physical power grid evolution utilizing two-way communication and bidirectional energy flow for automated power management",
+            "B": "A static diesel generator",
+            "C": "An analog power line without sensors",
+            "D": "A copper wire grid"
+          },
+          "correct_answer": "A",
+          "justification": "The Smart Grid integrates ICT and automated controls into traditional electrical grids for bidirectional energy and information flow."
+        },
+        {
+          "id": "W11_T1_Q2",
+          "difficulty": "Easy",
+          "question": "According to Week 11 Assignment Question 2, what type of energy flow does the Smart Grid enable?",
+          "options": {
+            "A": "Bidirectional energy flow",
+            "B": "Unidirectional energy flow",
+            "C": "Both a and b",
+            "D": "Neither a nor b"
+          },
+          "correct_answer": "A",
+          "justification": "Smart Grid enables bidirectional energy flow (grid to consumer, and consumer solar/EV to grid)."
+        },
+        {
+          "id": "W11_T1_Q3",
+          "difficulty": "Easy",
+          "question": "What primary advantage does two-way communication in Smart Grid provide for consumers?",
+          "options": {
+            "A": "Real-time pricing information and automated energy usage shifting to off-peak hours to lower utility bills",
+            "B": "Free unlimited electricity",
+            "C": "Eliminating electrical wires",
+            "D": "Removing electric meters"
+          },
+          "correct_answer": "A",
+          "justification": "Two-way communication empowers consumers to monitor real-time rates and shift demand to lower-cost off-peak hours."
+        },
+        {
+          "id": "W11_T1_Q4",
+          "difficulty": "Easy",
+          "question": "Which digital device replaces traditional electro-mechanical electricity meters in smart homes?",
+          "options": {
+            "A": "Smart Meter / Digital Solid-State Meter",
+            "B": "Barometer",
+            "C": "Thermocouple",
+            "D": "PIR sensor"
+          },
+          "correct_answer": "A",
+          "justification": "Digital Smart Meters measure real-time consumption and communicate bidirectionally with grid operators."
+        },
+        {
+          "id": "W11_T1_Q5",
+          "difficulty": "Easy",
+          "question": "True or False: Smart Grid technologies facilitate the seamless integration of distributed renewable energy sources (solar, wind) into the power grid.",
+          "options": {
+            "A": "True",
+            "B": "False",
+            "C": "Only for nuclear plants",
+            "D": "Only during rain"
+          },
+          "correct_answer": "A",
+          "justification": "Smart Grid controls manage fluctuating renewable energy generation and maintain grid stability."
+        },
+        {
+          "id": "W11_T1_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "How does Smart Grid enhance overall grid reliability and fault isolation compared to traditional power grids?",
+          "options": {
+            "A": "Automated distribution intelligence detects line faults immediately, isolation switches trip, and power is re-routed automatically (self-healing)",
+            "B": "By turning off power to the entire country",
+            "C": "By requiring manual line inspection on foot",
+            "D": "By increasing line voltage to infinity"
+          },
+          "correct_answer": "A",
+          "justification": "Automated sensors and self-healing controls detect, isolate, and re-route power around faults automatically."
+        },
+        {
+          "id": "W11_T1_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "What is the role of Demand Response (DR) programs in Smart Grid operation?",
+          "options": {
+            "A": "Utility operators incentivize consumers to reduce or shift power usage during peak demand periods, preventing blackout risks",
+            "B": "Utilities force consumers to waste electricity",
+            "C": "Utilities disable all smart meters",
+            "D": "DR programs generate solar light"
+          },
+          "correct_answer": "A",
+          "justification": "Demand Response aligns consumer power usage with grid generation capacity, shaving peak load spikes."
+        },
+        {
+          "id": "W11_T1_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "In a microgrid deployment, how does a Smart Grid controller handle islanding mode during a main grid blackout?",
+          "options": {
+            "A": "The microgrid disconnects from the main grid and uses local solar/battery resources to power critical local loads autonomously",
+            "B": "The microgrid explodes",
+            "C": "The microgrid dumps power into the ground",
+            "D": "Islanding is prohibited"
+          },
+          "correct_answer": "A",
+          "justification": "Islanding allows microgrids to operate autonomously using local distributed energy resources when the main grid fails."
+        },
+        {
+          "id": "W11_T1_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "Why is cybersecurity a vital concern in Smart Grid cyber-physical systems?",
+          "options": {
+            "A": "Cyber attacks on communication links or SCADA controllers could trip transmission lines, causing widespread cascading blackouts",
+            "B": "Cyber attacks only alter billing text",
+            "C": "Smart grids contain no computers",
+            "D": "Electricity cannot be hacked"
+          },
+          "correct_answer": "A",
+          "justification": "Cyber-physical coupling means network attacks can trigger physical grid instability and power outages."
+        },
+        {
+          "id": "W11_T1_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "How does peak shaving benefit electrical utility power plants?",
+          "options": {
+            "A": "It reduces the need to spin up expensive, high-emission peaking power plants during maximum demand hours",
+            "B": "It increases coal consumption",
+            "C": "It lowers power plant efficiency",
+            "D": "It forces plants to operate offline"
+          },
+          "correct_answer": "A",
+          "justification": "Smoothing out demand spikes eliminates the need to activate costly, inefficient peak generator units."
+        }
+      ]
+    },
+    {
+      "topic_id": "W11_T2",
+      "topic_name": "Smart Metering, HEMS & Off-Peak Demand Shifting",
+      "description": "Smart meters, HEMS scheduling, DAUs, MDMS, and TOU dynamic pricing.",
+      "questions": [
+        {
+          "id": "W11_T2_Q1",
+          "difficulty": "Easy",
+          "question": "What is the primary function of Home Energy Management Systems (HEMS) in smart grid homes?",
+          "options": {
+            "A": "To schedule smart appliances to operate during off-peak rate hours, reducing electricity costs",
+            "B": "To measure outdoor wind speed",
+            "C": "To generate AC current",
+            "D": "To lock doors"
+          },
+          "correct_answer": "A",
+          "justification": "HEMS schedules high-power appliances (washers, EV chargers) during low-cost off-peak hours."
+        },
+        {
+          "id": "W11_T2_Q2",
+          "difficulty": "Easy",
+          "question": "What is the difference between On-Peak hours and Off-Peak hours in smart grid pricing?",
+          "options": {
+            "A": "On-Peak hours feature high electricity demand and higher rates; Off-Peak hours feature lower grid demand and cheaper rates",
+            "B": "Off-Peak hours are expensive; On-Peak hours are free",
+            "C": "Both have identical fixed rates",
+            "D": "On-Peak occurs only during night"
+          },
+          "correct_answer": "A",
+          "justification": "Time-of-Use (TOU) tariffs charge higher rates during on-peak demand and lower rates during off-peak hours."
+        },
+        {
+          "id": "W11_T2_Q3",
+          "difficulty": "Easy",
+          "question": "Which device acts as the local link between home smart meters and Data Aggregator Units (DAUs) in smart grid communication?",
+          "options": {
+            "A": "Smart Grid Gateway",
+            "B": "Transformer",
+            "C": "DC Motor",
+            "D": "Relay switch"
+          },
+          "correct_answer": "A",
+          "justification": "Gateways bridge local smart meters to neighborhood Data Aggregator Units."
+        },
+        {
+          "id": "W11_T2_Q4",
+          "difficulty": "Easy",
+          "question": "True or False: Automated computerized controls in smart homes help minimize power consumption when the electric grid is under stress.",
+          "options": {
+            "A": "True",
+            "B": "False",
+            "C": "Only during weekends",
+            "D": "Only when manually instructed"
+          },
+          "correct_answer": "A",
+          "justification": "Automated home controls reduce load during grid stress intervals based on real-time rate signals."
+        },
+        {
+          "id": "W11_T2_Q5",
+          "difficulty": "Easy",
+          "question": "How does Net Metering credit smart grid consumers who own solar PV systems?",
+          "options": {
+            "A": "By calculating the net difference between energy drawn from the grid and excess energy fed back into the grid",
+            "B": "By paying consumers in physical gold",
+            "C": "By doubling monthly bills",
+            "D": "By disconnecting solar panels"
+          },
+          "correct_answer": "A",
+          "justification": "Net metering measures bidirectional energy, crediting consumers for net energy exported to the grid."
+        },
+        {
+          "id": "W11_T2_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "How do Data Aggregator Units (DAUs) aggregate consumer energy data before transmitting it to the MDMS?",
+          "options": {
+            "A": "DAUs queue and sum energy consumption requests from a geographical neighborhood, buffering data before sending it to the central MDMS",
+            "B": "DAUs delete consumer records",
+            "C": "DAUs convert power into gas",
+            "D": "DAUs print paper bills"
+          },
+          "correct_answer": "A",
+          "justification": "DAUs collect and aggregate regional smart meter data streams, reducing load on the central MDMS."
+        },
+        {
+          "id": "W11_T2_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "What does MDMS stand for in smart grid utility infrastructure?",
+          "options": {
+            "A": "Meter Data Management System",
+            "B": "Mobile Device Monitoring System",
+            "C": "Micro Distribution Main Switch",
+            "D": "Master Digital Modulation Standard"
+          },
+          "correct_answer": "A",
+          "justification": "MDMS stands for Meter Data Management System, the central database performing billing and analytics."
+        },
+        {
+          "id": "W11_T2_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "How does Time-of-Use (TOU) dynamic pricing encourage consumer engagement in energy conservation?",
+          "options": {
+            "A": "By providing real-time financial savings incentives to consumers who shift heavy electricity usage to off-peak hours",
+            "B": "By charging flat rates 24/7",
+            "C": "By disconnecting power without warning",
+            "D": "By removing energy meters"
+          },
+          "correct_answer": "A",
+          "justification": "Dynamic TOU pricing rewards consumers financially for shaving peak demand and shifting consumption."
+        },
+        {
+          "id": "W11_T2_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "In a smart home with Plug-in Electric Vehicles (PEVs), how does HEMS optimize EV charging?",
+          "options": {
+            "A": "HEMS delays EV charging until late night off-peak hours when electricity rates are lowest and grid load is minimal",
+            "B": "HEMS charges EVs only during peak 6 PM hours",
+            "C": "HEMS discharges EV battery completely",
+            "D": "HEMS disables EV charging permanently"
+          },
+          "correct_answer": "A",
+          "justification": "HEMS schedules heavy EV charging loads during overnight off-peak tariff periods."
+        },
+        {
+          "id": "W11_T2_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "What role do Mobile Agents play in cloud-assisted smart grid energy management?",
+          "options": {
+            "A": "Mobile software agents autonomously migrate across cloud nodes to monitor power distribution, optimize microgrid trading, and balance load",
+            "B": "They drive delivery trucks",
+            "C": "They replace solar panels",
+            "D": "They solder circuit boards"
+          },
+          "correct_answer": "A",
+          "justification": "Mobile software agents execute distributed power monitoring and dynamic pricing calculations across cloud nodes."
+        }
+      ]
+    },
+    {
+      "topic_id": "W11_T3",
+      "topic_name": "Grid Operations, SCADA & PMU Phasor Networks",
+      "description": "SCADA systems, PMUs, WAMS, GPS synchronization, and distribution intelligence.",
+      "questions": [
+        {
+          "id": "W11_T3_Q1",
+          "difficulty": "Easy",
+          "question": "What does SCADA stand for in industrial smart grid operations?",
+          "options": {
+            "A": "Supervisory Control And Data Acquisition",
+            "B": "Smart Cellular Automated Data Architecture",
+            "C": "Sequential Circuit And Digital Actuator",
+            "D": "System Control And Distribution Agent"
+          },
+          "correct_answer": "A",
+          "justification": "SCADA stands for Supervisory Control And Data Acquisition."
+        },
+        {
+          "id": "W11_T3_Q2",
+          "difficulty": "Easy",
+          "question": "Which sensor device measures high-speed synchronized voltage and current phasors across power transmission lines?",
+          "options": {
+            "A": "Phasor Measurement Unit (PMU)",
+            "B": "DHT22 sensor",
+            "C": "PIR sensor",
+            "D": "Ultrasonic distance sensor"
+          },
+          "correct_answer": "A",
+          "justification": "Phasor Measurement Units (PMUs) sample electrical waveforms with microsecond GPS time-stamping."
+        },
+        {
+          "id": "W11_T3_Q3",
+          "difficulty": "Easy",
+          "question": "Multiple PMUs deployed across a transmission grid connect together to form which specialized monitoring network?",
+          "options": {
+            "A": "Phasor Network / Wide Area Measurement System (WAMS)",
+            "B": "6LoWPAN mesh",
+            "C": "Bluetooth piconet",
+            "D": "RFID tag array"
+          },
+          "correct_answer": "A",
+          "justification": "Interconnected PMUs form a Phasor Network / WAMS for wide-area grid monitoring."
+        },
+        {
+          "id": "W11_T3_Q4",
+          "difficulty": "Easy",
+          "question": "What critical power event can PMU phasor networks identify in advance to prevent widespread blackouts?",
+          "options": {
+            "A": "Unwanted power oscillations and impending grid blackout conditions",
+            "B": "Solar eclipse arrival",
+            "C": "Rainfall volume",
+            "D": "Consumer phone calls"
+          },
+          "correct_answer": "A",
+          "justification": "PMU networks detect subtle voltage/frequency oscillations, warning operators before cascading blackouts occur."
+        },
+        {
+          "id": "W11_T3_Q5",
+          "difficulty": "Easy",
+          "question": "True or False: Distribution Intelligence in smart grids allows self-healing controls to reroute power and dampen unwanted oscillations.",
+          "options": {
+            "A": "True",
+            "B": "False",
+            "C": "Only during daytime",
+            "D": "Only in solar farms"
+          },
+          "correct_answer": "A",
+          "justification": "Distribution intelligence enables automated self-healing, oscillation dampening, and line re-routing."
+        },
+        {
+          "id": "W11_T3_Q6",
+          "difficulty": "Medium/Hard",
+          "question": "How does GPS time-synchronization in PMUs enable precise wide-area grid stability analysis across thousands of miles?",
+          "options": {
+            "A": "All PMU waveform measurements are precisely time-stamped with GPS microsecond clocks, allowing SCADA to compare exact phase angles across distant substations",
+            "B": "GPS provides solar power",
+            "C": "GPS reboots the power lines",
+            "D": "GPS increases line frequency"
+          },
+          "correct_answer": "A",
+          "justification": "GPS microsecond synchronization allows accurate phase angle comparison between geographically separated substations."
+        },
+        {
+          "id": "W11_T3_Q7",
+          "difficulty": "Medium/Hard",
+          "question": "In smart grid distribution intelligence, what mechanism prevents transmission line overload during sudden supply drops?",
+          "options": {
+            "A": "Automated power flow re-routing and selective load shedding switches managed by distribution intelligence",
+            "B": "Blowing up transformers",
+            "C": "Increasing load to maximum",
+            "D": "Shutting down the SCADA center"
+          },
+          "correct_answer": "A",
+          "justification": "Distribution intelligence re-routes power flows and executes controlled load shedding to prevent line tripping."
+        },
+        {
+          "id": "W11_T3_Q8",
+          "difficulty": "Medium/Hard",
+          "question": "What is the structural hierarchy of Smart Grid communication architecture?",
+          "options": {
+            "A": "Home Area Network (HAN) -> Building/Neighborhood Area Network (NAN) -> Wide Area Network (WAN) / SCADA Center",
+            "B": "WAN -> HAN -> NAN",
+            "C": "SCADA -> HAN -> NAN",
+            "D": "Bluetooth -> Wi-Fi -> Fiber"
+          },
+          "correct_answer": "A",
+          "justification": "Data flows from HANs (home) to NANs (neighborhood aggregators) and finally WANs (central SCADA/MDMS)."
+        },
+        {
+          "id": "W11_T3_Q9",
+          "difficulty": "Medium/Hard",
+          "question": "How does Cloud Computing integration enhance microgrid energy trading and PHEV management?",
+          "options": {
+            "A": "Cloud platforms process streaming data from thousands of smart meters simultaneously to solve game-theoretic energy trading and pricing models in real time",
+            "B": "Cloud computing replaces physical power lines with virtual wires",
+            "C": "Cloud platforms eliminate electric vehicles",
+            "D": "Cloud platforms generate AC voltage directly"
+          },
+          "correct_answer": "A",
+          "justification": "Cloud platforms handle massive real-time computational demands for dynamic pricing and microgrid energy optimization."
+        },
+        {
+          "id": "W11_T3_Q10",
+          "difficulty": "Medium/Hard",
+          "question": "What is the primary function of an Advanced Metering Infrastructure (AMI) in smart grids?",
+          "options": {
+            "A": "An integrated system of smart meters, communication networks, and data management systems enabling two-way utility-consumer measurement and control",
+            "B": "An analog meter reading notebook",
+            "C": "A high-voltage transformer fuse",
+            "D": "A solar panel mounting frame"
+          },
+          "correct_answer": "A",
+          "justification": "AMI encompasses smart meters, communication networks, and MDMS backends for automated two-way metering."
+        }
+      ]
+    }
+  ]
+}
