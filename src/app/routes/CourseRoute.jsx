@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Navigate, Outlet, useParams } from 'react-router-dom'
+import { Navigate, Outlet, useOutletContext, useParams } from 'react-router-dom'
 import { getCourse } from '../../data/courseData.js'
 import { useStudyroom } from '../../features/studyroom/StudyroomContext.js'
 
@@ -7,6 +7,7 @@ export default function CourseRoute() {
   const { courseId } = useParams()
   const course = getCourse(courseId)
   const { state, selectCourse } = useStudyroom()
+  const outletContext = useOutletContext()
 
   useEffect(() => {
     if (course && state.courseId !== course.id) selectCourse(course.id)
@@ -21,5 +22,5 @@ export default function CourseRoute() {
     )
   }
 
-  return <Outlet />
+  return <Outlet context={outletContext} />
 }
