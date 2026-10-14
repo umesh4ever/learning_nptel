@@ -14,7 +14,7 @@ export const router = createHashRouter([
     path: '/',
     element: <AppLayout />,
     hydrateFallbackElement: (
-      <main className="grid min-h-screen place-items-center text-sm font-semibold text-[#647f95]">
+      <main className="grid min-h-screen place-items-center bg-(--c-101923) text-sm font-semibold text-(--c-a2b2bf)">
         Loading Studyroom…
       </main>
     ),

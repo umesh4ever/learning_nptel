@@ -13,6 +13,10 @@ export default function ResultsPage() {
   const correctCount = quiz.questions.filter(
     (question) => selectedAnswers[question.id] === question.correct_answer,
   ).length
+  const durationSeconds = Math.max(
+    0,
+    Math.floor(((quiz.completedAt ?? quiz.endsAt) - quiz.startedAt) / 1000),
+  )
 
   function createNewTest() {
     dispatch({ type: 'return-to-setup' })
@@ -24,6 +28,7 @@ export default function ResultsPage() {
       quiz={quiz}
       selectedAnswers={selectedAnswers}
       correctCount={correctCount}
+      durationSeconds={durationSeconds}
       onCreateTest={createNewTest}
     />
   )

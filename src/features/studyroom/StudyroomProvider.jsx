@@ -8,6 +8,17 @@ import {
 import { StudyroomContext } from './StudyroomContext.js'
 
 const STORAGE_KEY = 'nptel-studyroom-state-v1'
+const questionsById = new Map(weeks.flatMap((week) => week.questions.map((question) => [question.id, question])))
+
+function isRestorableQuizQuestion(question, quizWeeks, difficulty) {
+  const isInSelectedWeeks = quizWeeks.some((week) => week.week === question.week_number)
+  const matchesDifficulty =
+    difficulty === 'Mixed'
+      ? ['Easy', 'Medium/Hard'].includes(question.difficulty)
+      : question.difficulty === difficulty
+
+  return isInSelectedWeeks && matchesDifficulty
+}
 
 function createInitialState() {
   const selectedWeeks = weeks.length > 0 ? [weeks[0]] : []
@@ -50,6 +61,7 @@ function restoreState() {
         : 30
 
     let quiz = null
+    let quizRestoreWarning = ''
     if (savedState.quiz && Array.isArray(savedState.quiz.weekNumbers)) {
       const quizWeeks = weeks.filter((week) => savedState.quiz.weekNumbers.includes(week.week))
       const quizDifficulty = ['Medium/Hard', 'Mixed'].includes(savedState.quiz.difficulty)
@@ -57,17 +69,62 @@ function restoreState() {
         : 'Easy'
       const quizQuestionCount = Number(savedState.quiz.questionCount)
       const endsAt = Number(savedState.quiz.endsAt)
-      const questions = quizWeeks.length > 0
-        ? createTestQuestions(quizWeeks, quizDifficulty, quizQuestionCount)
-        : []
+      const quizDurationMinutes = Number(savedState.quiz.durationMinutes ?? savedState.durationMinutes)
+      const savedStartedAt = Number(savedState.quiz.startedAt)
+      const startedAt = Number.isFinite(savedStartedAt)
+        ? savedStartedAt
+        : endsAt - quizDurationMinutes * 60 * 1000
+      const savedCompletedAt = Number(savedState.quiz.completedAt)
+      const completedAt = savedState.finished
+        ? Math.min(
+            Number.isFinite(savedCompletedAt) ? savedCompletedAt : Date.now(),
+            endsAt,
+          )
+        : null
+      const hasSavedQuestionIds = Array.isArray(savedState.quiz.questionIds)
+      const isLegacyQuiz = savedState.quiz.questionIds === undefined
+      const questions = hasSavedQuestionIds
+        ? savedState.quiz.questionIds.map((questionId) => questionsById.get(questionId))
+        : isLegacyQuiz && quizWeeks.length > 0
+          ? createTestQuestions(quizWeeks, quizDifficulty, quizQuestionCount, { randomize: false })
+          : []
+      const questionsPerWeek = quizWeeks.length > 0 ? quizQuestionCount / quizWeeks.length : 0
+      const hasValidQuestionSet =
+        Number.isInteger(quizQuestionCount) &&
+        quizQuestionCount > 0 &&
+        Number.isInteger(questionsPerWeek) &&
+        questions.length === quizQuestionCount &&
+        questions.every(
+          (question) =>
+            question !== undefined &&
+            isRestorableQuizQuestion(question, quizWeeks, quizDifficulty),
+        ) &&
+        new Set(questions.map((question) => question.id)).size === questions.length &&
+        quizWeeks.every(
+          (week) => questions.filter((question) => question.week_number === week.week).length === questionsPerWeek,
+        )
       if (
         quizWeeks.length > 0 &&
         quizWeeks.length === savedState.quiz.weekNumbers.length &&
-        Number.isInteger(quizQuestionCount) &&
-        questions.length === quizQuestionCount &&
-        Number.isFinite(endsAt)
+        hasValidQuestionSet &&
+        Number.isFinite(endsAt) &&
+        Number.isFinite(startedAt) &&
+        Number.isInteger(quizDurationMinutes) &&
+        quizDurationMinutes >= 5 &&
+        startedAt < endsAt &&
+        (completedAt === null || (completedAt >= startedAt && completedAt <= endsAt))
       ) {
-        quiz = { weeks: quizWeeks, difficulty: quizDifficulty, questions, endsAt }
+        quiz = {
+          weeks: quizWeeks,
+          difficulty: quizDifficulty,
+          questions,
+          startedAt,
+          endsAt,
+          completedAt,
+        }
+      } else if (!isLegacyQuiz) {
+        console.error('The saved quiz question selection is invalid and could not be restored.')
+        quizRestoreWarning = 'The saved quiz could not be restored because its question selection is invalid. Your setup is ready.'
       }
     }
 
@@ -99,7 +156,7 @@ function restoreState() {
         selectedAnswers,
         finished: Boolean(savedState.finished && quiz),
       },
-      warning: '',
+      warning: quizRestoreWarning,
     }
   } catch (error) {
     console.error('Could not restore saved studyroom state.', error)
@@ -121,6 +178,10 @@ function serializeState(state) {
           weekNumbers: state.quiz.weeks.map((week) => week.week),
           difficulty: state.quiz.difficulty,
           questionCount: state.quiz.questions.length,
+          questionIds: state.quiz.questions.map((question) => question.id),
+          durationMinutes: (state.quiz.endsAt - state.quiz.startedAt) / 60000,
+          startedAt: state.quiz.startedAt,
+          completedAt: state.quiz.completedAt,
           endsAt: state.quiz.endsAt,
         }
       : null,
@@ -204,13 +265,16 @@ function studyroomReducer(state, action) {
         action.questionCount,
       )
       if (questions.length !== action.questionCount) return state
+      const startedAt = Date.now()
       return {
         ...state,
         quiz: {
           weeks: state.selectedWeeks,
           difficulty: state.difficulty,
           questions,
-          endsAt: Date.now() + action.durationMinutes * 60 * 1000,
+          startedAt,
+          endsAt: startedAt + action.durationMinutes * 60 * 1000,
+          completedAt: null,
         },
         currentQuestionIndex: 0,
         selectedAnswers: {},
@@ -232,7 +296,11 @@ function studyroomReducer(state, action) {
       return { ...state, currentQuestionIndex: action.index }
     case 'submit-quiz': {
       if (!state.quiz || state.finished) return state
-      return { ...state, finished: true }
+      return {
+        ...state,
+        quiz: { ...state.quiz, completedAt: Math.min(Date.now(), state.quiz.endsAt) },
+        finished: true,
+      }
     }
     case 'return-to-setup':
       return {
@@ -257,7 +325,7 @@ export function StudyroomProvider({ children }) {
     try {
       window.localStorage.setItem(STORAGE_KEY, serializeState(state))
       if (persistenceWarning) {
-        warningTimer = window.setTimeout(() => setPersistenceWarning(''), 0)
+        warningTimer = window.setTimeout(() => setPersistenceWarning(''), 5000)
       }
     } catch (error) {
       console.error('Could not save studyroom state locally.', error)

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Navigate, useNavigate, useParams } from 'react-router-dom'
+import { Navigate, useNavigate, useOutletContext, useParams } from 'react-router-dom'
 import QuizScreen from './QuizScreen.jsx'
 import { useStudyroom } from '../studyroom/StudyroomContext.js'
 
@@ -10,6 +10,7 @@ function getSecondsRemaining(endsAt) {
 export default function QuizPage() {
   const { questionNumber } = useParams()
   const navigate = useNavigate()
+  const { theme, onToggleTheme } = useOutletContext()
   const { state, dispatch } = useStudyroom()
   const { quiz, currentQuestionIndex, selectedAnswers, finished } = state
   const routeIndex = Number(questionNumber) - 1
@@ -72,6 +73,8 @@ export default function QuizPage() {
       progress={progress}
       remainingSeconds={remainingSeconds}
       timeExpired={timeExpired}
+      theme={theme}
+      onToggleTheme={onToggleTheme}
       onAnswer={answerQuestion}
       onQuestionChange={changeQuestion}
       onSubmit={() => dispatch({ type: 'submit-quiz' })}

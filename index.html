@@ -4,11 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="https://www.favicon.cc/logo3d/545082.png" />
-    <meta name="theme-color" content="#eaf2f8" />
+    <meta name="theme-color" content="#101923" />
     <meta name="description" content="Build a week-wise practice test for Industry 4.0 and Industrial Internet of Things." />
     <title>Learn Nptel - IIOT 4.0</title>
   </head>
   <body>
+    <script>
+      try {
+        const savedTheme = localStorage.getItem('nptel-studyroom-theme')
+        const theme = savedTheme === 'dark' || savedTheme === 'light'
+          ? savedTheme
+          : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        document.documentElement.dataset.theme = theme
+        document.querySelector('meta[name="theme-color"]').content =
+          theme === 'dark' ? '#101923' : '#edf2f6'
+      } catch {
+        const theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        document.documentElement.dataset.theme = theme
+        document.querySelector('meta[name="theme-color"]').content =
+          theme === 'dark' ? '#101923' : '#edf2f6'
+      }
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

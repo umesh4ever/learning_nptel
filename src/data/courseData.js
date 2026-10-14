@@ -50,7 +50,18 @@ export function normalizeTotalQuestionCount(count, selectedWeeks, difficulty) {
   return Math.max(weekCount, evenlyDivisibleCount)
 }
 
-export function createTestQuestions(selectedWeeks, difficulty, totalCount) {
+function shuffleQuestions(questions) {
+  const shuffled = [...questions]
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1))
+    const question = shuffled[index]
+    shuffled[index] = shuffled[swapIndex]
+    shuffled[swapIndex] = question
+  }
+  return shuffled
+}
+
+function createCourseOrderedQuestions(selectedWeeks, difficulty, totalCount) {
   const questionsPerWeek = totalCount / selectedWeeks.length
 
   return selectedWeeks.flatMap((week, weekIndex) => {
@@ -77,4 +88,39 @@ export function createTestQuestions(selectedWeeks, difficulty, totalCount) {
     }
     return mixedQuestions
   })
+}
+
+export function createTestQuestions(selectedWeeks, difficulty, totalCount, { randomize = true } = {}) {
+  if (!randomize) return createCourseOrderedQuestions(selectedWeeks, difficulty, totalCount)
+  if (selectedWeeks.length === 0 || !Number.isInteger(totalCount) || totalCount <= 0) return []
+
+  const questionsPerWeek = totalCount / selectedWeeks.length
+  if (!Number.isInteger(questionsPerWeek)) return []
+
+  const selectedQuestions = selectedWeeks.flatMap((week, weekIndex) => {
+    if (difficulty !== 'Mixed') {
+      const eligibleQuestions = week.questions.filter((question) => question.difficulty === difficulty)
+      return shuffleQuestions(eligibleQuestions).slice(0, questionsPerWeek)
+    }
+
+    const easyQuestions = shuffleQuestions(
+      week.questions.filter((question) => question.difficulty === 'Easy'),
+    )
+    const harderQuestions = shuffleQuestions(
+      week.questions.filter((question) => question.difficulty === 'Medium/Hard'),
+    )
+    const easyTarget =
+      Math.floor(questionsPerWeek / 2) +
+      (questionsPerWeek % 2 === 1 && weekIndex % 2 === 0 ? 1 : 0)
+    const selectedEasy = easyQuestions.slice(0, Math.max(0, easyTarget))
+    const selectedHarder = harderQuestions.slice(0, questionsPerWeek - selectedEasy.length)
+    const selectedIds = new Set([...selectedEasy, ...selectedHarder].map((question) => question.id))
+    const remainingQuestions = shuffleQuestions(
+      [...easyQuestions, ...harderQuestions].filter((question) => !selectedIds.has(question.id)),
+    )
+
+    return [...selectedEasy, ...selectedHarder, ...remainingQuestions].slice(0, questionsPerWeek)
+  })
+
+  return shuffleQuestions(selectedQuestions)
 }

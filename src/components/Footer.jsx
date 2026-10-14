@@ -55,7 +55,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="mt-2 w-full border-t border-[#cbddeb] bg-[#163b59] px-5 py-4 text-[white] sm:mt-12 sm:py-8">
+    <footer className="mt-2 w-full border-t border-[#263a49] bg-[#142536] px-5 py-4 text-[#c3d0da] sm:mt-12 sm:py-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-4">
         <p className="text-sm font-semibold">
           Connect with me
@@ -68,13 +68,13 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
               aria-label={`Open ${label} profile in a new tab`}
-              className="grid size-11 place-items-center rounded-full border border-[#c4d7e6] bg-[#eaf2f8] text-[#35658c] transition-transform hover:-translate-y-0.5 hover:bg-[#d5e5f1] active:scale-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#356da8]"
+              className="grid size-11 place-items-center rounded-full border border-[#394c5b] bg-[#20384a] text-[#a9c6da] transition-transform hover:-translate-y-0.5 hover:bg-[#29475d] active:scale-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#78a9c9]"
             >
               <SocialIcon name={icon} />
             </a>
           ))}
         </nav>
-        <p className="text-xs font-medium text-[white]">© {currentYear} Umesh</p>
+        <p className="text-xs font-medium text-[#8fa3b3]">© {currentYear} Umesh</p>
       </div>
     </footer>
   )
