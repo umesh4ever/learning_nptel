@@ -1,0 +1,129 @@
+{
+  "week": 10,
+  "course": "Conservation Geography",
+  "year": "2026",
+  "session": "June-Oct",
+  "assignment_title": "Conservation Geography Week 10 Assignment Solutions",
+  "questions": [
+    {
+      "question_number": 1,
+      "question": "When forests are cleared, carbon may be released not only from removed wood but also from",
+      "options": {
+        "a": "ocean sediments",
+        "b": "glaciers",
+        "c": "soil organic matter",
+        "d": "desert sand"
+      },
+      "correct_option": "c",
+      "correct_answer": "soil organic matter"
+    },
+    {
+      "question_number": 2,
+      "question": "Hydrogen for nuclear fusion comes under the category of",
+      "options": {
+        "a": "potential resources",
+        "b": "actual resources",
+        "c": "reserve resources",
+        "d": "stock resources"
+      },
+      "correct_option": "d",
+      "correct_answer": "stock resources"
+    },
+    {
+      "question_number": 3,
+      "question": "In the Rondonia rainforest example, road construction mainly contributed to forest loss by",
+      "options": {
+        "a": "increasing rainfall in cleared patches",
+        "b": "allowing easier human access into forest areas",
+        "c": "preventing agricultural plots from forming",
+        "d": "converting cropland back into forest"
+      },
+      "correct_option": "b",
+      "correct_answer": "allowing easier human access into forest areas"
+    },
+    {
+      "question_number": 4,
+      "question": "Oil that has not been drilled can be categorised under",
+      "options": {
+        "a": "potential resources",
+        "b": "actual resources",
+        "c": "reserve resources",
+        "d": "stock resources"
+      },
+      "correct_option": "a",
+      "correct_answer": "potential resources"
+    },
+    {
+      "question_number": 5,
+      "question": "Although cropland uses a smaller share of agricultural land than livestock, it contributes more to",
+      "options": {
+        "a": "global calorie supply",
+        "b": "mineral extraction",
+        "c": "groundwater recharge",
+        "d": "built-up land expansion"
+      },
+      "correct_option": "a",
+      "correct_answer": "global calorie supply"
+    },
+    {
+      "question_number": 6,
+      "question": "Low concentration ores come in the category of",
+      "options": {
+        "a": "potential resources",
+        "b": "actual resources",
+        "c": "reserve resources",
+        "d": "stock resources"
+      },
+      "correct_option": "c",
+      "correct_answer": "reserve resources"
+    },
+    {
+      "question_number": 7,
+      "question": "“those resources that have been surveyed but we lack the technology to use them” is a definition of",
+      "options": {
+        "a": "potential resources",
+        "b": "actual resources",
+        "c": "reserve resources",
+        "d": "stock resources"
+      },
+      "correct_option": "d",
+      "correct_answer": "stock resources"
+    },
+    {
+      "question_number": 8,
+      "question": "Which of these is the largest source of nitrogen oxides in the atmosphere?",
+      "options": {
+        "a": "electricity generation",
+        "b": "mobile sources",
+        "c": "industrial processes",
+        "d": "waste disposal"
+      },
+      "correct_option": "b",
+      "correct_answer": "mobile sources"
+    },
+    {
+      "question_number": 9,
+      "question": "Timber from forests that is being harvested can be categorised under",
+      "options": {
+        "a": "potential resources",
+        "b": "actual resources",
+        "c": "reserve resources",
+        "d": "stock resources"
+      },
+      "correct_option": "b",
+      "correct_answer": "actual resources"
+    },
+    {
+      "question_number": 10,
+      "question": "Which of these is the largest source of ammonia (NH3) in the atmosphere?",
+      "options": {
+        "a": "animal manure",
+        "b": "mineral fertiliser",
+        "c": "crops and their decomposition",
+        "d": "human waste"
+      },
+      "correct_option": "a",
+      "correct_answer": "animal manure"
+    }
+  ]
+}

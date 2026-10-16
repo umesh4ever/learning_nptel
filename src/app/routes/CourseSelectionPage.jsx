@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Icon from '../../components/Icon.jsx'
 import { getCoursePath } from '../../data/courseData.js'
 import { useStudyroom } from '../../features/studyroom/StudyroomContext.js'
@@ -6,6 +6,7 @@ import { useStudyroom } from '../../features/studyroom/StudyroomContext.js'
 export default function CourseSelectionPage() {
   const navigate = useNavigate()
   const { courses, selectCourse } = useStudyroom()
+  const practiceCourses = courses.filter((course) => !course.isAssignment)
 
   function handleSelectCourse(course) {
     const restoredState = selectCourse(course.id)
@@ -35,7 +36,7 @@ export default function CourseSelectionPage() {
       </section>
 
       <section aria-label="Available courses" className="mx-auto mt-9 grid max-w-4xl gap-4 md:grid-cols-2">
-        {courses.map((course) => {
+        {practiceCourses.map((course) => {
           const questionCount = course.weeks.reduce(
             (total, week) => total + week.questions.length,
             0,
@@ -65,6 +66,40 @@ export default function CourseSelectionPage() {
             </button>
           )
         })}
+      </section>
+
+      <section aria-label="Assignments" className="mx-auto mt-6 max-w-4xl">
+        <Link
+          to={getCoursePath('conservation-geography')}
+          className="group flex min-h-24 items-center gap-4 rounded-2xl border border-(--c-3b5b72) bg-(--c-20384a) p-4 text-left shadow-[0_8px_24px_rgba(0,0,0,0.14)] transition hover:border-(--c-6089a4) hover:bg-(--c-21445c) hover:shadow-[0_12px_28px_rgba(0,0,0,0.2)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--c-78a9c9) sm:p-5"
+        >
+          <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-(--c-315a75) text-(--c-e0ebf2)">
+            <Icon name="book" className="size-5" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-(--c-82aecb)">Assignments</span>
+            <span className="mt-1 block text-sm font-semibold text-(--c-dce7ef)">Conservation Geography</span>
+            <span className="mt-1 block text-xs text-(--c-a2b2bf)">12 weekly assignments · 120 practice questions</span>
+          </span>
+          <span className="shrink-0 text-sm font-bold text-(--c-a7c6dc) transition-transform group-hover:translate-x-1">Open →</span>
+        </Link>
+      </section>
+
+      <section aria-label="Course notes" className="mx-auto mt-6 max-w-4xl">
+        <Link
+          to={getCoursePath('iiot-4.0', 'notes')}
+          className="group flex min-h-24 items-center gap-4 rounded-2xl border border-(--c-3b5b72) bg-(--c-20384a) p-4 text-left shadow-[0_8px_24px_rgba(0,0,0,0.14)] transition hover:border-(--c-6089a4) hover:bg-(--c-21445c) hover:shadow-[0_12px_28px_rgba(0,0,0,0.2)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--c-78a9c9) sm:p-5"
+        >
+          <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-(--c-315a75) text-(--c-e0ebf2)">
+            <Icon name="notes" className="size-5" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-(--c-82aecb)">Notes</span>
+            <span className="mt-1 block text-sm font-semibold text-(--c-dce7ef)">IIoT 4.0 · Industry 4.0 &amp; Industrial IoT</span>
+            <span className="mt-1 block text-xs text-(--c-a2b2bf)">Week-by-week study notes from question explanations</span>
+          </span>
+          <span className="shrink-0 text-sm font-bold text-(--c-a7c6dc) transition-transform group-hover:translate-x-1">Open →</span>
+        </Link>
       </section>
     </main>
   )

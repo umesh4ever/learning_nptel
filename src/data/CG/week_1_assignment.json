@@ -1,0 +1,129 @@
+{
+  "week": 1,
+  "course": "Conservation Geography",
+  "year": "2026",
+  "session": "June-Oct",
+  "assignment_title": "Conservation Geography Week 1 Assignment Solutions",
+  "questions": [
+    {
+      "question_number": 1,
+      "question": "The regular, seasonal movement of animals, often along fixed routes is called",
+      "options": {
+        "a": "translocation",
+        "b": "migration",
+        "c": "dispersal",
+        "d": "drifting"
+      },
+      "correct_option": "b",
+      "correct_answer": "migration"
+    },
+    {
+      "question_number": 2,
+      "question": "The systematic approach to Geography was developed by:",
+      "options": {
+        "a": "Alexander von Humboldt",
+        "b": "Karl Ritter",
+        "c": "Rene Descartes",
+        "d": "Eratosthenes"
+      },
+      "correct_option": "a",
+      "correct_answer": "Alexander von Humboldt"
+    },
+    {
+      "question_number": 3,
+      "question": "I tried growing vegetables under my teak plantation, but the vegetable plants died out. I should be concerned about",
+      "options": {
+        "a": "autophagy",
+        "b": "allelophagy",
+        "c": "autopathy",
+        "d": "allelopathy"
+      },
+      "correct_option": "d",
+      "correct_answer": "allelopathy"
+    },
+    {
+      "question_number": 4,
+      "question": "A lake still exists physically, but sewage and plastic waste reduce the number of fish it can support. This is best called:",
+      "options": {
+        "a": "Habitat degradation",
+        "b": "Habitat fragmentation",
+        "c": "Jump dispersal",
+        "d": "Secular dispersal"
+      },
+      "correct_option": "a",
+      "correct_answer": "Habitat degradation"
+    },
+    {
+      "question_number": 5,
+      "question": "“Science of relationships between organisms and their environments” is the definition of:",
+      "options": {
+        "a": "conservation",
+        "b": "preservation",
+        "c": "environmentalism",
+        "d": "ecology"
+      },
+      "correct_option": "d",
+      "correct_answer": "ecology"
+    },
+    {
+      "question_number": 6,
+      "question": "\"The rate of any biological process is limited by that factor in least amount relative to requirement, so there is a single limiting factor.\" This is the statement for",
+      "options": {
+        "a": "Liebig’s law of the minimum",
+        "b": "Liebig’s law of the maximum",
+        "c": "Shelford’s law of tolerance",
+        "d": "Shelford’s law of intolerance"
+      },
+      "correct_option": "a",
+      "correct_answer": "Liebig’s law of the minimum"
+    },
+    {
+      "question_number": 7,
+      "question": "In the word root for conservation, con stands for",
+      "options": {
+        "a": "together",
+        "b": "to keep",
+        "c": "house",
+        "d": "manage"
+      },
+      "correct_option": "a",
+      "correct_answer": "together"
+    },
+    {
+      "question_number": 8,
+      "question": "In the word root for conservation, servare stands for",
+      "options": {
+        "a": "together",
+        "b": "to keep",
+        "c": "house",
+        "d": "manage"
+      },
+      "correct_option": "b",
+      "correct_answer": "to keep"
+    },
+    {
+      "question_number": 9,
+      "question": "The Geographical discipline of Climatology is most closely related to:",
+      "options": {
+        "a": "Geology",
+        "b": "Meteorology",
+        "c": "Hydrology",
+        "d": "Pedology"
+      },
+      "correct_option": "b",
+      "correct_answer": "Meteorology"
+    },
+    {
+      "question_number": 10,
+      "question": "Good climate is a",
+      "options": {
+        "a": "chemical factor",
+        "b": "demographic factor",
+        "c": "push factor",
+        "d": "pull factor"
+      },
+      "correct_option": "d",
+      "correct_answer": "pull factor"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import Icon from '../../components/Icon.jsx'
 
 export default function WeekSelectionStep({
   courseName,
+  isAssignment,
   weeks,
   selectedWeeks,
   onToggleWeek,
@@ -10,6 +11,9 @@ export default function WeekSelectionStep({
   onCompletePaper,
 }) {
   const selectedWeekNumbers = new Set(selectedWeeks.map((week) => week.week))
+  const completePaperQuestionCount = isAssignment
+    ? weeks.reduce((total, week) => total + week.questions.length, 0)
+    : weeks.length
 
   return (
     <main className="mx-auto w-full max-w-295 px-5 pb-12 pt-8 sm:px-8 lg:px-12 lg:pt-12">
@@ -24,7 +28,9 @@ export default function WeekSelectionStep({
           <div>
             <h1 className="text-4xl font-semibold tracking-[-0.055em] text-(--c-dce7ef) sm:text-[48px] sm:leading-[1.08]">{courseName}</h1>
             <p className="mt-4 max-w-2xl text-sm leading-6 text-(--c-a2b2bf) sm:text-base">
-              Select one or more weeks. Your test will include the same number of questions from every selected week.
+              {isAssignment
+                ? 'Select one or more assignment weeks. Every question from each selected week will be included.'
+                : 'Select one or more weeks to build your test.'}
             </p>
           </div>
           <button
@@ -50,15 +56,13 @@ export default function WeekSelectionStep({
         <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 xl:grid-cols-4">
           {weeks.map((week) => {
             const active = selectedWeekNumbers.has(week.week)
-            const cannotDeselect = active && selectedWeeks.length === 1
             return (
               <button
                 key={week.week}
                 type="button"
                 onClick={() => onToggleWeek(week)}
-                disabled={cannotDeselect}
                 aria-pressed={active}
-                aria-label={`${active ? 'Remove' : 'Add'} Week ${week.week}${cannotDeselect ? '; at least one week must remain selected' : ''}`}
+                aria-label={`${active ? 'Deselect' : 'Select'} Week ${week.week}`}
                 className={`min-h-24.5 rounded-xl border p-3 text-left transition-colors duration-150 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--c-356da8) disabled:cursor-not-allowed ${
                   active
                     ? 'border-(--c-39708f) bg-(--c-24516d) text-white shadow-[0_6px_16px_rgba(0,0,0,0.22)] hover:bg-(--c-2c6383)'
@@ -79,13 +83,17 @@ export default function WeekSelectionStep({
         <button
           type="button"
           onClick={onCompletePaper}
-          className="mt-4 flex w-full items-center justify-between gap-4 rounded-xl border border-(--c-3b5b72) bg-(--c-20384a) p-4 text-left transition-colors duration-150 hover:border-(--c-527b98) hover:bg-(--c-29485e) hover:shadow-[0_8px_20px_rgba(0,0,0,0.2)] active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--c-78a9c9) sm:px-5"
+          className="complete-paper-card relative isolate mt-4 flex w-full items-center justify-between gap-4 rounded-xl border border-(--c-3b5b72) bg-(--c-20384a) p-4 text-left transition-colors duration-150 hover:bg-(--c-29485e) hover:shadow-[0_8px_20px_rgba(0,0,0,0.2)] active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--c-78a9c9) sm:px-5"
         >
-          <span className="min-w-0">
-            <span className="block text-sm font-bold text-(--c-d5e4ee)">Complete paper</span>
-            <span className="mt-1 block text-xs leading-5 text-(--c-a9bac7)">All {weeks.length} weeks · mixed questions · {weeks.length} questions total</span>
+          <span className="relative z-10 min-w-0">
+            <span className="block text-base font-extrabold text-(--c-dce7ef)">Complete paper</span>
+            <span className="mt-1 block text-xs leading-5 text-(--c-a9bac7)">
+              {isAssignment
+                ? `All ${weeks.length} weeks · all questions · ${completePaperQuestionCount} total`
+                : `All ${weeks.length} weeks · mixed questions · ${completePaperQuestionCount} questions total`}
+            </span>
           </span>
-          <span className="shrink-0 rounded-lg bg-(--c-315a75) px-3 py-2 text-xs font-bold text-(--c-e0ebf2) shadow-sm">Start setup →</span>
+          <span className="relative z-10 shrink-0 rounded-lg bg-(--c-315a75) px-3 py-2 text-xs font-bold text-(--c-e0ebf2) shadow-sm">Start setup →</span>
         </button>
 
         <div className="mt-5 flex flex-col-reverse gap-2 border-t border-(--c-2d3e4b) pt-4 sm:flex-row sm:justify-between sm:border-(--c-2d3e4b) sm:pt-5">

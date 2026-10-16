@@ -1,6 +1,7 @@
 export default function Icon({ name, className = 'size-5' }) {
   const paths = {
     book: <><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" /></>,
+    notes: <><path d="M8 6h13M8 12h13M8 18h13" /><path d="M3 6h.01M3 12h.01M3 18h.01" /></>,
     grid: <><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="14" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /></>,
     arrow: <><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></>,
     back: <><path d="M19 12H5" /><path d="m12 19-7-7 7-7" /></>,

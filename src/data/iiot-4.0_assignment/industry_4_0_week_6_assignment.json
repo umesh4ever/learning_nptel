@@ -1,0 +1,189 @@
+{
+  "course": "Introduction to Industry 4.0 and Industrial Internet of Things",
+  "week": 6,
+  "year": "2026",
+  "session": "June-Oct",
+  "assignment_title": "Introduction to Industry 4.0 and Industrial Internet of Things Week 6 Assignment",
+  "questions": [
+    {
+      "question_number": 1,
+      "question": "Which of the following is highlighted as a benefit of sensor usage in industrial applications for improving overall operations?",
+      "options": {
+        "a": "Improving visibility",
+        "b": "Increasing manual inspection",
+        "c": "Enhancing latency",
+        "d": "Reducing production rate"
+      },
+      "correct_option": "a",
+      "correct_answer": "Improving visibility"
+    },
+    {
+      "question_number": 2,
+      "question": "Which type of sensor is primarily used for the inspection of steel pipes and detecting time-varying stresses or strains in ferromagnetic materials?",
+      "options": {
+        "a": "Torque sensor",
+        "b": "Vacuum sensor",
+        "c": "Magnetostrictive sensor",
+        "d": "Image sensor"
+      },
+      "correct_option": "c",
+      "correct_answer": "Magnetostrictive sensor"
+    },
+    {
+      "question_number": 3,
+      "question": "The DS1621 temperature sensor is a digital sensor that communicates via an I2C bus and generates temperature data of how many bits?",
+      "options": {
+        "a": "8 bits",
+        "b": "32 bits",
+        "c": "16 bits",
+        "d": "9 bits"
+      },
+      "correct_option": "d",
+      "correct_answer": "9 bits"
+    },
+    {
+      "question_number": 4,
+      "question": "In the context of gas sensor characteristics, how is 'Selectivity' defined?",
+      "options": {
+        "a": "The ability to detect a particular gas in a mixture of different gases",
+        "b": "The time taken to stabilize its response",
+        "c": "The change in output signal with respect to unit change in input",
+        "d": "The ability to return to its base resistance value"
+      },
+      "correct_option": "a",
+      "correct_answer": "The ability to detect a particular gas in a mixture of different gases"
+    },
+    {
+      "question_number": 5,
+      "question": "What happens to the resistance of an n-type metal oxide semiconductor (MOS) gas sensor when it is exposed to a reducing gas?",
+      "options": {
+        "a": "It remains unchanged",
+        "b": "It increases",
+        "c": "It decreases",
+        "d": "It fluctuates randomly"
+      },
+      "correct_option": "c",
+      "correct_answer": "It decreases"
+    },
+    {
+      "question_number": 6,
+      "question": "How many active connections or sockets does the ModBus-TCP protocol typically support at one time?",
+      "options": {
+        "a": "Up to 5",
+        "b": "Up to 10",
+        "c": "Up to 64",
+        "d": "Up to 254"
+      },
+      "correct_option": "b",
+      "correct_answer": "Up to 10"
+    },
+    {
+      "question_number": 7,
+      "question": "In EtherNet/IP, which primary type of communication is used to handle real-time I/O data through continuous message transfer?",
+      "options": {
+        "a": "Implicit",
+        "b": "Explicit",
+        "c": "Acyclic",
+        "d": "Asynchronous"
+      },
+      "correct_option": "a",
+      "correct_answer": "Implicit"
+    },
+    {
+      "question_number": 8,
+      "question": "Time-Sensitive Networking (TSN) is an extension of Ethernet developed to enable deterministic communication. Which IEEE standard is it primarily based on?",
+      "options": {
+        "a": "IEEE 802.15.4",
+        "b": "IEEE 802.1Q",
+        "c": "IEEE 802.1F",
+        "d": "IEEE 802.1P"
+      },
+      "correct_option": "b",
+      "correct_answer": "IEEE 802.1Q"
+    },
+    {
+      "question_number": 9,
+      "question": "In a Profibus DP (Decentralized Peripherals) network, how many devices are supported at a single time without the use of repeaters?",
+      "options": {
+        "a": "10",
+        "b": "128",
+        "c": "64",
+        "d": "32"
+      },
+      "correct_option": "d",
+      "correct_answer": "32"
+    },
+    {
+      "question_number": 10,
+      "question": "What is the global operating frequency utilized by the CC-Link communication protocol?",
+      "options": {
+        "a": "2.4 GHz",
+        "b": "5.0 GHz",
+        "c": "13.56 MHz",
+        "d": "433 MHz"
+      },
+      "correct_option": "c",
+      "correct_answer": "13.56 MHz"
+    },
+    {
+      "question_number": 11,
+      "question": "The DeviceNet communication protocol links industrial sensors and actuators with Programmable Logic Controllers (PLCs) and is based on which standard?",
+      "options": {
+        "a": "CAN (Controller Area Network)",
+        "b": "IEC 61158",
+        "c": "IEEE 802.3",
+        "d": "WIA-PA"
+      },
+      "correct_option": "a",
+      "correct_answer": "CAN (Controller Area Network)"
+    },
+    {
+      "question_number": 12,
+      "question": "Which of the following is an advantage of the WIA-PA (Wireless Networks for Industrial Automation-Process Automation) standard?",
+      "options": {
+        "a": "It operates exclusively on wired fiber optics",
+        "b": "It supports Adaptive Frequency Hopping (AFH)",
+        "c": "It removes the need for data packet aggregation",
+        "d": "It replaces satellite communication"
+      },
+      "correct_option": "b",
+      "correct_answer": "It supports Adaptive Frequency Hopping (AFH)"
+    },
+    {
+      "question_number": 13,
+      "question": "For Ultra-Reliable Low Latency Communication (URLLC) in 5G, what is the specified target for availability?",
+      "options": {
+        "a": "3-Nines (99.9%)",
+        "b": "4-Nines (99.99%)",
+        "c": "5-Nines (99.999%)",
+        "d": "6-Nines (99.9999%)"
+      },
+      "correct_option": "d",
+      "correct_answer": "6-Nines (99.9999%)"
+    },
+    {
+      "question_number": 14,
+      "question": "Which of the following is an objective of Device-to-Device (D2D) Communication in cellular networks?",
+      "options": {
+        "a": "Increasing the load on the core network",
+        "b": "Eliminating the load on the core network",
+        "c": "Maximizing propagation delay",
+        "d": "Restricting communication to wired endpoints"
+      },
+      "correct_option": "b",
+      "correct_answer": "Eliminating the load on the core network"
+    },
+    {
+      "question_number": 15,
+      "question": "Which of the following is considered a primary disadvantage of millimeter-wave (mmWave) communication?",
+      "options": {
+        "a": "It requires huge antenna element sizes",
+        "b": "It utilizes the heavily congested <1 GHz band",
+        "c": "It suffers from high penetration loss and shadowing",
+        "d": "It provides very low data throughput"
+      },
+      "correct_option": "c",
+      "correct_answer": "It suffers from high penetration loss and shadowing"
+    }
+  ]
+}

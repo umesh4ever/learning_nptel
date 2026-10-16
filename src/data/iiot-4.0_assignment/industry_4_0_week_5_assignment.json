@@ -1,0 +1,189 @@
+{
+  "course": "Introduction to Industry 4.0 and Industrial Internet of Things",
+  "week": 5,
+  "year": "2026",
+  "session": "June-Oct",
+  "assignment_title": "Introduction to Industry 4.0 and Industrial Internet of Things Week 5 Assignment",
+  "questions": [
+    {
+      "question_number": 1,
+      "question": "Which company employs the 'Air-as-a-Service' model by using sensor-equipped air compressors where users pay per cubic meter of air?",
+      "options": {
+        "a": "John Deere",
+        "b": "Kaeser Kompressoren",
+        "c": "Magna Steyr",
+        "d": "Gehring"
+      },
+      "correct_option": "b",
+      "correct_answer": "Kaeser Kompressoren"
+    },
+    {
+      "question_number": 2,
+      "question": "In the context of the Hitachi integrated IIoT platform, what is the name of the core IoT platform used for AI-powered advanced analytics?",
+      "options": {
+        "a": "Predix",
+        "b": "MindSphere",
+        "c": "Lumada",
+        "d": "Connext"
+      },
+      "correct_option": "c",
+      "correct_answer": "Lumada"
+    },
+    {
+      "question_number": 3,
+      "question": "In the context of Smart Logistics, which company uses IoT and analytics to remotely monitor and optimize fuel consumption for refrigerated and dry cargo containers?",
+      "options": {
+        "a": "Boeing",
+        "b": "Maersk",
+        "c": "Komatsu",
+        "d": "Stanley Black & Decker"
+      },
+      "correct_option": "b",
+      "correct_answer": "Maersk"
+    },
+    {
+      "question_number": 4,
+      "question": "In the building blocks of a business model, which of the following represents a quantitative value proposition?",
+      "options": {
+        "a": "Design",
+        "b": "Brand perception",
+        "c": "Customer experience",
+        "d": "Post-purchase cost reduction"
+      },
+      "correct_option": "d",
+      "correct_answer": "Post-purchase cost reduction"
+    },
+    {
+      "question_number": 5,
+      "question": "Which IoT business model enables businesses to virtually consolidate and share their IoT-enabled assets among multiple customers to minimize downtime and maximize utilization?",
+      "options": {
+        "a": "Subscription Model",
+        "b": "Asset-Sharing Model",
+        "c": "Outcome-Based Model",
+        "d": "IoT-as-a-Service"
+      },
+      "correct_option": "b",
+      "correct_answer": "Asset-Sharing Model"
+    },
+    {
+      "question_number": 6,
+      "question": "In a Cloud-Based Business Model, which offering provides development-oriented platforms to facilitate the integration of applications into existing solutions?",
+      "options": {
+        "a": "Software-as-a-Service (SaaS)",
+        "b": "Infrastructure-as-a-Service (IaaS)",
+        "c": "Platform-as-a-Service (PaaS)",
+        "d": "Network-as-a-Service (NaaS)"
+      },
+      "correct_option": "c",
+      "correct_answer": "Platform-as-a-Service (PaaS)"
+    },
+    {
+      "question_number": 7,
+      "question": "In the functional flow of IIoT business models, which model specifically employs Cloud-based business models to gather data, analyze it, and sell it as a service?",
+      "options": {
+        "a": "Service-Oriented Business Model",
+        "b": "Process-Oriented Business Model",
+        "c": "Product-Oriented Business Model",
+        "d": "Asset-Sharing Business Model"
+      },
+      "correct_option": "a",
+      "correct_answer": "Service-Oriented Business Model"
+    },
+    {
+      "question_number": 8,
+      "question": "Which of the following is considered a lagging Key Performance Indicator (KPI) for Occupational Safety and Health (OSH)?",
+      "options": {
+        "a": "Frequency of observed unsafe behavior",
+        "b": "Number of OSH audits",
+        "c": "Percentage of workers with adequate OSH training",
+        "d": "Number of fatalities"
+      },
+      "correct_option": "d",
+      "correct_answer": "Number of fatalities"
+    },
+    {
+      "question_number": 9,
+      "question": "According to the Industrial Internet Consortium (IIC), what is the primary purpose of their developed testbeds?",
+      "options": {
+        "a": "To initiate, conceptualize, and rigorously test innovations before market launch",
+        "b": "To handle manual data entries for traditional factories",
+        "c": "To increase the processing downtime in manufacturing sectors",
+        "d": "To establish isolated machine operations away from the cloud"
+      },
+      "correct_option": "a",
+      "correct_answer": "To initiate, conceptualize, and rigorously test innovations before market launch"
+    },
+    {
+      "question_number": 10,
+      "question": "In the Business Viewpoint of the IIRA framework, what provides the logic regarding the merit of the vision and is validated by stakeholders?",
+      "options": {
+        "a": "Key Objectives",
+        "b": "Fundamental Capabilities",
+        "c": "Values",
+        "d": "System Requirements"
+      },
+      "correct_option": "c",
+      "correct_answer": "Values"
+    },
+    {
+      "question_number": 11,
+      "question": "In the Usage Viewpoint of the IIRA framework, what describes the state of the IIoT system after the successful completion of an activity?",
+      "options": {
+        "a": "Trigger",
+        "b": "Workflow",
+        "c": "Constraints",
+        "d": "Effect"
+      },
+      "correct_option": "d",
+      "correct_answer": "Effect"
+    },
+    {
+      "question_number": 12,
+      "question": "Which functional domain in the IIRA functional viewpoint represents the set of functions responsible for the provisioning, deployment, and management of assets?",
+      "options": {
+        "a": "Control domain",
+        "b": "Operations domain",
+        "c": "Information domain",
+        "d": "Application domain"
+      },
+      "correct_option": "b",
+      "correct_answer": "Operations domain"
+    },
+    {
+      "question_number": 13,
+      "question": "An IIoT system architect is designing a framework that requires the semantic transformation of assembled data and the subsequent implementation of specific rules to realize a targeted business function. According to the IIRA Functional Viewpoint, which two domains are specifically responsible for handling these respective requirements?",
+      "options": {
+        "a": "Information domain and Application domain",
+        "b": "Operations domain and Business domain",
+        "c": "Information domain and Business domain",
+        "d": "Application domain and Control domain"
+      },
+      "correct_option": "a",
+      "correct_answer": "Information domain and Application domain"
+    },
+    {
+      "question_number": 14,
+      "question": "Which of the following is NOT categorized as one of the fundamental activities in a business model?",
+      "options": {
+        "a": "Production",
+        "b": "Problem-solving",
+        "c": "Platform management",
+        "d": "Philanthropy"
+      },
+      "correct_option": "d",
+      "correct_answer": "Philanthropy"
+    },
+    {
+      "question_number": 15,
+      "question": "In the context of IIoT business models, what is the term used for the mechanism by which a service provider transforms the present value of assets into ones with financial value?",
+      "options": {
+        "a": "Value Proposition",
+        "b": "Value Network",
+        "c": "Value Capturing Mechanism",
+        "d": "Value Communication"
+      },
+      "correct_option": "c",
+      "correct_answer": "Value Capturing Mechanism"
+    }
+  ]
+}

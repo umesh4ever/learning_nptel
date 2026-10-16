@@ -22,7 +22,7 @@ function getPreferredTheme() {
 export default function AppLayout() {
   const navigate = useNavigate()
   const location = useLocation()
-  const { state, persistenceWarning } = useStudyroom()
+  const { state, dispatch, persistenceWarning } = useStudyroom()
   const course = getCourse(state.courseId)
   const [isOnline, setIsOnline] = useState(() => navigator.onLine)
   const [theme, setTheme] = useState(getPreferredTheme)
@@ -93,6 +93,7 @@ export default function AppLayout() {
       {hasSidebar && (
         <Sidebar
           course={course}
+          onToggleWeek={(week) => dispatch({ type: 'toggle-week', week })}
           quiz={quiz}
           answeredCount={answeredCount}
           progress={progress}

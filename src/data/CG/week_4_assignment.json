@@ -1,0 +1,129 @@
+{
+  "week": 4,
+  "course": "Conservation Geography",
+  "year": "2026",
+  "session": "June-Oct",
+  "assignment_title": "Conservation Geography Week 4 Assignment Solutions",
+  "questions": [
+    {
+      "question_number": 1,
+      "question": "Carbon sequestration in geological sites is an option for",
+      "options": {
+        "a": "mitigation",
+        "b": "adaptation",
+        "c": "both of these",
+        "d": "none of these"
+      },
+      "correct_option": "a",
+      "correct_answer": "mitigation"
+    },
+    {
+      "question_number": 2,
+      "question": "To reduce the effect of altitude, isobars are generally drawn after converting pressure values to",
+      "options": {
+        "a": "surface temperature level",
+        "b": "cloud base level",
+        "c": "tropopause level",
+        "d": "sea level"
+      },
+      "correct_option": "d",
+      "correct_answer": "sea level"
+    },
+    {
+      "question_number": 3,
+      "question": "Because of climate change, Mudumalai Tiger Reserve is suffering from frequent droughts. The management has built several artificial water holes for animals, and fills them up regularly with tankers. In the context of climate change, such an action would be called",
+      "options": {
+        "a": "adaptation",
+        "b": "mitigation",
+        "c": "deceleration",
+        "d": "maladaptation"
+      },
+      "correct_option": "a",
+      "correct_answer": "adaptation"
+    },
+    {
+      "question_number": 4,
+      "question": "Surplus seed and sperm banking is an adaptation option to facilitate",
+      "options": {
+        "a": "resistance to climate changes",
+        "b": "resilience to climate changes",
+        "c": "response to climate changes",
+        "d": "none of these"
+      },
+      "correct_option": "b",
+      "correct_answer": "resilience to climate changes"
+    },
+    {
+      "question_number": 5,
+      "question": "Flights of jet planes typically occur in",
+      "options": {
+        "a": "Troposphere",
+        "b": "Stratosphere",
+        "c": "Mesosphere",
+        "d": "Thermosphere"
+      },
+      "correct_option": "b",
+      "correct_answer": "Stratosphere"
+    },
+    {
+      "question_number": 6,
+      "question": "Heat movement through horizontal movement of air is called",
+      "options": {
+        "a": "convection",
+        "b": "radiation",
+        "c": "advection",
+        "d": "conduction"
+      },
+      "correct_option": "c",
+      "correct_answer": "advection"
+    },
+    {
+      "question_number": 7,
+      "question": "The classical period for taking averages for climate is",
+      "options": {
+        "a": "10 years",
+        "b": "20 years",
+        "c": "30 years",
+        "d": "40 years"
+      },
+      "correct_option": "c",
+      "correct_answer": "30 years"
+    },
+    {
+      "question_number": 8,
+      "question": "Noctilucent clouds are present in which layer?",
+      "options": {
+        "a": "Troposphere",
+        "b": "Stratosphere",
+        "c": "Mesosphere",
+        "d": "Thermosphere"
+      },
+      "correct_option": "c",
+      "correct_answer": "Mesosphere"
+    },
+    {
+      "question_number": 9,
+      "question": "Atmospheric pressure is mainly caused by",
+      "options": {
+        "a": "horizontal movement of clouds",
+        "b": "the weight of air above the point of measurement",
+        "c": "absorption of ultraviolet radiation",
+        "d": "seasonal movement of pressure belts"
+      },
+      "correct_option": "b",
+      "correct_answer": "the weight of air above the point of measurement"
+    },
+    {
+      "question_number": 10,
+      "question": "Which of these air masses is generally warm and moist?",
+      "options": {
+        "a": "cP",
+        "b": "cT",
+        "c": "mP",
+        "d": "mT"
+      },
+      "correct_option": "d",
+      "correct_answer": "mT"
+    }
+  ]
+}

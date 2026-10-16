@@ -1,0 +1,187 @@
+{
+  "course": "Introduction to Industry 4.0 and Industrial Internet of Things",
+  "week": 4,
+  "year": "2026",
+  "session": "June-Oct",
+  "assignment_title": "Introduction to Industry 4.0 and Industrial Internet of Things Week 4 Assignment",
+  "questions": [
+    {
+      "question_number": 1,
+      "question": "What does Application Security aim to protect against?",
+      "options": {
+        "a": "Unauthorized physical access",
+        "b": "Threats to the software applications",
+        "c": "Data breaches from the internet",
+        "d": "Network architecture issues"
+      },
+      "correct_option": "b",
+      "correct_answer": "Threats to the software applications"
+    },
+    {
+      "question_number": 2,
+      "question": "What is Ransomware?",
+      "options": {
+        "a": "A type of malware that provides a facility to the attacker to lock users’ computer files by using encryption and demand money to unlock them",
+        "b": "A program that increases computer performance",
+        "c": "A system to enhance network speed",
+        "d": "A method to secure data from unauthorized access"
+      },
+      "correct_option": "a",
+      "correct_answer": "A type of malware that provides a facility to the attacker to lock users’ computer files by using encryption and demand money to unlock them"
+    },
+    {
+      "question_number": 3,
+      "question": "What is a major challenge in the deployment of IIoT?",
+      "options": {
+        "a": "Legacy installations",
+        "b": "Cybersecurity",
+        "c": "Lack of standardization",
+        "d": "All of the above"
+      },
+      "correct_option": "d",
+      "correct_answer": "All of the above"
+    },
+    {
+      "question_number": 4,
+      "question": "What are the three waves of industrial level innovation according to GE?",
+      "options": {
+        "a": "The Internet Revolution, The Digital Revolution, The Industrial Internet",
+        "b": "The Industrial Revolution, The Internet Revolution, The Industrial Internet",
+        "c": "The Agricultural Revolution, The Internet Revolution, The Industrial Internet",
+        "d": "The Scientific Revolution, The Industrial Revolution, The Internet Revolution"
+      },
+      "correct_option": "b",
+      "correct_answer": "The Industrial Revolution, The Internet Revolution, The Industrial Internet"
+    },
+    {
+      "question_number": 5,
+      "question": "What is a major drawback of the Industrial Revolution?",
+      "options": {
+        "a": "It had no impact on the environment",
+        "b": "It created a bad working environment and inefficient processes",
+        "c": "It reduced the use of fossil fuels",
+        "d": "It enhanced the quality of life for all workers"
+      },
+      "correct_option": "b",
+      "correct_answer": "It created a bad working environment and inefficient processes"
+    },
+    {
+      "question_number": 6,
+      "question": "Which component is NOT part of the configurations involved in smart sensors?",
+      "options": {
+        "a": "Multiparameter Sensing Unit",
+        "b": "Analog Detection Circuit",
+        "c": "Digital Signal Conditioning Unit",
+        "d": "Manual Control Unit"
+      },
+      "correct_option": "d",
+      "correct_answer": "Manual Control Unit"
+    },
+    {
+      "question_number": 7,
+      "question": "Which sector is predicted to have the highest growth in Industry 4.0?",
+      "options": {
+        "a": "Electronics",
+        "b": "Manufacturing",
+        "c": "Defense",
+        "d": "Automotive"
+      },
+      "correct_option": "a",
+      "correct_answer": "Electronics"
+    },
+    {
+      "question_number": 8,
+      "question": "What is the focus of the 'Control Layer' in the 5C Architecture for Cyber Physical Systems?",
+      "options": {
+        "a": "Data collection",
+        "b": "Sensor-based monitoring",
+        "c": "Supervised control: Self-configure, Self-optimize, Self-adjust",
+        "d": "Human-readable interpretation and data visualization"
+      },
+      "correct_option": "c",
+      "correct_answer": "Supervised control: Self-configure, Self-optimize, Self-adjust"
+    },
+    {
+      "question_number": 9,
+      "question": "Why are IIoT Security Standards required, especially when diverse systems and equipment are integrated on a smart factory floor?",
+      "options": {
+        "a": "To reduce the cost of implementing IIoT.",
+        "b": "Because leaving security to individual IIoT implementers is dangerous and every weak line puts the whole factory at risk.",
+        "c": "To ensure that only new systems are implemented, not legacy ones.",
+        "d": "To increase the complexity of the smart factory floor."
+      },
+      "correct_option": "b",
+      "correct_answer": "Because leaving security to individual IIoT implementers is dangerous and every weak line puts the whole factory at risk."
+    },
+    {
+      "question_number": 10,
+      "question": "In the mining industry, how do sensor networks with gas sensors, strata monitoring devices, and RFID tags contribute to safety and efficiency?",
+      "options": {
+        "a": "They only help in tracking miners’ locations.",
+        "b": "They are primarily used for communication between miners.",
+        "c": "They replace the need for human inspection.",
+        "d": "They provide early disaster warning, monitor working conditions, and help locate miners."
+      },
+      "correct_option": "d",
+      "correct_answer": "They provide early disaster warning, monitor working conditions, and help locate miners."
+    },
+    {
+      "question_number": 11,
+      "question": "Who coined the term 'Industrial Internet'?",
+      "options": {
+        "a": "IBM",
+        "b": "General Electric (GE)",
+        "c": "Intel",
+        "d": "Siemens"
+      },
+      "correct_option": "b",
+      "correct_answer": "General Electric (GE)"
+    },
+    {
+      "question_number": 12,
+      "question": "In a milk packaging unit, how is flow measured?",
+      "options": {
+        "a": "Using a thermometer",
+        "b": "Via a spinning impeller that sends signals when milk flows",
+        "c": "With a smart camera",
+        "d": "Using a GPS module"
+      },
+      "correct_option": "b",
+      "correct_answer": "Via a spinning impeller that sends signals when milk flows"
+    },
+    {
+      "question_number": 13,
+      "question": "Which component is responsible for converting analog data to digital data in a smart sensor node?",
+      "options": {
+        "a": "Processor",
+        "b": "Memory",
+        "c": "ADC",
+        "d": "DAC"
+      },
+      "correct_option": "c",
+      "correct_answer": "ADC"
+    },
+    {
+      "question_number": 14,
+      "question": "Fill in the blanks. Thames Water’s smart water management system, as an example of Industrial Process 4.0 operation efficiency, primarily benefits from _____________.",
+      "options": {
+        "a": "Data monetization and pay-per-use models.",
+        "b": "Sensor-based equipment status monitoring and failure detection.",
+        "c": "Augmented Reality-based problem diagnosis.",
+        "d": "Controlled power generation using weather forecasts."
+      },
+      "correct_option": "b",
+      "correct_answer": "Sensor-based equipment status monitoring and failure detection."
+    },
+    {
+      "question_number": 15,
+      "question": "State true or false. In the case of spear phishing, the attackers send thousands of deceitful emails that resemble actual emails from credible sources, while email phishing attacks are targeted at a specific person or organization to obtain sensitive information.",
+      "options": {
+        "a": "True",
+        "b": "False"
+      },
+      "correct_option": "b",
+      "correct_answer": "False"
+    }
+  ]
+}

@@ -13,6 +13,7 @@ export default function WeekSetupRoute() {
   return (
     <WeekSelectionStep
       courseName={course.name}
+      isAssignment={course.isAssignment}
       weeks={course.weeks}
       selectedWeeks={state.selectedWeeks}
       onToggleWeek={(week) => dispatch({ type: 'toggle-week', week })}

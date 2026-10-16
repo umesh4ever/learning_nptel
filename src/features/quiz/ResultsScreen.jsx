@@ -108,7 +108,9 @@ export default function ResultsScreen({
                         Correct answer: <strong className="text-(--c-a7d4b8)">{question.options[question.correct_answer]}</strong>
                       </p>
                     )}
-                    <p className="mt-3 rounded-lg bg-(--c-202f38) px-3 py-2.5 text-xs leading-5 text-(--c-aab9c1)">{question.justification}</p>
+                    {question.justification && (
+                      <p className="mt-3 rounded-lg bg-(--c-202f38) px-3 py-2.5 text-xs leading-5 text-(--c-aab9c1)">{question.justification}</p>
+                    )}
                   </div>
                 </div>
               </article>

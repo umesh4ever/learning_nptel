@@ -1,0 +1,129 @@
+{
+  "week": 5,
+  "course": "Conservation Geography",
+  "year": "2026",
+  "session": "June-Oct",
+  "assignment_title": "Conservation Geography Week 5 Assignment Solutions",
+  "questions": [
+    {
+      "question_number": 1,
+      "question": "What type of sediment is commonly found over abyssal plains?",
+      "options": {
+        "a": "Coral fragments and gravel",
+        "b": "Basalt blocks and volcanic ash",
+        "c": "Sand and large pebbles",
+        "d": "Clay and silt"
+      },
+      "correct_option": "d",
+      "correct_answer": "Clay and silt"
+    },
+    {
+      "question_number": 2,
+      "question": "Which of these is the largest habitat on the Earth?",
+      "options": {
+        "a": "continental shelf",
+        "b": "continental slope",
+        "c": "guyot",
+        "d": "abyssal plain"
+      },
+      "correct_option": "d",
+      "correct_answer": "abyssal plain"
+    },
+    {
+      "question_number": 3,
+      "question": "Which of these are the largest mountain ranges on Earth?",
+      "options": {
+        "a": "oceanic deep / trench",
+        "b": "mid-oceanic ridge",
+        "c": "seamount",
+        "d": "atoll"
+      },
+      "correct_option": "b",
+      "correct_answer": "mid-oceanic ridge"
+    },
+    {
+      "question_number": 4,
+      "question": "Which factor helps explain why continental shelves are often highly productive?",
+      "options": {
+        "a": "They are the deepest parts of the ocean floor",
+        "b": "They are completely isolated from runoff",
+        "c": "They receive both light and nutrients",
+        "d": "They lack sediments and organisms"
+      },
+      "correct_option": "c",
+      "correct_answer": "They receive both light and nutrients"
+    },
+    {
+      "question_number": 5,
+      "question": "What is tidal range?",
+      "options": {
+        "a": "The horizontal movement of water parallel to the beach",
+        "b": "The difference between sea level at high tide and low tide",
+        "c": "The speed at which waves approach the coast",
+        "d": "The movement of cold water from deep ocean layers"
+      },
+      "correct_option": "b",
+      "correct_answer": "The difference between sea level at high tide and low tide"
+    },
+    {
+      "question_number": 6,
+      "question": "Which process converts ice and snow directly into water vapour?",
+      "options": {
+        "a": "Condensation",
+        "b": "Precipitation",
+        "c": "Snowmelt",
+        "d": "Sublimation"
+      },
+      "correct_option": "d",
+      "correct_answer": "Sublimation"
+    },
+    {
+      "question_number": 7,
+      "question": "Which group of factors affects the density of ocean water with depth?",
+      "options": {
+        "a": "Runoff, tides and beach slope",
+        "b": "Hydrostatic pressure, salinity and temperature",
+        "c": "Wind speed, wave height and latitude only",
+        "d": "Sediment size, coral growth and river mouths"
+      },
+      "correct_option": "b",
+      "correct_answer": "Hydrostatic pressure, salinity and temperature"
+    },
+    {
+      "question_number": 8,
+      "question": "“deep valleys, often cutting across continental shelves and slopes” is a description of",
+      "options": {
+        "a": "oceanic deep / trench",
+        "b": "mid-oceanic ridge",
+        "c": "guyot",
+        "d": "submarine canyon"
+      },
+      "correct_option": "d",
+      "correct_answer": "submarine canyon"
+    },
+    {
+      "question_number": 9,
+      "question": "Continental shelf has a gradient of",
+      "options": {
+        "a": "0-1 degree",
+        "b": "1-2 degree",
+        "c": "2-5 degree",
+        "d": "5-10 degree"
+      },
+      "correct_option": "a",
+      "correct_answer": "0-1 degree"
+    },
+    {
+      "question_number": 10,
+      "question": "Equal salinity curves are called",
+      "options": {
+        "a": "isopycnal curves",
+        "b": "isohaline curves",
+        "c": "isotherm curves",
+        "d": "isobuoyant curves"
+      },
+      "correct_option": "b",
+      "correct_answer": "isohaline curves"
+    }
+  ]
+}

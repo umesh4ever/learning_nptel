@@ -1,5 +1,5 @@
 import Icon from '../../components/Icon.jsx'
-import { difficultyOptions, getMaxTestQuestionCount } from '../../data/courseData.js'
+import { difficultyOptions, durationOptions, getMaxTestQuestionCount } from '../../data/courseData.js'
 
 function NumberStepper({ id, label, value, min, max, step, suffix, onChange }) {
   const numericValue = Number(value)
@@ -45,6 +45,7 @@ function NumberStepper({ id, label, value, min, max, step, suffix, onChange }) {
 
 export default function PaperSetupStep({
   selectedWeeks,
+  isAssignment,
   difficulty,
   questionCount,
   durationMinutes,
@@ -57,13 +58,17 @@ export default function PaperSetupStep({
 }) {
   const weekCount = selectedWeeks.length
   const maxTotalCount = getMaxTestQuestionCount(selectedWeeks, difficulty)
-  const count = Number(questionCount)
-  const countIsValid =
+  const count = isAssignment
+    ? selectedWeeks.reduce((total, week) => total + week.questions.length, 0)
+    : Number(questionCount)
+  const countIsValid = isAssignment || (
     Number.isInteger(count) &&
     count >= weekCount &&
     count <= maxTotalCount &&
     count % weekCount === 0
-  const questionsPerWeek = countIsValid ? count / weekCount : null
+  )
+  const questionsPerWeek = countIsValid && !isAssignment ? count / weekCount : null
+  const validDuration = durationOptions.includes(Number(durationMinutes))
 
   return (
     <main className="mx-auto w-full max-w-295 px-5 pb-12 pt-8 sm:px-8 lg:px-12 lg:pt-12">
@@ -76,7 +81,9 @@ export default function PaperSetupStep({
         </div>
         <h1 className="text-4xl font-semibold tracking-[-0.055em] text-(--c-dce7ef) sm:text-[48px] sm:leading-[1.08]">Set up your paper.</h1>
         <p className="mt-4 max-w-2xl text-sm leading-6 text-(--c-a2b2bf) sm:text-base">
-          Choose a difficulty and total question count. The questions will be split evenly across your selected weeks.
+          {isAssignment
+            ? 'All questions from your selected assignment weeks are included. Choose a time limit to begin.'
+            : 'Choose a difficulty and total question count. The questions will be split evenly across your selected weeks.'}
         </p>
       </section>
 
@@ -91,14 +98,16 @@ export default function PaperSetupStep({
         </button>
 
         <p className="text-[11px] font-bold uppercase tracking-[0.17em] text-(--c-91a4b3)">Step 02</p>
-        <h2 className="mt-1.5 text-xl font-semibold tracking-tight text-(--c-d6e1e9)">Choose difficulty and count</h2>
+        <h2 className="mt-1.5 text-xl font-semibold tracking-tight text-(--c-d6e1e9)">
+          {isAssignment ? 'Choose a time limit' : 'Choose difficulty and count'}
+        </h2>
         <div className="mt-2 space-y-1 text-xs leading-5 text-(--c-9aabba)">
           {selectedWeeks.map((week) => (
             <p key={week.week}>Week {week.week} · {week.topic_title}</p>
           ))}
         </div>
 
-        <fieldset className="mt-6">
+        {!isAssignment && <fieldset className="mt-6">
           <legend className="mb-2.5 text-xs font-bold text-(--c-bdcbd5)">Difficulty</legend>
           <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
             {difficultyOptions.map((option) => {
@@ -125,8 +134,9 @@ export default function PaperSetupStep({
               )
             })}
           </div>
-        </fieldset>
+        </fieldset>}
 
+        {!isAssignment && <>
         <label htmlFor="question-count" className="mt-5 block text-xs font-bold text-(--c-bdcbd5)">Total number of questions</label>
         <div className="mt-2 flex max-w-sm items-center gap-2">
           <NumberStepper
@@ -145,30 +155,44 @@ export default function PaperSetupStep({
             ? `${questionsPerWeek} questions × ${weekCount} ${weekCount === 1 ? 'week' : 'weeks'} = ${count} total.`
             : `Enter a total divisible by ${weekCount}, between ${weekCount} and ${maxTotalCount}.`}
         </p>
+        </>}
 
-        <label htmlFor="test-duration" className="mt-5 block text-xs font-bold text-(--c-bdcbd5)">Time limit</label>
-        <div className="mt-2 flex max-w-xs items-center gap-2">
-          <NumberStepper
-            id="test-duration"
-            label="Time limit"
-            value={durationMinutes}
-            min="5"
-            step="5"
-            suffix="minutes"
-            onChange={onDurationChange}
-          />
-        </div>
-        <p id="duration-hint" className={`mt-2 text-[11px] leading-4 ${Number.isInteger(Number(durationMinutes)) && Number(durationMinutes) >= 5 && Number(durationMinutes) % 5 === 0 ? 'text-(--c-9aabba)' : 'text-(--c-e59a90)'}`}>
-          Choose a duration in 5-minute increments.
-        </p>
-
-        <div className="mt-6 rounded-xl bg-(--c-202f3c) p-3.5">
-          <div className="flex items-center gap-2 text-xs font-semibold text-(--c-bdcbd5)">
-            <Icon name="clock" className="size-4 text-(--c-82aecb)" />
-            Questions are randomly selected from each week and shuffled for this paper
+        <fieldset className={`${isAssignment ? 'mt-6' : 'mt-5'}`}>
+          <legend className="text-xs font-bold text-(--c-bdcbd5)">Time limit</legend>
+          <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            {durationOptions.map((minutes) => {
+              const active = Number(durationMinutes) === minutes
+              return (
+                <button
+                  key={minutes}
+                  type="button"
+                  onClick={() => onDurationChange(minutes)}
+                  aria-pressed={active}
+                  className={`min-h-11 rounded-lg border px-3 py-2 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--c-78a9c9) ${
+                    active
+                      ? 'border-(--c-39708f) bg-(--c-24516d) text-white shadow-[0_4px_12px_rgba(0,0,0,0.2)]'
+                      : 'border-(--c-354958) bg-(--c-202f3c) text-(--c-c3d0da) hover:border-(--c-52738a) hover:bg-(--c-293d4d)'
+                  }`}
+                >
+                  {minutes} min
+                </button>
+              )
+            })}
           </div>
-          <p className="mt-1.5 pl-6 text-[11px] leading-4 text-(--c-9aabba)">Each week contributes the same number of questions. You can submit whenever you are ready.</p>
-        </div>
+          <p className={`mt-2 text-[11px] leading-4 ${validDuration ? 'text-(--c-9aabba)' : 'text-(--c-e59a90)'}`}>
+            Choose between 5 and 180 minutes.
+          </p>
+        </fieldset>
+
+        {!isAssignment && (
+          <div className="mt-6 rounded-xl bg-(--c-202f3c) p-3.5">
+            <div className="flex items-center gap-2 text-xs font-semibold text-(--c-bdcbd5)">
+              <Icon name="clock" className="size-4 text-(--c-82aecb)" />
+              Questions are randomly selected from each week and shuffled for this paper
+            </div>
+            <p className="mt-1.5 pl-6 text-[11px] leading-4 text-(--c-9aabba)">Each week contributes the same number of questions. You can submit whenever you are ready.</p>
+          </div>
+        )}
 
         <div className="mt-5 flex flex-col-reverse gap-2 border-t border-(--c-2d3e4b) pt-4 sm:flex-row sm:border-0 sm:pt-1">
           <button
@@ -182,7 +206,7 @@ export default function PaperSetupStep({
           <button
             type="button"
             onClick={onStart}
-            disabled={!countIsValid || !Number.isInteger(Number(durationMinutes)) || Number(durationMinutes) < 5 || Number(durationMinutes) % 5 !== 0}
+            disabled={!countIsValid || !validDuration}
             className="flex min-h-12 min-w-0 w-full items-center justify-center gap-2 rounded-xl bg-(--c-2d6485) px-4 text-sm font-bold text-white shadow-[0_8px_20px_rgba(0,0,0,0.24)] transition-transform hover:bg-(--c-39799d) hover:shadow-[0_10px_24px_rgba(0,0,0,0.28)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--c-78a9c9) disabled:cursor-not-allowed disabled:opacity-40 sm:order-2 sm:min-h-10 sm:w-auto sm:flex-1"
           >
             Start test

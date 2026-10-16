@@ -1,0 +1,189 @@
+{
+  "course": "Introduction to Industry 4.0 and Industrial Internet of Things",
+  "week": 9,
+  "year": "2026",
+  "session": "June-Oct",
+  "assignment_title": "Introduction to Industry 4.0 and Industrial Internet of Things Week 9 Assignment",
+  "questions": [
+    {
+      "question_number": 1,
+      "question": "How does fog computing prevent unnecessary noisy big data from crowding the cloud?",
+      "options": {
+        "a": "By storing all raw data permanently in the cloud",
+        "b": "By performing prior filtration at the edge",
+        "c": "By disabling real-time control algorithms",
+        "d": "By increasing the frequency of sensor transmission"
+      },
+      "correct_option": "b",
+      "correct_answer": "By performing prior filtration at the edge"
+    },
+    {
+      "question_number": 2,
+      "question": "Which capability is provided by the fog-based industrial platform?",
+      "options": {
+        "a": "Merging real-time and non-real-time workloads",
+        "b": "Restricting the platform to non-real-time workloads",
+        "c": "Transmitting all sensor data without processing",
+        "d": "Eliminating control of IoT endpoints"
+      },
+      "correct_option": "a",
+      "correct_answer": "Merging real-time and non-real-time workloads"
+    },
+    {
+      "question_number": 3,
+      "question": "Which fog-platform provider offers an edge-node software solution that supports any protocol, any PLC, and any hardware?",
+      "options": {
+        "a": "FogHorn",
+        "b": "Sonm",
+        "c": "Crosser",
+        "d": "Nebbiolo Technologies"
+      },
+      "correct_option": "c",
+      "correct_answer": "Crosser"
+    },
+    {
+      "question_number": 4,
+      "question": "What is the purpose of the %in% special operator in R?",
+      "options": {
+        "a": "To create a series of numbers for a vector",
+        "b": "To check whether an element belongs to a vector",
+        "c": "To perform integer division",
+        "d": "To assign a value globally"
+      },
+      "correct_option": "b",
+      "correct_answer": "To check whether an element belongs to a vector"
+    },
+    {
+      "question_number": 5,
+      "question": "Which validation method is used in the demonstrated R machine-learning execution process to estimate model accuracy?",
+      "options": {
+        "a": "Two-fold cross-validation",
+        "b": "Leave-one-out validation",
+        "c": "Ten-fold cross-validation",
+        "d": "Validation without data partitioning"
+      },
+      "correct_option": "c",
+      "correct_answer": "Ten-fold cross-validation"
+    },
+    {
+      "question_number": 6,
+      "question": "Which Julia function is used to create a dictionary?",
+      "options": {
+        "a": "Tuple()",
+        "b": "Array()",
+        "c": "Dictn()",
+        "d": "Dict()"
+      },
+      "correct_option": "d",
+      "correct_answer": "Dict()"
+    },
+    {
+      "question_number": 7,
+      "question": "During data preprocessing, which operation eliminates repeated data through detection, filtering, and compression?",
+      "options": {
+        "a": "Data integration",
+        "b": "Data cleaning",
+        "c": "Redundancy mitigation",
+        "d": "Data visualization"
+      },
+      "correct_option": "c",
+      "correct_answer": "Redundancy mitigation"
+    },
+    {
+      "question_number": 8,
+      "question": "Which Hadoop component assigns CPU, memory, and storage resources to applications running on a Hadoop cluster?",
+      "options": {
+        "a": "Hadoop Common",
+        "b": "Hadoop Distributed File System",
+        "c": "MapReduce",
+        "d": "Yet Another Resource Negotiator"
+      },
+      "correct_option": "d",
+      "correct_answer": "Yet Another Resource Negotiator"
+    },
+    {
+      "question_number": 9,
+      "question": "Which of the following is listed as an application of integrating MongoDB with Hadoop?",
+      "options": {
+        "a": "Batch aggregation",
+        "b": "Physical network cabling",
+        "c": "Sensor manufacturing",
+        "d": "Firewall configuration"
+      },
+      "correct_option": "a",
+      "correct_answer": "Batch aggregation"
+    },
+    {
+      "question_number": 10,
+      "question": "Which source-routing protocol is used by the BCube data-center network topology?",
+      "options": {
+        "a": "Border Gateway Protocol",
+        "b": "BCube Source Routing",
+        "c": "Open Shortest Path First",
+        "d": "Spanning Tree Protocol"
+      },
+      "correct_option": "b",
+      "correct_answer": "BCube Source Routing"
+    },
+    {
+      "question_number": 11,
+      "question": "Why may an IIoT-based data center require an increase in inbound network bandwidth?",
+      "options": {
+        "a": "IIoT devices generate a bulk amount of small messages containing sensor data",
+        "b": "IIoT completely removes the need for data transmission",
+        "c": "Sensor data is transmitted only once during deployment",
+        "d": "Industrial devices communicate exclusively with one another without a data center"
+      },
+      "correct_option": "a",
+      "correct_answer": "IIoT devices generate a bulk amount of small messages containing sensor data"
+    },
+    {
+      "question_number": 12,
+      "question": "Which of the following is an advantage of a Software-Defined Data Centre?",
+      "options": {
+        "a": "Static workload management",
+        "b": "Permanent coupling of software with hardware",
+        "c": "Programmable infrastructure and workload management",
+        "d": "Elimination of network virtualization"
+      },
+      "correct_option": "c",
+      "correct_answer": "Programmable infrastructure and workload management"
+    },
+    {
+      "question_number": 13,
+      "question": "When an SDN forwarding device has insufficient rule capacity, how can two existing flow rules be converted into a single rule?",
+      "options": {
+        "a": "By applying wildcard-based rule combination",
+        "b": "By disconnecting the SDN controller",
+        "c": "By disabling the forwarding device",
+        "d": "By changing TCP into UDP"
+      },
+      "correct_option": "a",
+      "correct_answer": "By applying wildcard-based rule combination"
+    },
+    {
+      "question_number": 14,
+      "question": "How can SDN meet the dynamically changing forwarding requirements of IIoT sensor data?",
+      "options": {
+        "a": "By assigning the same priority to every type of data permanently",
+        "b": "By using rule-based forwarding policies",
+        "c": "By preventing the controller from updating forwarding rules",
+        "d": "By transmitting data without considering the real-time situation"
+      },
+      "correct_option": "b",
+      "correct_answer": "By using rule-based forwarding policies"
+    },
+    {
+      "question_number": 15,
+      "question": "Which statement best describes Software-Defined Automation?",
+      "options": {
+        "a": "It uses only manually controlled physical equipment",
+        "b": "It eliminates real-time control from industrial systems",
+        "c": "It uses a virtualized platform for dynamic, real-time system control",
+        "d": "It restricts control operations to sensors at Level 0"
+      },
+      "correct_option": "c",
+      "correct_answer": "It uses a virtualized platform for dynamic, real-time system control"
+    }
+  ]
+}

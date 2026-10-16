@@ -1,0 +1,129 @@
+{
+  "week": 9,
+  "course": "Conservation Geography",
+  "year": "2026",
+  "session": "June-Oct",
+  "assignment_title": "Conservation Geography Week 9 Assignment Solutions",
+  "questions": [
+    {
+      "question_number": 1,
+      "question": "Sex ratio is calculated as:",
+      "options": {
+        "a": "Female population divided by male population multiplied by 1000",
+        "b": "Male population divided by female population multiplied by 1000",
+        "c": "Total population divided by female population multiplied by 1000",
+        "d": "Working population divided by dependent population multiplied by 1000"
+      },
+      "correct_option": "a",
+      "correct_answer": "Female population divided by male population multiplied by 1000"
+    },
+    {
+      "question_number": 2,
+      "question": "Which of these is commonly observed during humanising of nature?",
+      "options": {
+        "a": "environmental determinism",
+        "b": "possibilism",
+        "c": "neodeterminism",
+        "d": "stop and go determinism"
+      },
+      "correct_option": "b",
+      "correct_answer": "possibilism"
+    },
+    {
+      "question_number": 3,
+      "question": "The age dependency ratio compares dependent population with:",
+      "options": {
+        "a": "total female population",
+        "b": "working-age population",
+        "c": "urban population",
+        "d": "migrant population"
+      },
+      "correct_option": "b",
+      "correct_answer": "working-age population"
+    },
+    {
+      "question_number": 4,
+      "question": "The logistic growth equation curve is",
+      "options": {
+        "a": "I-shaped",
+        "b": "J-shaped",
+        "c": "S-shaped",
+        "d": "U-shaped"
+      },
+      "correct_option": "c",
+      "correct_answer": "S-shaped"
+    },
+    {
+      "question_number": 5,
+      "question": "Which of these is a positive check according to Malthus?",
+      "options": {
+        "a": "late marriage",
+        "b": "war",
+        "c": "celibacy",
+        "d": "moral restraint"
+      },
+      "correct_option": "b",
+      "correct_answer": "war"
+    },
+    {
+      "question_number": 6,
+      "question": "Economic development is often measured in terms of:",
+      "options": {
+        "a": "age dependency ratio",
+        "b": "total land area",
+        "c": "GDP per capita",
+        "d": "sex ratio"
+      },
+      "correct_option": "c",
+      "correct_answer": "GDP per capita"
+    },
+    {
+      "question_number": 7,
+      "question": "Which of these is not a pillar of sustainability?",
+      "options": {
+        "a": "environmental sustainability",
+        "b": "economic sustainability",
+        "c": "trans-boundary sustainability",
+        "d": "social sustainability"
+      },
+      "correct_option": "c",
+      "correct_answer": "trans-boundary sustainability"
+    },
+    {
+      "question_number": 8,
+      "question": "The demographic transition sees a society move from",
+      "options": {
+        "a": "high birth rate, low death rate to low birth rate, high death rate",
+        "b": "low birth rate, high death rate to low birth rate, low death rate",
+        "c": "high birth rate, high death rate to low birth rate, low death rate",
+        "d": "high birth rate, high death rate to low birth rate, high death rate"
+      },
+      "correct_option": "c",
+      "correct_answer": "high birth rate, high death rate to low birth rate, low death rate"
+    },
+    {
+      "question_number": 9,
+      "question": "Which of these is a preventive check according to Malthus?",
+      "options": {
+        "a": "foresight",
+        "b": "vice",
+        "c": "misery",
+        "d": "flood"
+      },
+      "correct_option": "a",
+      "correct_answer": "foresight"
+    },
+    {
+      "question_number": 10,
+      "question": "Which population group is generally treated as the working population?",
+      "options": {
+        "a": "0-15 years",
+        "b": "15-64 years",
+        "c": "65 years and above",
+        "d": "0-15 and 65 years and above"
+      },
+      "correct_option": "b",
+      "correct_answer": "15-64 years"
+    }
+  ]
+}

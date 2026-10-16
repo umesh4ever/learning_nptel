@@ -23,8 +23,53 @@ const iiotQuestionFiles = import.meta.glob('./iiot/week*_questions.json', {
   eager: true,
   import: 'default',
 })
+const conservationGeographyAssignmentFiles = import.meta.glob(
+  './CG/week_*_assignment.json',
+  { eager: true, import: 'default' },
+)
+
+function normalizeAssignmentWeeks(assignmentFiles) {
+  return Object.values(assignmentFiles)
+    .sort((first, second) => first.week - second.week)
+    .map((assignment) => {
+      const weekTitle = `Week ${assignment.week} Assignment`
+      const topicName = assignment.assignment_title || weekTitle
+      const topic = {
+        topic_id: `CG_W${assignment.week}`,
+        topic_name: topicName,
+        description: '',
+        questions: assignment.questions.map((question) => ({
+          id: `CG_W${assignment.week}_Q${question.question_number}`,
+          difficulty: 'Easy',
+          question: question.question,
+          options: question.options,
+          correct_answer: question.correct_option,
+          justification: '',
+        })),
+      }
+
+      return {
+        ...assignment,
+        topic_title: weekTitle,
+        topics: [topic],
+        questions: topic.questions.map((question) => ({
+          ...question,
+          topic_name: topicName,
+          week_number: assignment.week,
+          week_title: weekTitle,
+        })),
+      }
+    })
+}
 
 export const courses = {
+  'conservation-geography': {
+    id: 'conservation-geography',
+    name: 'Conservation Geography',
+    description: 'Practice weekly Conservation Geography assignment questions.',
+    isAssignment: true,
+    weeks: normalizeAssignmentWeeks(conservationGeographyAssignmentFiles),
+  },
   'iiot-4.0': {
     id: 'iiot-4.0',
     name: 'Industry 4.0 & Industrial IoT',
@@ -50,7 +95,21 @@ export function getCoursePath(courseId, route = 'setup/weeks') {
   return `/courses/${courseId}/${route}`
 }
 
+export function getWeekNotes(week) {
+  return week.topics.map((topic) => ({
+    title: topic.topic_name,
+    description: topic.topic_description ?? topic.description ?? '',
+    notes: topic.questions
+      .map((question) => ({
+        text: question.justification ?? question.explanation ?? '',
+        keyTerm: question.options?.[question.correct_answer] ?? '',
+      }))
+      .filter((note) => note.text.trim().length > 0),
+  }))
+}
+
 export const difficultyOptions = ['Easy', 'Medium/Hard', 'Mixed']
+export const durationOptions = [5, 10, 15, 30, 45, 60, 120, 180]
 
 export function getAvailableQuestions(week, difficulty) {
   if (difficulty === 'Mixed') return week.questions.length

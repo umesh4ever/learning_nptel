@@ -26,7 +26,7 @@ export default function QuizScreen({
     <main className="mx-auto w-full max-w-245 px-5 pb-12 pt-8 sm:px-8 lg:px-12 lg:pt-12">
       <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
         <span className="rounded-full bg-(--c-20384a) px-3 py-1.5 text-[11px] font-bold text-(--c-a9c6da)">
-          {quiz.difficulty} · Weeks {quiz.weeks.map((week) => week.week).join(', ')}
+          {quiz.isAssignment ? 'Assignment' : quiz.difficulty} · Weeks {quiz.weeks.map((week) => week.week).join(', ')}
         </span>
         <div className="flex items-center gap-2">
           <button

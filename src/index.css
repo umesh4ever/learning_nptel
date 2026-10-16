@@ -205,3 +205,63 @@ button,
 input {
   font: inherit;
 }
+
+@property --complete-paper-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.complete-paper-card::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--complete-paper-angle),
+    transparent 0deg 260deg,
+    #6089a4 300deg,
+    #dce7ef 325deg,
+    transparent 360deg
+  );
+  content: "";
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.complete-paper-card::after {
+  position: absolute;
+  z-index: 1;
+  inset: 2px;
+  border-radius: calc(0.75rem - 2px);
+  background: var(--c-20384a);
+  content: "";
+  pointer-events: none;
+  transition: background-color 180ms ease;
+}
+
+.complete-paper-card:hover::before,
+.complete-paper-card:focus-visible::before {
+  opacity: 1;
+  animation: complete-paper-border-rotation 4s linear infinite;
+}
+
+.complete-paper-card:hover::after,
+.complete-paper-card:focus-visible::after {
+  background: var(--c-29485e);
+}
+
+@keyframes complete-paper-border-rotation {
+  to {
+    --complete-paper-angle: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .complete-paper-card::before,
+  .complete-paper-card:hover::before,
+  .complete-paper-card:focus-visible::before {
+    animation: none;
+  }
+}

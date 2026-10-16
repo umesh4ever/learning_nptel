@@ -1,0 +1,189 @@
+{
+  "course": "Introduction to Industry 4.0 and Industrial Internet of Things",
+  "week": 7,
+  "year": "2026",
+  "session": "June-Oct",
+  "assignment_title": "Introduction to Industry 4.0 and Industrial Internet of Things Week 7 Assignment",
+  "questions": [
+    {
+      "question_number": 1,
+      "question": "Which modulation technique is incorporated by LoRa technology?",
+      "options": {
+        "a": "Frequency Shift Keying (FSK)",
+        "b": "Phase Shift Keying (PSK)",
+        "c": "Chirp Spread Spectrum (CSS)",
+        "d": "Amplitude Shift Keying (ASK)"
+      },
+      "correct_option": "c",
+      "correct_answer": "Chirp Spread Spectrum (CSS)"
+    },
+    {
+      "question_number": 2,
+      "question": "What is the maximum wireless throughput achieved by the SIGFOX network?",
+      "options": {
+        "a": "Up to 100 bits per second",
+        "b": "Up to 100 bytes per second",
+        "c": "Up to 140 bits per second",
+        "d": "Up to 1000 bits per second"
+      },
+      "correct_option": "a",
+      "correct_answer": "Up to 100 bits per second"
+    },
+    {
+      "question_number": 3,
+      "question": "Depending on the device variant, what is the typical communication range for a Zigbee network?",
+      "options": {
+        "a": "1 to 5 meters",
+        "b": "10 to 100 meters",
+        "c": "500 to 1000 meters",
+        "d": "1 to 10 kilometers"
+      },
+      "correct_option": "b",
+      "correct_answer": "10 to 100 meters"
+    },
+    {
+      "question_number": 4,
+      "question": "In a Zigbee network, which device is specifically responsible for relaying information to other nodes and can also run small-scale applications?",
+      "options": {
+        "a": "Coordinator",
+        "b": "End device",
+        "c": "Gateway",
+        "d": "Router"
+      },
+      "correct_option": "d",
+      "correct_answer": "Router"
+    },
+    {
+      "question_number": 5,
+      "question": "Which software is used to discover and configure Xbee modules before utilizing them for communication?",
+      "options": {
+        "a": "XCTU",
+        "b": "Arduino IDE",
+        "c": "NodeMCU Flasher",
+        "d": "PuTTY"
+      },
+      "correct_option": "a",
+      "correct_answer": "XCTU"
+    },
+    {
+      "question_number": 6,
+      "question": "Which type of IIoT analytics primarily focuses on answering the questions 'What already happened and currently happening' using dashboards and reports?",
+      "options": {
+        "a": "Predictive Analytics",
+        "b": "Prescriptive Analytics",
+        "c": "Descriptive Analytics",
+        "d": "Diagnostic Analytics"
+      },
+      "correct_option": "c",
+      "correct_answer": "Descriptive Analytics"
+    },
+    {
+      "question_number": 7,
+      "question": "Many middleware solutions in IIoT processing architectures are based on which of the following?",
+      "options": {
+        "a": "Service-Oriented Architecture (SOA)",
+        "b": "Microservices Architecture",
+        "c": "Monolithic Architecture",
+        "d": "Layered Databus Architecture"
+      },
+      "correct_option": "a",
+      "correct_answer": "Service-Oriented Architecture (SOA)"
+    },
+    {
+      "question_number": 8,
+      "question": "In the FarmBeats architecture, which component incorporates weather-aware decisions and UAV flight planning?",
+      "options": {
+        "a": "IoT Base Station",
+        "b": "Cloud-Services",
+        "c": "Network of Soil Sensors",
+        "d": "IoT Gateway"
+      },
+      "correct_option": "d",
+      "correct_answer": "IoT Gateway"
+    },
+    {
+      "question_number": 9,
+      "question": "In the AR Drones-based Precision Agriculture system, what is the specific role of the video processing module deployed in the laptop?",
+      "options": {
+        "a": "To control the flight path of the UAV remotely",
+        "b": "To detect the weeds and generate coordinates",
+        "c": "To actuate the precision sprayer directly via Bluetooth",
+        "d": "To capture GPS-tagged video directly from the field"
+      },
+      "correct_option": "b",
+      "correct_answer": "To detect the weeds and generate coordinates"
+    },
+    {
+      "question_number": 10,
+      "question": "In the iRobot-Factory architecture, which component is tasked with high-performance, long-term data analytics using artificial intelligence techniques?",
+      "options": {
+        "a": "Intelligent Terminal",
+        "b": "Edge Computing Node",
+        "c": "Cognitive Engine",
+        "d": "Production Line Layer"
+      },
+      "correct_option": "c",
+      "correct_answer": "Cognitive Engine"
+    },
+    {
+      "question_number": 11,
+      "question": "According to the phases of Big Data Driven Smart Manufacturing, what is the primary focus of 'Phase 2'?",
+      "options": {
+        "a": "Integration of data and contextual information",
+        "b": "Innovation in process and production",
+        "c": "Initial deployment of sensor nodes",
+        "d": "Synthesis and analysis to build knowledge for decision making"
+      },
+      "correct_option": "d",
+      "correct_answer": "Synthesis and analysis to build knowledge for decision making"
+    },
+    {
+      "question_number": 12,
+      "question": "In a Smart Warehousing system, which module is specifically responsible for organizing and processing data, generating events in real-time, and history-based decision making?",
+      "options": {
+        "a": "Administrative module",
+        "b": "Data collection module",
+        "c": "RFID tag module",
+        "d": "REST-based framework"
+      },
+      "correct_option": "a",
+      "correct_answer": "Administrative module"
+    },
+    {
+      "question_number": 13,
+      "question": "In the context of an Industrial Control System (ICS), what is a 'Set Point'?",
+      "options": {
+        "a": "The physical location where a sensor is deployed",
+        "b": "The standard value of the process parameter for controlled operation",
+        "c": "The value of a process parameter measured by a sensor",
+        "d": "The actuator used to manipulate the process"
+      },
+      "correct_option": "b",
+      "correct_answer": "The standard value of the process parameter for controlled operation"
+    },
+    {
+      "question_number": 14,
+      "question": "Which type of control loop makes control decisions entirely independent of the measured process variable?",
+      "options": {
+        "a": "Closed Loop Control",
+        "b": "Feedback Control",
+        "c": "Open Loop Control",
+        "d": "Proportional Control"
+      },
+      "correct_option": "c",
+      "correct_answer": "Open Loop Control"
+    },
+    {
+      "question_number": 15,
+      "question": "Which of the following is a primary component of a Supervisory Control and Data Acquisition (SCADA) system?",
+      "options": {
+        "a": "Complex Event Processor (CEP)",
+        "b": "Centralized Cloud Services",
+        "c": "Unmanned Aerial Vehicles (UAVs)",
+        "d": "Remote Telemetry Units (RTUs)"
+      },
+      "correct_option": "d",
+      "correct_answer": "Remote Telemetry Units (RTUs)"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import { useCallback, useLayoutEffect, useMemo, useReducer, useState } from 'rea
 import {
   createTestQuestions,
   courseList,
+  durationOptions,
   getAvailableQuestions,
   getCourse,
   normalizeTotalQuestionCount,
@@ -55,7 +56,9 @@ function restoreState(courseId) {
       ? savedState.selectedWeekNumbers
       : [course.weeks[0]?.week]
     const selectedWeeks = course.weeks.filter((week) => selectedWeekNumbers.includes(week.week))
-    const restoredWeeks = selectedWeeks.length > 0 ? selectedWeeks : initialState.selectedWeeks
+    const restoredWeeks = Array.isArray(savedState.selectedWeekNumbers)
+      ? selectedWeeks
+      : initialState.selectedWeeks
     const difficulty = ['Medium/Hard', 'Mixed'].includes(savedState.difficulty)
       ? savedState.difficulty
       : 'Easy'
@@ -65,10 +68,7 @@ function restoreState(courseId) {
       difficulty,
     )
     const durationValue = Number(savedState.durationMinutes)
-    const durationMinutes =
-      Number.isInteger(durationValue) && durationValue >= 5 && durationValue % 5 === 0
-        ? durationValue
-        : 30
+    const durationMinutes = durationOptions.includes(durationValue) ? durationValue : 30
 
     let quiz = null
     let quizRestoreWarning = ''
@@ -122,14 +122,14 @@ function restoreState(courseId) {
         hasValidQuestionSet &&
         Number.isFinite(endsAt) &&
         Number.isFinite(startedAt) &&
-        Number.isInteger(quizDurationMinutes) &&
-        quizDurationMinutes >= 5 &&
+        durationOptions.includes(quizDurationMinutes) &&
         startedAt < endsAt &&
         (completedAt === null || (completedAt >= startedAt && completedAt <= endsAt))
       ) {
         quiz = {
           weeks: quizWeeks,
           difficulty: quizDifficulty,
+          isAssignment: course.isAssignment,
           questions,
           startedAt,
           endsAt,
@@ -227,7 +227,6 @@ function studyroomReducer(state, action) {
     case 'toggle-week': {
       const courseWeeks = getCourse(state.courseId)?.weeks ?? []
       const selected = state.selectedWeeks.some((week) => week.week === action.week.week)
-      if (selected && state.selectedWeeks.length === 1) return state
       const selectedWeeks = selected
         ? state.selectedWeeks.filter((week) => week.week !== action.week.week)
         : courseWeeks.filter((week) =>
@@ -259,7 +258,9 @@ function studyroomReducer(state, action) {
         ...state,
         selectedWeeks: courseWeeks,
         difficulty: 'Mixed',
-        questionCount: courseWeeks.length,
+        questionCount: getCourse(state.courseId)?.isAssignment
+          ? courseWeeks.reduce((total, week) => total + week.questions.length, 0)
+          : courseWeeks.length,
       }
     }
     case 'set-difficulty':
@@ -275,9 +276,12 @@ function studyroomReducer(state, action) {
     case 'set-question-count':
       return { ...state, questionCount: action.count }
     case 'set-duration':
-      return { ...state, durationMinutes: action.minutes }
+      return durationOptions.includes(Number(action.minutes))
+        ? { ...state, durationMinutes: Number(action.minutes) }
+        : state
     case 'reset-paper': {
-      const courseWeeks = getCourse(state.courseId)?.weeks ?? []
+      const course = getCourse(state.courseId)
+      const courseWeeks = course?.weeks ?? []
       const isCompletePaper =
         state.selectedWeeks.length === courseWeeks.length &&
         courseWeeks.every((week) => state.selectedWeeks.some((selected) => selected.week === week.week))
@@ -286,18 +290,22 @@ function studyroomReducer(state, action) {
       return {
         ...state,
         difficulty,
-        questionCount: normalizeTotalQuestionCount(
-          state.selectedWeeks.length * defaultQuestionsPerWeek,
-          state.selectedWeeks,
-          difficulty,
-        ),
+        questionCount: course?.isAssignment
+          ? state.selectedWeeks.reduce((total, week) => total + week.questions.length, 0)
+          : normalizeTotalQuestionCount(
+              state.selectedWeeks.length * defaultQuestionsPerWeek,
+              state.selectedWeeks,
+              difficulty,
+            ),
         durationMinutes: 30,
       }
     }
     case 'start-quiz': {
+      const difficulty = action.difficulty ?? state.difficulty
+      if (!durationOptions.includes(action.durationMinutes)) return state
       const questions = createTestQuestions(
         state.selectedWeeks,
-        state.difficulty,
+        difficulty,
         action.questionCount,
       )
       if (questions.length !== action.questionCount) return state
@@ -306,7 +314,8 @@ function studyroomReducer(state, action) {
         ...state,
         quiz: {
           weeks: state.selectedWeeks,
-          difficulty: state.difficulty,
+          difficulty,
+          isAssignment: Boolean(getCourse(state.courseId)?.isAssignment),
           questions,
           startedAt,
           endsAt: startedAt + action.durationMinutes * 60 * 1000,
