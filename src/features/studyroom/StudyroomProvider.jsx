@@ -27,11 +27,17 @@ function isRestorableQuizQuestion(question, quizWeeks, difficulty) {
 function createInitialState(courseId = null) {
   const course = getCourse(courseId)
   const selectedWeeks = course?.weeks[0] ? [course.weeks[0]] : []
+  const isAssignment = Boolean(course?.isAssignment)
+  const totalAssignmentAvailable = selectedWeeks[0] ? selectedWeeks[0].questions.length : 0
+  const defaultCount = isAssignment
+    ? Math.min(10, totalAssignmentAvailable || 10)
+    : Math.min(10, selectedWeeks[0] ? getAvailableQuestions(selectedWeeks[0], 'Easy') : 0)
+
   return {
     courseId,
     selectedWeeks,
     difficulty: 'Easy',
-    questionCount: Math.min(10, selectedWeeks[0] ? getAvailableQuestions(selectedWeeks[0], 'Easy') : 0),
+    questionCount: defaultCount,
     durationMinutes: 30,
     quiz: null,
     currentQuestionIndex: 0,
@@ -62,11 +68,18 @@ function restoreState(courseId) {
     const difficulty = ['Medium/Hard', 'Mixed'].includes(savedState.difficulty)
       ? savedState.difficulty
       : 'Easy'
-    const questionCount = normalizeTotalQuestionCount(
-      savedState.questionCount,
-      restoredWeeks,
-      difficulty,
-    )
+    const isAssignment = Boolean(course.isAssignment)
+    const totalAssignmentQuestions = isAssignment
+      ? restoredWeeks.reduce((total, week) => total + week.questions.length, 0)
+      : 0
+    const rawCount = Number(savedState.questionCount)
+    const questionCount = isAssignment
+      ? (rawCount && rawCount <= totalAssignmentQuestions ? rawCount : Math.min(10, totalAssignmentQuestions))
+      : normalizeTotalQuestionCount(
+          savedState.questionCount,
+          restoredWeeks,
+          difficulty,
+        )
     const durationValue = Number(savedState.durationMinutes)
     const durationMinutes = durationOptions.includes(durationValue) ? durationValue : 30
 
@@ -102,10 +115,11 @@ function restoreState(courseId) {
           ? createTestQuestions(quizWeeks, quizDifficulty, quizQuestionCount, { randomize: false })
           : []
       const questionsPerWeek = quizWeeks.length > 0 ? quizQuestionCount / quizWeeks.length : 0
+      const isAssignmentCourse = Boolean(course.isAssignment)
       const hasValidQuestionSet =
         Number.isInteger(quizQuestionCount) &&
         quizQuestionCount > 0 &&
-        Number.isInteger(questionsPerWeek) &&
+        (isAssignmentCourse || Number.isInteger(questionsPerWeek)) &&
         questions.length === quizQuestionCount &&
         questions.every(
           (question) =>
@@ -113,9 +127,10 @@ function restoreState(courseId) {
             isRestorableQuizQuestion(question, quizWeeks, quizDifficulty),
         ) &&
         new Set(questions.map((question) => question.id)).size === questions.length &&
-        quizWeeks.every(
-          (week) => questions.filter((question) => question.week_number === week.week).length === questionsPerWeek,
-        )
+        (isAssignmentCourse ||
+          quizWeeks.every(
+            (week) => questions.filter((question) => question.week_number === week.week).length === questionsPerWeek,
+          ))
       if (
         quizWeeks.length > 0 &&
         quizWeeks.length === savedState.quiz.weekNumbers.length &&
@@ -225,7 +240,8 @@ function studyroomReducer(state, action) {
     case 'select-course':
       return action.state
     case 'toggle-week': {
-      const courseWeeks = getCourse(state.courseId)?.weeks ?? []
+      const course = getCourse(state.courseId)
+      const courseWeeks = course?.weeks ?? []
       const selected = state.selectedWeeks.some((week) => week.week === action.week.week)
       const selectedWeeks = selected
         ? state.selectedWeeks.filter((week) => week.week !== action.week.week)
@@ -233,14 +249,21 @@ function studyroomReducer(state, action) {
             state.selectedWeeks.some((selectedWeek) => selectedWeek.week === week.week) ||
             week.week === action.week.week,
           )
+      const isAssignment = Boolean(course?.isAssignment)
+      const totalAssignmentQuestions = isAssignment
+        ? selectedWeeks.reduce((total, week) => total + week.questions.length, 0)
+        : 0
+      const questionCount = isAssignment
+        ? (state.questionCount && state.questionCount <= totalAssignmentQuestions ? state.questionCount : Math.min(10, totalAssignmentQuestions))
+        : normalizeTotalQuestionCount(
+            state.questionCount,
+            selectedWeeks,
+            state.difficulty,
+          )
       return {
         ...state,
         selectedWeeks,
-        questionCount: normalizeTotalQuestionCount(
-          state.questionCount,
-          selectedWeeks,
-          state.difficulty,
-        ),
+        questionCount,
       }
     }
     case 'reset-weeks': {
@@ -287,11 +310,14 @@ function studyroomReducer(state, action) {
         courseWeeks.every((week) => state.selectedWeeks.some((selected) => selected.week === week.week))
       const difficulty = isCompletePaper ? 'Mixed' : 'Easy'
       const defaultQuestionsPerWeek = isCompletePaper ? 1 : 10
+      const totalAssignmentQuestions = course?.isAssignment
+        ? state.selectedWeeks.reduce((total, week) => total + week.questions.length, 0)
+        : 0
       return {
         ...state,
         difficulty,
         questionCount: course?.isAssignment
-          ? state.selectedWeeks.reduce((total, week) => total + week.questions.length, 0)
+          ? Math.min(10, totalAssignmentQuestions)
           : normalizeTotalQuestionCount(
               state.selectedWeeks.length * defaultQuestionsPerWeek,
               state.selectedWeeks,

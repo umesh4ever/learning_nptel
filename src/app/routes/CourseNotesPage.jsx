@@ -7,7 +7,7 @@ export default function CourseNotesPage() {
   const course = getCourse(courseId)
 
   if (!course) return <Navigate to="/" replace />
-  if (course.id !== 'iiot-4.0') return <Navigate to={getCoursePath(course.id)} replace />
+  if (course.isAssignment) return <Navigate to={getCoursePath(course.id)} replace />
 
   return (
     <main className="mx-auto w-full max-w-4xl px-5 pb-12 pt-8 sm:px-8 lg:px-12 lg:pt-12">

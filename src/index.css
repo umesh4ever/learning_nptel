@@ -219,15 +219,16 @@ input {
   border-radius: inherit;
   background: conic-gradient(
     from var(--complete-paper-angle),
-    transparent 0deg 260deg,
-    #6089a4 300deg,
-    #dce7ef 325deg,
+    transparent 0deg 240deg,
+    #6089a4 290deg,
+    #dce7ef 330deg,
     transparent 360deg
   );
   content: "";
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 180ms ease;
+  opacity: 1;
+  animation: complete-paper-border-rotation 4s linear infinite;
+  transition: opacity 180ms ease, filter 180ms ease;
 }
 
 .complete-paper-card::after {
@@ -243,8 +244,7 @@ input {
 
 .complete-paper-card:hover::before,
 .complete-paper-card:focus-visible::before {
-  opacity: 1;
-  animation: complete-paper-border-rotation 4s linear infinite;
+  filter: brightness(1.25);
 }
 
 .complete-paper-card:hover::after,

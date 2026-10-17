@@ -32,8 +32,8 @@ export const router = createHashRouter([
         element: <CourseRoute />,
         children: [
           { index: true, element: <Navigate to="setup/weeks" replace /> },
-          { path: 'setup/weeks', lazy: lazyRoute(() => import('./routes/WeekSetupRoute.jsx')) },
-          { path: 'setup/paper', lazy: lazyRoute(() => import('./routes/PaperSetupRoute.jsx')) },
+          { path: 'setup/weeks', lazy: lazyRoute(() => import('../features/setup/WeekSelectionPage.jsx')) },
+          { path: 'setup/paper', lazy: lazyRoute(() => import('../features/setup/PaperSetupPage.jsx')) },
           { path: 'notes', lazy: lazyRoute(() => import('./routes/CourseNotesPage.jsx')) },
           { path: 'notes/week/:weekNumber', lazy: lazyRoute(() => import('./routes/WeekNotesPage.jsx')) },
           { path: 'quiz/:questionNumber', lazy: lazyRoute(() => import('../features/quiz/QuizPage.jsx')) },

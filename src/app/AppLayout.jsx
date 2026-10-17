@@ -4,7 +4,6 @@ import Footer from '../components/Footer.jsx'
 import Navbar from '../components/Navbar.jsx'
 import Sidebar from '../components/Sidebar.jsx'
 import { useStudyroom } from '../features/studyroom/StudyroomContext.js'
-import { getCourse } from '../data/courseData.js'
 
 const THEME_STORAGE_KEY = 'nptel-studyroom-theme'
 
@@ -22,8 +21,7 @@ function getPreferredTheme() {
 export default function AppLayout() {
   const navigate = useNavigate()
   const location = useLocation()
-  const { state, dispatch, persistenceWarning } = useStudyroom()
-  const course = getCourse(state.courseId)
+  const { state, persistenceWarning } = useStudyroom()
   const [isOnline, setIsOnline] = useState(() => navigator.onLine)
   const [theme, setTheme] = useState(getPreferredTheme)
   const { quiz, currentQuestionIndex, selectedAnswers } = state
@@ -32,10 +30,11 @@ export default function AppLayout() {
     : 0
   const progress = quiz ? (answeredCount / quiz.questions.length) * 100 : 0
   const inActiveQuiz = Boolean(quiz && !state.finished && location.pathname.includes('/quiz/'))
-  const isCourseHome = location.pathname === '/'
-  const hasSidebar = Boolean(!inActiveQuiz && course && !isCourseHome)
+  const isFrontPage = location.pathname === '/' || location.pathname === ''
+  const hasSidebar = !isFrontPage && !inActiveQuiz
 
   useLayoutEffect(() => {
+    if (location.pathname.includes('/quiz/')) return
     window.scrollTo(0, 0)
   }, [location.pathname])
 
@@ -92,8 +91,6 @@ export default function AppLayout() {
     <div className="min-h-screen bg-(--c-101923) font-sans text-(--c-d6e1e9)">
       {hasSidebar && (
         <Sidebar
-          course={course}
-          onToggleWeek={(week) => dispatch({ type: 'toggle-week', week })}
           quiz={quiz}
           answeredCount={answeredCount}
           progress={progress}
@@ -101,7 +98,7 @@ export default function AppLayout() {
           finished={state.finished}
         />
       )}
-      <div className={`min-h-screen ${hasSidebar ? 'md:ml-62.5' : ''}`}>
+      <div className={`min-h-screen ${hasSidebar ? 'md:ml-72' : ''}`}>
         {persistenceWarning && (
           <p role="status" className="bg-(--c-3b3020) px-5 py-3 text-center text-xs font-semibold text-(--c-f0d39c)">
             {persistenceWarning}

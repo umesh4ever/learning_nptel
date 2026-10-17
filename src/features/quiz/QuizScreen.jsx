@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Icon from '../../components/Icon.jsx'
 
 export default function QuizScreen({
@@ -22,10 +22,24 @@ export default function QuizScreen({
   const minutes = Math.floor(remainingSeconds / 60).toString().padStart(2, '0')
   const seconds = (remainingSeconds % 60).toString().padStart(2, '0')
 
+  const questionCardRef = useRef(null)
+  const prevIndexRef = useRef(questionIndex)
+
+  // When changing questions (e.g. on mobile), keep the question card comfortably in sight
+  useEffect(() => {
+    if (prevIndexRef.current !== questionIndex) {
+      prevIndexRef.current = questionIndex
+      if (questionCardRef.current) {
+        questionCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }
+  }, [questionIndex])
+
   return (
-    <main className="mx-auto w-full max-w-245 px-5 pb-12 pt-8 sm:px-8 lg:px-12 lg:pt-12">
-      <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
-        <span className="rounded-full bg-(--c-20384a) px-3 py-1.5 text-[11px] font-bold text-(--c-a9c6da)">
+    <main className="mx-auto w-full max-w-245 px-5 pb-12 pt-4 sm:px-8 sm:pt-6 lg:px-12 lg:pt-8">
+      {/* Sticky top control bar so timer & tools are always accessible */}
+      <div className="sticky top-0 z-20 -mx-5 mb-5 flex flex-wrap items-center justify-between gap-3 border-b border-(--c-2b3b49)/70 bg-(--c-101923)/90 px-5 py-2.5 backdrop-blur-md sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12">
+        <span className="rounded-full bg-(--c-20384a) px-3 py-1 text-[11px] font-bold text-(--c-a9c6da)">
           {quiz.isAssignment ? 'Assignment' : quiz.difficulty} · Weeks {quiz.weeks.map((week) => week.week).join(', ')}
         </span>
         <div className="flex items-center gap-2">
@@ -34,7 +48,7 @@ export default function QuizScreen({
             onClick={onToggleTheme}
             aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
             title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
-            className={`grid size-11 place-items-center rounded-full border transition-colors active:scale-95 sm:size-9 ${
+            className={`grid size-9 place-items-center rounded-full border transition-colors active:scale-95 sm:size-9 ${
               theme === 'dark'
                 ? 'border-(--c-405969) bg-(--c-263b4a) text-(--c-cfdae2) hover:bg-(--c-30495b)'
                 : 'border-[#39708f] bg-[#24516d] text-white hover:bg-[#2c6383]'
@@ -45,7 +59,7 @@ export default function QuizScreen({
           <div
             role={timeExpired ? 'alert' : 'timer'}
             aria-live={timeExpired ? 'assertive' : 'off'}
-            className={`rounded-full px-3 py-2 text-xs font-bold tabular-nums ${
+            className={`rounded-full px-3 py-1.5 text-xs font-bold tabular-nums ${
               timeExpired ? 'bg-(--c-452c2d) text-(--c-edb3ad)' : 'bg-(--c-1c2b38) text-(--c-bdcbd5) ring-1 ring-(--c-344654)'
             }`}
           >
@@ -54,36 +68,41 @@ export default function QuizScreen({
           <button
             type="button"
             onClick={() => setConfirmQuit(true)}
-            className="min-h-11 rounded-full border border-(--c-684242) bg-(--c-38272a) px-3 text-xs font-bold text-(--c-e5aaa3) transition-transform hover:bg-(--c-493033) active:scale-95 sm:min-h-9"
+            className="min-h-8 rounded-full border border-(--c-684242) bg-(--c-38272a) px-3 text-xs font-bold text-(--c-e5aaa3) transition-transform hover:bg-(--c-493033) active:scale-95"
           >
-            Quit test
+            Quit
           </button>
         </div>
       </div>
 
-      <div className="mb-6 flex items-end justify-between">
+      <div className="mb-4 flex items-end justify-between">
         <div>
           <p className="text-[11px] font-bold uppercase tracking-[0.17em] text-(--c-91a4b3)">
             Week {question.week_number} · {question.week_title}
           </p>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-(--c-dce7ef)">
+          <h1 className="mt-1 text-2xl font-semibold tracking-tight text-(--c-dce7ef) sm:text-3xl">
             Question {questionIndex + 1}<span className="text-(--c-8195a5)"> / {quiz.questions.length}</span>
           </h1>
         </div>
         <p className="hidden text-xs font-medium text-(--c-9aabba) sm:block">{answeredCount} of {quiz.questions.length} answered</p>
       </div>
-      <div className="mb-8 h-1.5 overflow-hidden rounded-full bg-(--c-263744)">
+
+      <div className="mb-6 h-1.5 overflow-hidden rounded-full bg-(--c-263744)">
         <div className="h-full rounded-full bg-(--c-5a91b2) transition-all duration-300" style={{ width: `${progress}%` }} />
       </div>
 
-      <article className="rounded-2xl border border-(--c-2b3b49) bg-(--c-182633) p-4 shadow-[0_10px_35px_rgba(0,0,0,0.18)] sm:p-8">
+      {/* Main Question Card with explicit scroll margin for perfect in-sight alignment */}
+      <article
+        ref={questionCardRef}
+        className="scroll-mt-[68px] sm:scroll-mt-[76px] rounded-2xl border border-(--c-2b3b49) bg-(--c-182633) p-4.5 shadow-[0_10px_35px_rgba(0,0,0,0.18)] sm:p-8"
+      >
         <div className="flex flex-wrap items-center gap-2">
           <span className="rounded-md bg-(--c-243746) px-2 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-(--c-a9c6da)">{question.id}</span>
           <span className="text-[11px] font-medium text-(--c-9aabba)">{question.topic_name}</span>
         </div>
-        <h2 className="mt-5 max-w-3xl text-lg font-semibold leading-8 text-(--c-dce7ef) sm:text-[21px] sm:leading-9">{question.question}</h2>
+        <h2 className="mt-4 max-w-3xl text-lg font-semibold leading-8 text-(--c-dce7ef) sm:text-[21px] sm:leading-9">{question.question}</h2>
 
-        <div className="mt-7 space-y-3">
+        <div className="mt-6 space-y-3">
           {Object.entries(question.options).map(([key, value]) => {
             const chosen = chosenAnswer === key
             return (
@@ -99,7 +118,9 @@ export default function QuizScreen({
                     : 'border-(--c-354958) bg-(--c-202f3c) hover:border-(--c-52738a) hover:bg-(--c-293d4d)'
                 }`}
               >
-                <span className={`grid size-8 shrink-0 place-items-center rounded-lg text-xs font-bold ${chosen ? 'bg-white/15 text-white' : 'bg-(--c-304656) text-(--c-c3d0da)'}`}>{key}</span>
+                <span className={`grid size-8 shrink-0 place-items-center rounded-lg text-xs font-bold uppercase ${chosen ? 'bg-white/15 text-white' : 'bg-(--c-304656) text-(--c-c3d0da)'}`}>
+                  {key.toUpperCase()}
+                </span>
                 <span className={`pt-1 text-sm leading-6 ${chosen ? 'font-semibold text-white' : 'text-(--c-c3d0da)'}`}>{value}</span>
               </button>
             )
@@ -171,6 +192,7 @@ export default function QuizScreen({
           </div>
         </div>
       </article>
+
       {confirmQuit && (
         <div
           className="fixed inset-0 z-50 grid place-items-center bg-(--c-080e14)/75 p-4 backdrop-blur-sm"

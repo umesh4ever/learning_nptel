@@ -7,7 +7,7 @@ export default function Navbar({ courseId, quiz, questionIndex, finished, onGoHo
     <header className="sticky top-0 z-20 border-b border-[#243b4c] bg-[#142536] px-3 py-1.5 text-[#dce7ef] shadow-md sm:px-6 sm:py-2 lg:px-10">
       <nav aria-label="Main navigation" className="mx-auto flex max-w-295 items-center justify-between gap-3">
         <Link
-          to="/"
+          to="https://umesh4ever.github.io/learning_nptel/"
           onClick={onGoHome}
           className="flex min-h-11 min-w-0 items-center gap-3 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b9ddf5] sm:min-h-10"
         >

@@ -59,7 +59,7 @@ export default function WeekNotesPage() {
   const week = course?.weeks.find((item) => item.week === Number(weekNumber))
 
   if (!course) return <Navigate to="/" replace />
-  if (course.id !== 'iiot-4.0') return <Navigate to={getCoursePath(course.id)} replace />
+  if (course.isAssignment) return <Navigate to={getCoursePath(course.id)} replace />
   if (!week) return <Navigate to={getCoursePath(course.id, 'notes')} replace />
 
   const topics = getWeekNotes(week)

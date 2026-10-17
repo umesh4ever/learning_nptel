@@ -1,24 +1,32 @@
+import { Navigate, useNavigate } from 'react-router-dom'
 import Icon from '../../components/Icon.jsx'
+import { getCourse, getCoursePath } from '../../data/courseData.js'
+import { useStudyroom } from '../studyroom/StudyroomContext.js'
 
-export default function WeekSelectionStep({
-  courseName,
-  isAssignment,
-  weeks,
-  selectedWeeks,
-  onToggleWeek,
-  onContinue,
-  onReset,
-  onCompletePaper,
-}) {
+export default function WeekSelectionPage() {
+  const { state, dispatch } = useStudyroom()
+  const navigate = useNavigate()
+  const course = getCourse(state.courseId)
+
+  if (!course) return <Navigate to="/" replace />
+
+  const { weeks, isAssignment, name: courseName } = course
+  const selectedWeeks = state.selectedWeeks
   const selectedWeekNumbers = new Set(selectedWeeks.map((week) => week.week))
   const completePaperQuestionCount = isAssignment
     ? weeks.reduce((total, week) => total + week.questions.length, 0)
     : weeks.length
 
+  function onToggleWeek(week) { dispatch({ type: 'toggle-week', week }) }
+  function onReset() { dispatch({ type: 'reset-weeks' }) }
+  function onCompletePaper() {
+    dispatch({ type: 'complete-paper' })
+    navigate(getCoursePath(course.id, 'setup/paper'))
+  }
+  function onContinue() { navigate(getCoursePath(course.id, 'setup/paper')) }
+
   return (
     <main className="mx-auto w-full max-w-295 px-5 pb-12 pt-8 sm:px-8 lg:px-12 lg:pt-12">
-      
-
       <section className="mb-8 max-w-3xl">
         <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-(--c-1e3445) px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-(--c-a7c6dc)">
           <Icon name="book" className="size-3.5" />
@@ -119,3 +127,4 @@ export default function WeekSelectionStep({
     </main>
   )
 }
+
