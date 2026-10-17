@@ -15,10 +15,14 @@ export default function QuizScreen({
   onQuestionChange,
   onSubmit,
   onQuit,
+  quizMode,
 }) {
   const [confirmQuit, setConfirmQuit] = useState(false)
   const question = quiz.questions[questionIndex]
   const chosenAnswer = selectedAnswers[question.id]
+  const isLearning = quizMode === 'learning'
+  const isAnswered = chosenAnswer !== undefined
+  const correctAnswer = question.correct_answer
   const minutes = Math.floor(remainingSeconds / 60).toString().padStart(2, '0')
   const seconds = (remainingSeconds % 60).toString().padStart(2, '0')
 
@@ -105,30 +109,74 @@ export default function QuizScreen({
         <div className="mt-6 space-y-3">
           {Object.entries(question.options).map(([key, value]) => {
             const chosen = chosenAnswer === key
+            const isCorrect = key === correctAnswer
+            const showFeedback = isLearning && isAnswered
+            const optionChosenOrCorrect = chosen || (showFeedback && isCorrect)
             return (
               <button
                 key={key}
                 type="button"
-                onClick={() => onAnswer(question.id, key)}
-                disabled={timeExpired}
+                onClick={() => !isAnswered && onAnswer(question.id, key)}
+                disabled={timeExpired || (isLearning && isAnswered)}
                 aria-pressed={chosen}
                 className={`flex w-full items-start gap-3 rounded-xl border p-3.5 text-left transition-transform duration-200 active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--c-356da8) disabled:cursor-not-allowed sm:gap-4 sm:p-4 ${
-                  chosen
-                    ? 'border-(--c-163b59) bg-(--c-245984) shadow-[0_8px_18px_rgba(22,59,89,0.28)]'
-                    : 'border-(--c-354958) bg-(--c-202f3c) hover:border-(--c-52738a) hover:bg-(--c-293d4d)'
+                  showFeedback && isCorrect
+                    ? 'border-(--c-2d6485) bg-(--c-245984) text-white shadow-[0_8px_18px_rgba(22,59,89,0.28)]'
+                    : showFeedback && chosen && !isCorrect
+                      ? 'border-(--c-88464a) bg-(--c-452c2d) text-white'
+                      : optionChosenOrCorrect
+                        ? 'border-(--c-163b59) bg-(--c-245984) shadow-[0_8px_18px_rgba(22,59,89,0.28)]'
+                        : 'border-(--c-354958) bg-(--c-202f3c) hover:border-(--c-52738a) hover:bg-(--c-293d4d)'
                 }`}
               >
-                <span className={`grid size-8 shrink-0 place-items-center rounded-lg text-xs font-bold uppercase ${chosen ? 'bg-white/15 text-white' : 'bg-(--c-304656) text-(--c-c3d0da)'}`}>
+                <span className={`grid size-8 shrink-0 place-items-center rounded-lg text-xs font-bold uppercase ${showFeedback ? (isCorrect || chosen ? 'bg-white/20 text-white' : 'bg-(--c-304656) text-(--c-9aabba)') : chosen ? 'bg-white/15 text-white' : 'bg-(--c-304656) text-(--c-c3d0da)'}`}>
                   {key.toUpperCase()}
+                  {showFeedback && isCorrect && <span className="ml-1 text-[10px]">✓</span>}
+                  {showFeedback && chosen && !isCorrect && <span className="ml-1 text-[10px]">✗</span>}
                 </span>
-                <span className={`pt-1 text-sm leading-6 ${chosen ? 'font-semibold text-white' : 'text-(--c-c3d0da)'}`}>{value}</span>
+                <span className={`pt-1 text-sm leading-6 ${showFeedback ? (isCorrect || chosen ? 'font-semibold text-white' : 'text-(--c-9aabba)') : chosen ? 'font-semibold text-white' : 'text-(--c-c3d0da)'}`}>{value}</span>
+                {showFeedback && isCorrect && (
+                  <span className="ml-auto text-[10px] font-bold text-(--c-a9f3d4)">Correct</span>
+                )}
+                {showFeedback && chosen && !isCorrect && (
+                  <span className="ml-auto text-[10px] font-bold text-(--c-f0a3a3)">Incorrect</span>
+                )}
               </button>
             )
           })}
         </div>
 
-        <section className="mt-7 border-t border-(--c-2b3b49) pt-5" aria-label="Question navigation">
-          <p className="mb-3 text-xs font-bold text-(--c-bdcbd5)">Questions</p>
+        {isLearning && isAnswered && (
+          <p className="mt-3 text-[10px] leading-5 text-(--c-9aabba)">
+            {chosenAnswer === correctAnswer
+              ? 'Correct answer! Select Next Question to continue.'
+              : `The correct answer was ${correctAnswer}. Select Next Question to continue.`}
+          </p>
+        )}
+
+        <div className="mt-6 flex items-center justify-between gap-3 border-t border-(--c-2b3b49) pt-4 sm:flex-row sm:gap-4">
+          <button
+            type="button"
+            onClick={() => onQuestionChange(questionIndex - 1)}
+            disabled={questionIndex === 0}
+            className="flex h-11 items-center justify-center gap-2 rounded-lg border border-(--c-405969) bg-(--c-263b4a) px-2.5 text-sm font-bold text-(--c-cfdae2) transition-all hover:border-(--c-5d7d91) hover:bg-(--c-30495b) active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60 sm:min-w-32 sm:px-3"
+          >
+            <Icon name="back" className="size-4" />
+            Previous
+          </button>
+          <button
+            type="button"
+            onClick={() => onQuestionChange(questionIndex + 1)}
+            disabled={!isAnswered || questionIndex === quiz.questions.length - 1}
+            className="flex h-11 items-center justify-center gap-2 rounded-lg border border-(--c-467796) bg-(--c-2f6685) px-2.5 text-sm font-bold text-white transition-all hover:border-(--c-5588a7) hover:bg-(--c-39799d) active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60 sm:min-w-32 sm:px-3"
+          >
+            Next
+            <Icon name="arrow" className="size-4" />
+          </button>
+        </div>
+
+        <section className="mt-4 border-t border-(--c-2b3b49) pt-4" aria-label="Question navigation">
+          <p className="mb-2 text-xs font-bold text-(--c-bdcbd5)">Questions</p>
           <div className="flex flex-wrap gap-2">
             {quiz.questions.map((item, index) => {
               const answered = selectedAnswers[item.id] !== undefined
@@ -157,39 +205,38 @@ export default function QuizScreen({
           </div>
         </section>
 
-        <div className="mt-7 grid grid-cols-2 gap-2 border-t border-(--c-2b3b49) pt-4 sm:flex sm:items-center sm:justify-between sm:gap-3 sm:pt-5">
-          <button
-            type="button"
-            onClick={() => onQuestionChange(questionIndex - 1)}
-            disabled={questionIndex === 0}
-            className="flex h-12 items-center justify-center gap-2 rounded-xl border border-(--c-405969) bg-(--c-263b4a) px-3 text-sm font-bold text-(--c-cfdae2) transition-all hover:border-(--c-5d7d91) hover:bg-(--c-30495b) active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60 sm:min-w-32 sm:px-4"
-          >
-            <Icon name="back" className="size-4" />
-            Previous
-          </button>
-          <button
-            type="button"
-            onClick={() => onQuestionChange(questionIndex + 1)}
-            disabled={questionIndex === quiz.questions.length - 1}
-            className="flex h-12 items-center justify-center gap-2 rounded-xl border border-(--c-467796) bg-(--c-2f6685) px-3 text-sm font-bold text-white transition-all hover:border-(--c-5588a7) hover:bg-(--c-39799d) active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60 sm:order-3 sm:min-w-32 sm:px-4"
-          >
-            Next
-            <Icon name="arrow" className="size-4" />
-          </button>
-          <div className="col-span-2 flex flex-col items-stretch gap-2 sm:order-2 sm:ml-auto sm:flex-row sm:items-center sm:gap-3">
-            <p className="text-center text-[11px] text-(--c-9aabba) sm:text-right">
-              {quiz.questions.length - answeredCount > 0
-                ? `${quiz.questions.length - answeredCount} unanswered will count as incorrect.`
-                : 'All questions answered.'}
-            </p>
+        <div className="mt-6 grid grid-cols-1 gap-3 border-t border-(--c-2b3b49) pt-4 sm:flex sm:items-center sm:justify-between sm:gap-3 sm:pt-5">
+          {isLearning && questionIndex === quiz.questions.length - 1 && (
             <button
               type="button"
               onClick={onSubmit}
-              className="flex h-12 items-center justify-center gap-2 rounded-xl bg-(--c-2d6485) px-5 text-sm font-bold text-white shadow-[0_8px_20px_rgba(0,0,0,0.28)] transition-all hover:bg-(--c-39799d) hover:shadow-[0_10px_24px_rgba(0,0,0,0.35)] active:scale-[0.98]"
+              className="flex h-11 items-center justify-center gap-2 rounded-lg bg-(--c-2d6485) px-3 text-sm font-bold text-white shadow-[0_8px_20px_rgba(0,0,0,0.28)] transition-all hover:bg-(--c-39799d) hover:shadow-[0_10px_24px_rgba(0,0,0,0.35)] active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60 sm:min-w-32 sm:px-4"
             >
-              Submit test <Icon name="check" className="size-4" />
+              End Quiz
+              <Icon name="check" className="size-4" />
             </button>
-          </div>
+          )}
+          {!isLearning && (
+            <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-end sm:gap-3">
+              <p className="text-center text-[11px] text-(--c-9aabba) sm:text-right sm:mb-0">
+                {quiz.questions.length - answeredCount > 0
+                  ? `${quiz.questions.length - answeredCount} unanswered will count as incorrect.`
+                  : 'All questions answered.'}
+              </p>
+              <button
+                type="button"
+                onClick={onSubmit}
+                className="flex h-11 items-center justify-center gap-2 rounded-lg bg-(--c-2d6485) px-4 text-sm font-bold text-white shadow-[0_8px_20px_rgba(0,0,0,0.28)] transition-all hover:bg-(--c-39799d) hover:shadow-[0_10px_24px_rgba(0,0,0,0.35)] active:scale-[0.98] sm:min-w-32 sm:px-4"
+              >
+                Submit test <Icon name="check" className="size-4" />
+              </button>
+            </div>
+          )}
+          {isLearning && questionIndex < quiz.questions.length - 1 && (
+            <p className="text-center text-[10px] leading-4 text-(--c-9aabba) sm:text-right sm:mt-0">
+              Answered {answeredCount} of {quiz.questions.length} questions.
+            </p>
+          )}
         </div>
       </article>
 

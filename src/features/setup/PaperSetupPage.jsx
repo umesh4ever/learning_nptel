@@ -1,6 +1,14 @@
 import { Navigate, useNavigate } from 'react-router-dom'
 import Icon from '../../components/Icon.jsx'
-import { difficultyOptions, durationOptions, getCourse, getCoursePath, getMaxTestQuestionCount } from '../../data/courseData.js'
+import {
+  difficultyOptions,
+  durationOptions,
+  getCourse,
+  getCoursePath,
+  getMaxTestQuestionCount,
+  getAssignmentYearSessionOptions,
+  quizModes,
+} from '../../data/courseData.js'
 import { useStudyroom } from '../studyroom/StudyroomContext.js'
 
 function NumberStepper({ id, label, value, min, max, step, suffix, onChange }) {
@@ -55,12 +63,39 @@ export default function PaperSetupPage() {
     return <Navigate to={getCoursePath(state.courseId)} replace />
   }
 
-  const { selectedWeeks, difficulty, questionCount, durationMinutes } = state
+  const { selectedWeeks, difficulty, questionCount, durationMinutes, quizMode, quizYear, quizSession } = state
   const { isAssignment } = course
   const weekCount = selectedWeeks.length
+
+  // Available year/session filters for assignment quizzes (only show what exists in data)
+  const allFilters = isAssignment
+    ? getAssignmentYearSessionOptions(course.weeks)
+    : { years: [], sessions: [] }
+
+  // Sessions filtered by selected year (if any)
+  const filteredSessions = isAssignment && quizYear
+    ? course.weeks
+      .filter((w) => String(w.year) === quizYear)
+      .map((w) => w.session)
+      .filter((s, i, arr) => s && arr.indexOf(s) === i)
+      .sort()
+    : allFilters.sessions
+
+  // Auto-select single year if only one available
+  const autoYear = allFilters.years.length === 1 && !quizYear ? allFilters.years[0] : quizYear
+  // Auto-select single session if only one available for the selected year
+  const autoSession = filteredSessions.length === 1 && !quizSession ? filteredSessions[0] : quizSession
+
+  const effectiveYear = autoYear
+  const effectiveSession = autoSession
+
   const maxTotalCount = getMaxTestQuestionCount(selectedWeeks, difficulty)
   const totalAssignmentQuestions = isAssignment
-    ? selectedWeeks.reduce((total, week) => total + week.questions.length, 0)
+    ? selectedWeeks.reduce((total, week) => {
+        const yearMatch = effectiveYear ? String(week.year) === effectiveYear : true
+        const sessionMatch = effectiveSession ? String(week.session) === effectiveSession : true
+        return yearMatch && sessionMatch ? total + week.questions.length : total
+      }, 0)
     : 0
   const count = isAssignment
     ? (Number(questionCount) || Math.min(10, totalAssignmentQuestions))
@@ -140,6 +175,68 @@ export default function PaperSetupPage() {
           {isAssignment ? 'Assignment Quiz Setup' : 'Practice Paper Setup'}
         </h2>
 
+        {/* Assignment year/session filters (only for assignments with data) */}
+        {isAssignment && allFilters.years.length > 0 && (
+          <fieldset className="mt-6">
+            <legend className="mb-2.5 text-xs font-bold text-(--c-bdcbd5)">Year &amp; session</legend>
+            <p className="mb-2 text-[10px] leading-4 text-(--c-9aabba)">
+              Filter questions by available year/session. Leave both unset to include all.
+            </p>
+            <div className="mt-2 flex flex-wrap items-center gap-2 sm:gap-3">
+              <div className="flex flex-col gap-1">
+                <label className="mb-0 block text-[10px] font-bold text-(--c-9aabba)">Year</label>
+                <div className="flex flex-wrap gap-1">
+                  {allFilters.years.map((year) => {
+                    const active = effectiveYear === year
+                    return (
+                      <button
+                        key={year}
+                        type="button"
+                        onClick={() => dispatch({ type: 'set-assignment-filter', year, session: active ? null : effectiveSession })}
+                        aria-pressed={active}
+                        className={`min-h-8 rounded-lg border px-2 py-1 text-[10px] font-semibold transition-colors ${
+                          active
+                            ? 'border-(--c-39708f) bg-(--c-24516d) text-white'
+                            : 'border-(--c-354958) bg-(--c-202f3c) text-(--c-c3d0da) hover:border-(--c-52738a) hover:bg-(--c-293d4d)'
+                        }`}
+                      >
+                        {year}
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+              <div className="flex flex-col gap-1">
+                <label className="mb-0 block text-[10px] font-bold text-(--c-9aabba)">Session</label>
+                <div className="flex flex-wrap gap-1">
+                  {filteredSessions.length > 0 ? (
+                    filteredSessions.map((session) => {
+                      const active = effectiveSession === session
+                      return (
+                        <button
+                          key={session}
+                          type="button"
+                          onClick={() => dispatch({ type: 'set-assignment-filter', year: active ? null : effectiveYear, session })}
+                          aria-pressed={active}
+                          className={`min-h-8 rounded-lg border px-2 py-1 text-[10px] font-semibold transition-colors ${
+                            active
+                              ? 'border-(--c-39708f) bg-(--c-24516d) text-white'
+                              : 'border-(--c-354958) bg-(--c-202f3c) text-(--c-c3d0da) hover:border-(--c-52738a) hover:bg-(--c-293d4d)'
+                          }`}
+                        >
+                          {session}
+                        </button>
+                      )
+                    })
+                  ) : (
+                    <span className="text-[10px] text-(--c-9aabba)">No sessions</span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        )}
+
         <div className="mt-4 rounded-xl border border-(--c-354958) bg-(--c-14212c) p-4">
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-(--c-2b3b49) pb-2.5">
             <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-(--c-a7c6dc)">
@@ -160,7 +257,7 @@ export default function PaperSetupPage() {
                 className="inline-flex items-center gap-1.5 rounded-lg border border-(--c-354958) bg-(--c-202f3c) px-2.5 py-1 text-xs text-(--c-dce7ef)"
               >
                 <span className="font-bold text-(--c-82aecb)">
-                  {isAssignment ? `Assignment ${week.week}` : `Week ${week.week}`}
+                  Week {week.week}
                 </span>
                 <span className="text-[10px] text-(--c-9aabba)">({week.questions.length} Qs)</span>
               </span>
@@ -173,6 +270,46 @@ export default function PaperSetupPage() {
               : `Questions will be evenly selected from the ${selectedWeeks.length} selected ${selectedWeeks.length === 1 ? 'week' : 'weeks'}.`}
           </p>
         </div>
+
+        {/* Quiz mode selection */}
+        <fieldset className="mt-6">
+          <legend className="mb-2.5 text-xs font-bold text-(--c-bdcbd5)">Quiz mode</legend>
+          <div className="mt-2 grid gap-2 sm:grid-cols-2">
+            {[quizModes.practice, quizModes.learning].map((mode) => {
+              const active = quizMode === mode
+              const isLearning = mode === quizModes.learning
+              return (
+                <button
+                  key={mode}
+                  type="button"
+                  onClick={() => dispatch({ type: 'set-quiz-mode', mode })}
+                  aria-pressed={active}
+                  className={`group relative flex flex-col items-start gap-1.5 rounded-xl border px-3 py-3 text-left transition-colors duration-150 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40 ${
+                    active
+                      ? 'border-(--c-39708f) bg-(--c-24516d) text-white shadow-[0_6px_16px_rgba(0,0,0,0.22)] hover:bg-(--c-2c6383)'
+                      : 'border-(--c-354958) bg-(--c-202f3c) text-(--c-c3d0da) hover:border-(--c-52738a) hover:bg-(--c-293d4d) hover:shadow-[0_6px_15px_rgba(0,0,0,0.2)]'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className={`text-xs font-bold ${isLearning ? 'text-purple-400' : 'text-blue-400'}`}>
+                      {isLearning ? 'Learning Quiz' : 'Practice Quiz'}
+                    </span>
+                  </div>
+                  <p className={`text-[10px] leading-4 ${active ? 'text-white/85' : 'text-(--c-9aabba)'}`}>
+                    {isLearning
+                      ? 'See the correct answer after each option. No score at the end.'
+                      : 'Get a score and full results after submitting.'}
+                  </p>
+                  {active && (
+                    <span className="absolute right-2.5 top-2.5 grid size-4 place-items-center text-white">
+                      <Icon name="check" className="size-3" />
+                    </span>
+                  )}
+                </button>
+              )
+            })}
+          </div>
+        </fieldset>
 
         {!isAssignment && <fieldset className="mt-6">
           <legend className="mb-2.5 text-xs font-bold text-(--c-bdcbd5)">Difficulty</legend>
@@ -245,7 +382,7 @@ export default function PaperSetupPage() {
                         : 'border-(--c-354958) bg-(--c-202f3c) text-(--c-c3d0da) hover:border-(--c-52738a) hover:bg-(--c-293d4d) disabled:cursor-not-allowed disabled:opacity-40'
                     }`}
                   >
-                    {isAllOption ? `All (${opt})` : `${opt} questions`}
+                    {isAllOption ? `All (${opt})` : `${opt}`}
                   </button>
                 )
               })}
@@ -273,13 +410,13 @@ export default function PaperSetupPage() {
                       : 'border-(--c-354958) bg-(--c-202f3c) text-(--c-c3d0da) hover:border-(--c-52738a) hover:bg-(--c-293d4d)'
                   }`}
                 >
-                  {minutes} min
+                  {minutes}
                 </button>
               )
             })}
           </div>
           <p className={`mt-2 text-[11px] leading-4 ${validDuration ? 'text-(--c-9aabba)' : 'text-(--c-e59a90)'}`}>
-            Choose between 5 and 180 minutes.
+            Choose between 5 and 180 (min).
           </p>
         </fieldset>
 

@@ -3,6 +3,8 @@ import { Navigate, useNavigate, useOutletContext, useParams } from 'react-router
 import QuizScreen from './QuizScreen.jsx'
 import { useStudyroom } from '../studyroom/StudyroomContext.js'
 import { getCoursePath } from '../../data/courseData.js'
+import { quizModes } from '../../data/courseData.js'
+import LearningQuizEnd from './LearningQuizEnd.jsx'
 
 function getSecondsRemaining(endsAt) {
   return Math.max(0, Math.ceil((endsAt - Date.now()) / 1000))
@@ -13,7 +15,7 @@ export default function QuizPage() {
   const navigate = useNavigate()
   const { theme, onToggleTheme } = useOutletContext()
   const { state, dispatch } = useStudyroom()
-  const { quiz, currentQuestionIndex, selectedAnswers, finished } = state
+  const { quiz, currentQuestionIndex, selectedAnswers, finished, quizMode } = state
   const routeIndex = Number(questionNumber) - 1
   const [remainingSeconds, setRemainingSeconds] = useState(() =>
     quiz ? getSecondsRemaining(quiz.endsAt) : 0,
@@ -40,14 +42,30 @@ export default function QuizPage() {
   }, [courseId, currentQuestionIndex, dispatch, finished, navigate, quiz, routeIndex])
 
   if (!quiz) return <Navigate to={getCoursePath(courseId)} replace />
-  if (finished) return <Navigate to={getCoursePath(courseId, 'results')} replace />
-  if (!Number.isInteger(routeIndex) || routeIndex < 0 || routeIndex >= quiz.questions.length) {
-    return <Navigate to={getCoursePath(courseId, `quiz/${currentQuestionIndex + 1}`)} replace />
-  }
 
   const answeredCount = quiz.questions.filter(
     (question) => selectedAnswers[question.id] !== undefined,
   ).length
+  const isLearning = quizMode === quizModes.learning
+
+  if (finished) {
+    if (isLearning) {
+      return (
+        <LearningQuizEnd
+          quiz={quiz}
+          selectedAnswers={selectedAnswers}
+          dispatch={dispatch}
+          navigate={navigate}
+          courseId={courseId}
+        />
+      )
+    }
+    return <Navigate to={getCoursePath(courseId, 'results')} replace />
+  }
+  if (!Number.isInteger(routeIndex) || routeIndex < 0 || routeIndex >= quiz.questions.length) {
+    return <Navigate to={getCoursePath(courseId, `quiz/${currentQuestionIndex + 1}`)} replace />
+  }
+
   const progress = (answeredCount / quiz.questions.length) * 100
   const timeExpired = remainingSeconds === 0
 
@@ -60,7 +78,8 @@ export default function QuizPage() {
   function answerQuestion(questionId, answer) {
     if (timeExpired) return
     dispatch({ type: 'save-answer', questionId, answer, questionIndex: routeIndex })
-    if (routeIndex < quiz.questions.length - 1) {
+    // In learning mode, stay on the same question (user clicks Next manually)
+    if (!isLearning && routeIndex < quiz.questions.length - 1) {
       navigate(getCoursePath(courseId, `quiz/${routeIndex + 2}`))
     }
   }
@@ -83,6 +102,7 @@ export default function QuizPage() {
         dispatch({ type: 'return-to-setup' })
         navigate(getCoursePath(courseId))
       }}
+      quizMode={quizMode}
     />
   )
 }

@@ -6,6 +6,7 @@ import {
   getAvailableQuestions,
   getCourse,
   normalizeTotalQuestionCount,
+  quizModes,
 } from '../../data/courseData.js'
 import { StudyroomContext } from './StudyroomContext.js'
 
@@ -39,6 +40,9 @@ function createInitialState(courseId = null) {
     difficulty: 'Easy',
     questionCount: defaultCount,
     durationMinutes: 30,
+    quizMode: quizModes.practice,
+    quizYear: null,
+    quizSession: null,
     quiz: null,
     currentQuestionIndex: 0,
     selectedAnswers: {},
@@ -82,6 +86,11 @@ function restoreState(courseId) {
         )
     const durationValue = Number(savedState.durationMinutes)
     const durationMinutes = durationOptions.includes(durationValue) ? durationValue : 30
+    const quizMode = Object.values(quizModes).includes(savedState.quizMode)
+      ? savedState.quizMode
+      : quizModes.practice
+    const quizYear = savedState.quizYear ?? null
+    const quizSession = savedState.quizSession ?? null
 
     let quiz = null
     let quizRestoreWarning = ''
@@ -180,6 +189,9 @@ function restoreState(courseId) {
         difficulty,
         questionCount,
         durationMinutes,
+        quizMode,
+        quizYear,
+        quizSession,
         quiz,
         currentQuestionIndex,
         selectedAnswers,
@@ -217,6 +229,9 @@ function serializeState(state) {
     difficulty: state.difficulty,
     questionCount: state.questionCount,
     durationMinutes: state.durationMinutes,
+    quizMode: state.quizMode,
+    quizYear: state.quizYear,
+    quizSession: state.quizSession,
     quiz: state.quiz
       ? {
           weekNumbers: state.quiz.weeks.map((week) => week.week),
@@ -302,6 +317,14 @@ function studyroomReducer(state, action) {
       return durationOptions.includes(Number(action.minutes))
         ? { ...state, durationMinutes: Number(action.minutes) }
         : state
+    case 'set-quiz-mode':
+      return { ...state, quizMode: action.mode }
+    case 'set-assignment-filter':
+      return {
+        ...state,
+        quizYear: action.year ?? null,
+        quizSession: action.session ?? null,
+      }
     case 'reset-paper': {
       const course = getCourse(state.courseId)
       const courseWeeks = course?.weeks ?? []
@@ -329,8 +352,19 @@ function studyroomReducer(state, action) {
     case 'start-quiz': {
       const difficulty = action.difficulty ?? state.difficulty
       if (!durationOptions.includes(action.durationMinutes)) return state
+
+      // Apply year/session filter for assignment quizzes when set
+      let quizWeeks = state.selectedWeeks
+      if (state.quizYear || state.quizSession) {
+        quizWeeks = state.selectedWeeks.filter((week) => {
+          const yearMatch = state.quizYear ? String(week.year) === state.quizYear : true
+          const sessionMatch = state.quizSession ? String(week.session) === state.quizSession : true
+          return yearMatch && sessionMatch
+        })
+      }
+
       const questions = createTestQuestions(
-        state.selectedWeeks,
+        quizWeeks,
         difficulty,
         action.questionCount,
       )
@@ -339,9 +373,12 @@ function studyroomReducer(state, action) {
       return {
         ...state,
         quiz: {
-          weeks: state.selectedWeeks,
+          weeks: quizWeeks,
           difficulty,
           isAssignment: Boolean(getCourse(state.courseId)?.isAssignment),
+          quizMode: state.quizMode,
+          quizYear: state.quizYear,
+          quizSession: state.quizSession,
           questions,
           startedAt,
           endsAt: startedAt + action.durationMinutes * 60 * 1000,
@@ -356,10 +393,16 @@ function studyroomReducer(state, action) {
       if (!state.quiz || Date.now() >= state.quiz.endsAt || state.finished) return state
       const question = state.quiz.questions[action.questionIndex]
       if (!question || question.id !== action.questionId) return state
+      // In learning mode, stay on the same question so the user can see the
+      // correct answer and manually click Next Question.
+      const nextIndex =
+        state.quizMode === quizModes.learning
+          ? action.questionIndex
+          : Math.min(action.questionIndex + 1, state.quiz.questions.length - 1)
       return {
         ...state,
         selectedAnswers: { ...state.selectedAnswers, [action.questionId]: action.answer },
-        currentQuestionIndex: Math.min(action.questionIndex + 1, state.quiz.questions.length - 1),
+        currentQuestionIndex: nextIndex,
       }
     }
     case 'set-current-question':

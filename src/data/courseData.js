@@ -3,6 +3,28 @@
 export const difficultyOptions = ['Easy', 'Medium/Hard', 'Mixed']
 export const durationOptions = [5, 10, 15, 30, 45, 60, 120, 180]
 
+export const quizModes = {
+  practice: 'practice',
+  learning: 'learning',
+}
+
+/**
+ * Extract unique years and sessions available across assignment weeks.
+ * Used to let the user filter assignment quizzes by year/session.
+ */
+export function getAssignmentYearSessionOptions(weeks) {
+  const years = new Set()
+  const sessions = new Set()
+  for (const week of weeks ?? []) {
+    if (week.year) years.add(String(week.year))
+    if (week.session) sessions.add(String(week.session))
+  }
+  return {
+    years: [...years].sort(),
+    sessions: [...sessions].sort(),
+  }
+}
+
 // Lightweight course metadata available immediately for homepage & navigation
 export const coursesCatalog = {
   'conservation-geography': {
