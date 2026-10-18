@@ -7,7 +7,7 @@ export default function ResultsPage() {
   const navigate = useNavigate()
   const { courseId } = useParams()
   const { state, dispatch } = useStudyroom()
-  const { quiz, finished, quizMode } = state
+  const { quiz, finished, quizMode, selectedAnswers: answers } = state
 
   // Learning quizzes do not have a results screen; they end at LearningQuizEnd
   if (quizMode === quizModes.learning) {
@@ -26,8 +26,6 @@ export default function ResultsPage() {
     0,
     Math.floor(((quiz.completedAt ?? quiz.endsAt) - quiz.startedAt) / 1000),
   )
-
-  const { selectedAnswers: answers } = state
 
   function createNewTest() {
     dispatch({ type: 'return-to-setup' })

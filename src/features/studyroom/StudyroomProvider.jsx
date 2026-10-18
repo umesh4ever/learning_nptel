@@ -125,6 +125,25 @@ function restoreState(courseId) {
           : []
       const questionsPerWeek = quizWeeks.length > 0 ? quizQuestionCount / quizWeeks.length : 0
       const isAssignmentCourse = Boolean(course.isAssignment)
+      // For a finished quiz we are more lenient: as long as we have saved
+      // question ids that map to real questions and the timing fields are
+      // valid, restore the quiz so the results screen survives a reload.
+      const allQuestionsFound =
+        questions.length > 0 && questions.every((question) => question !== undefined)
+      const timingValid =
+        Number.isFinite(endsAt) &&
+        Number.isFinite(startedAt) &&
+        startedAt < endsAt &&
+        (completedAt === null || (completedAt >= startedAt && completedAt <= endsAt))
+
+      const isFinishedQuiz = Boolean(savedState.finished)
+      const canRestoreFinishedQuiz =
+        isFinishedQuiz &&
+        quizWeeks.length > 0 &&
+        quizWeeks.length === savedState.quiz.weekNumbers.length &&
+        allQuestionsFound &&
+        timingValid
+
       const hasValidQuestionSet =
         Number.isInteger(quizQuestionCount) &&
         quizQuestionCount > 0 &&
@@ -140,15 +159,14 @@ function restoreState(courseId) {
           quizWeeks.every(
             (week) => questions.filter((question) => question.week_number === week.week).length === questionsPerWeek,
           ))
+
       if (
         quizWeeks.length > 0 &&
         quizWeeks.length === savedState.quiz.weekNumbers.length &&
-        hasValidQuestionSet &&
-        Number.isFinite(endsAt) &&
-        Number.isFinite(startedAt) &&
-        durationOptions.includes(quizDurationMinutes) &&
-        startedAt < endsAt &&
-        (completedAt === null || (completedAt >= startedAt && completedAt <= endsAt))
+        (canRestoreFinishedQuiz ||
+          (hasValidQuestionSet &&
+            durationOptions.includes(quizDurationMinutes))) &&
+        timingValid
       ) {
         quiz = {
           weeks: quizWeeks,
@@ -159,7 +177,7 @@ function restoreState(courseId) {
           endsAt,
           completedAt,
         }
-      } else if (!isLegacyQuiz) {
+      } else if (!isLegacyQuiz && !isFinishedQuiz) {
         console.error('The saved quiz question selection is invalid and could not be restored.')
         quizRestoreWarning = 'The saved quiz could not be restored because its question selection is invalid. Your setup is ready.'
       }
