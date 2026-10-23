@@ -116,7 +116,7 @@ export default function QuizScreen({
               <button
                 key={key}
                 type="button"
-                onClick={() => !isAnswered && onAnswer(question.id, key)}
+                onClick={() => onAnswer(question.id, key)}
                 disabled={timeExpired || (isLearning && isAnswered)}
                 aria-pressed={chosen}
                 className={`flex w-full items-start gap-3 rounded-xl border p-3.5 text-left transition-transform duration-200 active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--c-356da8) disabled:cursor-not-allowed sm:gap-4 sm:p-4 ${

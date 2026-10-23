@@ -411,10 +411,13 @@ function studyroomReducer(state, action) {
       if (!state.quiz || Date.now() >= state.quiz.endsAt || state.finished) return state
       const question = state.quiz.questions[action.questionIndex]
       if (!question || question.id !== action.questionId) return state
+      const alreadyAnswered = Object.hasOwn(state.selectedAnswers, action.questionId)
       // In learning mode, stay on the same question so the user can see the
       // correct answer and manually click Next Question.
+      // In practice mode, only advance when answering for the first time;
+      // changing an existing answer keeps the user on the same question.
       const nextIndex =
-        state.quizMode === quizModes.learning
+        state.quizMode === quizModes.learning || alreadyAnswered
           ? action.questionIndex
           : Math.min(action.questionIndex + 1, state.quiz.questions.length - 1)
       return {
